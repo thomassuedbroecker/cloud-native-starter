@@ -1,44 +1,62 @@
-# Cloud Native Starter for Java and Node.js
+## Cloud Native Starter for Java EE based Microservices on Kubernetes and Istio
 
-This project contains sample code that shows how to build cloud-native applications with JavaEE and Node.js and deploy them to Kubernetes and Istio.
+This project contains sample code that demonstrates how to get started with cloud-native applications and microservice based architectures. 
+
+The project focusses on how to build microservices with Java EE and the open source technologies [Eclipse MicroProfile](https://microprofile.io/), [Eclipse OpenJ9](https://www.eclipse.org/openj9/), [AdoptOpenJDK](https://adoptopenjdk.net/) and [Open Liberty](https://openliberty.io/).
+
+The microservices can be easily deployed on Kubernetes environments running [Istio](https://istio.io/) like [Minikube](https://kubernetes.io/docs/setup/minikube/) or the [IBM Cloud Kubernetes Service](https://www.ibm.com/cloud/container-service).
 
 The project showcases the following functionality:
 
-* JavaEE (with MicroProfile) and Node.js microservices
-* Distributed tracing
-* Traffic management
-* Resiliency via fallbacks and circuit breakers
 * REST APIs implementations incl. documentation
 * REST API invocations
-* Distributed logging
-* Metrics
+* Traffic management
+* Resiliency via fallbacks and circuit breakers
 * Authentication and authorization
-* Configuration
-* Deployments
+* Distributed tracing and logging
+* Monitoring and metrics
 
 This diagram shows the key components:
 
-<kbd><img src="images/architecture.png" /></kbd>
+<kbd><img src="images/architecture-2.png" /></kbd>
 
 The next screenshot shows the web application. More screenshots are in the [images](images) folder.
 
 <kbd><img src="images/web-app.png" /></kbd>
 
-### Local Environment Setup
 
-Follow these [instructions](LocalEnvironment.md) to set up the local environment with Minikube and Istio. This should not take longer than 30 minutes.
+### Demos
+
+This project demonstrates several Java EE and Istio key functionality.
+
+* [Containerized Java EE Microservices](documentation/DemoJavaImage.md)
+* [Exposing REST APIs](documentation/DemoExposeRESTAPIs.md)
+* [Consuming REST APIs](documentation/DemoConsumeRESTAPIs.md)
+* [Traffic Routing](documentation/DemoTrafficRouting.md)
+* [Resiliency](documentation/DemoResiliency.md)
+* [Authentication and Authorization](documentation/DemoAuthentication.md)
+* [Metrics](documentation/DemoMetrics.md)
+* [Health Checks](documentation/DemoHealthCheck.md)
+* [Configuration](documentation/DemoConfiguration.md)
+* [Distributed Logging and Monitoring](documentation/DemoDistributedLoggingMonitoring.md)
 
 
-### Deployment
+### Setup
+
+The sample application can be run locally on Minikube or on the IBM Cloud. The following instructions describe how to install everything locally.
+
+If you would like to run the cloud native starter application on IBM Cloud Kubernetes Service, follow these [instructions](documentation/IKSDeployment.md). 
+
+Before the microservices can be installed, make sure you've set up Minikube 0.33.1 and Istio 1.1.1 correctly or follow these [instructions](documentation/SetupLocalEnvironment.md) to set up Minikube and Istio from scratch. This should not take longer than 30 minutes.
+
+The microservices can be installed via scripts. In addition to Minikube and Istio you need the following tools to be installed.
 
 Prerequisites:
 
-* [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) 
+* [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 * [curl](https://curl.haxx.se/download.html)
-* sed
 * [docker](https://docs.docker.com/install/)
 * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-* [minikube](https://kubernetes.io/docs/setup/minikube/) 
 
 Deploy (and redeploy):
 
@@ -54,9 +72,6 @@ $ scripts/deploy-istio-ingress-v1.sh
 $ scripts/show-urls.sh
 ```
 
-
-### Run the Demo
-
 After running the scripts above, you will get a list of all URLs in the terminal.
 
 <kbd><img src="images/urls.png" /></kbd>
@@ -65,62 +80,54 @@ Example URL to open the web app: http://192.168.99.100:31380
 
 Example API endpoint: http://192.168.99.100:31380/web-api/v1/getmultiple
 
+### Cleanup
 
-*Traffic Routing*
-
-In order to demonstrate traffic routing you can run the following commands. 20 % of the web-api API request to read articles will now return 10 instead of 5 articles which is version 2. 80 % of the requests are still showing only 5 articles which is version 1. This distribution is set in `istio/istio-ingress-service-web-api-v1-v2-80-20.yaml` (weight: 80 vs. weight: 20).
-
-```
-$ scripts/deploy-web-api-java-jee-v2.sh
-$ scripts/deploy-istio-ingress-v1-v2.sh
-```
-
-<kbd><img src="images/traffic-management-1.png" /></kbd>
-
-*Resiliency*
-
-In order to demonstrate resiliency you can run the following command to delete the authors service:
+Run the following command to delete all cloud-native-starter components from Istio.
 
 ```
-$ scripts/delete-authors-nodejs.sh
+$ scripts/delete-all.sh
 ```
 
-In the next step delete the articles service:
-
-```
-$ scripts/delete-web-api-java-jee.sh
-```
-
-*Cleanup*
-
-Run these commands to delete the cloud native starter components:
+You can also delete single components:
 
 ```
 $ scripts/delete-articles-java-jee.sh
+$ scripts/delete-articles-java-jee-quarkus.sh
 $ scripts/delete-web-api-java-jee.sh
 $ scripts/delete-authors-nodejs.sh
 $ scripts/delete-web-app-vuejs.sh
 $ scripts/delete-istio-ingress.sh
 ```
 
+### Authors
+
+* [Niklas Heidloff](https://twitter.com/nheidloff)
+* [Harald Uebele](https://twitter.com/harald_u)
+
 
 ### Documentation
 
 Here is a series of blog entries about this project:
 
+* [Project Description and Design Principles](http://heidloff.net/article/example-java-app-cloud-kubernetes)
 * [Setup of a Local Kubernetes and Istio Dev Environment](http://heidloff.net/article/setup-local-development-kubernetes-istio)
 * [Debugging Microservices running in Kubernetes](http://heidloff.net/article/debugging-microservices-kubernetes)
 * [Dockerizing Java MicroProfile Applications](http://heidloff.net/article/dockerizing-container-java-microprofile)
 * [Developing resilient Microservices with Istio and MicroProfile](http://heidloff.net/article/resiliency-microservice-microprofile-java-istio)
 * [Using Quarkus to run Java Apps on Kubernetes](http://heidloff.net/article/quarkus-javaee-microprofile-kubernetes)
 * [Managing Microservices Traffic with Istio](https://haralduebele.blog/2019/03/11/managing-microservices-traffic-with-istio/)
+* [Web Application to demo Traffic Management with Istio](http://heidloff.net/article/sample-app-manage-microservices-traffic-istio)
 * [Implementing and documenting REST APIs with JavaEE](http://heidloff.net/article/rest-apis-microprofile-javaee-jaxrs)
 * [Invoking REST APIs from Java Microservices](http://heidloff.net/invoke-rest-apis-java-microprofile-microservice)
-* Distributed logging (functionality: almost done / blog: to be done)
-* Monitoring and metrics (functionality: to be done / blog: to be done)
-* Authentication and authorization (functionality: to be done / blog: to be done)
-* Configuration (functionality: almost done / blog: to be done)
-* Deployment to IBM Cloud
+* [Prometheus Metrics for MicroProfile Microservices in Istio](http://heidloff.net/article/prometheus-metrics-microprofile-microservices-istio/)
+* [Moving from Minikube to IBM Cloud Kubernetes Service](https://haralduebele.blog/2019/04/04/moving-from-minikube-to-ibm-cloud-kubernetes-service/)
+* [Distributed logging with LogDNA and Monitoring with Sysdig](https://haralduebele.blog/2019/04/08/whats-going-on-in-my-cluster/)
+* [Implementing Health Checks with MicroProfile and Istio](http://heidloff.net/article/implementing-health-checks-microprofile-istio)
+* [Configuring Microservices with MicroProfile and Kubernetes](http://heidloff.net/article/configuring-java-microservices-microprofile-kubernetes/)
+* [Authenticating Web Users with OpenID and JWT](http://heidloff.net/article/authenticating-web-users-openid-connect-jwt/)
+* [Authorization in Cloud-Native Applications via OpenID and Istio](http://heidloff.net/article/authentication-authorization-openid-connect-istio)
+* Authorization via MicroProfile
+* SQL PersistenceSQL via JPA and JDBC
 
 Here is more information about Microservices, MicroProfile and Istio:
 

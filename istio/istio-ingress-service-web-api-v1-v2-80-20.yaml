@@ -1,12 +1,12 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: virtualservice-ingress-web-api--web-app
+  name: virtualservice-ingress-web-api-web-app
 spec:
   hosts:
   - "*"
   gateways:
-  - default-gateway-ingress
+  - default-gateway-ingress-http
   http:
   - match:
     - uri:
@@ -19,7 +19,21 @@ spec:
       - destination:
           host: web-api
           subset: v2
-        weight: 20          
+        weight: 20 
+  - match:
+    - uri:
+        prefix: /web-api/v1/create 
+    route:
+      - destination:
+          host: web-api
+          subset: v1
+  - match:
+    - uri:
+        prefix: /web-api/v1/manage 
+    route:
+      - destination:
+          host: web-api
+          subset: v1       
   - match:
     - uri:
         prefix: /openapi/ui/ 
@@ -36,6 +50,30 @@ spec:
         port:
           number: 9080
         host: web-api
+  - match:
+    - uri:
+        prefix: /loginwithtoken
+    route:
+    - destination:
+        port:
+          number: 80
+        host: web-app
+  - match:
+    - uri:
+        prefix: /login
+    route:
+    - destination:
+        port:
+          number: 3000
+        host: authentication
+  - match:
+    - uri:
+        prefix: /callback
+    route:
+    - destination:
+        port:
+          number: 3000
+        host: authentication
   - match:
     - uri:
         prefix: /

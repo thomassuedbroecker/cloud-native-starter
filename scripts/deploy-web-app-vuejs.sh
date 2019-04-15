@@ -2,32 +2,19 @@
 
 root_folder=$(cd $(dirname $0); cd ..; pwd)
 
-logname="deploy-web-app-vuejs.log"
-
-function setupLog(){
- cd "${root_folder}/scripts"
- readonly LOG_FILE="${root_folder}/scripts/$logname"
- touch $LOG_FILE
- exec 3>&1 # Save stdout
- exec 4>&2 # Save stderr
- exec 1>$LOG_FILE 2>&1
- exec 3>&1
-}
-
 function _out() {
   echo "$(date +'%F %H:%M:%S') $@"
 }
 
 function configureVUEminikubeIP(){
-  cd ${root_folder}/web-app-vuejs/src/components
+  cd ${root_folder}/web-app-vuejs/src
   
-  _out configureVUEIP
+  _out configure API endpoint in web-app
   minikubeip=$(minikube ip)
 
-  _out _copy App.vue template definition
-  rm "Home.vue"
-  cp "Home-template.vue" "Home.vue"
-  sed "s/MINIKUBE_IP/$minikubeip/g" Home-template.vue > Home.vue
+  rm "store.js"
+  cp "store.js.template" "store.js"
+  sed "s/endpoint-api-ip/$minikubeip/g" store.js.template > store.js
   
   cd ${root_folder}/web-app-vuejs
 }
@@ -36,8 +23,8 @@ function setup() {
   _out Deploying web-app-vuejs
   
   cd ${root_folder}/web-app-vuejs
-  kubectl delete -f deployment/kubernetes.yaml
-  kubectl delete -f deployment/istio.yaml
+  kubectl delete -f deployment/kubernetes.yaml --ignore-not-found
+  kubectl delete -f deployment/istio.yaml --ignore-not-found
   
   configureVUEminikubeIP
 
@@ -47,16 +34,18 @@ function setup() {
   kubectl apply -f deployment/kubernetes.yaml
   kubectl apply -f deployment/istio.yaml
 
+  cd ${root_folder}/web-app-vuejs/src
+  cp "store.js.template" "store.js"
+
   minikubeip=$(minikube ip)
   nodeport=$(kubectl get svc web-app --output 'jsonpath={.spec.ports[*].nodePort}')
   _out Minikube IP: ${minikubeip}
   _out NodePort: ${nodeport}
   
   _out Done deploying web-app-vuejs
+  _out Wait until the pod has been started: "kubectl get pod --watch | grep web-app"
   _out Open the app: http://${minikubeip}:${nodeport}/
 }
-
-#exection starts from here
 
 setupLog
 setup

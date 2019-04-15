@@ -1,0 +1,15 @@
+apiVersion: "authentication.istio.io/v1alpha1"
+kind: "Policy"
+metadata:
+  name: "protect-web-api"
+spec:
+  targets:
+  - name: web-api
+  origins:
+  - jwt:
+      issuer: "APPID_ISSUER"
+      jwksUri: "APPID_JWKS_URI"
+      trigger_rules:
+      - included_paths:
+        - exact: /web-api/v1/create
+  principalBinding: USE_ORIGIN

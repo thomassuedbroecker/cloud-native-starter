@@ -10,6 +10,9 @@ function _out() {
 
 function setup() {
   _out Deploying web-api-java-jee v2
+
+  cd ${root_folder}/istio
+  kubectl delete -f protect-web-api.yaml --ignore-not-found
   
   cd ${root_folder}/web-api-java-jee
 
@@ -28,7 +31,7 @@ function setup() {
   eval $(minikube docker-env) 
   docker build -f Dockerfile.nojava -t web-api:2 .
 
-  kubectl delete -f deployment/istio-service-v1.yaml
+  kubectl delete -f deployment/istio-service-v1.yaml --ignore-not-found
   kubectl apply -f deployment/kubernetes-deployment-v2.yaml
   kubectl apply -f deployment/istio-service-v2.yaml
 
@@ -36,12 +39,16 @@ function setup() {
   rm src/main/java/com/ibm/webapi/business/Service.java
   mv src/main/java/com/ibm/webapi/business/Service2.java src/main/java/com/ibm/webapi/business/Service.java
 
+  cd ${root_folder}/istio
+  kubectl apply -f protect-web-api.yaml
+
   minikubeip=$(minikube ip)
   nodeport=$(kubectl get svc web-api --output 'jsonpath={.spec.ports[*].nodePort}')
   _out Minikube IP: ${minikubeip}
   _out NodePort: ${nodeport}
   
   _out Done deploying web-api-java-jee v2
+  _out Wait until the pod has been started: "kubectl get pod --watch | grep web-api"
   _out Open the OpenAPI explorer: http://${minikubeip}:${nodeport}/openapi/ui/
 }
 
