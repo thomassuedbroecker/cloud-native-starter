@@ -27,17 +27,17 @@ $ ibm-scripts/create-app-id.sh
 
 The IBM Cloud lite plan only allows one App ID instance in your organization. If you have an App ID instance, you can use it rather than creating a new one. 
 
-In this case paste the App ID credentials in [authentication-nodejs/.env](../authentication-nodejs/.env). Check out [authentication-nodejs/.env.template](../authentication-nodejs/.env.template) for an example.
+In this case paste the App ID credentials in [authentication-nodejs/.env](../authentication-nodejs/.env). Check out [authentication-nodejs/.env.template](../authentication-nodejs/.env.template) for an example. Additionally paste APPID_ISSUER and APPID_JWKS_URI in [local.env](local.env). See [template.local.env](template.local.env) for an example.
 
 
 **Use another OpenID identify provider**
 
-You can use any OpenID identity provider. In this case paste the endpoint URLs in [authentication-nodejs/.env](../authentication-nodejs/.env). Check out [authentication-nodejs/.env.template](../authentication-nodejs/.env.template) for an example.
+You can use any OpenID identity provider. In this case paste the endpoint URLs in [authentication-nodejs/.env](../authentication-nodejs/.env). Check out [authentication-nodejs/.env.template](../authentication-nodejs/.env.template) for an example. Additionally paste APPID_ISSUER and APPID_JWKS_URI in [local.env](local.env). See [template.local.env](template.local.env) for an example.
 
 
 **Set up the Demo**
 
-Invoke the following commands to set up the demo. Skip the commands you've already executed.
+Invoke the following commands to set up the demo. 
 
 ```
 $ cd $PROJECT_HOME
@@ -94,4 +94,10 @@ From the web application's dropdown 'Manage Application' can be invoked which tr
 
 Only the user 'admin@demo.email' is allowed to invoke this endpoint.
 
-**to be done**
+<kbd><img src="../images/authorization-microprofile-admin.png" /></kbd>
+
+For the user 'user@demo.email' an error is thrown.
+
+<kbd><img src="../images/authorization-microprofile-user.png" /></kbd>
+
+Watch the [animated gif](../images/authorization-microprofile.gif) to see the flow in action.
