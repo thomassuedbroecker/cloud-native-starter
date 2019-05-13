@@ -19,6 +19,9 @@ node_modules
 dist
 .env.local
 .env.*.local
+local.env
+cloud-native-starter.json
+k8s-setup.sh
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -30,10 +33,31 @@ yarn-error.log*
 *.sln
 *.sw*
 istio-1.0.6
+istio-1.1.1
 deploy-kiali-to-kubernetes.sh
 install-minikube-mac.sh
 open-monitoring*.log
 deploy*.log
 create*.log
+trace.log
+istio/prometheus-config-org.yaml
+istio/prometheus-config-new.yaml
+auth-java-jee
+auth-java-jee-ref
+authentication-nodejs/.env
+authentication-nodejs/package-lock.json
+auth-nodejs2
+istio/web-api.*
+iks-scripts/*.log
+ibm-scripts/*.log
+iks-scripts/cluster-config.sh
+IKS*.yaml
+web-app-vuejs/package-lock.json
+istio/protect-web-api.yaml
 
-web-app-vuejs/src/components/Home.vue
+#images
+images/~$cloud-native-starter.pptx
+
+# workshop
+workshop/images/~$architecture.pptx
+

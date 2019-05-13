@@ -16,6 +16,7 @@ We will use following IBM Cloud Services in this hands-on workshop.
 
 Following tools have to be installed on your laptop, to perform the workshop.
 
+- [Visual Studio Code](https://code.visualstudio.com/) 
 - [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) 
 - [curl](https://curl.haxx.se/download.html)
 - [IBM Cloud CLI](https://cloud.ibm.com/docs/home/tools) 
@@ -23,7 +24,7 @@ Following tools have to be installed on your laptop, to perform the workshop.
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 - on Windows, you need access to a Unix shell (Babun, [Cygwin](https://cygwin.com/install.html), etc.)
 
-To verfiy the prerequisite on your machine, just execute following bash script.
+To verfiy the major prerequisite on your machine, you can execute following bash script on your machine.
 
 ```sh
 $ git clone https://github.com/nheidloff/cloud-native-starter.git
