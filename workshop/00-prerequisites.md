@@ -36,6 +36,8 @@ $ ./iks-scripts/check-prerequisites.sh
 
 ## 3. Setup IBM Cloud Kubernetes cluster<a name="home"></a>
 
+By default, deployment is in Dallas, USA (us-south). If you already have a lite cluster in Dallas, these scripts will not work because only one lite cluster is allowed.
+
 1. [Register at IBM Cloud Account](#part-SETUP-00)
 2. [Insert promo code](#part-SETUP-01)
 3. [Setup the IBM Cloud CLI](#part-SETUP-02)
@@ -94,8 +96,37 @@ ibmcloud login -r us-south
 ```
 
 2. Create a IBM platform for your API key and name it (example **my-ibmplatform-key**) and provide a filename  (example **my-ibmplatform-key-key_file**).
+
 ```sh
-ibmcloud iam api-key-create my-ibmplatform-key -d "This is my API key to access the IBM platform" --file my-ibmplatform-key-key_file
+$ ibmcloud iam api-key-create cloud-native-starter-key \
+  -d "This is the cloud-native-starter key to access the IBM Platform" \
+  --file cloud-native-starter-key.json
+$ cat cloud-native-starter-key.json
+```
+
+You can verfiy the key in the IBM Cloud console, as you can see in the image below:
+
+![ibm-cloud-key](images/workshop-01-ibm-cloud-key.png)
+
+
+3. Create a copy of the **template.local.env** and insert the key in the **local.env** file.
+
+```sh
+$ cp template.local.env local.env 
+```
+
+4. Verify the entries inside the local.env file.
+
+The file local.env has preset values for regions, cluster name, and image registry namespace in local.env. You can change them to your needs.
+
+Example local.env:
+
+```sh
+IBMCLOUD_API_KEY=AbcD3fg7hIj65klMn9derHHb9zge5
+IBM_CLOUD_REGION=us-south
+IBM_CLOUD_CLUSTER_REGION=us-south
+CLUSTER_NAME=cloud-native
+REGISTRY_NAMESPACE=cloud-native
 ```
 
 ### 3.5 Setup the IBM Cloud Kubernetes CLI <a name="part-SETUP-03"></a>
@@ -129,18 +160,76 @@ For the following steps we use bash scripts from the github project.
 
 #### 3.6.1 Automated creation of a Cluster with ISTIO for the workshop
 
+* create cluster
 Use following bash script to create a free Kubernetes Cluster on IBM Cloud:
 
 ```sh
 $ ./iks-scripts/create-iks-cluster.sh
 ```
 
-Add the managed ISTIO to the free Kubernetes Cluster:
+* add Istio
+
+IBM Kubernetes Service has an option to install a managed Istio into a Kubernetes cluster. Unfortunately, the Kubernetes Lite Cluster we created in the previous step does not meet the hardware requirements for managed Istio. Hence we do a manual install of the Istio demo or evaluation version.
+
+First check if the cluster is available:
 ```sh
 $ ./iks-scripts/cluster-add-istio.sh
 ```
+If the cluster isn't ready, the script will tell you. Then just wait a few more minutes and try again.
 
-Configure the IBM Cloud Container Registry:
+These are the instructions to install Istio. We use Istio 1.1.1 for this project.
+
+1. Download Istio 1.1.1 directly from [Github](https://github.com/istio/istio/releases/tag/1.1.1). Select the version that matches your OS. (Please be aware that we do not cover Windows in these instructions!)
+Result: istio-1.1.1-osx | linux.tar.gz 
+
+2. Extract the installation files in the **workshop** folder, e.g.:
+
+    ```
+    tar -xvzf istio-1.1.1-linux.tar.gz
+    ```
+    
+3. Add `istioctl` to the PATH environment variable, e.g copy paste in your shell and/or `~/.profile`:
+
+    ```
+    cd workshop
+    export PATH=$PWD/istio-1.1.1/bin:$PATH
+    ```
+
+4. Change into the extracted directory: `cd istio-1.1.1`
+
+5. Install Istio:
+
+    ```sh
+    $ for i in install/kubernetes/helm/istio-init/files/crd*yaml; do kubectl apply -f $i; done
+    ```
+    
+    Wait a few seconds before issuing the next command:
+
+    ```sh
+    $ kubectl apply -f install/kubernetes/istio-demo.yaml
+    ```
+
+   Check that all pods are running or completed before continuing.
+
+    ```sh
+    $ kubectl get pod -n istio-system
+    ```
+
+    Enable automatic sidecar injection:
+
+    ```sh
+    $ kubectl label namespace default istio-injection=enabled
+    ```
+
+    Once complete, the Kiali dashboard can be accessed with this command:
+
+    ```sh
+    $ kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=kiali -o jsonpath='{.items[0].metadata.name}') 20001:20001
+    ```
+    Then open http://localhost:20001 in your browser, logon with Username: admin, Password: admin
+
+
+* Configure the IBM Cloud Container Registry:
 ```sh
 $ ./iks-scripts/create-registry.sh
 ```

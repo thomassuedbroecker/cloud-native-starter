@@ -60,4 +60,13 @@ images/~$cloud-native-starter.pptx
 
 # workshop
 workshop/images/~$architecture.pptx
+workshop/istio-1.1.1-osx.tar.gz
+
+# Istio installation
+
+# IBM Cloud access
+cloud-native-starter-key.json
+
+
+
 
