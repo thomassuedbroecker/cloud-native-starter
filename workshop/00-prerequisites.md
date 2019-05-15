@@ -104,7 +104,7 @@ $ ibmcloud iam api-key-create cloud-native-starter-key \
 $ cat cloud-native-starter-key.json
 ```
 
-You can verfiy the key in the IBM Cloud console, as you can see in the image below:
+You can verify the key in the IBM Cloud, as you can see in the image below:
 
 ![ibm-cloud-key](images/ibm-cloud-key.png)
 
@@ -166,6 +166,10 @@ Use following bash script to create a free Kubernetes Cluster on IBM Cloud:
 ```sh
 $ ./iks-scripts/create-iks-cluster.sh
 ```
+The creation of the cluster can take up to 20 minutes.
+You can verify the cluster in the IBM Cloud, as you can see in the image below:
+
+![ibm-cloud-cluster](images/ibm-cloud-cluster.png)
 
 * add Istio
 
