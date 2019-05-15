@@ -302,23 +302,19 @@ $ kubectl get svc,deploy,po --all-namespaces
 ### 3.8 Access the IBM Cloud Container Registry manually <a name="part-SETUP-06"></a>
 [<home>](#home)
 
-TODO: !!!! VERIFY REGION !!!! 
-
 In order to build and distribute Container images, we need a Container registry.
 We can use the IBM Container Registry which can be accessed right away from our Kubernetes cluster.
 
 We log into the Container Registry service via the `ibmcloud` CLI and obtain the information about our registry:
 
 ```sh
-$ ibmcloud plugin install container-registry
 $ ibmcloud cr login
 $ ibmcloud cr region-set us-south
 $ ibmcloud cr region
-You are targeting region 'us-south', the registry is 'registry.us-south.bluemix.net'.
+You are targeting region 'us-south', the registry is 'You are targeting region 'us-south', the registry is 'us.icr.io'.'.
 ```
 
 We will the CLI inside bash script to create a unique namespace in the Container Registry service (`cr`) for our workshop.
 
-
 Now, we've finished all preparations.
-Let's get started with the TODO: !!!LINK TO INTRODUCTION!!!.
+Let's get started with the [introduction](01-introduction.md)
