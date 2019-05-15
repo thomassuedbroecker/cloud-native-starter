@@ -62,17 +62,16 @@ function test_cluster() {
 }
 
 function add_istio() {
-
   _out Adding Istio
 
   _out Download Istio 1.1.4
   curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.1.4 sh -
 
   _out - Set installation source PATH variable
-  export PATH=$root_folder/workshop/istio-1.1.1/bin:$PATH >> $LOG_FILE 2>&1
+  export PATH=$root_folder/workshop/istio-1.1.4/bin:$PATH >> $LOG_FILE 2>&1
 
   _out 
-  cd $root_folder/workshop/istio-1.1.1 >> $LOG_FILE 2>&1
+  cd $root_folder/workshop/istio-1.1.4 >> $LOG_FILE 2>&1
 
   _out - Install Istio
   for i in install/kubernetes/helm/istio-init/files/crd*yaml; do kubectl apply -f $i;  done >> $LOG_FILE 2>&1

@@ -166,6 +166,7 @@ Use following bash script to create a free Kubernetes Cluster on IBM Cloud:
 ```sh
 $ ./iks-scripts/create-iks-cluster.sh
 ```
+
 The creation of the cluster can take up to 20 minutes.
 You can verify the cluster in the IBM Cloud, as you can see in the image below:
 
@@ -239,9 +240,18 @@ _Note:_ Please be aware that we do **not cover Windows** in these instructions!
 
 
 * Configure the IBM Cloud Container Registry:
+Ensure you are are in the project directory and execute the script.
+
 ```sh
+$ cd ../..
+$ pwd
 $ ./iks-scripts/create-registry.sh
 ```
+
+You can find the created namespace here:
+
+![ibm-cloud-registry](images/ibm-cloud-cluster.png)
+
 
 #### 3.6.2  Manual creation of a Cluster (optional)
 You can create IBM Cloud Kubernetes cluster (lite ) using the [IBM Cloud console](https://cloud.ibm.com/containers-kubernetes/catalog/cluster/create) or using the CLI. A lite / free cluster is sufficient for this workshop.
