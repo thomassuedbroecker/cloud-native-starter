@@ -181,7 +181,8 @@ $ ./iks-scripts/cluster-add-istio.sh
 ```
 If the cluster isn't ready, the script will tell you. Then just wait a few more minutes and try again.
 
-These are the instructions to install Istio. We use Istio 1.1.1 for this project.
+These are the instructions to install Istio. 
+We use **Istio 1.1.4** for this project.
 
 
 1. Download Istio 1.1.4 directly from github into the **workshop** directory:
@@ -190,6 +191,7 @@ These are the instructions to install Istio. We use Istio 1.1.1 for this project
     cd workshop
     curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.1.4 sh -
     ```
+
 _Note:_ Please be aware that we do **not cover Windows** in these instructions!
 
 2. Add `istioctl` to the PATH environment variable, e.g copy paste in your shell and/or `~/.profile`:
