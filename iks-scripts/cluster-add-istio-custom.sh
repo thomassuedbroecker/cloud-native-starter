@@ -29,7 +29,7 @@ function login_ibmcloud() {
   ibmcloud config --check-version=false >> $LOG_FILE 2>&1
   ibmcloud api --unset >> $LOG_FILE 2>&1
   ibmcloud api https://cloud.ibm.com >> $LOG_FILE 2>&1
-  ibmcloud login --apikey $IBMCLOUD_API_KEY -r $IBM_CLOUD_REGION >> $LOG_FILE 2>&1
+  ibmcloud login -u $IBM_CLOUD_USER --apikey $IBMCLOUD_API_KEY -r $IBM_CLOUD_REGION >> $LOG_FILE 2>&1
   ibmcloud target
 }
 
@@ -51,36 +51,40 @@ function connect_to_cluster() {
 
 function test_cluster() {
   _out Check if Kubernetes Cluster is available ...
-  STATE=$(ibmcloud ks cluster-get $CLUSTER_NAME -s | awk '/State:/ {print $2}')
+  STATE=$(ibmcloud ks cluster-get $CLUSTER_NAME -s | awk '/State:/ {print $2}') 
   if [ $STATE != "normal" ]; then 
    _out -- Your Kubernetes cluster is in $STATE state and not ready
    _out ---- Please wait a few more minutes and then try this command again 
    exit 1
    else
-   _out -- Cluster $CLUSTER_NAME is ready for Istio installation
+   _out Cluster $CLUSTER_NAME is ready for Istio installation
   fi
 }
 
 function add_istio() {
-  _out Adding Istio to the Kubernetes Cluster on IBM Cloud
-
-  _out Logging into IBM Cloud
-  ibmcloud config --check-version=false >> $LOG_FILE 2>&1
-  ibmcloud api --unset >> $LOG_FILE 2>&1
-  ibmcloud api https://cloud.ibm.com >> $LOG_FILE 2>&1
-  ibmcloud login --apikey $IBMCLOUD_API_KEY -r $IBM_CLOUD_REGION >> $LOG_FILE 2>&1
 
   _out Adding Istio
-  ibmcloud ks cluster-addon-enable istio-extras -y --cluster $CLUSTER_NAME >> $LOG_FILE 2>&1
 
-  _out -- Installed cluster add-ons:
-  ibmcloud ks cluster-addons $CLUSTER_NAME 
+  _out Download Istio 1.1.4
+  curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.1.4 sh -
 
-  _out Saving kubectl config
-  echo '#!/bin/sh' > cluster-config.sh
-  echo $(ibmcloud ks cluster-config $CLUSTER_NAME --export) >> cluster-config.sh
-  chmod +x cluster-config.sh
-  source cluster-config.sh
+  _out - Set installation source PATH variable
+  export PATH=$root_folder/workshop/istio-1.1.1/bin:$PATH >> $LOG_FILE 2>&1
+
+  _out 
+  cd $root_folder/workshop/istio-1.1.1 >> $LOG_FILE 2>&1
+
+  _out - Install Istio
+  for i in install/kubernetes/helm/istio-init/files/crd*yaml; do kubectl apply -f $i;  done >> $LOG_FILE 2>&1
+
+  _out - Waiting 5 sec for the next step
+  sleep 5 >> $LOG_FILE 2>&1
+
+  _out - Install Istio demo
+  kubectl apply -f install/kubernetes/istio-demo.yaml >> $LOG_FILE 2>&1
+  
+  _out - Verify the pods for istio-system are available
+  kubectl get pod -n istio-system >> $LOG_FILE 2>&1
 
   _out Istio is installed on your cluster
   _out Please check if the Istio pods are all up with

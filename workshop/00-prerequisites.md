@@ -183,23 +183,29 @@ If the cluster isn't ready, the script will tell you. Then just wait a few more 
 
 These are the instructions to install Istio. We use Istio 1.1.1 for this project.
 
-1. Download Istio 1.1.1 directly from [Github](https://github.com/istio/istio/releases/tag/1.1.1). Select the version that matches your OS. (Please be aware that we do not cover Windows in these instructions!)
+1. Download Istio 1.1.1 directly from [Github](https://github.com/istio/istio/releases/tag/1.1.1) into the **workshop** directory. Select the version that matches your OS. 
+_Note:_ Please be aware that we do **not cover Windows** in these instructions!
+
 Result: istio-1.1.1-osx | linux.tar.gz 
 
-2. Extract the installation files in the **workshop** folder, e.g.:
+2. Download the and installation files in the **workshop** folder:
 
     ```
-    tar -xvzf istio-1.1.1-linux.tar.gz
+    cd workshop
+    curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.1.4 sh -
     ```
     
 3. Add `istioctl` to the PATH environment variable, e.g copy paste in your shell and/or `~/.profile`:
 
-    ```
-    cd workshop
-    export PATH=$PWD/istio-1.1.1/bin:$PATH
+    ```sh
+    export PATH=$PWD/istio-1.1.4/bin:$PATH
     ```
 
-4. Change into the extracted directory: `cd istio-1.1.1`
+4. Change into the extracted directory: 
+
+    ```sh
+    cd istio-1.1.4
+    ```
 
 5. Install Istio:
 
