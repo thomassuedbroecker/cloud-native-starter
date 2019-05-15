@@ -250,7 +250,7 @@ $ ./iks-scripts/create-registry.sh
 
 You can find the created namespace here:
 
-![ibm-cloud-registry](images/ibm-cloud-cluster.png)
+![ibm-cloud-registry](images/ibm-cloud-registry.png)
 
 
 #### 3.6.2  Manual creation of a Cluster (optional)
