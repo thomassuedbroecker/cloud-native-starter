@@ -218,7 +218,7 @@ _Note:_ Please be aware that we do **not cover Windows** in these instructions!
     $ kubectl apply -f install/kubernetes/istio-demo.yaml
     ```
 
-   Check that all pods are running or completed before continuing.
+    Check that all pods are **running** or **completed** before continuing.
 
     ```sh
     $ kubectl get pod -n istio-system
@@ -235,7 +235,7 @@ _Note:_ Please be aware that we do **not cover Windows** in these instructions!
     ```sh
     $ kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=kiali -o jsonpath='{.items[0].metadata.name}') 20001:20001
     ```
-    Then open http://localhost:20001 in your browser, logon with Username: admin, Password: admin
+    Then open http://localhost:20001/kiali in your browser, logon with Username: admin, Password: admin
 
 
 * Configure the IBM Cloud Container Registry:
