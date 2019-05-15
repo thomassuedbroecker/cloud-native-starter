@@ -106,7 +106,7 @@ $ cat cloud-native-starter-key.json
 
 You can verfiy the key in the IBM Cloud console, as you can see in the image below:
 
-![ibm-cloud-key](images/workshop-01-ibm-cloud-key.png)
+![ibm-cloud-key](images/ibm-cloud-key.png)
 
 
 3. Create a copy of the **template.local.env** and insert the key in the **local.env** file.
