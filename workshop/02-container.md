@@ -377,6 +377,7 @@ $ ./iks-scripts/deploy-articles-java-jee.sh
 $ ./iks-scripts/deploy-authors-nodejs.sh
 $ ./iks-scripts/deploy-web-api-java-jee.sh
 $ ./iks-scripts/deploy-web-app-vuejs.sh
+$ ./scripts/deploy-istio-ingress-v1.sh
 ```
 
 Invoke the curl command which is displayed as output of 'scripts/show-urls.sh' to the the urls of services.
@@ -386,20 +387,46 @@ $ ./iks-scripts/show-urls.sh
 ```
 
 A sample result for the script:
+
 ```sh
-
+019-05-16 15:09:51 articles
+2019-05-16 15:09:51 API explorer: http://159.122.172.162:30290/openapi/ui/
+2019-05-16 15:09:51 Sample API: curl http://159.122.172.162:30290/articles/v1/getmultiple?amount=10
+2019-05-16 15:09:51 ------------------------------------------------------------------------------------
+2019-05-16 15:09:51 authors
+2019-05-16 15:09:51 Sample API: curl http://159.122.172.162:31078/api/v1/getauthor?name=Niklas%20Heidloff
+2019-05-16 15:09:51 ------------------------------------------------------------------------------------
+2019-05-16 15:09:51 web-api
+2019-05-16 15:09:51 API explorer: http://159.122.172.162:31380/openapi/ui/
+2019-05-16 15:09:51 Metrics: http://159.122.172.162:32370/metrics/application
+2019-05-16 15:09:51 Sample API: curl http://159.122.172.162:31380/web-api/v1/getmultiple
+2019-05-16 15:09:51 ------------------------------------------------------------------------------------
+2019-05-16 15:09:51 web-app
+2019-05-16 15:09:52 Web app: http://159.122.172.162:31380/
+2019-05-16 15:09:52 ------------------------------------------------------------------------------------
 ```
+Here an over of sample results:
 
-The articels service:
+* Articels
 
 ![cns-container-articels-service-03](images/cns-container-articels-service-03.png)
 
-Sample curl **getauthor** for Authors.
+* Authors
 
+Sample curl **getauthor**
 ```sh
 $ curl http://159.122.172.162:31078/api/v1/getauthor?name=Niklas%20Heidloff
 $ {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
 ```
+
+* Web-api v1
+
+![cns-container-articels-service-03](images/cns-container-web-api-v1-04.png)
+
+
+* Web-app
+
+![cns-container-web-app-04](images/cns-container-web-app-05.png)
 
 
 
