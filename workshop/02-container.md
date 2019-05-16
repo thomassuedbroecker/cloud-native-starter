@@ -317,11 +317,11 @@ As you can see in the diagram below we are using a Ingress from Istio to provide
 
 ![cns-container-deployment-02](images/cns-container-deployment-02.png)
 
-With the configuation of the **kind: VirtualService** for the [Ingress gateway](https://kubernetes.io/docs/concepts/services-networking/ingress/) we define the routing access from the internet over the kubernetes services to the microservice **web-api** and the **web-app**. 
-
-The important topic of this configuration is the matching (**"match"**) of **URIs** and **services**.
+The important topic of the following yaml configuration is the matching (**"match"**) of **URIs** and **services**.
 
 ![ibm-cloud-services](images/ibm-cloud-services.png)
+
+With the configuation of the **kind: VirtualService** for the [Ingress gateway](https://kubernetes.io/docs/concepts/services-networking/ingress/) we define the routing access from the internet over the services to the microservice **web-api** and the **web-app**. 
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
