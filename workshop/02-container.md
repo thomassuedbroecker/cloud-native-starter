@@ -408,7 +408,7 @@ A sample result for the script:
 2019-05-16 15:09:52 Web app: http://159.122.172.162:31380/
 2019-05-16 15:09:52 ------------------------------------------------------------------------------------
 ```
-Here an over of sample results:
+Here an overview of sample results:
 
 * Articels
 
