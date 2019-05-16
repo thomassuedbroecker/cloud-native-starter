@@ -100,6 +100,9 @@ That’s why we use Eclipse MicroProfile, which is an extension to JavaEE to bui
 
 [source 'Dockerizing Java MicroProfile Applications'](http://heidloff.net/article/dockerizing-container-java-microprofile)
 
+Now, we've finished the introduction.
+Let's get started with the [Lab - Building and deploying Containers](02-container.md).
+
 
 
 
