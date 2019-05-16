@@ -7,5 +7,5 @@
 
 [source 'Demo: Consume REST APIs'](https://github.com/nheidloff/cloud-native-starter/blob/master/documentation/DemoConsumeRESTAPIs.md)
 
-Now, we've finished the Defining and exposing REST APIs.
-Let's get started with the [Lab - Using traffic management in Kubernetes](02-container.md).
+Now, we've finished the **Defining and exposing REST APIs**.
+Let's get started with the [Lab - Using traffic management in Kubernetes](04-traffic-management.md).**
