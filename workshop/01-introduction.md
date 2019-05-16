@@ -57,7 +57,7 @@ Here you can see a picture of the UI.
 
 ![cns-introduction-01](images/cns-introduction-01.png)
 
-### 2.2 **Web-api microservice**
+### 2.2 **Web-api**
 
 The objective of this microservice is to combine the information from the **articals** and the **authors** microservice. The microservice provides that information to be consumned by the VUE Web-App. So the Web-App can use just **one** REST API and doesn't need more APIs.
 
@@ -72,10 +72,21 @@ The mircoservice is built on Java and is organized in following packages:
 The objective of this microservice is to **add** and **get** article information from a database. 
 In this workshop we will use the default implementation, which just creates sample data values.
 
+In the image blow you can see a sample instance of the Articles.
+
+![cns-container-articels-service-03](images/cns-container-articels-service-03.png)
+
 ### 2.4 **Authors microservice**
 
 The objective of this microservice is to **add** and **get** author information from a database and is built on Node.JS.
 In this workshop we will use the default implementation, which just creates sample data values.
+
+Sample curl **getauthor** for Authors.
+
+```sh
+$ curl http://159.122.172.162:31078/api/v1/getauthor?name=Niklas%20Heidloff
+$ {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
+```
 
 ## 3 Technologies
 

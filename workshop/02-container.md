@@ -313,11 +313,13 @@ data:
 
 ## 1.4 Ingress configuration
 
-As you can see in the diagram below we are using a Ingress to provide access from the Internet to the microservice **web-api** and the **web-app**.
+As you can see in the diagram below we are using a Ingress from Istio to provide access from the Internet to the microservice **web-api** and the **web-app**.
 
 ![cns-container-deployment-02](images/cns-container-deployment-02.png)
 
-With the configuation of the **kind: VirtualService** for [Ingress gateway](https://kubernetes.io/docs/concepts/services-networking/ingress/) we define the routing access from the internet over the service to the microservices **web-api** and the **web-app**.
+With the configuation of the **kind: VirtualService** for the [Ingress gateway](https://kubernetes.io/docs/concepts/services-networking/ingress/) we define the routing access from the internet over the kubernetes services to the microservice **web-api** and the **web-app**. 
+
+The important topic of this configuration is the matching (**"match"**) of **URIs** and **services**.
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -370,7 +372,7 @@ spec:
 
 Invoke following bashscripts to deploy the microservices:
 
-```
+```sh
 $ ./iks-scripts/deploy-articles-java-jee.sh
 $ ./iks-scripts/deploy-authors-nodejs.sh
 $ ./iks-scripts/deploy-web-api-java-jee.sh
@@ -379,9 +381,27 @@ $ ./iks-scripts/deploy-web-app-vuejs.sh
 
 Invoke the curl command which is displayed as output of 'scripts/show-urls.sh' to the the urls of services.
 
-```
+```sh
 $ ./iks-scripts/show-urls.sh
 ```
+
+A sample result for the script:
+```sh
+
+```
+
+The articels service:
+
+![cns-container-articels-service-03](images/cns-container-articels-service-03.png)
+
+Sample curl **getauthor** for Authors.
+
+```sh
+$ curl http://159.122.172.162:31078/api/v1/getauthor?name=Niklas%20Heidloff
+$ {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
+```
+
+
 
 Now, we've finished the **Lab - Building and deploying Containers**.
 Let's get started with the [Defining and exposing REST APIs](03-rest-api.md).
