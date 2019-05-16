@@ -7,7 +7,7 @@ In this hands-on workshop, we will see, how to develop cloud-native microservice
 We will use for the deployed the Docker CLI and run the microservices on Kubernetes, and Istio.
 We'll examine the basics of modern cloud native Java micro-services development with container, REST APIS, traffic management, and resiliency.
 
-When building cloud-native applications, developers are challenged to figure out how to address topics like **traffic routing**, **resiliency**, **distributed monitoring**, **service discoveries** and more. Fortunately most of these new challenges are handled by the orchestration platform Kubernetes and the service mesh Istio. This functionality works generically for microservices, regardless of the language they are implemented in and without changes to the application logic.
+When building cloud-native applications, developers are challenged to figure out how to address topics like **building and deploying Containers**, **traffic routing**, **resiliency** and **defining and exposing REST APIs**. Fortunately most of these new challenges are handled by the orchestration platform Kubernetes and the service mesh Istio. This functionality works generically for microservices, regardless of the language they are implemented in and without changes to the application logic.
 
 However, **some functionality can not be covered by orchestration platforms** and service meshes. Instead it must be handled in the business logic of the microservices, for example application specific failover functionality, metrics, and fine-grained authorizations.
 
@@ -15,7 +15,7 @@ Java developers can leverage **Eclipse MicroProfile** to implement this function
 
 ## 1. The "Cloud Native Starter" application
 
-With the "Cloud Native Starter" application you can **show**, **add** and **remove** articles with authors information.
+With the **"Cloud Native Starter"** application you can **show**, **add** and **remove** articles with authors information.
 
 The application is built on microservices with one frontend web application.
 
@@ -26,7 +26,7 @@ The application is built on microservices with one frontend web application.
 * **Articles** holds the list of blog articles
 * **Authors** holds the blog authors details (blog URL and Twitter handle)
 
-The "Cloud Native Starter" application follows these design principles:
+The **"Cloud Native Starter"** application follows these design principles:
 
 * **Leverage platforms as much as possible – do as little as possible in language-specific frameworks**
 

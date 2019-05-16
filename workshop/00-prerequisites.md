@@ -9,7 +9,7 @@ We will use following IBM Cloud Services in this hands-on workshop.
 
 ![cns-basic-setup-01](images/cns-basic-setup-01.png)
 
-* [IBM Cloud Kubernetes Service](https://cloud.ibm.com/docs/containers?topic=containers-getting-started#getting-started) with ISTIO addon 
+* [IBM Cloud Kubernetes Service](https://cloud.ibm.com/docs/containers?topic=containers-getting-started#getting-started) with a custom ISTIO installation
 * [IBM Cloud Container Registry Service](https://cloud.ibm.com/docs/services/Registry?topic=registry-getting-started#getting-started)
 
 ## 2. Tools on your laptop
