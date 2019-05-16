@@ -321,6 +321,8 @@ With the configuation of the **kind: VirtualService** for the [Ingress gateway](
 
 The important topic of this configuration is the matching (**"match"**) of **URIs** and **services**.
 
+![ibm-cloud-services](images/ibm-cloud-services.png)
+
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -377,6 +379,7 @@ $ ./iks-scripts/deploy-articles-java-jee.sh
 $ ./iks-scripts/deploy-authors-nodejs.sh
 $ ./iks-scripts/deploy-web-api-java-jee.sh
 $ ./iks-scripts/deploy-web-app-vuejs.sh
+$
 $ ./scripts/deploy-istio-ingress-v1.sh
 ```
 
@@ -427,7 +430,6 @@ $ {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
 * Web-app
 
 ![cns-container-web-app-04](images/cns-container-web-app-05.png)
-
 
 
 Now, we've finished the **Lab - Building and deploying Containers**.
