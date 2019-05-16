@@ -317,4 +317,4 @@ You are targeting region 'us-south', the registry is 'You are targeting region '
 We will the CLI inside bash script to create a unique namespace in the Container Registry service (`cr`) for our workshop.
 
 Now, we've finished all preparations.
-Let's get started with the [introduction](01-introduction.md)
+Let's get started with the [introduction](01-introduction.md).
