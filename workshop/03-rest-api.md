@@ -99,7 +99,7 @@ public class ExceptionMapperAuthors implements ResponseExceptionMapper<Nonexiste
 }
 ```
 
-The following code shows how the REST API is used with to get the Author information in the [Service class](../web-api-java-jee/src/main/java/com/ibm/webapi/business/Service.java).
+The following code shows how the REST API is used to get the Author information in the [Service class](../web-api-java-jee/src/main/java/com/ibm/webapi/business/Service.java).
 
 
 ```java
