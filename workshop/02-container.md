@@ -22,6 +22,11 @@ Related blog posts:
 
 Before we will execute the bash scripts to build and upload the container images, we will take a look into the Dockerfiles to build these container images.
 
+Here you can see the container inside the container registry in IBM Cloud.
+
+![ibm-cloud-pods](images/ibm-cloud-registry-container.png)
+
+
 Later we can find for each container a related Pod inside Kubernetes. 
 
 ![ibm-cloud-pods](images/ibm-cloud-pods.png)
@@ -136,9 +141,14 @@ CMD ["npm", "start"]
 ```
 If last step is executed of the **Dockerfile** the container is ready to be deployed to Kubernetes.
 
+
 ## 1.3 YAML Configurations for the deployment to Kubernetes
 
-Now we examine the deployment yamls to deploy the container to Pods and creating Services to access them in the Kubernetes Cluster.
+Now we examine the deployment yamls to deploy the container to **Pods** and creating **Services** to access them in the Kubernetes Cluster.
+
+In the following image you can see the deployed **Services**:
+
+![ibm-cloud-services](images/ibm-cloud-services.png)
 
 ### 1.3.1 Web-app
 
@@ -318,8 +328,6 @@ You can see in the diagram below, we are using a Ingress from Istio to provide a
 ![cns-container-deployment-02](images/cns-container-deployment-02.png)
 
 The important topic of the following yaml configuration is the matching (**"match"**) of **URIs** and **services**.
-
-![ibm-cloud-services](images/ibm-cloud-services.png)
 
 With the configuation of the **kind: VirtualService** for the [Ingress gateway](https://kubernetes.io/docs/concepts/services-networking/ingress/) we define the routing access from the internet over the services to the microservice **web-api** and the **web-app**. 
 
