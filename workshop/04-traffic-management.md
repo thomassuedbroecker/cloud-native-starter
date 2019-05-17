@@ -11,12 +11,12 @@ These other tutorials and examples do mostly the request routing not as a part f
 
 In this part we create a new instance and version of the web-api microservice.
 
-![](../images/traffic-new-architecture.gif)
+![git](../images/traffic-new-architecture.gif)
 <kbd><img src="../images/traffic-new-architecture.gif" /></kbd>
 
 Then we want to configure routing to split the usage of two instances and versions web-api microservices.
 
-![](../images/traffic-routing.gif)
+![gif](../images/traffic-routing.gif)
 
 <kbd><img src="../images/traffic-routing.gif" /></kbd>
 
