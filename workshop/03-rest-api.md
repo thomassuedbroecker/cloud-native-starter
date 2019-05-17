@@ -166,8 +166,6 @@ With that we get also the API Explorer, we can use for our documentation and tes
 
 ![](images/rest-api-open-api.gif)
 
-<kbd><img src="images/rest-api-open-api.gif" /></kbd>
-
 Read the following resources to learn more about the MicroProfile REST Client and OpenAPI.
 
 * [Guide: Consuming RESTful services with template interfaces](https://github.com/OpenLiberty/guide-microprofile-rest-client)

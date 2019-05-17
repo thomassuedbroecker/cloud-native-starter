@@ -11,21 +11,11 @@ These other tutorials and examples do mostly the request routing not as a part f
 
 In this part we create a new instance and version of the web-api microservice.
 
-![git](../images/traffic-new-architecture.gif)
-<kbd><img src="../images/traffic-new-architecture.gif" /></kbd>
+![git](images/traffic-new-architecture.gif)
 
-Then we want to configure routing to split the usage of two instances and versions web-api microservices.
+New we configure the routing to split the usage between our two instances and versions of our web-api microservice.
 
-![gif](../images/traffic-routing.gif)
-
-<kbd><img src="../images/traffic-routing.gif" /></kbd>
-
-<kbd><img src="../images/traffic-management.gif" /></kbd>
-
-It took me a full weekend to figure out how to get request routing for a user-facing service working behind an Istio ingress and with the help of @stefanprodan I finally figured it out.
-
-We are building this sample on Minikube, instructions to set Minikube, Istio, and Kiali can be found here.
-
+![gif](images/traffic-routing.gif)
 
 
 
