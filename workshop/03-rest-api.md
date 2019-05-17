@@ -95,25 +95,27 @@ public class ExceptionMapperAuthors implements ResponseExceptionMapper<Nonexiste
 }
 ```
 
-Using the [getAuthorsDataAccess](../web-api-java-jee/src/main/java/com/ibm/webapi/business/Service.java) to get the Author information in the service.
+The following code shows how the REST API is used with to get the Author information in the [Service class](../web-api-java-jee/src/main/java/com/ibm/webapi/business/Service.java).
 
- inside 
+
 ```java
-		for (int index = 0; index < coreArticles.size(); index++) {
-			CoreArticle coreArticle = coreArticles.get(index);
-			Article article = new Article();
-			article.id = coreArticle.id;
-			article.title = coreArticle.title;
-			article.url = coreArticle.url;
-			article.authorName = coreArticle.author;
-			try {
-				Author author = DataAccessManager.getAuthorsDataAccess().getAuthor(coreArticle.author);
-				article.authorBlog = author.blog;
-				article.authorTwitter = author.twitter;
-         } 
+for (int index = 0; index < coreArticles.size(); index++) {
+	CoreArticle coreArticle = coreArticles.get(index);
+	Article article = new Article();
+	article.id = coreArticle.id;
+	article.title = coreArticle.title;
+	article.url = coreArticle.url;
+	article.authorName = coreArticle.author;
+	try {
+		Author author = DataAccessManager.getAuthorsDataAccess().getAuthor(coreArticle.author);
+		article.authorBlog = author.blog;
+	   article.authorTwitter = author.twitter;
+} 
 ```
 
-Invoke the following commands to set up the demo. Skip the commands you've already executed.
+## Setup the lab
+
+Invoke the following commands to set up the lab. Skip the commands you've already executed.
 
 ```sh
 $ cd $PROJECT_HOME
@@ -133,8 +135,6 @@ You should get following result:
 curl http://159.122.172.162:31380/web-api/v1/getmultiple
 [{"id":"1557993525215","title":"Debugging Microservices running in Kubernetes","url":"http://heidloff.net/article/debugging-microservices-kubernetes","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"},{"id":"1557993525210","title":"Dockerizing Java MicroProfile Applications","url":"http://heidloff.net/article/dockerizing-container-java-microprofile","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"},{"id":"1557993525204","title":"Install Istio and Kiali on IBM Cloud or Minikube","url":"https://haralduebele.blog/2019/02/22/install-istio-and-kiali-on-ibm-cloud-or-minikube/","authorName":"Harald Uebele","authorBlog":"https://haralduebele.blog","authorTwitter":"@harald_u"},{"id":"1557993525199","title":"Three awesome TensorFlow.js Models for Visual Recognition","url":"http://heidloff.net/article/tensorflowjs-visual-recognition","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"},{"id":"1557993525194","title":"Blue Cloud Mirror Architecture Diagrams","url":"http://heidloff.net/article/blue-cloud-mirror-architecture-diagrams","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"}]
 ```
-
-
 
 Read the following resources to learn more about the MicroProfile REST Client.
 
