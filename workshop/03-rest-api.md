@@ -13,7 +13,9 @@ In this Lab we describe how we use this client in the **Cloud Native Starter** s
 
 ![architecture](images/architecture.png)
 
-The following sequence diagram shows a simplified view where the **‘Authors’** REST API is used.
+In the following Lab we do examine the usage of the **‘Authors’** microservice in the **Web-api**.
+
+The sequence diagram below shows a simplified view when the **‘Authors’** REST API is used, if we want to get all articles.
 
 ![rest-api-sequencediagram](images/rest-api-sequencediagram.png)
 
