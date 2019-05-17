@@ -117,7 +117,7 @@ for (int index = 0; index < coreArticles.size(); index++) {
 } 
 ```
 
-## Setup the lab
+## Lab
 
 Invoke the following commands to set up the lab. Skip the commands you've already executed.
 
@@ -140,16 +140,39 @@ curl http://159.122.172.162:31380/web-api/v1/getmultiple
 [{"id":"1557993525215","title":"Debugging Microservices running in Kubernetes","url":"http://heidloff.net/article/debugging-microservices-kubernetes","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"},{"id":"1557993525210","title":"Dockerizing Java MicroProfile Applications","url":"http://heidloff.net/article/dockerizing-container-java-microprofile","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"},{"id":"1557993525204","title":"Install Istio and Kiali on IBM Cloud or Minikube","url":"https://haralduebele.blog/2019/02/22/install-istio-and-kiali-on-ibm-cloud-or-minikube/","authorName":"Harald Uebele","authorBlog":"https://haralduebele.blog","authorTwitter":"@harald_u"},{"id":"1557993525199","title":"Three awesome TensorFlow.js Models for Visual Recognition","url":"http://heidloff.net/article/tensorflowjs-visual-recognition","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"},{"id":"1557993525194","title":"Blue Cloud Mirror Architecture Diagrams","url":"http://heidloff.net/article/blue-cloud-mirror-architecture-diagrams","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"}]
 ```
 
-When you use MircoProfile you get also the API Explorer you can use for documentation and testing of the REST API of the microservice.
+## Document REST call GetArticels in OpenAPI
 
-![cns-container-web-api-v1-04.png](images/cns-container-web-api-v1-04.png)
+With the usage of the MicroProfile you can document you REST API during the development with [OpenApi](https://github.com/OpenLiberty/guide-microprofile-openapi).
 
-Read the following resources to learn more about the MicroProfile REST Client.
+Here is a sample of the usage inside the the class [GetArticles](../web-api-java-jee/src/main/java/com/ibm/webapi/apis/GetArticles.java) to implement a REST call.
+
+Here you can see the definition of the **@Path("/getmultiple")**, which we used before in our CURL command.
+
+```java
+...
+public class GetArticles {
+   .....
+   @GET
+	@Path("/getmultiple")
+	@Produces(MediaType.APPLICATION_JSON)
+	@APIResponses(value = {
+			@APIResponse(responseCode = "200", description = "Get most recently added articles", content = @Content(mediaType = "application/json", schema = @Schema(type = SchemaType.ARRAY, implementation = Article.class))),			
+			@APIResponse(responseCode = "500", description = "Internal service error") })
+	@Operation(summary = "Get most recently added articles", description = "Get most recently added articles")
+   .....
+```
+
+With that we get also the API Explorer, we can use for our documentation and testing of the REST API the microservice.
+
+<kbd><img src="../images/rest-api-open-api.gif" /></kbd>
+
+Read the following resources to learn more about the MicroProfile REST Client and OpenAPI.
 
 * [Guide: Consuming RESTful services with template interfaces](https://github.com/OpenLiberty/guide-microprofile-rest-client)
 * [Rest Client for MicroProfile](https://github.com/eclipse/microprofile-rest-client)
 * [MicroProfile Rest Client in Istio](https://www.eclipse.org/community/eclipse_newsletter/2018/september/MicroProfile_istio.php#restclient)
 * [Java Microservices with MicroProfile – Rest Client and JSON-B](https://www.ibm.com/blogs/bluemix/2018/10/migrate-java-microservices-from-spring-to-microprofile-p3/)
+* [Guide microprofile penapi](https://github.com/OpenLiberty/guide-microprofile-openapi)
 
 Now, we've finished the **Defining and exposing REST APIs**.
 Let's get started with the [Lab - Using traffic management in Kubernetes](04-traffic-management.md).
