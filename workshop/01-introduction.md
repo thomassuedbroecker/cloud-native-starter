@@ -63,7 +63,9 @@ Here you can see a picture of the UI.
 
 ### 2.2 **Web-api**
 
-The objective of this microservice is to combine the information from the **articals** and the **authors** microservice. The microservice provides that information to be consumned by the VUE Web-App. So the Web-App can use just **one** REST API and doesn't need more APIs.
+The objective of this microservice is to combine the information from the **articals** and the **authors** microservice. 
+
+The web-api is business related to be consumned by the VUE Web-App. So the Web-App can use just **one** REST API and doesn't need more APIs.
 
 In the following image contains a sample instance of the Web-api.
 
