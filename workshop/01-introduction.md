@@ -48,6 +48,12 @@ Fortunately this is one of the main advantages of Kubernetes since you can run w
 
 These are the responsibilities of the different microservices and the web-app.
 
+All mircoservices in this project built on Java are organized in following packages:
+
+* apis
+* business
+* data
+
 ### 2.1 **Web-App**
 
 The Web-App is the UI for the user and displays the given entries.
@@ -59,11 +65,7 @@ Here you can see a picture of the UI.
 
 The objective of this microservice is to combine the information from the **articals** and the **authors** microservice. The microservice provides that information to be consumned by the VUE Web-App. So the Web-App can use just **one** REST API and doesn't need more APIs.
 
-The mircoservice is built on Java and is organized in following packages:
-
-* apis
-* business
-* data
+In the following image contains a sample instance of the Web-api.
 
 ![cns-container-web-api-v1-04.png](images/cns-container-web-api-v1-04.png)
 
