@@ -9,13 +9,18 @@ There are currently not many Istio examples available, the one most widely used 
 
 These other tutorials and examples do mostly the request routing not as a part for a user-facing service directly behind the Istio ingress.
 
-I this part we create a new instance and version of the web-api microservice.
+In this part we create a new instance and version of the web-api microservice.
 
+![](../images/traffic-new-architecture.gif)
 <kbd><img src="../images/traffic-new-architecture.gif" /></kbd>
 
 Then we want to configure routing to split the usage of two instances and versions web-api microservices.
 
+![](../images/traffic-routing.gif)
+
 <kbd><img src="../images/traffic-routing.gif" /></kbd>
+
+<kbd><img src="../images/traffic-management.gif" /></kbd>
 
 It took me a full weekend to figure out how to get request routing for a user-facing service working behind an Istio ingress and with the help of @stefanprodan I finally figured it out.
 
