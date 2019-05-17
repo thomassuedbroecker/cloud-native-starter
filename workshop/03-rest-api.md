@@ -11,7 +11,15 @@ There is pretty good [documentation](https://github.com/OpenLiberty/guide-microp
 
 ![architecture](images/architecture.png)
 
-First you need to define the interface of the service you want to invoke. Here we use the [interface AuthorsService](../web-api-java-jee/src/main/java/com/ibm/webapi/data/AuthorsService.java).
+The following sequence diagram shows a simplified view how the REST API is used.
+
+![rest-api-sequencediagram](images/rest-api-sequencediagram.png)
+
+In the simplified class diagram below you can see the major high level relations of the classes which are used to understand the sample.
+
+![rest-api-classdiagram](images/rest-api-classdiagram.png)
+
+First you need to define the **interface** of the service you want to invoke. Here we use the [interface AuthorsService](../web-api-java-jee/src/main/java/com/ibm/webapi/data/AuthorsService.java).
 
 ```java
 import javax.ws.rs.GET;
@@ -85,6 +93,24 @@ public class ExceptionMapperAuthors implements ResponseExceptionMapper<Nonexiste
         return null;
    }   
 }
+```
+
+Using the [getAuthorsDataAccess](../web-api-java-jee/src/main/java/com/ibm/webapi/business/Service.java) to get the Author information.
+
+ inside 
+```java
+		for (int index = 0; index < coreArticles.size(); index++) {
+			CoreArticle coreArticle = coreArticles.get(index);
+			Article article = new Article();
+			article.id = coreArticle.id;
+			article.title = coreArticle.title;
+			article.url = coreArticle.url;
+			article.authorName = coreArticle.author;
+			try {
+				Author author = DataAccessManager.getAuthorsDataAccess().getAuthor(coreArticle.author);
+				article.authorBlog = author.blog;
+				article.authorTwitter = author.twitter;
+         } 
 ```
 
 Invoke the following commands to set up the demo. Skip the commands you've already executed.
