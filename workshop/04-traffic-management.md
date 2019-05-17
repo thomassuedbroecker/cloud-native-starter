@@ -23,9 +23,12 @@ We are building this sample on Minikube, instructions to set Minikube, Istio, an
 
 
 
-[source 'Managing Microservices Traffic with Istio'](https://haralduebele.blog/2019/03/11/managing-microservices-traffic-with-istio/)
 
-[source 'Demo: Traffic Routing'](../documentation/DemoTrafficRouting.md)
 
 Now, we've finished the **Using traffic management in Kubernetes**.
 Let's get started with the [Lab - Resiliency](05-resiliency.md).
+
+Resources:
+
+* ['Managing Microservices Traffic with Istio'](https://haralduebele.blog/2019/03/11/managing-microservices-traffic-with-istio/)
+* ['Demo: Traffic Routing'](../documentation/DemoTrafficRouting.md)

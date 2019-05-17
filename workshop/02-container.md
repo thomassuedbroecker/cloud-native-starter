@@ -260,8 +260,6 @@ public class CoreService {
     }
 ```
 
-[source 'Configuring Microservices with MicroProfile and Kubernetes'](http://heidloff.net/article/configuring-java-microservices-microprofile-kubernetes/)
-
 The deployment yaml for articles. Here you can inspect the **Service** and the **Deployment** definition.
 
 ```yaml
@@ -445,6 +443,8 @@ $ {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
 Now, we've finished the **Lab - Building and deploying Containers**.
 Let's get started with the [Defining and exposing REST APIs](03-rest-api.md).
 
+Resources:
 
+* [Configuring Microservices with MicroProfile and Kubernetes'](http://heidloff.net/article/configuring-java-microservices-microprofile-kubernetes/)
 
 
