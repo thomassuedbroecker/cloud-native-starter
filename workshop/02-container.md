@@ -22,7 +22,9 @@ Related blog posts:
 
 Before we will execute the bash scripts to build and upload the container images, we will take a look into the Dockerfiles to build these container images.
 
-Here you can see the container inside the container registry in IBM Cloud.
+The following images showing a brief preview of the result, when we finished.
+
+These are the containers inside the **container registry** in IBM Cloud.
 
 ![ibm-cloud-pods](images/ibm-cloud-registry-container.png)
 
