@@ -65,6 +65,9 @@ The mircoservice is built on Java and is organized in following packages:
 * business
 * data
 
+![cns-container-web-api-v1-04.png](images/cns-container-web-api-v1-04.png)
+
+
 ### 2.3 **Articles microservice**
 
 The objective of this microservice is to **add** and **get** article information from a database. 
