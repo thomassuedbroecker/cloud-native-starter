@@ -35,7 +35,7 @@ Later we can find for each container a related Pod inside Kubernetes.
 
 ### 1.1 Java container images
 
-The **articles** and the **authors** microservices are written in Java and they run on **OpenLiberty**.
+The **articles** and the **authors** microservices are written in Java and they run on [OpenLiberty](https://openliberty.io/).
 
 #### 1.1.1 Articles container image definition
 
@@ -416,7 +416,7 @@ A sample result for the script:
 2019-05-16 15:09:52 Web app: http://159.122.172.162:31380/
 2019-05-16 15:09:52 ------------------------------------------------------------------------------------
 ```
-Here an overview of sample results:
+Here an overview of sample results, when we open the given urls in a browser or we execute the CURL command.
 
 * Articels
 
