@@ -7,7 +7,7 @@
 
 MicroProfile comes with a REST Client which defines a type safe client programming model. The REST Client makes it easier to convert between the JSON data and Java objects in both directions.
 
-There is pretty good [documentation]https://github.com/OpenLiberty/guide-microprofile-rest-client) about the REST Client available. In this Lab we describe how we use this client in the **Cloud Native Starter** sample application. The application has a Web API service which implements the **BFF** (backend for frontend pattern). The Web API service uses the REST Client to invoke another ‘Authors’ service.
+There is pretty good [documentation](https://github.com/OpenLiberty/guide-microprofile-rest-client) about the REST Client available. In this Lab we describe how we use this client in the **Cloud Native Starter** sample application. The application has a **Web API** service which implements the **BFF** (backend for frontend pattern). The Web API service uses the REST Client to invoke another ‘Authors’ service.
 
 ![architecture](images/architecture.png)
 
@@ -38,7 +38,7 @@ public class Author {
 }
 ```
 
-The actual invocation of the authors service happens in [AuthorsServiceDataAccess.java](../web-api-java-jee/src/main/java/com/ibm/webapi/data/AuthorsService.java). The RestClientBuilder is used to get an implementation of the AuthorsService interface. The deserialization of the data into a Java object is done automatically.
+The actual invocation of the authors service happens in [AuthorsServiceDataAccess.java](../web-api-java-jee/src/main/java/com/ibm/webapi/data/AuthorsService.java). The [RestClientBuilder](https://openliberty.io/docs/ref/javadocs/microprofile-1.3-javadoc/org/eclipse/microprofile/rest/client/RestClientBuilder.html) is used to get an implementation of the AuthorsService interface. The deserialization of the data into a Java object is done automatically.
 
 ```java
 import org.eclipse.microprofile.rest.client.RestClientBuilder;
@@ -64,7 +64,7 @@ public class AuthorsServiceDataAccess {
 }
 ```
 
-In order to use the RESTClientBuilder you need to understand the concept of the ResponseExceptionMapper. This mapper is used to translate certain HTTP response error codes back into Java exceptions.
+In order to use the RESTClientBuilder you need to understand the concept of the [ResponseExceptionMapper](https://download.eclipse.org/microprofile/microprofile-rest-client-1.0/apidocs/index.html?org/eclipse/microprofile/rest/client/ext/ResponseExceptionMapper.html). This mapper is used to translate certain HTTP response error codes back into Java exceptions.
 
 ```java
 import org.eclipse.microprofile.rest.client.ext.ResponseExceptionMapper;
