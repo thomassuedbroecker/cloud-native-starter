@@ -18,8 +18,6 @@ New we configure the routing to split the usage between our two instances and ve
 ![gif](images/traffic-routing.gif)
 
 
-
-
 Now, we've finished the **Using traffic management in Kubernetes**.
 Let's get started with the [Lab - Resiliency](05-resiliency.md).
 
