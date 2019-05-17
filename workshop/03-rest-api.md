@@ -7,7 +7,7 @@
 
 MicroProfile comes with a REST Client which defines a type safe client programming model. The REST Client makes it easier to convert between the JSON data and Java objects in both directions.
 
-There is pretty good [documentation](https://github.com/OpenLiberty/guide-microprofile-rest-client) about the REST Client available. In this Lab we describe how we use this client in the **Cloud Native Starter** sample application. The application has a **Web API** service which implements the **BFF** (backend for frontend pattern). The Web API service uses the REST Client to invoke another ‘Authors’ service.
+There is pretty good [documentation](https://github.com/OpenLiberty/guide-microprofile-rest-client) about the REST Client available. In this Lab we describe how we use this client in the **Cloud Native Starter** sample application. The application has a **Web API** service which implements the **BFF** (backend for frontend pattern). The Web API service uses the REST Client to invoke another ‘Authors’ service written in **Node.JS**.
 
 ![architecture](images/architecture.png)
 
@@ -95,7 +95,7 @@ public class ExceptionMapperAuthors implements ResponseExceptionMapper<Nonexiste
 }
 ```
 
-Using the [getAuthorsDataAccess](../web-api-java-jee/src/main/java/com/ibm/webapi/business/Service.java) to get the Author information.
+Using the [getAuthorsDataAccess](../web-api-java-jee/src/main/java/com/ibm/webapi/business/Service.java) to get the Author information in the service.
 
  inside 
 ```java
@@ -119,6 +119,7 @@ Invoke the following commands to set up the demo. Skip the commands you've alrea
 $ cd $PROJECT_HOME
 $ ./iks-scripts/delete-all.sh
 $ ./iks-scripts/deploy-articles-java-jee.sh
+$ ./iks-scripts/deploy-authors-nodejs.sh
 $ ./iks-scripts/deploy-web-api-java-jee.sh
 $ ./iks-scripts/deploy-istio-ingress-v1.sh
 $ ./iks-scripts/show-urls.sh
