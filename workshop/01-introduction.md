@@ -1,4 +1,4 @@
-[<- home](README.md)
+[home](README.md)
 # Introduction
 ****** **UNDER CONSTRUCTION** ******
 
@@ -43,8 +43,6 @@ The example application shows several features working together, see below for d
 * **Be able to run the application in different environments**
 
 Fortunately this is one of the main advantages of Kubernetes since you can run workloads on-premises, hybrid or public cloud infrastructures. The repo has instructions how to deploy the application to Minikube and to the managed IBM Cloud Kubernetes Service.
-
-[source 'Example Java App running in the Cloud via Kubernetes'](http://heidloff.net/article/example-java-app-cloud-kubernetes)
 
 ## 2. **Microservices and Web-App**
 
@@ -109,12 +107,16 @@ Some cloud-native functionality however cannot be handled by Kubernetes and Isti
 
 That’s why we use Eclipse MicroProfile, which is an extension to JavaEE to build microservices-based architectures and a great programming model for Istio. In addition to the application specific logic that Istio cannot handle, it also comes with convenience functionality that you typically need when developing microservices, for example invoking REST APIs and implementing REST APIs including their documentation.
 
-[source 'Dockerizing Java MicroProfile Applications'](http://heidloff.net/article/dockerizing-container-java-microprofile)
-
 Now, we've finished the **introduction**.
 Let's get started with the [Lab - Building and deploying Containers](02-container.md).
 
 
+---
+
+Resources:
+
+* ['Dockerizing Java MicroProfile Applications'](http://heidloff.net/article/dockerizing-container-java-microprofile)
+* ['Example Java App running in the Cloud via Kubernetes'](http://heidloff.net/article/example-java-app-cloud-kubernetes)
 
 
 

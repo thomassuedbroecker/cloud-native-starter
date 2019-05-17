@@ -146,7 +146,9 @@ Read the following resources to learn more about the MicroProfile REST Client.
 * [Java Microservices with MicroProfile – Rest Client and JSON-B](https://www.ibm.com/blogs/bluemix/2018/10/migrate-java-microservices-from-spring-to-microprofile-p3/)
 
 Now, we've finished the **Defining and exposing REST APIs**.
-Let's get started with the [Lab - Using traffic management in Kubernetes](04-traffic-management.md).**
+Let's get started with the [Lab - Using traffic management in Kubernetes](04-traffic-management.md).
+
+---
 
 Resources:
 
