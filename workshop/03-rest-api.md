@@ -7,15 +7,15 @@
 
 MicroProfile comes with a REST Client which defines a type safe client programming model. The REST Client makes it easier to convert between the JSON data and Java objects in both directions.
 
-There is pretty good [documentation](https://github.com/OpenLiberty/guide-microprofile-rest-client) about the REST Client available. In this Lab we describe how we use this client in the **Cloud Native Starter** sample application. The application has a **Web API** service which implements the **BFF** (backend for frontend pattern). The Web API service uses the REST Client to invoke another ‘Authors’ service written in **Node.JS**.
+There is pretty good [documentation](https://github.com/OpenLiberty/guide-microprofile-rest-client) about the REST Client available. In this Lab we describe how we use this client in the **Cloud Native Starter** sample application. The application has a **Web API** service which implements the **BFF** (backend for frontend pattern). The Web API service uses the REST Client to invoke another **‘Authors’** service written in **Node.JS**.
 
 ![architecture](images/architecture.png)
 
-The following sequence diagram shows a simplified view how the REST API is used.
+The following sequence diagram shows a simplified view where the **‘Authors’** REST API is used.
 
 ![rest-api-sequencediagram](images/rest-api-sequencediagram.png)
 
-In the simplified class diagram below you can see the major high level relations of the classes which are used to understand the sample.
+In the simplified class diagram below you can see the major high level relations of the classes which are implementing the access to **‘Authors’** REST API.
 
 ![rest-api-classdiagram](images/rest-api-classdiagram.png)
 
