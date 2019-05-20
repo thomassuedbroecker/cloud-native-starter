@@ -117,6 +117,14 @@ for (int index = 0; index < coreArticles.size(); index++) {
 } 
 ```
 
+**MicroProfile** supports defining REST APIs via [JAX-RS](https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services).
+
+The following sample shows the **‘web-api/v1/getmultiple‘** endpoint we do use from CURL and the web-app.
+
+![rest-api-sequencediagram](images/rest-api-sequencediagram.png)
+
+
+
 ## 2. Lab - Defining and exposing REST APIs
 
 Invoke the following commands to set up the lab. Skip the commands you've already executed.
@@ -131,18 +139,55 @@ $ ./iks-scripts/deploy-istio-ingress-v1.sh
 $ ./iks-scripts/show-urls.sh
 ```
 
-Invoke the curl command of the **'web-api'** microserivce which is displayed as output of 'scripts/show-urls.sh' to get ten articles, for example **'curl http://159.122.172.162:31380/web-api/v1/getmultiple'**.
+Invoke following curl command of the **'web-api'** microserivce.
 
-You should get following result:
+```sh
+ curl http://YOUR_IP:31380/web-api/v1/getmultiple
+```
+
+The IP is displayed as output of 'scripts/show-urls.sh'.
+
+After the execution of the command you should get following result:
 
 ```sh
 curl http://159.122.172.162:31380/web-api/v1/getmultiple
 [{"id":"1557993525215","title":"Debugging Microservices running in Kubernetes","url":"http://heidloff.net/article/debugging-microservices-kubernetes","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"},{"id":"1557993525210","title":"Dockerizing Java MicroProfile Applications","url":"http://heidloff.net/article/dockerizing-container-java-microprofile","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"},{"id":"1557993525204","title":"Install Istio and Kiali on IBM Cloud or Minikube","url":"https://haralduebele.blog/2019/02/22/install-istio-and-kiali-on-ibm-cloud-or-minikube/","authorName":"Harald Uebele","authorBlog":"https://haralduebele.blog","authorTwitter":"@harald_u"},{"id":"1557993525199","title":"Three awesome TensorFlow.js Models for Visual Recognition","url":"http://heidloff.net/article/tensorflowjs-visual-recognition","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"},{"id":"1557993525194","title":"Blue Cloud Mirror Architecture Diagrams","url":"http://heidloff.net/article/blue-cloud-mirror-architecture-diagrams","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"}]
 ```
 
-When you use MircoProfile you get also the API Explorer you can use for documentation and testing of the REST API of the microservice.
+We use MircoProfile to create a API Explorer we can use for documentation and testing of the REST API of our microservice.
+
+The class [articles](articles-java-jee/src/main/java/com/ibm/articles/apis/) uses the profiles for OpenAPI as **@GET**, **@Path** and others to create the documentation during writting of the code.
 
 ![cns-container-web-api-v1-04.png](images/cns-container-web-api-v1-04.png)
+
+```java
+package com.ibm.webapi.apis;
+ 
+import javax.ws.rs.*;
+import org.eclipse.microprofile.openapi.annotations.*;
+ 
+@RequestScoped
+@Path("/v1")
+@OpenAPIDefinition(info = @Info(title = "Web-API Service", version = "1.0", description = "Web-API Service APIs", contact = @Contact(url = "https://github.com/nheidloff/cloud-native-starter", name = "Niklas Heidloff"), license = @License(name = "License", url = "https://github.com/nheidloff/cloud-native-starter/blob/master/LICENSE")))
+public class GetArticles {
+   @Inject
+   com.ibm.webapi.business.Service service;
+   @Inject
+   ArticleAsJson articleAsJson;
+ 
+   @GET
+   @Path("/getmultiple")
+   @Produces(MediaType.APPLICATION_JSON)
+   @APIResponses(value = { 
+      @APIResponse(responseCode = "200", description = "Get most recently added articles", content = @Content(mediaType = "application/json", schema = @Schema(type = SchemaType.ARRAY, implementation = Article.class))),          
+      @APIResponse(responseCode = "500", description = "Internal service error") })
+   @Operation(summary = "Get most recently added articles", description = "Get most recently added articles")
+   public Response getArticles() {
+.....
+```
+
+
+
 
 Read the following resources to learn more about the MicroProfile REST Client.
 
@@ -159,6 +204,5 @@ Let's get started with the [Lab - Using traffic management in Kubernetes](04-tra
 Resources:
 
 * ['Invoking REST APIs from Java Microservices'](http://heidloff.net/invoke-rest-apis-java-microprofile-microservice)
-
-
-* ['Demo: Consume REST APIs'](https://github.com/nheidloff/cloud-native-starter/blob/master/documentation/DemoConsumeRESTAPIs.md)
+* ['Demo: Expose REST APIs'](documentation/DemoExposeRESTAPIs.md)
+* ['Demo: Consume REST APIs'](documentation/DemoConsumeRESTAPIs.md)
