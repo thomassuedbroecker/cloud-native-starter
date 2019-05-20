@@ -2,7 +2,7 @@
 # Building and deploying Containers
 ****** **UNDER CONSTRUCTION** ******
 
-In this Lab we build and deploy the containers with microservices to Kubernetes.
+In this Lab we build and deploy containers with microservices to Kubernetes.
 
 Along this way we inspect the **Dockerfiles** for the container images and we take a look into the configured **yaml files** to create the **deployment** for the microservices.
 
@@ -22,9 +22,9 @@ Related blog posts:
 
 Before we will execute the bash scripts to build and upload the container images, we will take a look into the Dockerfiles to build these container images.
 
-The following images showing a brief preview of the result, when we finished.
+The following image shows a brief preview of the result, when we finished the lab.
 
-These are the containers inside the **container registry** in IBM Cloud.
+These are the containers we will and store inside the **container registry** in IBM Cloud.
 
 ![ibm-cloud-pods](images/ibm-cloud-registry-container.png)
 
@@ -420,11 +420,14 @@ Here an overview of sample results, when we open the given urls in a browser or 
 
 * Articels
 
+Open the API explorer: http://159.122.172.162:30290/openapi/ui/
+
 ![cns-container-articels-service-03](images/cns-container-articels-service-03.png)
 
 * Authors
 
-Sample curl **getauthor**
+Execute the sample curl **getauthor**
+
 ```sh
 $ curl http://159.122.172.162:31078/api/v1/getauthor?name=Niklas%20Heidloff
 $ {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
@@ -432,10 +435,15 @@ $ {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
 
 * Web-api v1
 
+Open the API explorer: http://159.122.172.162:31380/openapi/ui/
+
+
 ![cns-container-articels-service-03](images/cns-container-web-api-v1-04.png)
 
 
 * Web-app
+
+Open in the Application in browser: http://159.122.172.162:31380/
 
 ![cns-container-web-app-04](images/cns-container-web-app-05.png)
 
