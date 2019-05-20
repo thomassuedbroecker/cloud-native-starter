@@ -5,6 +5,8 @@
 
 ## 1. Making the REST API life easier for Java developers with MicroProfile
 
+### 1.1 JSON data and Java objects
+
 MicroProfile comes with a REST Client which defines a type safe client programming model. The REST Client makes it easier to convert between the JSON data and Java objects in both directions.
 
 There is pretty good [documentation](https://github.com/OpenLiberty/guide-microprofile-rest-client) about the REST Client available. 
@@ -99,7 +101,9 @@ public class ExceptionMapperAuthors implements ResponseExceptionMapper<Nonexiste
 }
 ```
 
-The following code shows how the REST API is used to get the Author information in the [Service class](../web-api-java-jee/src/main/java/com/ibm/webapi/business/Service.java).
+### 1.2 Using the REST API
+
+The following code shows how the **REST API** is used to get the Author information inside the [Service class](../web-api-java-jee/src/main/java/com/ibm/webapi/business/Service.java).
 
 
 ```java
@@ -117,48 +121,13 @@ for (int index = 0; index < coreArticles.size(); index++) {
 } 
 ```
 
-**MicroProfile** supports defining REST APIs via [JAX-RS](https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services).
+### 1.3 Documentation of the REST API
 
-The following sample shows the **‘web-api/v1/getmultiple‘** endpoint we do use from CURL and the web-app.
+The **MicroProfile** supports also the definition REST APIs via [JAX-RS](https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services).
 
-![rest-api-sequencediagram](images/rest-api-sequencediagram.png)
+We use MircoProfile to create a **Open API Explorer**, we can use for documentation and testing of the REST API of our microservice.
 
-
-
-## 2. Lab - Defining and exposing REST APIs
-
-Invoke the following commands to set up the lab. Skip the commands you've already executed.
-
-```sh
-$ cd $PROJECT_HOME
-$ ./iks-scripts/delete-all.sh
-$ ./iks-scripts/deploy-articles-java-jee.sh
-$ ./iks-scripts/deploy-authors-nodejs.sh
-$ ./iks-scripts/deploy-web-api-java-jee.sh
-$ ./iks-scripts/deploy-istio-ingress-v1.sh
-$ ./iks-scripts/show-urls.sh
-```
-
-Invoke following curl command of the **'web-api'** microserivce.
-
-```sh
- curl http://YOUR_IP:31380/web-api/v1/getmultiple
-```
-
-The IP is displayed as output of 'scripts/show-urls.sh'.
-
-After the execution of the command you should get following result:
-
-```sh
-curl http://159.122.172.162:31380/web-api/v1/getmultiple
-[{"id":"1557993525215","title":"Debugging Microservices running in Kubernetes","url":"http://heidloff.net/article/debugging-microservices-kubernetes","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"},{"id":"1557993525210","title":"Dockerizing Java MicroProfile Applications","url":"http://heidloff.net/article/dockerizing-container-java-microprofile","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"},{"id":"1557993525204","title":"Install Istio and Kiali on IBM Cloud or Minikube","url":"https://haralduebele.blog/2019/02/22/install-istio-and-kiali-on-ibm-cloud-or-minikube/","authorName":"Harald Uebele","authorBlog":"https://haralduebele.blog","authorTwitter":"@harald_u"},{"id":"1557993525199","title":"Three awesome TensorFlow.js Models for Visual Recognition","url":"http://heidloff.net/article/tensorflowjs-visual-recognition","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"},{"id":"1557993525194","title":"Blue Cloud Mirror Architecture Diagrams","url":"http://heidloff.net/article/blue-cloud-mirror-architecture-diagrams","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"}]
-```
-
-We use MircoProfile to create a API Explorer we can use for documentation and testing of the REST API of our microservice.
-
-The class [articles](articles-java-jee/src/main/java/com/ibm/articles/apis/) uses the profiles for OpenAPI as **@GET**, **@Path** and others to create the documentation during writting of the code.
-
-![cns-container-web-api-v1-04.png](images/cns-container-web-api-v1-04.png)
+Inside the class [articles](articles-java-jee/src/main/java/com/ibm/articles/apis/) we use the profiles **@GET**, **@Path** and others,  to expose and document REST API with the MicroProfile during writting of the code with **Open API**.
 
 ```java
 package com.ibm.webapi.apis;
@@ -186,6 +155,44 @@ public class GetArticles {
 .....
 ```
 
+The following image shows the result, a automaticliy **Open API explorer** of the web-api.
+
+![cns-container-web-api-v1-04.png](images/cns-container-web-api-v1-04.png)
+
+## 2. Lab - Defining and exposing REST APIs
+
+Invoke the following commands to set up the lab. Skip the commands you've already executed.
+
+```sh
+$ cd $PROJECT_HOME
+$ ./iks-scripts/delete-all.sh
+$ ./iks-scripts/deploy-articles-java-jee.sh
+$ ./iks-scripts/deploy-authors-nodejs.sh
+$ ./iks-scripts/deploy-web-api-java-jee.sh
+$ ./iks-scripts/deploy-istio-ingress-v1.sh
+$ ./iks-scripts/show-urls.sh
+```
+
+The following sample shows the **‘web-api/v1/getmultiple‘** endpoint we do use from CURL and the web-app.
+
+![rest-api-sequencediagram](images/rest-api-sequencediagram.png)
+
+Invoke following curl command of the **'web-api'** microserivce.
+The IP is displayed as output of 'scripts/show-urls.sh'.
+
+```sh
+ curl http://YOUR_IP:31380/web-api/v1/getmultiple
+```
+After the execution of the command we should get following result:
+
+```sh
+curl http://159.122.172.162:31380/web-api/v1/getmultiple
+[{"id":"1557993525215","title":"Debugging Microservices running in Kubernetes","url":"http://heidloff.net/article/debugging-microservices-kubernetes","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"},{"id":"1557993525210","title":"Dockerizing Java MicroProfile Applications","url":"http://heidloff.net/article/dockerizing-container-java-microprofile","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"},{"id":"1557993525204","title":"Install Istio and Kiali on IBM Cloud or Minikube","url":"https://haralduebele.blog/2019/02/22/install-istio-and-kiali-on-ibm-cloud-or-minikube/","authorName":"Harald Uebele","authorBlog":"https://haralduebele.blog","authorTwitter":"@harald_u"},{"id":"1557993525199","title":"Three awesome TensorFlow.js Models for Visual Recognition","url":"http://heidloff.net/article/tensorflowjs-visual-recognition","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"},{"id":"1557993525194","title":"Blue Cloud Mirror Architecture Diagrams","url":"http://heidloff.net/article/blue-cloud-mirror-architecture-diagrams","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"}]
+```
+
+We can use also the **Open API explorer** to call the operation.
+
+![rest-api-open-api](images/rest-api-open-api.gif)
 
 
 
