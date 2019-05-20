@@ -175,14 +175,16 @@ $ ./iks-scripts/deploy-web-api-java-jee.sh
 $ ./iks-scripts/deploy-istio-ingress-v1.sh
 $ ./iks-scripts/show-urls.sh
 ```
+
+Now we using the **‘web-api/v1/getmultiple‘** endpoint from CURL and from the web-app.
+
 The sequence diagram below shows a simplified view how the **‘Authors’** REST API is used to get all articles in a JSON format.
 
 ![rest-api-sequencediagram](images/rest-api-sequencediagram.png)
 
-Invoke following curl command of the **'web-api'** microserivce.
-The IP is displayed as output of 'scripts/show-urls.sh'.
+### 2.1 CURL
 
-Now we using the **‘web-api/v1/getmultiple‘** endpoint from CURL and from the web-app.
+Now we invoke the following curl command of the **'web-api'** microservice. The IP is displayed as output of 'scripts/show-urls.sh'.
 
 ```sh
  curl http://YOUR_IP:31380/web-api/v1/getmultiple
@@ -194,10 +196,11 @@ curl http://159.122.172.162:31380/web-api/v1/getmultiple
 [{"id":"1557993525215","title":"Debugging Microservices running in Kubernetes","url":"http://heidloff.net/article/debugging-microservices-kubernetes","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"},{"id":"1557993525210","title":"Dockerizing Java MicroProfile Applications","url":"http://heidloff.net/article/dockerizing-container-java-microprofile","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"},{"id":"1557993525204","title":"Install Istio and Kiali on IBM Cloud or Minikube","url":"https://haralduebele.blog/2019/02/22/install-istio-and-kiali-on-ibm-cloud-or-minikube/","authorName":"Harald Uebele","authorBlog":"https://haralduebele.blog","authorTwitter":"@harald_u"},{"id":"1557993525199","title":"Three awesome TensorFlow.js Models for Visual Recognition","url":"http://heidloff.net/article/tensorflowjs-visual-recognition","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"},{"id":"1557993525194","title":"Blue Cloud Mirror Architecture Diagrams","url":"http://heidloff.net/article/blue-cloud-mirror-architecture-diagrams","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"}]
 ```
 
+### 2.2 Open API explorer
+
 We can use also the **Open API explorer** to call the operation.
 
 ![rest-api-open-api](images/rest-api-open-api.gif)
-
 
 
 Read the following resources to learn more about the MicroProfile REST Client.
