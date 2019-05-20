@@ -21,11 +21,11 @@ The sequence diagram below shows a simplified view how the **‘Authors’** RES
 
 ![rest-api-sequencediagram](images/rest-api-sequencediagram.png)
 
-In the simplified class diagram below you can see the major high level relations of the classes which do implement the access to **‘Authors’** with the REST Client to make it easier to convert between the JSON data and Java objects in both directions.
+In the simplified class diagram below you can see the major high level relations of the classes to implement the access to the **‘Authors’** REST Client. This makes it easier to convert between the **JSON data** and **Java objects** in both directions.
 
 ![rest-api-classdiagram](images/rest-api-classdiagram.png)
 
-First you need to define the **interface** of the service you want to invoke. Here we use the [interface AuthorsService](../web-api-java-jee/src/main/java/com/ibm/webapi/data/AuthorsService.java).
+First you need to define the **interface** of the service you want to invoke. Here we use the [interface AuthorsService](../web-api-java-jee/src/main/java/com/ibm/webapi/data/AuthorsService.java). The method **‘getAuthor’** returns an object of the Author class.
 
 ```java
 import javax.ws.rs.GET;
@@ -42,7 +42,7 @@ public interface AuthorsService {
 }
 ```
 
-The method **‘getAuthor’** returns an object of the Author class.
+The class **Author** has the defines the structure the JSON data exchange.
 
 ```java
 public class Author {
@@ -118,6 +118,9 @@ for (int index = 0; index < coreArticles.size(); index++) {
 		Author author = DataAccessManager.getAuthorsDataAccess().getAuthor(coreArticle.author);
 		article.authorBlog = author.blog;
 	   article.authorTwitter = author.twitter;
+      ...
+   }
+   ...
 } 
 ```
 
@@ -172,13 +175,14 @@ $ ./iks-scripts/deploy-web-api-java-jee.sh
 $ ./iks-scripts/deploy-istio-ingress-v1.sh
 $ ./iks-scripts/show-urls.sh
 ```
-
-The following sample shows the **‘web-api/v1/getmultiple‘** endpoint we do use from CURL and the web-app.
+The sequence diagram below shows a simplified view how the **‘Authors’** REST API is used to get all articles in a JSON format.
 
 ![rest-api-sequencediagram](images/rest-api-sequencediagram.png)
 
 Invoke following curl command of the **'web-api'** microserivce.
 The IP is displayed as output of 'scripts/show-urls.sh'.
+
+Now we using the **‘web-api/v1/getmultiple‘** endpoint from CURL and from the web-app.
 
 ```sh
  curl http://YOUR_IP:31380/web-api/v1/getmultiple
