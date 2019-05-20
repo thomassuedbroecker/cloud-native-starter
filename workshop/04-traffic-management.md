@@ -87,15 +87,17 @@ With this Istio rule set in place all incoming traffic will go to version 1 of t
 
 In the following image you can see all the traffic is routed to version 1.
 
-![Sample traffic](images/traffic-routing-deployment10.png)
+![Sample single traffic](images/traffic-routing-deployment10.png)
 
 ## 1.6 Traffic distribution
 
-We can change the VirtualService to distribute incoming traffic, e.g. 80% should go to version 1, 20% should go to version 2:
+We can change the VirtualService to distribute incoming traffic, e.g. **80%** to version 1 and **20%** to version 2:
 
+![Sample distributed traffic](images/traffic-routing-deployment11.png)
 
+We can verify the traffic in Kiali:
 
-
+![Sample distributed traffic](images/traffic-routing-deployment11.png)
 
 
 ## 1.7 Lab - Traffic Routing
