@@ -17,11 +17,11 @@ In this Lab we describe how we use this client in the **Cloud Native Starter** s
 
 In the following Lab we do examine the usage of the **‘Authors’** microservice in the **Web-api**.
 
-The sequence diagram below shows a simplified view when the **‘Authors’** REST API is used, if we want to get all articles.
+The sequence diagram below shows a simplified view how the **‘Authors’** REST API is used to get all articles in a JSON format.
 
 ![rest-api-sequencediagram](images/rest-api-sequencediagram.png)
 
-In the simplified class diagram below you can see the major high level relations of the classes which do implement the access to **‘Authors’** REST API.
+In the simplified class diagram below you can see the major high level relations of the classes which do implement the access to **‘Authors’** with the REST Client to make it easier to convert between the JSON data and Java objects in both directions.
 
 ![rest-api-classdiagram](images/rest-api-classdiagram.png)
 
@@ -52,7 +52,7 @@ public class Author {
 }
 ```
 
-The actual invocation of the authors service happens in [AuthorsServiceDataAccess.java](../web-api-java-jee/src/main/java/com/ibm/webapi/data/AuthorsService.java). The [RestClientBuilder](https://openliberty.io/docs/ref/javadocs/microprofile-1.3-javadoc/org/eclipse/microprofile/rest/client/RestClientBuilder.html) is used to get an implementation of the AuthorsService interface. The deserialization of the data into a Java object is done automatically.
+The actual invocation of the authors service happens in [AuthorsServiceDataAccess.java](../web-api-java-jee/src/main/java/com/ibm/webapi/data/AuthorsService.java). The [RestClientBuilder](https://openliberty.io/docs/ref/javadocs/microprofile-1.3-javadoc/org/eclipse/microprofile/rest/client/RestClientBuilder.html) is used to get an implementation of the AuthorsService interface. The **deserialization** of the **JSON data** into a **Java object** is done automatically.
 
 ```java
 import org.eclipse.microprofile.rest.client.RestClientBuilder;
@@ -78,7 +78,7 @@ public class AuthorsServiceDataAccess {
 }
 ```
 
-In order to use the RESTClientBuilder you need to understand the concept of the [ResponseExceptionMapper](https://download.eclipse.org/microprofile/microprofile-rest-client-1.0/apidocs/index.html?org/eclipse/microprofile/rest/client/ext/ResponseExceptionMapper.html). This mapper is used to translate certain HTTP response error codes back into Java exceptions.
+In order to use the **RESTClientBuilder** you need to understand the concept of the [ResponseExceptionMapper](https://download.eclipse.org/microprofile/microprofile-rest-client-1.0/apidocs/index.html?org/eclipse/microprofile/rest/client/ext/ResponseExceptionMapper.html). This mapper is used to translate certain **HTTP response error codes** back into **Java exceptions**.
 
 ```java
 import org.eclipse.microprofile.rest.client.ext.ResponseExceptionMapper;
@@ -101,7 +101,7 @@ public class ExceptionMapperAuthors implements ResponseExceptionMapper<Nonexiste
 }
 ```
 
-### 1.2 Using the REST API
+### 1.2 Using the REST call with JSON data
 
 The following code shows how the **REST API** is used to get the Author information inside the [Service class](../web-api-java-jee/src/main/java/com/ibm/webapi/business/Service.java).
 
@@ -121,7 +121,7 @@ for (int index = 0; index < coreArticles.size(); index++) {
 } 
 ```
 
-### 1.3 Documentation of the REST API
+### 1.3 Documentation of the REST API with Open API
 
 The **MicroProfile** supports also the definition REST APIs via [JAX-RS](https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services).
 
