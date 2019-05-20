@@ -42,7 +42,7 @@ public interface AuthorsService {
 }
 ```
 
-The class **Author** has the defines the structure the JSON data exchange.
+The class **Author** defines the structure for the JSON data exchange.
 
 ```java
 public class Author {
@@ -158,7 +158,7 @@ public class GetArticles {
 .....
 ```
 
-The following image shows the result, a automaticliy **Open API explorer** of the web-api.
+The following image shows the result, a automatically created **Open API explorer** for the web-api microservice.
 
 ![cns-container-web-api-v1-04.png](images/cns-container-web-api-v1-04.png)
 
@@ -176,7 +176,7 @@ $ ./iks-scripts/deploy-istio-ingress-v1.sh
 $ ./iks-scripts/show-urls.sh
 ```
 
-Now we using the **‘web-api/v1/getmultiple‘** endpoint from CURL and from the web-app.
+Now we use the **‘web-api/v1/getmultiple‘** endpoint from CURL and from the web-app.
 
 The sequence diagram below shows a simplified view how the **‘Authors’** REST API is used to get all articles in a JSON format.
 
