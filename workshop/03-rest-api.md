@@ -202,6 +202,10 @@ We can use also the **Open API explorer** to call the operation.
 
 ![rest-api-open-api](images/rest-api-open-api.gif)
 
+Now, we've finished the **Defining and exposing REST APIs**.
+Let's get started with the [Lab - Using traffic management in Kubernetes](04-traffic-management.md).
+
+---
 
 Read the following resources to learn more about the MicroProfile REST Client.
 
@@ -209,9 +213,6 @@ Read the following resources to learn more about the MicroProfile REST Client.
 * [Rest Client for MicroProfile](https://github.com/eclipse/microprofile-rest-client)
 * [MicroProfile Rest Client in Istio](https://www.eclipse.org/community/eclipse_newsletter/2018/september/MicroProfile_istio.php#restclient)
 * [Java Microservices with MicroProfile – Rest Client and JSON-B](https://www.ibm.com/blogs/bluemix/2018/10/migrate-java-microservices-from-spring-to-microprofile-p3/)
-
-Now, we've finished the **Defining and exposing REST APIs**.
-Let's get started with the [Lab - Using traffic management in Kubernetes](04-traffic-management.md).
 
 ---
 
