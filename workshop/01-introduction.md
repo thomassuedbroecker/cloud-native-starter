@@ -54,8 +54,8 @@ All mircoservices in this project built on Java are organized in following packa
 
 ### 2.1 **Web app**
 
-The Web app is the UI for the user and displays the given entries.
-Here you can see a picture of the UI.
+The Web app is the UI to display the given entries.
+Here you can see a picture of the **Web app** UI.
 
 ![cns-introduction-01](images/cns-introduction-01.png)
 
@@ -65,17 +65,16 @@ The objective of this microservice is to combine the information from the **arti
 
 The **Web API** is business related to be consumned by the VUE Web app. So the Web app can use just **one** REST API and doesn't need more APIs.
 
-In the following image contains a sample instance of the **Web API**.
+The following image contains a sample instance of the **Web API** using the **Open API explorer**.
 
 ![cns-container-web-api-v1-04.png](images/cns-container-web-api-v1-04.png)
 
 
 ### 2.3 **Articles microservice**
 
-The objective of this microservice is to **add** and **get** article information from a database. 
-In this workshop we will use the default implementation, which just creates sample data values.
+The objective of this microservice is to **add** and **get** article information from a database. In this workshop we will use the default implementation, which just creates sample data values.
 
-In the image blow you can see a sample instance of the Articles.
+In the image blow you can see a sample instance of the Articles,  using the **Open API explorer**.
 
 ![cns-container-articels-service-03](images/cns-container-articels-service-03.png)
 
@@ -84,7 +83,7 @@ In the image blow you can see a sample instance of the Articles.
 The objective of this microservice is to **add** and **get** author information from a database and is built on Node.JS.
 In this workshop we will use the default implementation, which just creates sample data values.
 
-Sample curl **getauthor** for Authors.
+Sample curl command to get a author from the **Authors** microservice.
 
 ```sh
 $ curl http://159.122.172.162:31078/api/v1/getauthor?name=Niklas%20Heidloff
@@ -95,14 +94,17 @@ $ {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
 
 ### 3.1 Technologies of the microservices
 
-The **'articles'** and **'**Web API**'** microservices are based purly on open source components:
+The **'articles'** and '**Web API**' microservices are based purly on open source components:
 
 * [OpenJ9 0.12.1](https://projects.eclipse.org/projects/technology.openj9/releases/0.12.1/review)
 * OpenJDK 8u202-b08 from AdoptOpenJDK
 * [Open Liberty 18.0.0.4](https://openliberty.io/downloads/)
 * [MicroProfile 2.1](https://projects.eclipse.org/projects/technology.microprofile/releases/microprofile-2.1)
 
-To ensure that distributed tracing it supported [zipkintracer](https://github.com/openzipkin/zipkin-ruby) is copied onto the image.
+To ensure that distributed tracing it supported [zipkintracer](https://github.com/openzipkin/zipkin-ruby) is copied onto the image.  
+
+
+_Note:_ Distributed tracing is not in scope of current workshop material.
 
 ### 3.2 MicroProfile
 
@@ -110,7 +112,7 @@ For cloud-native applications Kubernetes and Istio deliver a lot of important fu
 
 Some cloud-native functionality however cannot be handled by Kubernetes and Istio, since it needs to be handled in the business logic of the microservices, for example application specific failover functionality, metrics and fine-grained authorization.
 
-That’s why we use Eclipse MicroProfile, which is an extension to JavaEE to build microservices-based architectures and a great programming model for Istio. In addition to the application specific logic that Istio cannot handle, it also comes with convenience functionality that you typically need when developing microservices, for example invoking REST APIs and implementing REST APIs including their documentation.
+That’s why we use **Eclipse MicroProfile**, which is an extension to JavaEE to build microservices-based architectures and a great programming model for Istio. In addition to the application specific logic that Istio cannot handle, it also comes with convenience functionality that you typically need when developing microservices, for example invoking REST APIs and implementing REST APIs including their documentation.
 
 Now, we've finished the **introduction**.
 Let's get started with the [Lab - Building and deploying Containers](02-container.md).
