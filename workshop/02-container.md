@@ -140,15 +140,13 @@ EXPOSE 3000
 
 CMD ["npm", "start"]
 ```
-If last step is executed of the **Dockerfile** the container is ready to be deployed to Kubernetes.
+If this last step is executed of the **Dockerfile** the container is ready to be deployed to Kubernetes.
 
 ---
 
 ### 1.3 YAML Configurations for the deployment to Kubernetes
 
-Now we examine the deployment yamls to deploy the container to **Pods** and creating **Services** to access them in the Kubernetes Cluster.
-
-In the following image you can see the deployed **Services**:
+Now we examine the deployment yamls to deploy the container to **Pods** and creating **Services** to access them in the Kubernetes Cluster. In the following image you can see the deployed **Services**:
 
 ![ibm-cloud-services](images/ibm-cloud-services.png)
 
