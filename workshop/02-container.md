@@ -2,11 +2,7 @@
 # Building and deploying Containers
 ****** **UNDER CONSTRUCTION** ******
 
-In this Lab we build and deploy containers with microservices to Kubernetes.
-
-Along this way we inspect the **Dockerfiles** for the container images and we take a look into the configured **yaml files** to create the **deployment** for the microservices.
-
-The following diagram shows a high level overview of steps, which will be automated later with bash scripts.
+In this Lab we build and deploy containers with microservices to Kubernetes. Along this way we inspect the **Dockerfiles** for the container images and we take a look into the configured **yaml files** to create the **deployment** for the microservices. The following diagram shows a high level overview of the steps in the lab, which are mostly automated with bash scripts.
 
 ![cns-container-deployment-01](images/cns-container-deployment-01.png)
 
@@ -14,17 +10,11 @@ The following diagram shows a high level overview of steps, which will be automa
 2. Building and storing of the production container image inside the IBM Cloud Registry
 3. Deploying the containers into the Kuberentes Cluster
 
-Related blog posts:
-
-* [Dockerizing Java MicroProfile Applications](http://heidloff.net/article/dockerizing-container-java-microprofile)
-
 ## 1. The container images
 
-Before we will execute the bash scripts to build and upload the container images, we will take a look into the Dockerfiles to build these container images.
+Before we will execute the bash scripts to build and upload the container images, we will take a look into the Dockerfiles to build these container images. 
 
-The following picture shows a brief preview of the result of the running container in Kubernetes, when we finished the lab.
-
-These are the containers we will storing inside the **container registry** in IBM Cloud.
+The following picture shows a brief preview of the result of the running container in Kubernetes, when we finished the lab. These are the containers we will storing inside the **container registry** in IBM Cloud.
 
 ![ibm-cloud-pods](images/ibm-cloud-registry-container.png)
 
@@ -570,5 +560,6 @@ Let's get started with the [Defining and exposing REST APIs](03-rest-api.md).
 Resources:
 
 * [Configuring Microservices with MicroProfile and Kubernetes'](http://heidloff.net/article/configuring-java-microservices-microprofile-kubernetes/)
+* [Dockerizing Java MicroProfile Applications](http://heidloff.net/article/dockerizing-container-java-microprofile)
 
 
