@@ -19,7 +19,7 @@ The sequence diagram below shows a simplified view how the **‘Authors’** RES
 
 ![rest-api-sequencediagram](images/rest-api-sequencediagram.png)
 
-In the simplified class diagram below you can see the major high level relations of the classes to implement the access to the **‘Authors’** REST Client. This makes it easier to convert between the **JSON data** and **Java objects** in both directions.
+In the simplified class diagram below you can see the major high level relations of the classes to implement the access to the **‘Authors’** REST Client to consunm JSON data. These classes make that easier to convert between the **JSON data** and **Java objects** in both directions for the developer.
 
 ![rest-api-classdiagram](images/rest-api-classdiagram.png)
 
