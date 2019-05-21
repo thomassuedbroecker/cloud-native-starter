@@ -129,6 +129,8 @@ COPY --from=BUILD /usr/src/app/dist /usr/share/nginx/html
 
 If last step is executed of the **Dockerfile** the container is ready to be deployed to Kubernetes.
 
+---
+
 #### 1.2.2 Authors container image definition
 
 The authors [Dockerfile](../authors/Dockerfile) to create the web-api service, does directly create the production image and is based on the alpine 8 image from the [dockerhub](https://hub.docker.com/_/alpine).
@@ -500,6 +502,8 @@ A sample output result for the ```show-urls.sh``` script:
 2019-05-16 15:09:52 Web app: http://159.122.172.162:31380/
 2019-05-16 15:09:52 ------------------------------------------------------------------------------------
 ```
+
+---
 
 ### 1.5.2 Verify the running services 
 
