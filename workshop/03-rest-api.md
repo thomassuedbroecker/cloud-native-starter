@@ -23,7 +23,7 @@ In the simplified class diagram below you can see the major high level relations
 
 ![rest-api-classdiagram](images/rest-api-classdiagram.png)
 
-Let's get us a closer to the class implementations. First we need to define the **interface** of the service you want to invoke. Here we use the [interface AuthorsService](../web-api-java-jee/src/main/java/com/ibm/webapi/data/AuthorsService.java). The method **‘getAuthor’** returns an object of the Author class.
+Let's get us a closer to the class implementations. First we need to define the **interface** of the service we want to invoke. Here we use the [interface AuthorsService](../web-api-java-jee/src/main/java/com/ibm/webapi/data/AuthorsService.java). The method **‘getAuthor’** returns an object of the Author class.
 
 ```java
 import javax.ws.rs.GET;
@@ -50,7 +50,9 @@ public class Author {
 }
 ```
 
-The actual invocation of the authors service happens in [AuthorsServiceDataAccess.java](../web-api-java-jee/src/main/java/com/ibm/webapi/data/AuthorsService.java). The [RestClientBuilder](https://openliberty.io/docs/ref/javadocs/microprofile-1.3-javadoc/org/eclipse/microprofile/rest/client/RestClientBuilder.html) is used to get an implementation of the AuthorsService interface. The **deserialization** of the **JSON data** into a **Java object** is done automatically.
+The invocation of the authors service happens in [AuthorsServiceDataAccess.java](../web-api-java-jee/src/main/java/com/ibm/webapi/data/AuthorsService.java). 
+The [RestClientBuilder](https://openliberty.io/docs/ref/javadocs/microprofile-1.3-javadoc/org/eclipse/microprofile/rest/client/RestClientBuilder.html) is used to get an implementation of the AuthorsService interface. 
+_IMPORTANT:_ The **deserialization** of the **JSON data** into a **Java object** is done automatically.
 
 ```java
 import org.eclipse.microprofile.rest.client.RestClientBuilder;
