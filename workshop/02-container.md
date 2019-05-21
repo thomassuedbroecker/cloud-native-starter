@@ -44,7 +44,7 @@ The reason for the two stages is, we have the objective to be **independed** of 
 
 With this concept we don't have to ensure that **Java** and **Maven** (or wrong versions) is installed on the local machine of the developers.
 
-One container is only responsible to build the application let us call this container **Build environment container** and the other container with the microservice we will call the **production** container.
+One container is only responsible to build the application let us call this container **build environment container** and the other container with the microservice we will call the **production** container.
 
 * Build environment container
 
@@ -379,6 +379,15 @@ spec:
 ```
 
 ### 1.5 Lab - Deploy the containers to the Kubernetes Cluster
+
+In the following bash scripts we use **ibmcloud** and **kubectl** commands to interact with IBM Cloud, IBM Container Registry Service and the IBM Kubernetes service in IBM Cloud.
+
+To build the containers in IBM Cloud we do **not** use  Docker commands, because the container will be built inside the IBM Container Registry with the **ibmcloud cr build** command.
+
+```sh
+ibmcloud cr build -f Dockerfile.nojava --tag $REGISTRY/$REGISTRY_NAMESPACE/articles:1 .
+```
+
 
 Invoke following bashscripts to deploy the microservices:
 
