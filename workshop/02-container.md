@@ -202,7 +202,7 @@ spec:
 
 #### 1.3.2 Web-api-V1
 
-The deployment yaml for the Web-api-V1. Here you can inspect the **Service** and the **Deployment** definition.
+The deployment yaml for the Web-api-V1. Here you can inspect the **Service** and the **Deployment** definition for the **Web api** microservice.
 
 ```yaml
 kind: Deployment
@@ -241,7 +241,7 @@ spec:
 As defined in the **Twelve-Factor-App** it’s important for cloud-native applications to store configuration externally, rather than in the code since this makes it possible to deploy applications to different environments.
 
 An app’s config is everything that is likely to vary between deploys (staging, production, developer environments, etc). 
-This includes: Resource handles to backing services. Credentials to external services.
+This includes: Resource handles to backing services or credentials to external services.
 
 Microservices that are implemented with Java EE can leverage MicroProfile config. The configuration can be done, for example, in **Kubernetes yaml** files and accessed from Java code via annotations and APIs. 
 
@@ -289,7 +289,7 @@ public class CoreService {
     }
 ```
 
-The deployment yaml for articles. Here you can inspect the **Service**, the **Deployment** and the **ConfigMap** definition.
+In the deployment yaml for articles, you can inspect the **Service**, the **Deployment** and the **ConfigMap** definition.
 
 ```yaml
 kind: Service
