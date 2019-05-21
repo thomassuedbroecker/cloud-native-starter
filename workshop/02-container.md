@@ -35,7 +35,7 @@ The **articles** and the **authors** microservices are written in Java and they 
 Let's take a look into the [Dockerfile](../articles-java-jee/Dockerfile.nojava) to create the articles service. Inside the Dockerfile we use **two stages** to build the container image. 
 The reason for the two stages is, we have the objective to be **independed** of local environment settings, when we build the our production services. With this concept we don't have to ensure that **Java** and **Maven** (or wrong versions of them) is installed on the local machine of the developers.
 
-In short words one container is only responsible to build the microservice, let us call this container **build environment container** and the other container we will contain the microservice, we call this container the **production** container.
+In short words one container is only responsible to build the microservice, let us call this container **build environment container** and the other container we will contain the microservice, we call this the **production** container.
 
 * **Build environment container**
 
@@ -47,7 +47,7 @@ COPY src /usr/src/app/src
 COPY pom.xml /usr/src/app
 ```
 
-Then we build the **articles.war** inside this **build container** image, using the maven command **mvn -f pom.xml clean package** .
+Then we build the executable **articles.war** file inside the **build container** image, here we use the maven command **mvn -f pom.xml clean package** to build the [war](https://en.wikipedia.org/wiki/WAR_(file_format) file.
 
 ```Dockerfile
 RUN mvn -f /usr/src/app/pom.xml clean package
