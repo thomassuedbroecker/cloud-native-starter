@@ -50,7 +50,7 @@ With this concept we don't have to ensure that **Java** and **Maven** (or wrong 
 
 One container is only responsible to build the application let us call this container **build environment container** and the other container with the microservice we will call the **production** container.
 
-* Build environment container
+* **Build environment container**
 
 In the following Dockerfile extract, we create our **build environment container** based on the maven 3.5 image from the [dockerhub](https://hub.docker.com/_/maven/).
 
@@ -66,7 +66,7 @@ Then we build the **articles.war** inside this **build container** image, using 
 RUN mvn -f /usr/src/app/pom.xml clean package
 ```
 
-* Production container
+* **Production container**
 
 In the following Dockerfile extract, we create the **production container** based on the **openliberty** with **microProfile2**.
 Then we install the  installed **zipkintracer** for later usage.
