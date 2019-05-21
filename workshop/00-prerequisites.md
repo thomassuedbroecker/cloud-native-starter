@@ -43,7 +43,7 @@ By default, deployment is in Dallas, USA (us-south).
 3. [Setup the IBM Cloud CLI](#part-SETUP-02)
 4. [Get IBM platform key](#part-SETUP-08)
 5. [Setup the IBM Cloud Kubernetes CLI](#part-SETUP-03)
-6. [Create a IBM Cloud Kubernetes Service and add ISTIO](#part-SETUP-04)
+6. [Create a IBM Cloud Kubernetes Service and add Istio](#part-SETUP-04)
 7. [Access the Kubernetes cluster manually (optional)](#part-SETUP-05)
 8. [Access the IBM Cloud Container Registry manually (optional)](#part-SETUP-06)
 
@@ -133,9 +133,13 @@ Example local.env:
 ```sh
 IBMCLOUD_API_KEY=AbcD3fg7hIj65klMn9derHHb9zge5
 IBM_CLOUD_REGION=us-south
-IBM_CLOUD_CLUSTER_REGION=us-south
 CLUSTER_NAME=cloud-native
 REGISTRY_NAMESPACE=cloud-native
+IBM_CLOUD_CF_API=https://api.ng.bluemix.net
+IBM_CLOUD_CF_ORG=
+IBM_CLOUD_CF_SPACE=dev
+AUTHORS_DB=local
+CLOUDANT_URL=
 ```
 ---
 
@@ -172,7 +176,7 @@ For the following steps we use bash scripts from the github project.
 
 ---
 
-#### 3.6.1 Automated creation of a Cluster with ISTIO for the workshop
+#### 3.6.1 Automated creation of a Cluster with Istio for the workshop
 
 * create cluster
 Use following bash script to create a free Kubernetes Cluster on IBM Cloud:
@@ -200,7 +204,7 @@ These are the instructions to install Istio.
 We use **Istio 1.1.4** for this project.
 
 
-1. Download Istio 1.1.4 directly from github into the **workshop** directory:
+1. Download Istio 1.1.5 directly from github into the **workshop** directory:
 
     ```
     cd workshop
@@ -212,13 +216,13 @@ _Note:_ Please be aware that we do **not cover Windows** in these instructions!
 2. Add `istioctl` to the PATH environment variable, e.g copy paste in your shell and/or `~/.profile`:
 
     ```sh
-    export PATH=$PWD/istio-1.1.4/bin:$PATH
+    export PATH=$PWD/istio-1.1.5/bin:$PATH
     ```
 
 3. Change into the extracted directory: 
 
     ```sh
-    cd istio-1.1.4
+    cd istio-1.1.5
     ```
 
 4. Install Istio:
