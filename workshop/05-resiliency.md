@@ -70,27 +70,52 @@ public List<Article> fallbackNoArticlesService() {
 }
 ```
 
-## Lab - Resiliency
+## 2. Lab - Resiliency
 
-Resiliency is part of the code: if an API call is not answered because of an error ar a timeout, the business logic must have some form of fallback. 
+Resiliency is part of the code: if an API call is not answered because of an error ar a timeout, the business logic must have a implementation of a fallback. 
 
-Istio helps to test resiliency by introducing faults into the mesh without changing the application code. 
+### 2.1 Gain access to your cluster
 
-In order to demonstrate resiliency you can run the following commands to create a working set of services:
+1. Log in to your IBM Cloud account. Include the --sso option if using a federated ID.
 
-```
-$ cd $PROJECT_HOME
-$ iks-scripts/check-prerequisites.sh
-$ iks-scripts/delete-all.sh
-$ iks-scripts/deploy-articles-java-jee.sh
-$ iks-scripts/deploy-web-api-java-jee.sh
-$ iks-scripts/deploy-authors-nodejs.sh
-$ iks-scripts/deploy-web-app-vuejs.sh
-$ iks-scripts/deploy-istio-ingress-v1.sh
-$ iks-scripts/show-urls.sh
+```sh
+$ ibmcloud login -a https://cloud.ibm.com -r us-south -g default
 ```
 
-After this the Web Application shows articles together with the author information:
+2. Download the kubeconfig files for your cluster.
+
+```sh
+$ ibmcloud ks cluster-config --cluster cloud-native
+```
+
+3. Set the KUBECONFIG environment variable. Copy the output from the previous command and paste it in your terminal. The command output looks similar to the following example:
+
+```sh
+export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/hands-on-verification/kube-config-mil01-cloud-native.yml
+```
+
+4. Verify that you can connect to your cluster by listing your worker nodes.
+
+```sh
+kubectl get nodes
+```
+
+### 2.2 Setup and test the resiliency
+
+1. In order to demonstrate resiliency you can run the following commands to create a working set of services:
+
+```sh
+$ ./iks-scripts/check-prerequisites.sh
+$ ./iks-scripts/delete-all.sh
+$ ./iks-scripts/deploy-articles-java-jee.sh
+$ ./iks-scripts/deploy-web-api-java-jee.sh
+$ ./iks-scripts/deploy-authors-nodejs.sh
+$ ./iks-scripts/deploy-web-app-vuejs.sh
+$ ./scripts/deploy-istio-ingress-v1.sh
+$ ./iks-scripts/show-urls.sh
+```
+
+2. After the Web Application shows articles together with the author information:
 
 <kbd><img src="../images/web-app.png" /></kbd>
 

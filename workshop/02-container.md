@@ -413,7 +413,35 @@ clusterip=$(ibmcloud ks workers --cluster $CLUSTER_NAME | awk '/Ready/ {print $2
   nodeport=$(kubectl get svc articles --output 'jsonpath={.spec.ports[*].nodePort}')
 ```
 
-Invoke following bashscripts to deploy the microservices:
+### 1.5.1 Gain access to your cluster
+
+1. Log in to your IBM Cloud account. Include the --sso option if using a federated ID.
+
+```sh
+$ ibmcloud login -a https://cloud.ibm.com -r us-south -g default
+```
+
+2. Download the kubeconfig files for your cluster.
+
+```sh
+$ ibmcloud ks cluster-config --cluster cloud-native
+```
+
+3. Set the KUBECONFIG environment variable. Copy the output from the previous command and paste it in your terminal. The command output looks similar to the following example:
+
+```sh
+export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/hands-on-verification/kube-config-mil01-cloud-native.yml
+```
+
+4. Verify that you can connect to your cluster by listing your worker nodes.
+
+```sh
+kubectl get nodes
+```
+
+### 1.5.2 Build and deploy the container
+
+1. Invoke following bash scripts to build and deploy the microservices:
 
 ```sh
 $ ./iks-scripts/deploy-articles-java-jee.sh
@@ -424,7 +452,7 @@ $
 $ ./scripts/deploy-istio-ingress-v1.sh
 ```
 
-Invoke the curl command which is displayed as output of 'scripts/show-urls.sh' to the the urls of services.
+2. Invoke the curl command which is displayed as output of 'scripts/show-urls.sh' to the the urls of services.
 
 ```sh
 $ ./iks-scripts/show-urls.sh
@@ -449,34 +477,34 @@ A sample output result for the ```show-urls.sh``` script:
 2019-05-16 15:09:52 Web app: http://159.122.172.162:31380/
 2019-05-16 15:09:52 ------------------------------------------------------------------------------------
 ```
-Here an overview of sample results, when we open the given urls in a browser or we execute the CURL command.
 
-* Articels
+### 1.5.2 Verify the running container 
 
-Open the API explorer: http://159.122.172.162:30290/openapi/ui/
+For the next steps use the results ```show-urls.sh``` scripts.
+
+1. Open the Articels API explorer in a browser ```http://YOUR_IP:30290/openapi/ui/```
 
 ![cns-container-articels-service-03](images/cns-container-articels-service-03.png)
 
-* Authors
-
-Execute the sample curl **getauthor**
+2. Execute the curl **getauthor** command to get a Author
 
 ```sh
-$ curl http://159.122.172.162:31078/api/v1/getauthor?name=Niklas%20Heidloff
+$ curl http://YOUR_IP:31078/api/v1/getauthor?name=Niklas%20Heidloff
+```
+
+You should get the following result:
+
+```
 $ {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
 ```
 
-* Web-api v1
-
-Open the API explorer: http://159.122.172.162:31380/openapi/ui/
+3. Open the API explorer Web-api v1 in a browser http://YOUR_IP:31380/openapi/ui/
 
 
 ![cns-container-articels-service-03](images/cns-container-web-api-v1-04.png)
 
 
-* Web-app
-
-Open in the Application in browser: http://159.122.172.162:31380/
+4. Open the the Application in a browser: http://YOUR_IP:31380/
 
 ![cns-container-web-app-04](images/cns-container-web-app-05.png)
 
