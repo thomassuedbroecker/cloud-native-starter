@@ -127,9 +127,7 @@ for (int index = 0; index < coreArticles.size(); index++) {
 ### 1.3 Documentation of the REST API with Open API
 
 The **MicroProfile** supports also the definition REST APIs via [JAX-RS](https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services). We use MircoProfile to create a **Open API** documentation and api explorer. 
-We the **Open API** can use for documentation and testing of the REST API of our microservice.
-
-Inside the class [articles](articles-java-jee/src/main/java/com/ibm/articles/apis/) we use the profiles **@GET**, **@Path** and others,  to expose and document REST API with the MicroProfile during writting of the code with **Open API**.
+We the **Open API** can use for documentation and testing of the REST API of our microservice. Inside the class [articles](articles-java-jee/src/main/java/com/ibm/articles/apis/) we use the profiles **@GET**, **@Path** and others,  to expose and document REST API with the MicroProfile during writting of the code with **Open API**.
 
 ```java
 package com.ibm.webapi.apis;
@@ -157,7 +155,7 @@ public class GetArticles {
 .....
 ```
 
-The following image shows the result, a automatically created **Open API explorer** for the Web API microservice.
+The following image shows an automatically created **Open API explorer** for the **Web API** microservice.
 
 ![cns-container-web-api-v1-04.png](images/cns-container-web-api-v1-04.png)
 
@@ -180,7 +178,7 @@ $ ibmcloud ks cluster-config --cluster cloud-native
 3. Set the KUBECONFIG environment variable. Copy the output from the previous command and paste it in your terminal. The command output looks similar to the following example:
 
 ```sh
-export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/hands-on-verification/kube-config-mil01-cloud-native.yml
+export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/cloud-native/kube-config-mil01-cloud-native.yml
 ```
 
 4. Verify that you can connect to your cluster by listing your worker nodes.
@@ -191,9 +189,9 @@ kubectl get nod
 
 ### 2.2 Defining and exposing REST APIs
 
-In the following bash scripts we use **ibmcloud** and **kubectl** commands to interact with IBM Cloud, IBM Container Registry Service and the IBM Kubernetes service in IBM Cloud. With **sed** and **awk** we extract the output from the comandline.
+In the following bash scripts we use **ibmcloud** and **kubectl** commands to interact with **IBM Cloud Platform**, **IBM Container Registry Service** and the **IBM Kubernetes Service**. With **sed** and **awk** we extract the output from the comandline.
 
-1. Invoke the following commands to set up the lab. Skip the commands you've already executed.
+1. Invoke the following commands to set up the lab. 
 
 ```sh
 $ cd $PROJECT_HOME
@@ -205,9 +203,9 @@ $ ./iks-scripts/deploy-istio-ingress-v1.sh
 $ ./iks-scripts/show-urls.sh
 ```
 
-Now we use the ```‘web-api/v1/getmultiple‘``` endpoint with the CURL command and from the **Open API explorer**.
+Now we use the ```‘web-api/v1/getmultiple‘``` endpoint with the **CURL command** and from the **Open API explorer**.
 
-The sequence diagram below shows a simplified view, how the **‘Authors’** REST API is used to get all articles in a JSON format.
+The sequence diagram below shows once again the simplified view, how the **‘Authors’** REST API is used to get all articles in a JSON format.
 
 ![rest-api-sequencediagram](images/rest-api-sequencediagram.png)
 
