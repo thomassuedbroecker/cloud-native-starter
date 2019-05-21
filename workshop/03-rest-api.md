@@ -164,6 +164,8 @@ The following image shows the result, a automatically created **Open API explore
 
 ## 2. Lab - Defining and exposing REST APIs
 
+In the following bash scripts we use **ibmcloud** and **kubectl** commands to interact with IBM Cloud, IBM Container Registry Service and the IBM Kubernetes service in IBM Cloud. With **sed** and **awk** we extract the output from the comandline.
+
 Invoke the following commands to set up the lab. Skip the commands you've already executed.
 
 ```sh
@@ -176,9 +178,9 @@ $ ./iks-scripts/deploy-istio-ingress-v1.sh
 $ ./iks-scripts/show-urls.sh
 ```
 
-Now we use the **‘web-api/v1/getmultiple‘** endpoint from CURL and from the web-app.
+Now we use the ```‘web-api/v1/getmultiple‘``` endpoint with the CURL command and from the **Open API explorer**.
 
-The sequence diagram below shows a simplified view how the **‘Authors’** REST API is used to get all articles in a JSON format.
+The sequence diagram below shows a simplified view, how the **‘Authors’** REST API is used to get all articles in a JSON format.
 
 ![rest-api-sequencediagram](images/rest-api-sequencediagram.png)
 
