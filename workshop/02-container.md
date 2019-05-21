@@ -18,8 +18,7 @@ The following picture shows a brief preview of the result of the running contain
 
 ![ibm-cloud-pods](images/ibm-cloud-registry-container.png)
 
-
-Later we can find for each container a Pod inside Kubernetes, as you can see in the image below.
+Here you can see the created Pods for each container inside the IBM Kubernetes cluster.
 
 ![ibm-cloud-pods](images/ibm-cloud-pods.png)
 
