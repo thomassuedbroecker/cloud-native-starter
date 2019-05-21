@@ -32,12 +32,10 @@ The **articles** and the **authors** microservices are written in Java and they 
 
 #### 1.1.1 Articles container image definition
 
-Let's take a look into the [Dockerfile](../articles-java-jee/Dockerfile.nojava) to create the articles service. Inside the Dockerfile we use **multiple stages** to build the container image. 
-The reason for the two stages is, we have the objective to be **independed** of local environment settings, when we build the application for the production container.
+Let's take a look into the [Dockerfile](../articles-java-jee/Dockerfile.nojava) to create the articles service. Inside the Dockerfile we use **two stages** to build the container image. 
+The reason for the two stages is, we have the objective to be **independed** of local environment settings, when we build the our production services. With this concept we don't have to ensure that **Java** and **Maven** (or wrong versions of them) is installed on the local machine of the developers.
 
-With this concept we don't have to ensure that **Java** and **Maven** (or wrong versions) is installed on the local machine of the developers.
-
-One container is only responsible to build the application let us call this container **build environment container** and the other container with the microservice we will call the **production** container.
+In short words one container is only responsible to build the microservice, let us call this container **build environment container** and the other container we will contain the microservice, we call this container the **production** container.
 
 * **Build environment container**
 
