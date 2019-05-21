@@ -156,9 +156,9 @@ Now we examine the deployment yamls to deploy the container to **Pods** and crea
 
 * Service and Deployment configuration for the micro service
 
-With "[kind: Service](https://kubernetes.io/docs/concepts/services-networking/service/)" we define the access to your microservice inside Kubernetes and the "[kind: Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)" defines how we expose the microservice on a Pod in Kubernetes and even more configuration options you can find on the "[Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)".
+With "[kind: Service](https://kubernetes.io/docs/concepts/services-networking/service/)" we define the access to our microservice inside Kubernetes and the "[kind: Deployment](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)" defines how we expose the microservice on a Pod in Kubernetes and even more configuration options we can find on the "[Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)".
 
-Here you can see the service and deployment configuration for the Kubernetes deployment.
+Here we can see the service and deployment configuration for the Kubernetes deployment of the **Web app**.
 
 ```yaml
 kind: Service
