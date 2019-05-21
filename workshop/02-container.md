@@ -202,7 +202,7 @@ spec:
 
 #### 1.3.2 Web-api-V1
 
-The deployment yaml for the Web-api-V1. Here you can inspect the **Service** and the **Deployment** definition for the **Web api** microservice.
+In deployment yaml for the Web-api-V1, you can inspect the **Service** and the **Deployment** definition for the **Web api** microservice.
 
 ```yaml
 kind: Deployment
@@ -238,14 +238,9 @@ spec:
 
 #### 1.3.3 Articles
 
-As defined in the **Twelve-Factor-App** it’s important for cloud-native applications to store configuration externally, rather than in the code since this makes it possible to deploy applications to different environments.
+As defined in the [Twelve-Factor-App](https://12factor.net/) it’s important for cloud-native applications to store configuration externally, rather than in the code since this makes it possible to deploy applications to different environments. An app’s config is everything that is likely to vary between deploys (staging, production, developer environments, etc). This includes: Resource handles to backing services or credentials to external services.
 
-An app’s config is everything that is likely to vary between deploys (staging, production, developer environments, etc). 
-This includes: Resource handles to backing services or credentials to external services.
-
-Microservices that are implemented with Java EE can leverage MicroProfile config. The configuration can be done, for example, in **Kubernetes yaml** files and accessed from Java code via annotations and APIs. 
-
-The **‘articles’** microservice uses configuration to define whether or not to **create ten articles** the first time it is invoked. In the yaml file an environment variable pointing to a **ConfigMap** is defined.
+Microservices that are implemented with Java EE can leverage MicroProfile config. The configuration can be done, for example, in **Kubernetes yaml** files and accessed from Java code via annotations and APIs. The **‘articles’** microservice uses configuration to define whether or not to **create ten articles** the first time it is invoked. In the yaml file an environment variable pointing to a **ConfigMap** is defined.
 
 In our sample you can find the [environment](articles-java-jee/deployment/kubernetes.yaml#L35) and [ConfigMap](articles-java-jee/deployment/kubernetes.yaml#L54) definition.
 
@@ -358,9 +353,7 @@ You can see in the diagram below, we are using a Ingress from Istio to provide a
 
 ![cns-container-deployment-02](images/cns-container-deployment-02.png)
 
-The important topic of the following yaml configuration is the matching (**"match"**) of **URIs** and **services**.
-
-With the configuation of the **kind: VirtualService** for the [Ingress gateway](https://kubernetes.io/docs/concepts/services-networking/ingress/) we define the routing access from the internet over the services to the microservice **web-api** and the **Web app**. 
+The important topic of the following yaml configuration is the matching (**"match"**) of **URIs** and **services**. With that configuation of the **kind: VirtualService** for the [Ingress gateway](https://kubernetes.io/docs/concepts/services-networking/ingress/) we define the routing access from the internet over the services to the microservice **Web api** and the **Web app**. 
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -443,7 +436,7 @@ kubectl get nodes
 
 ### 1.5.2 Build and deploy the container
 
-In the following bash scripts we use **ibmcloud** and **kubectl** commands to interact with IBM Cloud, IBM Container Registry Service and the IBM Kubernetes service in IBM Cloud. With **sed** and **awk** we extract the output from the comandline.
+In the following bash scripts, we use **ibmcloud** and **kubectl** commands to interact with IBM Cloud, IBM Container Registry Service and the IBM Kubernetes service in IBM Cloud. With **sed** and **awk** we extract the output from the comandline.
 
 To build the containers in IBM Cloud we do **not** use Docker commands, because the container will be built inside the **IBM Container Registry** with the ```ibmcloud cr build``` command.
 
@@ -453,7 +446,7 @@ To build the containers in IBM Cloud we do **not** use Docker commands, because 
 ibmcloud cr build -f Dockerfile.nojava --tag $REGISTRY/$REGISTRY_NAMESPACE/articles:1 .
 ```
 
-To deploy the container images to Kubernetes, we use to apply the needed yaml configuration files to Kubernetes, with the **kubectl apply** command.
+To deploy the container images into Kubernetes, we use the **kubectl apply** command for the needed yaml configuration files. 
 
 * Sample command to deploy the container to the Kubernetes Cluster
 
