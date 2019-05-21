@@ -480,7 +480,7 @@ A sample output result for the ```show-urls.sh``` script:
 
 ### 1.5.2 Verify the running services 
 
-For the next steps use the results ```show-urls.sh``` scripts.
+For the next steps use the results of the ```show-urls.sh``` script.
 
 1. Open the Articels API explorer in a browser ```http://YOUR_IP:30290/openapi/ui/```
 
