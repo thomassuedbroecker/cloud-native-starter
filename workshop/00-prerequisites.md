@@ -201,8 +201,7 @@ $ ./iks-scripts/cluster-add-istio.sh
 If the cluster isn't ready, the script will tell you. Then just wait a few more minutes and try again.
 
 These are the instructions to install Istio. 
-We use **Istio 1.1.4** for this project.
-
+We use **Istio 1.1.5** for this Lab.
 
 1. Download Istio 1.1.5 directly from github into the **workshop** directory:
 
@@ -256,6 +255,11 @@ _Note:_ Please be aware that we do **not cover Windows** in these instructions!
     ```
     Then open http://localhost:20001/kiali in your browser, logon with Username: admin, Password: admin
 
+    ![Kiali installation](images/istio-installation-02.png)
+
+    In the following image you can see the installed Istio on the Kubernetes cluster.
+    
+    ![Istio installation](images/istio-installation-01.png)
 
 * Configure the IBM Cloud Container Registry:
 Ensure you are are in the project directory and execute the script.
