@@ -34,13 +34,13 @@ The advantage of using Kubernetes and Istio for features like traffic management
 
 Pretty much everyone loves open source. For example the Java stack leverages [OpenJ9](https://www.eclipse.org/openj9/), [OpenJDK](https://openjdk.java.net/) from [AdoptOpenJDK](https://adoptopenjdk.net/), [OpenLiberty](https://openliberty.io/) and [MicroProfile](https://microprofile.io/). [Kubernetes](https://kubernetes.io/) and [Istio](https://istio.io/) are obviously open source projects as well.
 
-* **Make the first time experience as simple as possible**
+* **Make the first-time experience as simple as possible**
 
 The example application shows several features working together, see below for details. There are also scripts to deploy services very easily, basically one script per service, similar to the **‘cf push’** experience for Cloud Foundry applications.
 
 * **Be able to run the application in different environments**
 
-Fortunately this is one of the main advantages of Kubernetes since you can run workloads on-premises, hybrid or public cloud infrastructures. The repo has instructions how to deploy the application to Minikube and to the managed IBM Cloud Kubernetes Service.
+Fortunately, this is one of the main advantages of Kubernetes since you can run workloads on-premises, hybrid or public cloud infrastructures. The repo has instructions how to deploy the application to Minikube and to the managed IBM Cloud Kubernetes Service.
 
 ## 2. **Microservices and Web app**
 
