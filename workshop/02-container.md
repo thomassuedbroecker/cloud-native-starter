@@ -77,7 +77,7 @@ With this last step the container is ready to be deployed to Kubernetes.
 
 #### 1.1.2 Web-api-V1 container image definition
 
-The **Web API** [Dockerfile](../web-apo-java-jee/Dockerfile.nojava) to create the **Web API** service, works in the same way as we defined for the **articles container** before. Inside the Dockerfile we use the same multiple stages to build the container image as in the for the **articles container**. 
+The **Web API** [Dockerfile](../web-apo-java-jee/Dockerfile.nojava) to create the **Web API** service, works in the same way as we did define for the **articles container** before. Inside the Dockerfile we use the same two stages to build the container image as in the for the **articles container**. 
 
 ---
 
