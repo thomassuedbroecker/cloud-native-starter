@@ -6,12 +6,12 @@ In this Lab we build and deploy containers with microservices to Kubernetes.
 
 Along this way we inspect the **Dockerfiles** for the container images and we take a look into the configured **yaml files** to create the **deployment** for the microservices.
 
-The following diagram shows a high level overview of steps which will be automated later with bash scripts.
+The following diagram shows a high level overview of steps, which will be automated later with bash scripts.
 
 ![cns-container-deployment-01](images/cns-container-deployment-01.png)
 
-1. Uploading container definition
-2. Building and storing of theproduction container image inside the IBM Cloud Registry
+1. Uploading the container definition
+2. Building and storing of the production container image inside the IBM Cloud Registry
 3. Deploying the containers into the Kuberentes Cluster
 
 Related blog posts:
@@ -22,33 +22,33 @@ Related blog posts:
 
 Before we will execute the bash scripts to build and upload the container images, we will take a look into the Dockerfiles to build these container images.
 
-The following image shows a brief preview of the result, when we finished the lab.
+The following picture shows a brief preview of the result of the running container in Kubernetes, when we finished the lab.
 
-These are the containers we will and store inside the **container registry** in IBM Cloud.
+These are the containers we will storing inside the **container registry** in IBM Cloud.
 
 ![ibm-cloud-pods](images/ibm-cloud-registry-container.png)
 
 
-Later we can find for each container a related Pod inside Kubernetes. 
+Later we can find for each container a Pod inside Kubernetes, as you can see in the image below.
 
 ![ibm-cloud-pods](images/ibm-cloud-pods.png)
 
 ### 1.1 Java container images
 
-The **articles** and the **authors** microservices are written in Java and they run on [OpenLiberty](https://openliberty.io/).
+The **articles** and the **authors** microservices are written in Java and they are running on [OpenLiberty](https://openliberty.io/).
 
 #### 1.1.1 Articles container image definition
 
 Let's take a look into the [Dockerfile](../articles-java-jee/Dockerfile.nojava) to create the articles service. Inside the Dockerfile we use **multiple stages** to build the container image. 
-The reason for the two stages is, we have the objective to be **independed** of local environment settings, when we build the application for the container.
+The reason for the two stages is, we have the objective to be **independed** of local environment settings, when we build the application for the production container.
 
 With this concept we don't have to ensure that **Java** and **Maven** (or wrong versions) is installed on the local machine of the developers.
 
-One Container is only responsible to build the application let us call this container **Build environment container** and the other container we will call the **production** contrainer.
+One container is only responsible to build the application let us call this container **Build environment container** and the other container with the microservice we will call the **production** container.
 
 * Build environment container
 
-Here we create our **build environment container** based on the maven 3.5 image from the [dockerhub](https://hub.docker.com/_/maven/).
+In the following Dockerfile extract, we create our **build environment container** based on the maven 3.5 image from the [dockerhub](https://hub.docker.com/_/maven/).
 
 ```Dockerfile
 FROM maven:3.5-jdk-8 as BUILD
@@ -56,7 +56,7 @@ COPY src /usr/src/app/src
 COPY pom.xml /usr/src/app
 ```
 
-Let's build the **articles.war** inside the container image, using the maven command **mvn -f pom.xml clean package** .
+Then we build the **articles.war** inside this **build container** image, using the maven command **mvn -f pom.xml clean package** .
 
 ```Dockerfile
 RUN mvn -f /usr/src/app/pom.xml clean package
@@ -64,8 +64,8 @@ RUN mvn -f /usr/src/app/pom.xml clean package
 
 * Production container
 
-Here we create the **production container** based on the **openliberty** with **microProfile2**.
-Then **zipkintracer** will be installed.
+In the following Dockerfile extract, we create the **production container** based on the **openliberty** with **microProfile2**.
+Then we install the  installed **zipkintracer** for later usage.
 
 ```Dockerfile
 FROM openliberty/open-liberty:microProfile2-java8-openj9
@@ -80,11 +80,11 @@ Now it is time to copy the build result **articles.war** from our **build enviro
 ```Dockerfile
 COPY --from=BUILD /usr/src/app/target/articles.war /config/dropins/
 ```
-If last step is executed of the **Dockerfile** the container is ready to be deployed to Kubernetes.
+If this last step is done, then the container is ready to be deployed to Kubernetes.
 
 #### 1.1.2 Web-api-V1 container image definition
 
-The web-api [Dockerfile](../web-apo-java-jee/Dockerfile.nojava) to create the web-api service, works in the same way as for the **articles container**. Inside the Dockerfile we use the same multiple stages to build the container image as in the for the **articles container**. 
+The web-api [Dockerfile](../web-apo-java-jee/Dockerfile.nojava) to create the web-api service, works in the same way as we defined for the **articles container** before. Inside the Dockerfile we use the same multiple stages to build the container image as in the for the **articles container**. 
 
 ### 1.2. Node.JS container images
 
