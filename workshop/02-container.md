@@ -354,7 +354,7 @@ data:
 
 ### 1.4 Ingress configuration
 
-You can see in the diagram below, we are using a Ingress from Istio to provide access from the internet to the microservice ****Web API**** and the **Web app**.
+You can see in the diagram below, we are using a Ingress from Istio to provide access from the internet to the microservice **Web API** and the **Web app**.
 
 ![cns-container-deployment-02](images/cns-container-deployment-02.png)
 
