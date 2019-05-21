@@ -9,17 +9,17 @@ There are currently not many Istio examples available, the one most widely used 
 
 These tutorials and examples do focus on the request routing not as a part for a user-facing service behind the **Istio ingress**.
 
-In this part we create a **new instance** and of a **new version** for the **web-api** microservice.
+In this part we create a **new instance** and of a **new version** for the ****Web API**** microservice.
 
 ![git](images/traffic-new-architecture.gif)
 
-We configure the routing to split the usage between our two instances and versions of our web-api microservice.
+We configure the routing to split the usage between our two instances and versions of our **Web API** microservice.
 
 ![gif](images/traffic-routing.gif)
 
 ## 1.1 Deployment definition
 
-The interesting part is that these two versions of Web-API do exist as two different Kubernetes deployments and they run in parallel. That is definied in the [kubernetes-deployment-v1](web-api-java-jee/deployment/kubernetes-deployment-v1.yaml) and [kubernetes-deployment-v2](web-api-java-jee/deployment/kubernetes-deployment-v2.yaml).
+The interesting part is that these two versions of **Web API** do exist as two different Kubernetes deployments and they run in parallel. That is definied in the [kubernetes-deployment-v1](web-api-java-jee/deployment/kubernetes-deployment-v1.yaml) and [kubernetes-deployment-v2](web-api-java-jee/deployment/kubernetes-deployment-v2.yaml).
 
 Commonly, in Kubernetes we would replace v1 with v2. With **Istio** we can use two or more deployments of different versions of an app to do a **green/blue**, **A/B**, or [canary deployment](https://www.ibm.com/cloud/garage/tutorials/use-canary-testing-in-kubernetes-using-istio-toolchain) to test if v2 works as expected. We can slowly roll out our changes to a small subset of users before rolling it out to the entire infrastructure and making it available to everyone. 
 
@@ -63,7 +63,7 @@ In the gif we can see a sample istio gateway instance the in Kubernetes.
 
 ## 1.4 Virtual Service
 
-The second required Istio configuration object is a **“Virtual Service”** which overlays the Kubernetes service definition. The Web-API service in the example exposes 3 REST URIs. Two of them are used for API documentation (Swagger/Open API), they are **/openapi** and **/openapi/ui/** and are currently independent of the version of Web-API. 
+The second required Istio configuration object is a **“Virtual Service”** which overlays the Kubernetes service definition. The **Web API** service in the example exposes 3 REST URIs. Two of them are used for API documentation (Swagger/Open API), they are **/openapi** and **/openapi/ui/** and are currently independent of the version of **Web API**. 
 The third URI is **/web-api/v1/getmultiple** and this is version-specific. 
 
 Base on that we have following VirtualService definition:
@@ -79,11 +79,11 @@ Base on that we have following VirtualService definition:
 
 To control the traffic we need to define a DestinationRule, this is  Istio specific. 
 
-In the image below we can see, the subset v1 is selecting pods that belong to web-api and have a selector label of “version: v1” which is the deployment “web-api-v1”.
+In the image below we can see, the subset v1 is selecting pods that belong to **Web API** and have a selector label of “version: v1” which is the deployment “web-api-v1”.
 
 ![Destination rule](images/traffic-routing-deployment09.png)
 
-With this Istio rule set in place all incoming traffic will go to version 1 of the Web-API. 
+With this Istio rule set in place all incoming traffic will go to version 1 of the **Web API**. 
 
 In the following image you can see all the traffic is routed to version 1.
 
@@ -103,7 +103,7 @@ We can verify the traffic in Kiali:
 ## 1.7 Lab - Traffic Routing
 
 In order to demonstrate traffic routing you can run the following commands. 
-**20 %** of the web-api API request to read articles will now return 10 articles as defined in version 2 and **80 %** of the requests are still showing only 5 articles which is version 1. 
+**20 %** of the **Web API** API request to read articles will now return 10 articles as defined in version 2 and **80 %** of the requests are still showing only 5 articles which is version 1. 
 
 ### 1.7.1 Gain access to your cluster
 

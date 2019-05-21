@@ -15,7 +15,7 @@ In this Lab we describe how we use this client in the **Cloud Native Starter** s
 
 ![architecture](images/architecture.png)
 
-In the following Lab we do examine the usage of the **‘Authors’** microservice in the **Web-api**.
+In the following Lab we do examine the usage of the **‘Authors’** microservice in the **Web API**.
 
 The sequence diagram below shows a simplified view how the **‘Authors’** REST API is used to get all articles in a JSON format.
 
@@ -158,7 +158,7 @@ public class GetArticles {
 .....
 ```
 
-The following image shows the result, a automatically created **Open API explorer** for the web-api microservice.
+The following image shows the result, a automatically created **Open API explorer** for the Web API microservice.
 
 ![cns-container-web-api-v1-04.png](images/cns-container-web-api-v1-04.png)
 
@@ -214,7 +214,7 @@ The sequence diagram below shows a simplified view, how the **‘Authors’** RE
 
 ### 2.2 Using CURL
 
-Now we invoke the following curl command of the **'web-api'** microservice. The IP is displayed as output of 'scripts/show-urls.sh'.
+Now we invoke the following curl command of the **'Web API'** microservice. The IP is displayed as output of 'scripts/show-urls.sh'.
 
 ```sh
  curl http://YOUR_IP:31380/web-api/v1/getmultiple

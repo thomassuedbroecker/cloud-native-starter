@@ -61,13 +61,13 @@ Here you can see a picture of the UI.
 
 ![cns-introduction-01](images/cns-introduction-01.png)
 
-### 2.2 **Web-api**
+### 2.2 ****Web API****
 
 The objective of this microservice is to combine the information from the **articals** and the **authors** microservice. 
 
-The web-api is business related to be consumned by the VUE Web-App. So the Web-App can use just **one** REST API and doesn't need more APIs.
+The **Web API** is business related to be consumned by the VUE Web-App. So the Web-App can use just **one** REST API and doesn't need more APIs.
 
-In the following image contains a sample instance of the Web-api.
+In the following image contains a sample instance of the **Web API**.
 
 ![cns-container-web-api-v1-04.png](images/cns-container-web-api-v1-04.png)
 
@@ -97,7 +97,7 @@ $ {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
 
 ### 3.1 Technologies of the microservices
 
-The **'articles'** and **'web-api'** microservices are based purly on open source components:
+The **'articles'** and **'**Web API**'** microservices are based purly on open source components:
 
 * [OpenJ9 0.12.1](https://projects.eclipse.org/projects/technology.openj9/releases/0.12.1/review)
 * OpenJDK 8u202-b08 from AdoptOpenJDK

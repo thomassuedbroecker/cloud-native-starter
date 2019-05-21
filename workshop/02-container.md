@@ -90,7 +90,7 @@ If this last step is done, then the container is ready to be deployed to Kuberne
 
 #### 1.1.2 Web-api-V1 container image definition
 
-The web-api [Dockerfile](../web-apo-java-jee/Dockerfile.nojava) to create the web-api service, works in the same way as we defined for the **articles container** before. Inside the Dockerfile we use the same multiple stages to build the container image as in the for the **articles container**. 
+The **Web API** [Dockerfile](../web-apo-java-jee/Dockerfile.nojava) to create the **Web API** service, works in the same way as we defined for the **articles container** before. Inside the Dockerfile we use the same multiple stages to build the container image as in the for the **articles container**. 
 
 ---
 
@@ -133,7 +133,7 @@ If last step is executed of the **Dockerfile** the container is ready to be depl
 
 #### 1.2.2 Authors container image definition
 
-The authors [Dockerfile](../authors/Dockerfile) to create the web-api service, does directly create the production image and is based on the alpine 8 image from the [dockerhub](https://hub.docker.com/_/alpine).
+The authors [Dockerfile](../authors/Dockerfile) to create the **Web API** service, does directly create the production image and is based on the alpine 8 image from the [dockerhub](https://hub.docker.com/_/alpine).
 
 ```Dockerfile
 FROM node:8-alpine
@@ -217,7 +217,7 @@ spec:
 
 #### 1.3.2 Web-api-V1
 
-The deployment yaml for the Web-Api-V1. Here you can inspect the **Service** and the **Deployment** definition.
+The deployment yaml for the Web-api-V1. Here you can inspect the **Service** and the **Deployment** definition.
 
 ```yaml
 kind: Deployment
@@ -369,7 +369,7 @@ data:
 
 ### 1.4 Ingress configuration
 
-You can see in the diagram below, we are using a Ingress from Istio to provide access from the internet to the microservice **web-api** and the **web-app**.
+You can see in the diagram below, we are using a Ingress from Istio to provide access from the internet to the microservice ****Web API**** and the **web-app**.
 
 ![cns-container-deployment-02](images/cns-container-deployment-02.png)
 
@@ -478,7 +478,7 @@ kubectl apply -f deployment/IKS-kubernetes.yaml
 
 With **sed** (https://en.wikipedia.org/wiki/Sed_(Unix) ) and **awk**( https://en.wikipedia.org/wiki/AWK) we extract the output of the command line executions and put them into variables  or we write the information into files, to use them later as input for the next commands inside the bash script.
 
-* Sample command writing registry information into a yaml file with **sed**.
+* Sample command to write registry information into a yaml file with **sed**.
 
 ```sh
   sed "s+articles:1+$REGISTRY/$REGISTRY_NAMESPACE/articles:1+g" deployment/kubernetes.yaml
@@ -550,7 +550,7 @@ You should get the following result:
 $ {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
 ```
 
-3. Open the API explorer Web-api v1 in a browser http://YOUR_IP:31380/openapi/ui/
+3. Open the API explorer **Web API** v1 in a browser http://YOUR_IP:31380/openapi/ui/
 
 
 ![cns-container-articels-service-03](images/cns-container-web-api-v1-04.png)
