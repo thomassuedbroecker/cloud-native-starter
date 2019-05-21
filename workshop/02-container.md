@@ -253,16 +253,38 @@ spec:
 
 #### 1.3.3 Articles
 
-As defined in the Twelve-Factor-App it’s important for cloud-native applications to store configuration externally, rather than in the code since this makes it possible to deploy applications to different environments.
+As defined in the **Twelve-Factor-App** it’s important for cloud-native applications to store configuration externally, rather than in the code since this makes it possible to deploy applications to different environments.
 
 An app’s config is everything that is likely to vary between deploys (staging, production, developer environments, etc). 
 This includes: Resource handles to backing services. Credentials to external services.
 
-Microservices that are implemented with Java EE can leverage MicroProfile Config. The configuration can be done, for example, in Kubernetes yaml files and accessed from Java code via annotations and APIs.
+Microservices that are implemented with Java EE can leverage MicroProfile config. The configuration can be done, for example, in **Kubernetes yaml** files and accessed from Java code via annotations and APIs. 
 
-The **‘articles’** microservice uses configuration to define whether or not to create ten articles the first time it is invoked. In the yaml file an environment variable pointing to a **ConfigMap** is defined.
+The **‘articles’** microservice uses configuration to define whether or not to **create ten articles** the first time it is invoked. In the yaml file an environment variable pointing to a **ConfigMap** is defined.
 
-In the Java code the configuration can be accessed via **@Inject**  and **@ConfigProperty**.
+In our sample [here](articles-java-jee/deployment/kubernetes.yaml#L35) and [there](articles-java-jee/deployment/kubernetes.yaml#L54) 
+
+```yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: articles-config
+data:
+  samplescreation: CREATE
+  inmemory: USE_IN_MEMORY_STORE
+```
+
+```yaml
+  env:
+    - name: samplescreation
+      valueFrom:
+        configMapKeyRef:
+          name: articles-config
+          key: samplescreation
+```
+
+In the Java code the **configuration** can be accessed via **@Inject**  and **@ConfigProperty**.
+[CoreService class](articles-java-jee/src/main/java/com/ibm/articles/business/CoreService.java)
  
 ```java
  @ConfigProperty.
@@ -279,7 +301,7 @@ public class CoreService {
     }
 ```
 
-The deployment yaml for articles. Here you can inspect the **Service** and the **Deployment** definition.
+The deployment yaml for articles. Here you can inspect the **Service**, the **Deployment** and the **ConfigMap** definition.
 
 ```yaml
 kind: Service
