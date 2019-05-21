@@ -78,7 +78,9 @@ In order that you can easily execute the workshop, we're providing **promo codes
 You apply the provided promo code under your [Cloud Account](https://cloud.ibm.com/account) ("`Manage`" -> "`Account`") by navigating to "`Account settings`".
 Apply your personal Feature (Promo) Code there.
 
-NOTE: Lite clusters expire after one month.
+_NOTE:_ Lite clusters expire after one month.
+
+---
 
 ### 3.3 Setup the IBM Cloud CLI <a name="part-SETUP-02"></a>
 [<home>](#home)
