@@ -15,7 +15,7 @@ We will cover the following four major topics and we learn along the given sourc
  
 Hands-on workshop lab instructions:
 
-* [Prerequisites](00-prerequisites.md) **(under construction - in progress)**
+* [Prerequisites](00-prerequisites.md) **(under construction - pending review)**
 * [Introduction](01-introduction.md) **(under construction - pending review)**
 * [Lab - Building and deploying Containers](02-container.md) **(under construction - pending review)**
 * [Lab - Defining and exposing REST APIs](03-rest-api.md)  **(under construction - pending review)**

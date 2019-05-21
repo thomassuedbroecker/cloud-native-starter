@@ -207,7 +207,7 @@ We use **Istio 1.1.5** for this Lab.
 
     ```
     cd workshop
-    curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.1.4 sh -
+    curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.1.5 sh -
     ```
 
 _Note:_ Please be aware that we do **not cover Windows** in these instructions!
