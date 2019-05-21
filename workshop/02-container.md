@@ -39,7 +39,7 @@ In short words one container is only responsible to build the microservice, let 
 
 * **Build environment container**
 
-In the following Dockerfile extract, we create our **build environment container** based on the maven 3.5 image from the [dockerhub](https://hub.docker.com/_/maven/).
+In the following Dockerfile extract, we can see how we create our **build environment container** based on the maven 3.5 image from the [dockerhub](https://hub.docker.com/_/maven/).
 
 ```Dockerfile
 FROM maven:3.5-jdk-8 as BUILD
