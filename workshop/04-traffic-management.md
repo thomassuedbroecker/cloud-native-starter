@@ -73,7 +73,7 @@ Base on that we have following VirtualService definition:
 1. Pointer to the Ingress Gateway
 2. URI that directly point to the Kubernetes service web-api listenting on port 9080 (without Istio)
 3. URI that uses **“subset: v1”** of the service web-api which we haven’t defined yet, this is Istio specific
-4. Root **/** is pointing to port **80** of the web-app service which is different from web-api! It is the service that provides the Vue app to the browser.
+4. Root **/** is pointing to port **80** of the **Web app** service which is different from web-api! It is the service that provides the Vue app to the browser.
 
 ## 1.5 Destination rule
 

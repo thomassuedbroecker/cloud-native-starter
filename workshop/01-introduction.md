@@ -21,7 +21,7 @@ The application is built on microservices with one frontend web application.
 
 ![architecture](images/architecture.png)
 
-* **Web-App** Is hosted on a Nginx server that provides a VUE **Web-App** to the browser
+* **Web app** Is hosted on a Nginx server that provides a VUE **Web app** to the browser
 * **Web-API** is accessed by the Vue app and provides a list of blog articles and their authors
 * **Articles** holds the list of blog articles
 * **Authors** holds the blog authors details (blog URL and Twitter handle)
@@ -44,9 +44,9 @@ The example application shows several features working together, see below for d
 
 Fortunately this is one of the main advantages of Kubernetes since you can run workloads on-premises, hybrid or public cloud infrastructures. The repo has instructions how to deploy the application to Minikube and to the managed IBM Cloud Kubernetes Service.
 
-## 2. **Microservices and Web-App**
+## 2. **Microservices and Web app**
 
-These are the responsibilities of the different microservices and the web-app.
+These are the responsibilities of the different microservices and the Web app.
 
 All mircoservices in this project built on Java are organized in following packages:
 
@@ -54,9 +54,9 @@ All mircoservices in this project built on Java are organized in following packa
 * business
 * data
 
-### 2.1 **Web-App**
+### 2.1 **Web app**
 
-The Web-App is the UI for the user and displays the given entries.
+The Web app is the UI for the user and displays the given entries.
 Here you can see a picture of the UI.
 
 ![cns-introduction-01](images/cns-introduction-01.png)
@@ -65,7 +65,7 @@ Here you can see a picture of the UI.
 
 The objective of this microservice is to combine the information from the **articals** and the **authors** microservice. 
 
-The **Web API** is business related to be consumned by the VUE Web-App. So the Web-App can use just **one** REST API and doesn't need more APIs.
+The **Web API** is business related to be consumned by the VUE Web app. So the Web app can use just **one** REST API and doesn't need more APIs.
 
 In the following image contains a sample instance of the **Web API**.
 

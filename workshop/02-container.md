@@ -71,7 +71,7 @@ Now it is time to copy the build result **articles.war** from our **build enviro
 ```Dockerfile
 COPY --from=BUILD /usr/src/app/target/articles.war /config/dropins/
 ```
-If this last step is done, then the container is ready to be deployed to Kubernetes.
+With this last step the container is ready to be deployed to Kubernetes.
 
 ---
 
@@ -83,13 +83,13 @@ The **Web API** [Dockerfile](../web-apo-java-jee/Dockerfile.nojava) to create th
 
 ### 1.2. Node.JS container images
 
-The **web-app** and the **authors** services are written in Node.JS.
+The **Web app** and the **authors** services are written in Node.JS.
 
 ---
 
-#### 1.2.1 Web-app container image definition
+#### 1.2.1 Web app container image definition
 
-The web-app [Dockerfile](../web-app-vuejs/Dockerfile) to create the  web-app application, works in the same way as for **articles container**. Inside the Dockerfile we use the same multiple stages to build the container image as in the for the **articles container**.
+The Web app [Dockerfile](../web-app-vuejs/Dockerfile) to create the  Web app application, works in the same way as for **articles container**. Inside the Dockerfile we use the same multiple stages to build the container image as in the for the **articles container**.
 
 Here is **build environment container** based on the alpine 8 image from the [dockerhub](https://hub.docker.com/_/alpine).
 
@@ -154,7 +154,7 @@ In the following image you can see the deployed **Services**:
 
 ---
 
-#### 1.3.1 Web-app
+#### 1.3.1 Web app
 
 * Service and Deployment configuration for the micro service
 
@@ -356,13 +356,13 @@ data:
 
 ### 1.4 Ingress configuration
 
-You can see in the diagram below, we are using a Ingress from Istio to provide access from the internet to the microservice ****Web API**** and the **web-app**.
+You can see in the diagram below, we are using a Ingress from Istio to provide access from the internet to the microservice ****Web API**** and the **Web app**.
 
 ![cns-container-deployment-02](images/cns-container-deployment-02.png)
 
 The important topic of the following yaml configuration is the matching (**"match"**) of **URIs** and **services**.
 
-With the configuation of the **kind: VirtualService** for the [Ingress gateway](https://kubernetes.io/docs/concepts/services-networking/ingress/) we define the routing access from the internet over the services to the microservice **web-api** and the **web-app**. 
+With the configuation of the **kind: VirtualService** for the [Ingress gateway](https://kubernetes.io/docs/concepts/services-networking/ingress/) we define the routing access from the internet over the services to the microservice **web-api** and the **Web app**. 
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3

@@ -13,11 +13,11 @@ There are several different ways to build resilient service meshes with Istio, f
 
 The Istio functionality for resilient cloud-native applications is generic and independent from the implementation of the microservices. However in some cases the **handling of failures depends on the business logic** of the applications which is why this needs to be implemented in the microservices.
 
-The Web-app frontend implemented in Vue.js displays articles. The service ‘**Web API**’ implements the **BFF** (backend for frontend) pattern. The web application accesses the ‘**Web API**’ service which invokes both the ‘articles’ and ‘authors’ services.
+The **Web app** frontend implemented in Vue.js displays articles. The service ‘**Web API**’ implements the **BFF** (backend for frontend) pattern. The web application accesses the ‘**Web API**’ service which invokes both the ‘articles’ and ‘authors’ services.
 
 The initial page shows the five most recent articles including information about the authors.
 
-When we **delete** the authors service inside Kubernetes, the web-app will still display five articles, but this time without the information about the authors. While the web application cannot display the complete information anymore, in this simple scenario it still makes sense to display the titles and links of the articles. 
+When we **delete** the authors service inside Kubernetes, the **Web app** will still display five articles, but this time without the information about the authors. While the web application cannot display the complete information anymore, in this simple scenario it still makes sense to display the titles and links of the articles. 
 
 | With the author service   |  When the author service is deleted|
 | --- | --- |    
