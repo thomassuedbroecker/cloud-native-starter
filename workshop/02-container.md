@@ -430,7 +430,7 @@ Invoke the curl command which is displayed as output of 'scripts/show-urls.sh' t
 $ ./iks-scripts/show-urls.sh
 ```
 
-A sample result for the script:
+A sample output result for the ```show-urls.sh``` script:
 
 ```sh
 019-05-16 15:09:51 articles
