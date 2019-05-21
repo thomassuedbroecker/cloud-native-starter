@@ -47,7 +47,7 @@ COPY src /usr/src/app/src
 COPY pom.xml /usr/src/app
 ```
 
-Then we build the executable **articles.war** file inside the **build container** image, here we use the maven command **mvn -f pom.xml clean package** to build the [war](https://en.wikipedia.org/wiki/WAR_(file_format)) file.
+Then we build the executable **articles.war** file inside the **build container** image. Here we use the maven command **mvn -f pom.xml clean package** to build the [war](https://en.wikipedia.org/wiki/WAR_(file_format)) file.
 
 ```Dockerfile
 RUN mvn -f /usr/src/app/pom.xml clean package
@@ -55,8 +55,8 @@ RUN mvn -f /usr/src/app/pom.xml clean package
 
 * **Production container**
 
-In the following Dockerfile extract, we create the **production container** based on the **openliberty** with **microProfile2**.
-Then we install the  installed **zipkintracer** for later usage.
+In the following Dockerfile extract, we do create the **production container** based on the **openliberty** with **microProfile2**.
+Then we install the **zipkintracer** for later usage.
 
 ```Dockerfile
 FROM openliberty/open-liberty:microProfile2-java8-openj9
