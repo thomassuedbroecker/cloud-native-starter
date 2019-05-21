@@ -33,9 +33,13 @@ Later we can find for each container a Pod inside Kubernetes, as you can see in 
 
 ![ibm-cloud-pods](images/ibm-cloud-pods.png)
 
+---
+
 ### 1.1 Java container images
 
 The **articles** and the **authors** microservices are written in Java and they are running on [OpenLiberty](https://openliberty.io/).
+
+---
 
 #### 1.1.1 Articles container image definition
 
@@ -82,13 +86,19 @@ COPY --from=BUILD /usr/src/app/target/articles.war /config/dropins/
 ```
 If this last step is done, then the container is ready to be deployed to Kubernetes.
 
+---
+
 #### 1.1.2 Web-api-V1 container image definition
 
 The web-api [Dockerfile](../web-apo-java-jee/Dockerfile.nojava) to create the web-api service, works in the same way as we defined for the **articles container** before. Inside the Dockerfile we use the same multiple stages to build the container image as in the for the **articles container**. 
 
+---
+
 ### 1.2. Node.JS container images
 
 The **web-app** and the **authors** services are written in Node.JS.
+
+---
 
 #### 1.2.1 Web-app container image definition
 
@@ -143,6 +153,7 @@ CMD ["npm", "start"]
 ```
 If last step is executed of the **Dockerfile** the container is ready to be deployed to Kubernetes.
 
+---
 
 ### 1.3 YAML Configurations for the deployment to Kubernetes
 
@@ -151,6 +162,8 @@ Now we examine the deployment yamls to deploy the container to **Pods** and crea
 In the following image you can see the deployed **Services**:
 
 ![ibm-cloud-services](images/ibm-cloud-services.png)
+
+---
 
 #### 1.3.1 Web-app
 
@@ -198,6 +211,8 @@ spec:
 
 ```
 
+---
+
 #### 1.3.2 Web-api-V1
 
 The deployment yaml for the Web-Api-V1. Here you can inspect the **Service** and the **Deployment** definition.
@@ -231,6 +246,8 @@ spec:
       restartPolicy: Always
 ---
 ```
+
+---
 
 #### 1.3.3 Articles
 
@@ -321,6 +338,8 @@ data:
 ---
 ```
 
+---
+
 ### 1.4 Ingress configuration
 
 You can see in the diagram below, we are using a Ingress from Istio to provide access from the internet to the microservice **web-api** and the **web-app**.
@@ -378,6 +397,8 @@ spec:
 ---
 ```
 
+---
+
 ### 1.5 Lab - Deploy the containers to the Kubernetes Cluster
 
 ### 1.5.1 Gain access to your cluster
@@ -405,6 +426,8 @@ export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/hands
 ```sh
 kubectl get nodes
 ```
+
+---
 
 ### 1.5.2 Build and deploy the container
 
