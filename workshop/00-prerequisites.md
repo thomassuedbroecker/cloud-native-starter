@@ -69,6 +69,8 @@ This account type provides free access to a subset of IBM Cloud resources.
 Lite accounts **do not need a credit-card** to sign up or expire after a set time period, i.e. 30 days.
 Developers using lite accounts are restricted to use Kubernetes lite / free cluster for which they can use the provided promo codes.
 
+---
+
 ### 3.2 Insert promo code <a name="part-SETUP-01"></a>
 [<home>](#home)
 
@@ -88,6 +90,8 @@ Follow the steps listed under the [Install from shell](https://cloud.ibm.com/doc
 - Windows (Powershell): `iex(New-Object Net.WebClient).DownloadString('https://clis.ng.bluemix.net/install/powershell')`
 
 [Documentation install CLI](images/docs.gif)
+
+---
 
 ### 3.4 Get IBM platform key <a name="part-SETUP-08"></a>
 
@@ -131,6 +135,7 @@ IBM_CLOUD_CLUSTER_REGION=us-south
 CLUSTER_NAME=cloud-native
 REGISTRY_NAMESPACE=cloud-native
 ```
+---
 
 ### 3.5 Setup the IBM Cloud Kubernetes CLI <a name="part-SETUP-03"></a>
 [<home>](#home)
@@ -156,10 +161,14 @@ $ ibmcloud ks region-set us-south
 
 All subsequent CLI commands will operate in that region.
 
+---
+
 ### 3.6 Create a IBM Cloud Kubernetes Service and add ISTIO<a name="part-SETUP-04"></a>
 [<home>](#home)
 
 For the following steps we use bash scripts from the github project.
+
+---
 
 #### 3.6.1 Automated creation of a Cluster with ISTIO for the workshop
 
@@ -255,11 +264,14 @@ You can find the created namespace here:
 
 ![ibm-cloud-registry](images/ibm-cloud-registry.png)
 
+---
 
 #### 3.6.2  Manual creation of a Cluster (optional)
 You can create IBM Cloud Kubernetes cluster (lite ) using the [IBM Cloud console](https://cloud.ibm.com/containers-kubernetes/catalog/cluster/create) or using the CLI. A lite / free cluster is sufficient for this workshop.
 
 _NOTE:_ When you're using the CLI or the browser Cloud console, always make sure you're **viewing the correct region**, as your resources will only be visible in its region.
+
+---
 
 ### 3.7 Accessing the Kubernetes cluster manually (optional) <a name="part-SETUP-05"></a>
 
@@ -302,13 +314,12 @@ View the currently available services, deployments, and pods:
 $ kubectl get svc,deploy,po --all-namespaces
 ```
 
+---
+
 ### 3.8 Access the IBM Cloud Container Registry manually (optional) <a name="part-SETUP-06"></a>
 [<home>](#home)
 
-In order to build and distribute Container images, we need a Container registry.
-We can use the IBM Container Registry which can be accessed right away from our Kubernetes cluster.
-
-We log into the Container Registry service via the `ibmcloud` CLI and obtain the information about our registry:
+In order to build and distribute Container images, we need a Container registry. We can use the **IBM Container Registry** which can be accessed right away from our Kubernetes cluster. We log into the Container Registry service via the `ibmcloud` CLI and obtain the information about our registry:
 
 ```sh
 $ ibmcloud cr login
@@ -317,7 +328,7 @@ $ ibmcloud cr region
 You are targeting region 'us-south', the registry is 'You are targeting region 'us-south', the registry is 'us.icr.io'.'.
 ```
 
-We will the CLI inside bash script to create a unique namespace in the Container Registry service (`cr`) for our workshop.
+---
 
 Now, we've finished all **preparations**.
 Let's get started with the [introduction](01-introduction.md).
