@@ -7,7 +7,7 @@ In this hands-on workshop, we will see, how to develop cloud-native microservice
 We will use for the deployed the Docker CLI and run the microservices on Kubernetes, and Istio.
 We'll examine the basics of modern cloud native Java micro-services development with container, REST APIS, traffic management, and resiliency.
 
-When building cloud-native applications, developers are challenged to figure out how to address topics like **building and deploying Containers**, **traffic routing**, **resiliency** and **defining and exposing REST APIs**. Fortunately most of these new challenges are handled by the orchestration platform Kubernetes and the service mesh Istio. This functionality works generically for microservices, regardless of the language they are implemented in and without changes to the application logic.
+When building cloud-native applications, developers are challenged to figure out how to address topics like **building and deploying Containers**, **traffic routing**, **resiliency** and **defining and exposing REST APIs**. Fortunately, most of these new challenges are handled by the orchestration platform Kubernetes and the service mesh Istio. This functionality works generically for microservices, regardless of the language they are implemented in and without changes to the application logic.
 
 However, **some functionality can not be covered by orchestration platforms** and service meshes. Instead it must be handled in the business logic of the microservices, for example application specific failover functionality, metrics, and fine-grained authorizations.
 
@@ -15,13 +15,11 @@ Java developers can leverage **Eclipse MicroProfile** to implement this function
 
 ## 1. The "Cloud Native Starter" application
 
-With the **"Cloud Native Starter"** application you can **show**, **add** and **remove** articles with authors information.
-
-The application is built on microservices with one frontend web application.
+With the **"Cloud Native Starter"** application you can **show**, **add** and **remove** articles with authors information. The application is built on microservices with one frontend web application.
 
 ![architecture](images/architecture.png)
 
-* **Web app** Is hosted on a Nginx server that provides a VUE **Web app** to the browser
+* **Web app** Is hosted on a [Nginx server](https://nginx.org/en/) that provides a [VUE](https://vuejs.org/) **Web app** to the browser
 * **Web-API** is accessed by the Vue app and provides a list of blog articles and their authors
 * **Articles** holds the list of blog articles
 * **Authors** holds the blog authors details (blog URL and Twitter handle)
@@ -34,7 +32,7 @@ The advantage of using Kubernetes and Istio for features like traffic management
 
 * **Use open-source components for the core services of the application only**
 
-Pretty much everyone loves open source. For example the Java stack leverages OpenJ9, OpenJDK from AdoptOpenJDK, OpenLiberty and MicroProfile. Kubernetes and Istio are obviously open source projects as well.
+Pretty much everyone loves open source. For example the Java stack leverages [OpenJ9](https://www.eclipse.org/openj9/), [OpenJDK](https://openjdk.java.net/) from [AdoptOpenJDK](https://adoptopenjdk.net/), [OpenLiberty](https://openliberty.io/) and [MicroProfile](https://microprofile.io/). [Kubernetes](https://kubernetes.io/) and [Istio](https://istio.io/) are obviously open source projects as well.
 
 * **Make the first time experience as simple as possible**
 
