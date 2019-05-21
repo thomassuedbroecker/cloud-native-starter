@@ -78,7 +78,7 @@ public class AuthorsServiceDataAccess {
 }
 ```
 
-In order to use the **RESTClientBuilder** you need to understand the concept of the [ResponseExceptionMapper](https://download.eclipse.org/microprofile/microprofile-rest-client-1.0/apidocs/index.html?org/eclipse/microprofile/rest/client/ext/ResponseExceptionMapper.html). This mapper is used to translate certain **HTTP response error codes** back into **Java exceptions**.
+In order to use the **RESTClientBuilder** we need to understand the concept of the [ResponseExceptionMapper](https://download.eclipse.org/microprofile/microprofile-rest-client-1.0/apidocs/index.html?org/eclipse/microprofile/rest/client/ext/ResponseExceptionMapper.html). This mapper is used to translate certain **HTTP response error codes** back into **Java exceptions**.
 
 ```java
 import org.eclipse.microprofile.rest.client.ext.ResponseExceptionMapper;
@@ -126,9 +126,8 @@ for (int index = 0; index < coreArticles.size(); index++) {
 
 ### 1.3 Documentation of the REST API with Open API
 
-The **MicroProfile** supports also the definition REST APIs via [JAX-RS](https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services).
-
-We use MircoProfile to create a **Open API Explorer**, we can use for documentation and testing of the REST API of our microservice.
+The **MicroProfile** supports also the definition REST APIs via [JAX-RS](https://en.wikipedia.org/wiki/Java_API_for_RESTful_Web_Services). We use MircoProfile to create a **Open API** documentation and api explorer. 
+We the **Open API** can use for documentation and testing of the REST API of our microservice.
 
 Inside the class [articles](articles-java-jee/src/main/java/com/ibm/articles/apis/) we use the profiles **@GET**, **@Path** and others,  to expose and document REST API with the MicroProfile during writting of the code with **Open API**.
 
