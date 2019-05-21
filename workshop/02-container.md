@@ -380,14 +380,38 @@ spec:
 
 ### 1.5 Lab - Deploy the containers to the Kubernetes Cluster
 
-In the following bash scripts we use **ibmcloud** and **kubectl** commands to interact with IBM Cloud, IBM Container Registry Service and the IBM Kubernetes service in IBM Cloud.
+In the following bash scripts we use **ibmcloud** and **kubectl** commands to interact with IBM Cloud, IBM Container Registry Service and the IBM Kubernetes service in IBM Cloud. With **sed** and **awk** we extract the output from the comandline.
 
 To build the containers in IBM Cloud we do **not** use  Docker commands, because the container will be built inside the IBM Container Registry with the **ibmcloud cr build** command.
+
+* Sample command:
 
 ```sh
 ibmcloud cr build -f Dockerfile.nojava --tag $REGISTRY/$REGISTRY_NAMESPACE/articles:1 .
 ```
 
+To deploy the container images to Kubernetes, we use the needed the yaml configuration files with the **kubectl apply** command.
+
+* Sample command:
+
+```sh
+kubectl apply -f deployment/IKS-kubernetes.yaml
+```
+
+With **sed** (https://en.wikipedia.org/wiki/Sed_(Unix) ) and **awk**( https://en.wikipedia.org/wiki/AWK) we extract the output of the command line executions and put them into variables  or we write the information into files, to use them later as input for the next commands inside the bash script.
+
+* Sample command writing registry information into a yaml file with **sed**.
+
+```sh
+  sed "s+articles:1+$REGISTRY/$REGISTRY_NAMESPACE/articles:1+g" deployment/kubernetes.yaml
+```
+
+* Sample command extract output information for a clusterip into a bash variable, with **awk**.
+
+```sh
+clusterip=$(ibmcloud ks workers --cluster $CLUSTER_NAME | awk '/Ready/ {print $2;exit;}')
+  nodeport=$(kubectl get svc articles --output 'jsonpath={.spec.ports[*].nodePort}')
+```
 
 Invoke following bashscripts to deploy the microservices:
 
