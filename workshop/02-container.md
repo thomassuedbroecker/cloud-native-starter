@@ -89,9 +89,9 @@ The **Web app** and the **authors** services are written in Node.JS.
 
 #### 1.2.1 Web app container image definition
 
-The Web app [Dockerfile](../web-app-vuejs/Dockerfile) to create the  Web app application, works in the same way as for **articles container**. Inside the Dockerfile we use the same multiple stages to build the container image as in the for the **articles container**.
+The Web app [Dockerfile](../web-app-vuejs/Dockerfile) to create the  Web app application, works in the same way as for **articles container**. Inside the Dockerfile we use the same two stages to build the container image.
 
-Here is **build environment container** based on the alpine 8 image from the [dockerhub](https://hub.docker.com/_/alpine).
+Here you can see the **build environment container** based on the alpine 8 image from the [dockerhub](https://hub.docker.com/_/alpine).
 
 ```Dockerfile
 FROM node:8-alpine as BUILD
@@ -106,7 +106,7 @@ RUN yarn install
 RUN yarn build
 ```
 
-The **production container** is based on [nginx](https://hub.docker.com/_/nginx).
+The **production container** is based on the [nginx](https://hub.docker.com/_/nginx) container.
 
 ```Dockerfile
 FROM nginx:latest
@@ -114,7 +114,7 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=BUILD /usr/src/app/dist /usr/share/nginx/html
 ```
 
-If last step is executed of the **Dockerfile** the container is ready to be deployed to Kubernetes.
+If last step of the **Dockerfile** is executed, the container is ready to be deployed to Kubernetes.
 
 ---
 
