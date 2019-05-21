@@ -462,7 +462,7 @@ In the following bash scripts we use **ibmcloud** and **kubectl** commands to in
 
 To build the containers in IBM Cloud we do **not** use Docker commands, because the container will be built inside the **IBM Container Registry** with the ```ibmcloud cr build``` command.
 
-* Sample command:
+* Sample command to upload and build the container inside the **IBM Cloud Registry**
 
 ```sh
 ibmcloud cr build -f Dockerfile.nojava --tag $REGISTRY/$REGISTRY_NAMESPACE/articles:1 .
@@ -470,7 +470,7 @@ ibmcloud cr build -f Dockerfile.nojava --tag $REGISTRY/$REGISTRY_NAMESPACE/artic
 
 To deploy the container images to Kubernetes, we use to apply the needed yaml configuration files to Kubernetes, with the **kubectl apply** command.
 
-* Sample command:
+* Sample command to deploy the container to the Kubernetes Cluster
 
 ```sh
 kubectl apply -f deployment/IKS-kubernetes.yaml
