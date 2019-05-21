@@ -164,9 +164,37 @@ The following image shows the result, a automatically created **Open API explore
 
 ## 2. Lab - Defining and exposing REST APIs
 
+### 2.1 Gain access to your cluster
+
+1. Log in to your IBM Cloud account. Include the --sso option if using a federated ID.
+
+```sh
+$ ibmcloud login -a https://cloud.ibm.com -r us-south -g default
+```
+
+2. Download the kubeconfig files for your cluster.
+
+```sh
+$ ibmcloud ks cluster-config --cluster cloud-native
+```
+
+3. Set the KUBECONFIG environment variable. Copy the output from the previous command and paste it in your terminal. The command output looks similar to the following example:
+
+```sh
+export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/hands-on-verification/kube-config-mil01-cloud-native.yml
+```
+
+4. Verify that you can connect to your cluster by listing your worker nodes.
+
+```sh
+kubectl get nod
+```
+
+### 2.2 Defining and exposing REST APIs
+
 In the following bash scripts we use **ibmcloud** and **kubectl** commands to interact with IBM Cloud, IBM Container Registry Service and the IBM Kubernetes service in IBM Cloud. With **sed** and **awk** we extract the output from the comandline.
 
-Invoke the following commands to set up the lab. Skip the commands you've already executed.
+1. Invoke the following commands to set up the lab. Skip the commands you've already executed.
 
 ```sh
 $ cd $PROJECT_HOME
@@ -184,7 +212,7 @@ The sequence diagram below shows a simplified view, how the **‘Authors’** RE
 
 ![rest-api-sequencediagram](images/rest-api-sequencediagram.png)
 
-### 2.1 CURL
+### 2.2 Using CURL
 
 Now we invoke the following curl command of the **'web-api'** microservice. The IP is displayed as output of 'scripts/show-urls.sh'.
 
@@ -198,11 +226,13 @@ curl http://159.122.172.162:31380/web-api/v1/getmultiple
 [{"id":"1557993525215","title":"Debugging Microservices running in Kubernetes","url":"http://heidloff.net/article/debugging-microservices-kubernetes","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"},{"id":"1557993525210","title":"Dockerizing Java MicroProfile Applications","url":"http://heidloff.net/article/dockerizing-container-java-microprofile","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"},{"id":"1557993525204","title":"Install Istio and Kiali on IBM Cloud or Minikube","url":"https://haralduebele.blog/2019/02/22/install-istio-and-kiali-on-ibm-cloud-or-minikube/","authorName":"Harald Uebele","authorBlog":"https://haralduebele.blog","authorTwitter":"@harald_u"},{"id":"1557993525199","title":"Three awesome TensorFlow.js Models for Visual Recognition","url":"http://heidloff.net/article/tensorflowjs-visual-recognition","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"},{"id":"1557993525194","title":"Blue Cloud Mirror Architecture Diagrams","url":"http://heidloff.net/article/blue-cloud-mirror-architecture-diagrams","authorName":"Niklas Heidloff","authorBlog":"http://heidloff.net","authorTwitter":"@nheidloff"}]
 ```
 
-### 2.2 Open API explorer
+### 2.3 Using the Open API explorer
 
 We can use also the **Open API explorer** to call the operation.
 
 ![rest-api-open-api](images/rest-api-open-api.gif)
+
+---
 
 Now, we've finished the **Defining and exposing REST APIs**.
 Let's get started with the [Lab - Using traffic management in Kubernetes](04-traffic-management.md).

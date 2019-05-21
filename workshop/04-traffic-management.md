@@ -105,6 +105,38 @@ We can verify the traffic in Kiali:
 In order to demonstrate traffic routing you can run the following commands. 
 **20 %** of the web-api API request to read articles will now return 10 articles as defined in version 2 and **80 %** of the requests are still showing only 5 articles which is version 1. 
 
+### 1.7.1 Gain access to your cluster
+
+1. Log in to your IBM Cloud account. Include the --sso option if using a federated ID.
+
+```sh
+$ ibmcloud login -a https://cloud.ibm.com -r us-south -g default
+```
+
+2. Download the kubeconfig files for your cluster.
+
+```sh
+$ ibmcloud ks cluster-config --cluster cloud-native
+```
+
+3. Set the KUBECONFIG environment variable. Copy the output from the previous command and paste it in your terminal. The command output looks similar to the following example:
+
+```sh
+export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/hands-on-verification/kube-config-mil01-cloud-native.yml
+```
+
+4. Verify that you can connect to your cluster by listing your worker nodes.
+
+```sh
+kubectl get nodes
+```
+
+### 1.7.2 Traffic Routing
+
+In the following bash scripts we use **ibmcloud** and **kubectl** commands to interact with IBM Cloud, IBM Container Registry Service and the IBM Kubernetes service in IBM Cloud. With **sed** and **awk** we extract the output from the comandline.
+
+1. Execute following script to setup
+
 ```
 $ cd $PROJECT_HOME
 $ iks-scripts/check-prerequisites.sh
@@ -117,6 +149,8 @@ $ iks-scripts/deploy-web-api-java-jee-v2.sh
 $ iks-scripts/deploy-istio-ingress-v1-v2.sh
 $ iks-scripts/show-urls.sh
 ```
+
+---
 
 Now, we've finished the **Using traffic management in Kubernetes**.
 Let's get started with the [Lab - Resiliency](05-resiliency.md).
