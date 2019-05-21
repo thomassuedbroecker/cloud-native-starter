@@ -102,6 +102,8 @@ kubectl get nodes
 
 ### 2.2 Setup and test the resiliency
 
+In the following bash scripts we use **ibmcloud** and **kubectl** commands to interact with IBM Cloud, IBM Container Registry Service and the IBM Kubernetes service in IBM Cloud. With **sed** and **awk** we extract the output from the comandline.
+
 1. In order to demonstrate resiliency you can run the following commands to create a working set of services:
 
 ```sh

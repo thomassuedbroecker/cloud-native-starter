@@ -380,6 +380,34 @@ spec:
 
 ### 1.5 Lab - Deploy the containers to the Kubernetes Cluster
 
+### 1.5.1 Gain access to your cluster
+
+1. Log in to your IBM Cloud account. Include the --sso option if using a federated ID.
+
+```sh
+$ ibmcloud login -a https://cloud.ibm.com -r us-south -g default
+```
+
+2. Download the kubeconfig files for your cluster.
+
+```sh
+$ ibmcloud ks cluster-config --cluster cloud-native
+```
+
+3. Set the KUBECONFIG environment variable. Copy the output from the previous command and paste it in your terminal. The command output looks similar to the following example:
+
+```sh
+export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/hands-on-verification/kube-config-mil01-cloud-native.yml
+```
+
+4. Verify that you can connect to your cluster by listing your worker nodes.
+
+```sh
+kubectl get nodes
+```
+
+### 1.5.2 Build and deploy the container
+
 In the following bash scripts we use **ibmcloud** and **kubectl** commands to interact with IBM Cloud, IBM Container Registry Service and the IBM Kubernetes service in IBM Cloud. With **sed** and **awk** we extract the output from the comandline.
 
 To build the containers in IBM Cloud we do **not** use  Docker commands, because the container will be built inside the IBM Container Registry with the ```ibmcloud cr build``` command.
@@ -413,35 +441,7 @@ clusterip=$(ibmcloud ks workers --cluster $CLUSTER_NAME | awk '/Ready/ {print $2
   nodeport=$(kubectl get svc articles --output 'jsonpath={.spec.ports[*].nodePort}')
 ```
 
-### 1.5.1 Gain access to your cluster
-
-1. Log in to your IBM Cloud account. Include the --sso option if using a federated ID.
-
-```sh
-$ ibmcloud login -a https://cloud.ibm.com -r us-south -g default
-```
-
-2. Download the kubeconfig files for your cluster.
-
-```sh
-$ ibmcloud ks cluster-config --cluster cloud-native
-```
-
-3. Set the KUBECONFIG environment variable. Copy the output from the previous command and paste it in your terminal. The command output looks similar to the following example:
-
-```sh
-export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/hands-on-verification/kube-config-mil01-cloud-native.yml
-```
-
-4. Verify that you can connect to your cluster by listing your worker nodes.
-
-```sh
-kubectl get nodes
-```
-
-### 1.5.2 Build and deploy the container
-
-1. Invoke following bash scripts to build and deploy the microservices:
+1. Invoke following bash scripts to build and deploy the microservices to Kubernetes:
 
 ```sh
 $ ./iks-scripts/deploy-articles-java-jee.sh
@@ -478,7 +478,7 @@ A sample output result for the ```show-urls.sh``` script:
 2019-05-16 15:09:52 ------------------------------------------------------------------------------------
 ```
 
-### 1.5.2 Verify the running container 
+### 1.5.2 Verify the running services 
 
 For the next steps use the results ```show-urls.sh``` scripts.
 
