@@ -382,7 +382,7 @@ spec:
 
 In the following bash scripts we use **ibmcloud** and **kubectl** commands to interact with IBM Cloud, IBM Container Registry Service and the IBM Kubernetes service in IBM Cloud. With **sed** and **awk** we extract the output from the comandline.
 
-To build the containers in IBM Cloud we do **not** use  Docker commands, because the container will be built inside the IBM Container Registry with the **ibmcloud cr build** command.
+To build the containers in IBM Cloud we do **not** use  Docker commands, because the container will be built inside the IBM Container Registry with the ```ibmcloud cr build``` command.
 
 * Sample command:
 
