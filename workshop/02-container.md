@@ -262,7 +262,7 @@ Microservices that are implemented with Java EE can leverage MicroProfile config
 
 The **‘articles’** microservice uses configuration to define whether or not to **create ten articles** the first time it is invoked. In the yaml file an environment variable pointing to a **ConfigMap** is defined.
 
-In our sample [here](articles-java-jee/deployment/kubernetes.yaml#L35) and [there](articles-java-jee/deployment/kubernetes.yaml#L54) 
+In our sample you can find the [environment](articles-java-jee/deployment/kubernetes.yaml#L35) and [ConfigMap](articles-java-jee/deployment/kubernetes.yaml#L54) definition.
 
 ```yaml
 kind: ConfigMap
