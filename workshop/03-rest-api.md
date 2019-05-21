@@ -101,6 +101,8 @@ public class ExceptionMapperAuthors implements ResponseExceptionMapper<Nonexiste
 }
 ```
 
+---
+
 ### 1.2 Using the REST call with JSON data
 
 The following code shows how the **REST API** is used to get the Author information inside the [Service class](../web-api-java-jee/src/main/java/com/ibm/webapi/business/Service.java).
@@ -123,6 +125,8 @@ for (int index = 0; index < coreArticles.size(); index++) {
    ...
 } 
 ```
+
+---
 
 ### 1.3 Documentation of the REST API with Open API
 
@@ -159,6 +163,8 @@ The following image shows an automatically created **Open API explorer** for the
 
 ![cns-container-web-api-v1-04.png](images/cns-container-web-api-v1-04.png)
 
+---
+
 ## 2. Lab - Defining and exposing REST APIs
 
 ### 2.1 Gain access to your cluster
@@ -187,6 +193,8 @@ export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/cloud
 kubectl get nod
 ```
 
+---
+
 ### 2.2 Defining and exposing REST APIs
 
 In the following bash scripts we use **ibmcloud** and **kubectl** commands to interact with **IBM Cloud Platform**, **IBM Container Registry Service** and the **IBM Kubernetes Service**. With **sed** and **awk** we extract the output from the comandline.
@@ -208,6 +216,8 @@ Now we use the ```‘web-api/v1/getmultiple‘``` endpoint with the **CURL comma
 The sequence diagram below shows once again the simplified view, how the **‘Authors’** REST API is used to get all articles in a JSON format.
 
 ![rest-api-sequencediagram](images/rest-api-sequencediagram.png)
+
+---
 
 ### 2.2 Using CURL
 

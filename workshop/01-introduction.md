@@ -13,6 +13,8 @@ However, **some functionality can not be covered by orchestration platforms** an
 
 Java developers can leverage **Eclipse MicroProfile** to implement this functionality. MicroProfile is an extension to Java EE (Enterprise Edition) to build microservices-based architectures and it complements Kubernetes and Istio capabilities. In addition to the application specific logic which Kubernetes and Istio cannot handle, it also comes with convenience functionality that you typically need when developing microservices, for example mechanisms to invoke REST APIs and functionality to implement REST APIs including their documentation.
 
+---
+
 ## 1. The "Cloud Native Starter" application
 
 With the **"Cloud Native Starter"** application you can **show**, **add** and **remove** articles with authors information. The application is built on microservices with one frontend web application.
@@ -42,6 +44,8 @@ The example application shows several features working together, see below for d
 
 Fortunately, this is one of the main advantages of Kubernetes since you can run workloads on-premises, hybrid or public cloud infrastructures. The repo has instructions how to deploy the application to Minikube and to the managed IBM Cloud Kubernetes Service.
 
+---
+
 ## 2. **Microservices and Web app**
 
 These are the responsibilities of the different microservices and the Web app.
@@ -52,12 +56,16 @@ All mircoservices in this project built on Java are organized in following packa
 * business
 * data
 
+---
+
 ### 2.1 **Web app**
 
 The Web app is the UI to display the given entries.
 Here you can see a picture of the **Web app** UI.
 
 ![cns-introduction-01](images/cns-introduction-01.png)
+
+---
 
 ### 2.2 ****Web API****
 
@@ -69,6 +77,7 @@ The following image contains a sample instance of the **Web API** using the **Op
 
 ![cns-container-web-api-v1-04.png](images/cns-container-web-api-v1-04.png)
 
+---
 
 ### 2.3 **Articles microservice**
 
@@ -77,6 +86,8 @@ The objective of this microservice is to **add** and **get** article information
 In the image blow you can see a sample instance of the Articles,  using the **Open API explorer**.
 
 ![cns-container-articels-service-03](images/cns-container-articels-service-03.png)
+
+---
 
 ### 2.4 **Authors microservice**
 
@@ -106,6 +117,8 @@ To ensure that distributed tracing it supported [zipkintracer](https://github.co
 
 _Note:_ Distributed tracing is not in scope of current workshop material.
 
+---
+
 ### 3.2 MicroProfile
 
 For cloud-native applications Kubernetes and Istio deliver a lot of important functionality out of the box, for example to ensure **resiliency** and **scalability**. This functionality works generically for microservices, no matter in which language they have been implemented and independent from the application logic.
@@ -116,7 +129,6 @@ That’s why we use **Eclipse MicroProfile**, which is an extension to JavaEE to
 
 Now, we've finished the **introduction**.
 Let's get started with the [Lab - Building and deploying Containers](02-container.md).
-
 
 ---
 

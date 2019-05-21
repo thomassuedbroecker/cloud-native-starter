@@ -9,7 +9,7 @@ We will use following IBM Cloud Services in this hands-on workshop.
 
 ![cns-basic-setup-01](images/cns-basic-setup-01.png)
 
-* [IBM Cloud Kubernetes Service](https://cloud.ibm.com/docs/containers?topic=containers-getting-started#getting-started) with a custom ISTIO installation
+* [IBM Cloud Kubernetes Service](https://cloud.ibm.com/docs/containers?topic=containers-getting-started#getting-started) with a custom **Istio** installation
 * [IBM Cloud Container Registry Service](https://cloud.ibm.com/docs/services/Registry?topic=registry-getting-started#getting-started)
 
 ## 2. Tools on your laptop
@@ -36,7 +36,7 @@ $ ./iks-scripts/check-prerequisites.sh
 
 ## 3. Setup IBM Cloud Kubernetes cluster<a name="home"></a>
 
-By default, deployment is in Dallas, USA (us-south). If you already have a lite cluster in Dallas, these scripts will not work because only one lite cluster is allowed.
+By default, deployment is in Dallas, USA (us-south). 
 
 1. [Register at IBM Cloud Account](#part-SETUP-00)
 2. [Insert promo code](#part-SETUP-01)
@@ -47,6 +47,9 @@ By default, deployment is in Dallas, USA (us-south). If you already have a lite 
 7. [Access the Kubernetes cluster manually (optional)](#part-SETUP-05)
 8. [Access the IBM Cloud Container Registry manually (optional)](#part-SETUP-06)
 
+_Note:_ If you already have a lite cluster in Dallas, some of these scripts will not work, because only **one** lite cluster is allowed.
+
+---
 
 ### 3.1 Register at IBM Cloud Account <a name="part-SETUP-00"></a>
 
@@ -60,7 +63,7 @@ Fill in the registration form and follow the link in the **validation email** wh
 
 [Login into IBM Cloud](https://ibm.biz/Bd2JHx) using the account credentials you have registered.
 
-NOTE: New IBM Cloud accounts set per default to the [lite account version](https://www.ibm.com/cloud/pricing).
+_NOTE:_ New IBM Cloud accounts set per default to the [lite account version](https://www.ibm.com/cloud/pricing).
 
 This account type provides free access to a subset of IBM Cloud resources.
 Lite accounts **do not need a credit-card** to sign up or expire after a set time period, i.e. 30 days.
