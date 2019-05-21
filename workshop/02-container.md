@@ -264,6 +264,8 @@ The **‘articles’** microservice uses configuration to define whether or not 
 
 In our sample you can find the [environment](articles-java-jee/deployment/kubernetes.yaml#L35) and [ConfigMap](articles-java-jee/deployment/kubernetes.yaml#L54) definition.
 
+* ConfigMap
+
 ```yaml
 kind: ConfigMap
 apiVersion: v1
@@ -273,6 +275,7 @@ data:
   samplescreation: CREATE
   inmemory: USE_IN_MEMORY_STORE
 ```
+* Environment
 
 ```yaml
   env:
