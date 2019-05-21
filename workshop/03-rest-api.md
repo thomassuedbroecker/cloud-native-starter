@@ -19,11 +19,11 @@ The sequence diagram below shows a simplified view how the **‘Authors’** RES
 
 ![rest-api-sequencediagram](images/rest-api-sequencediagram.png)
 
-In the simplified class diagram below you can see the major high level relations of the classes to implement the access to the **‘Authors’** REST Client to consunm JSON data. These classes make that easier to convert between the **JSON data** and **Java objects** in both directions for the developer.
+In the simplified class diagram below you can see the major high level relations of the classes to implement the access to the **‘Authors’** REST Client to consume JSON data. These classes make that easier to convert between the **JSON data** and **Java objects** in both directions for the developer.
 
 ![rest-api-classdiagram](images/rest-api-classdiagram.png)
 
-First you need to define the **interface** of the service you want to invoke. Here we use the [interface AuthorsService](../web-api-java-jee/src/main/java/com/ibm/webapi/data/AuthorsService.java). The method **‘getAuthor’** returns an object of the Author class.
+Let's get us a closer to the class implementations. First we need to define the **interface** of the service you want to invoke. Here we use the [interface AuthorsService](../web-api-java-jee/src/main/java/com/ibm/webapi/data/AuthorsService.java). The method **‘getAuthor’** returns an object of the Author class.
 
 ```java
 import javax.ws.rs.GET;
