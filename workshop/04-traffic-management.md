@@ -97,7 +97,7 @@ We can change the configuration for the VirtualService to distribute incoming tr
 
 We can verify the traffic in Kiali:
 
-![Sample distributed traffic](images/traffic-routing-deployment11.png)
+![Sample distributed traffic in Kiali](images/traffic-routing-deployment12.png)
 
 ---
 
