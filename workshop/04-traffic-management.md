@@ -147,7 +147,7 @@ $ iks-scripts/deploy-web-app-vuejs.sh
 ```
 _Optional:_ You can verify the new **Web app** version in Kubernetes.
 
-![New Web App Version](images/traffic-routing-deployment11.png)
+![New Web App Version](images/traffic-routing-deployment13.png)
 
 2. Install the two Versions on the **Web API**
 
