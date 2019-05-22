@@ -178,8 +178,9 @@ For the following steps we use bash scripts from the github project.
 
 #### 3.6.1 Automated creation of a Cluster with Istio for the workshop
 
-* create cluster
-Use following bash script to create a free Kubernetes Cluster on IBM Cloud:
+* **create cluster**
+
+1. Use following bash script to create a free Kubernetes Cluster on IBM Cloud:
 
 ```sh
 $ ./iks-scripts/create-iks-cluster.sh
@@ -190,7 +191,7 @@ You can verify the cluster in the IBM Cloud, as you can see in the image below:
 
 ![ibm-cloud-cluster](images/ibm-cloud-cluster.png)
 
-* add Istio
+* **add Istio**
 
 IBM Kubernetes Service has an option to install a managed Istio into a Kubernetes cluster. Unfortunately, the Kubernetes Lite Cluster we created in the previous step does not meet the hardware requirements for managed Istio. Hence we do a manual install of the Istio demo or evaluation version.
 
@@ -230,39 +231,40 @@ _Note:_ Please be aware that we do **not cover Windows** in these instructions!
     $ for i in install/kubernetes/helm/istio-init/files/crd*yaml; do kubectl apply -f $i; done
     ```
     
-    Wait a few seconds before issuing the next command:
+    a. Wait a few seconds before issuing the next command:
 
     ```sh
     $ kubectl apply -f install/kubernetes/istio-demo.yaml
     ```
 
-    Check that all pods are **running** or **completed** before continuing.
+    b. Check that all pods are **running** or **completed** before continuing.
 
     ```sh
     $ kubectl get pod -n istio-system
     ```
 
-    Enable automatic sidecar injection:
+    c. Enable automatic sidecar injection:
 
     ```sh
     $ kubectl label namespace default istio-injection=enabled
     ```
 
-    Once complete, the Kiali dashboard can be accessed with this command:
+    d. Once complete, the Kiali dashboard can be accessed with this command:
 
     ```sh
     $ kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=kiali -o jsonpath='{.items[0].metadata.name}') 20001:20001
     ```
-    Then open http://localhost:20001/kiali in your browser, logon with Username: admin, Password: admin
+    e. Then open http://localhost:20001/kiali in your browser, logon with Username: admin, Password: admin
 
     ![Kiali installation](images/istio-installation-02.png)
 
-    In the following image you can see the installed Istio on the Kubernetes cluster.
+    In the following image we can see the installed Istio on the Kubernetes cluster. We also notice the **Istio Ingress gateway** and the **Istio-System** namespace, we will use later.
     
     ![Istio installation](images/istio-installation-01.png)
 
-* Configure the IBM Cloud Container Registry:
-Ensure you are are in the project directory and execute the script.
+* **Configure the IBM Cloud Container Registry**
+
+1. Ensure you are are in the project directory and execute the script.
 
 ```sh
 $ cd ../..
