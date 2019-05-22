@@ -67,7 +67,7 @@ public List<Article> fallbackNoArticlesService() {
 ```
 ---
 
-## 2. Hands-on tasks -  - Resiliency
+## 2. Hands-on tasks - Resiliency
 
 Resiliency is part of the code: if an API call is not answered because of an error ar a timeout, the business logic must have a implementation of a fallback. 
 
@@ -142,6 +142,8 @@ $ ./scripts/delete-articles-java-jee.sh
 Refresh the browser and verify the remaining imformation. The details for the author are no longer avaiable. 
 
 ![resliency-02](images/resliency-02.png)
+
+---
 
 Now, we've finished the **Resiliency**.
 
