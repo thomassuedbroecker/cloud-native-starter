@@ -109,7 +109,7 @@ In the following bash scripts we use **ibmcloud** and **kubectl** commands to in
 
 ```sh
 $ ./iks-scripts/check-prerequisites.sh
-$ ./iks-scripts/delete-all.sh
+$ ./scripts/delete-all.sh
 $ ./iks-scripts/deploy-articles-java-jee.sh
 $ ./iks-scripts/deploy-web-api-java-jee.sh
 $ ./iks-scripts/deploy-authors-nodejs.sh
@@ -126,7 +126,7 @@ _Note:_ This is on of the links we get from the ```iks-scripts/show-urls.sh``` s
 2. Delete the **authors** service
 
 ```sh
-$ scripts/delete-authors-nodejs.sh
+$ ./scripts/delete-authors-nodejs.sh
 ```
 
 Refresh the browser and verify the remaining imformation. The details for the author are no longer avaiable. 
@@ -136,13 +136,12 @@ Refresh the browser and verify the remaining imformation. The details for the au
 3. Delete the **articles** service
 
 ```sh
-$ scripts/delete-web-api-java-jee.sh
+$ ./scripts/delete-articles-java-jee.sh
 ```
 
 Refresh the browser and verify the remaining imformation. The details for the author are no longer avaiable. 
 
 ![resliency-02](images/resliency-02.png)
-
 
 Now, we've finished the **Resiliency**.
 

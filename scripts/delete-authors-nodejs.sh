@@ -9,7 +9,7 @@ function _out() {
 }
 
 function setup() {
-
+  _out ${root_folder}
   _out Deleting authors-nodejs
   
   kubectl delete serviceentry cloudant --ignore-not-found
