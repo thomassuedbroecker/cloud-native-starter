@@ -54,7 +54,7 @@ These are the responsibilities of the different microservices and the Web app. T
 
 ### 2.1 **Web app**
 
-The Web app is the UI to display the given entries.
+The Web app is the UI to display the given entries and is built with **VUE**.
 Here you can see a picture of the **Web app** UI.
 
 ![cns-introduction-01](images/cns-introduction-01.png)
@@ -65,7 +65,7 @@ Here you can see a picture of the **Web app** UI.
 
 The objective of this microservice is to combine the information from the **articals** and the **authors** microservice. 
 
-The **Web API** is business related to be consumned by the VUE Web app. So the Web app can use just **one** REST API and doesn't need more APIs.
+The **Web API** is business related to be consumned by the **VUE** **Web app**. So the Web app can use just **one** REST API and doesn't need more APIs. The **Web API** service implements the **BFF** (backend for frontend pattern). 
 
 The following image contains a sample instance of the **Web API** using the **Open API explorer**.
 
