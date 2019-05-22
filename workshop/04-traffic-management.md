@@ -185,7 +185,7 @@ _Note:_ This is on of the links we get from the ```iks-scripts/show-urls.sh``` s
 
 8. Now we observe in Kiali the request routing for the **Web API** implementations. Refresh the browser of the **Web APP** and watch the Kiali graph. 
 
-   ![Kiali watch requests](images/traffic-routing-deployment15.png)
+   ![Kiali watch requests](images/traffic-routing-deployment15.gif)
 
 ---
 
