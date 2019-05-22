@@ -404,7 +404,7 @@ spec:
 
 ---
 
-### 1.5 Lab - Deploy the containers to the Kubernetes Cluster
+### 1.5 Hands-on tasks - Deploy the containers to the Kubernetes Cluster
 
 ### 1.5.1 Gain access to your cluster
 
@@ -471,12 +471,25 @@ clusterip=$(ibmcloud ks workers --cluster $CLUSTER_NAME | awk '/Ready/ {print $2
 
 1. Invoke following bash scripts to build and deploy the microservices to Kubernetes:
 
+**The scripts do automate following task:**
+
+* **Deleting** the **existing** container configuration in the Kubernetes Cluster
+* **Building** and **uploading** the container to the IBM Cloud Registry Service
+* **Extracting** configure the yaml configuration files for container in Kubernetes
+* **Installing** the container in Kubernetes
+
 ```sh
 $ ./iks-scripts/deploy-articles-java-jee.sh
 $ ./iks-scripts/deploy-authors-nodejs.sh
 $ ./iks-scripts/deploy-web-api-java-jee.sh
 $ ./iks-scripts/deploy-web-app-vuejs.sh
-$
+```
+
+**The script does automate following task:**
+
+* Deploying Istio Ingress definitions for web-api v1 only
+
+```sh
 $ ./scripts/deploy-istio-ingress-v1.sh
 ```
 

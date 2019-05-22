@@ -100,10 +100,11 @@ We can verify the traffic in Kiali:
 ![Sample distributed traffic](images/traffic-routing-deployment11.png)
 
 
-## 1.7 Lab - Traffic Routing
+## 1.7 Hands-on tasks - Traffic Routing
 
-In order to demonstrate traffic routing you can run the following commands. 
-**20 %** of the **Web API** API request to read articles will now return 10 articles as defined in version 2 and **80 %** of the requests are still showing only 5 articles which is version 1. 
+In order to demonstrate **traffic routing** we run the following  commands. 
+We will configure the **Cloud Native Starter** application that
+**20 %** of the **Web API** API request will return 10 articles as defined in version 2 and **80 %** of the requests are still showing only 5 articles which is version 1. 
 
 ### 1.7.1 Gain access to your cluster
 
@@ -119,7 +120,7 @@ $ ibmcloud login -a https://cloud.ibm.com -r us-south -g default
 $ ibmcloud ks cluster-config --cluster cloud-native
 ```
 
-3. Set the KUBECONFIG environment variable. Copy the output from the previous command and paste it in your terminal. The command output looks similar to the following example:
+3. Set the **KUBECONFIG** environment variable. Copy the output from the previous command and paste it in your terminal. The command output looks similar to the following example:
 
 ```sh
 export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/hands-on-verification/kube-config-mil01-cloud-native.yml
@@ -137,16 +138,26 @@ In the following bash scripts we use **ibmcloud** and **kubectl** commands to in
 
 1. Execute following script to setup
 
-```
+```sh
 $ cd $PROJECT_HOME
 $ iks-scripts/check-prerequisites.sh
 $ iks-scripts/delete-all.sh
 $ iks-scripts/deploy-articles-java-jee.sh
+````
+
+The script does automate following steps:
+* Deleting the existing container configuration in the Kubernetes Cluster
+* Building and uploading the container to the IBM Cloud Registry Service
+* Extracting configure the yaml configuration files for container in Kubernetes
+* Installing the container in Kubernetes
+
 $ iks-scripts/deploy-authors-nodejs.sh
 $ iks-scripts/deploy-web-app-vuejs.sh
 $ iks-scripts/deploy-web-api-java-jee.sh
 $ iks-scripts/deploy-web-api-java-jee-v2.sh
-$ iks-scripts/deploy-istio-ingress-v1-v2.sh
+$ 
+$ scripts/deploy-istio-ingress-v1-v2.sh
+$ 
 $ iks-scripts/show-urls.sh
 ```
 
