@@ -8,10 +8,11 @@ How to start with **cloud native application** in Kubernetes?
 
 We will cover the following four major topics and we learn along the given source code and bash scripts inside this github project.
 
+* Java development with MicroProfile 
 * Containers 
 * REST APIS
 * Traffic management 
-* Resiliency 
+* Resiliency
  
 Hands-on workshop lab instructions:
 
