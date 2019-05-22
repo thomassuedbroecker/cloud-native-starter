@@ -15,6 +15,7 @@ The project showcases the following functionality:
 * Authentication and authorization
 * Distributed tracing and logging
 * Monitoring and metrics
+* Persistence for Java microservices via JPA
 
 This diagram shows the key components:
 
@@ -39,6 +40,7 @@ This project demonstrates several Java EE and Istio key functionality.
 * [Health Checks](documentation/DemoHealthCheck.md)
 * [Configuration](documentation/DemoConfiguration.md)
 * [Distributed Logging and Monitoring](documentation/DemoDistributedLoggingMonitoring.md)
+* [Persistence with Java Persistence API (JPA)](documentation/DemoJPA.md)
 
 
 ### Setup
@@ -47,7 +49,7 @@ The sample application can be run locally on Minikube or on the IBM Cloud. The f
 
 If you would like to run the cloud native starter application on IBM Cloud Kubernetes Service, follow these [instructions](documentation/IKSDeployment.md). 
 
-Before the microservices can be installed, make sure you've set up Minikube 0.33.1 and Istio 1.1.1 correctly or follow these [instructions](documentation/SetupLocalEnvironment.md) to set up Minikube and Istio from scratch. This should not take longer than 30 minutes.
+Before the microservices can be installed, make sure you've set up Minikube and Istio correctly or follow these [instructions](documentation/SetupLocalEnvironment.md) to set up Minikube and Istio from scratch. This should not take longer than 30 minutes.
 
 The microservices can be installed via scripts. In addition to Minikube and Istio you need the following tools to be installed.
 
@@ -131,8 +133,8 @@ Here is a series of blog entries about this project:
 * [Configuring Microservices with MicroProfile and Kubernetes](http://heidloff.net/article/configuring-java-microservices-microprofile-kubernetes/)
 * [Authenticating Web Users with OpenID and JWT](http://heidloff.net/article/authenticating-web-users-openid-connect-jwt/)
 * [Authorization in Cloud-Native Applications via OpenID and Istio](http://heidloff.net/article/authentication-authorization-openid-connect-istio)
-* Authorization via MicroProfile
-* SQL PersistenceSQL via JPA and JDBC
+* [Authorization in Microservices with MicroProfile](http://heidloff.net/article/authorization-microservices-java-microprofile/)
+* [Persistence for Java Microservices in Kubernetes via JPA](http://heidloff.net/article/persistence-java-microservices-kubernetes-jpa/)
 
 Here is more information about Microservices, MicroProfile and Istio:
 

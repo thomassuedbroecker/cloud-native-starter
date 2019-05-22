@@ -51,6 +51,11 @@ IBMCLOUD_API_KEY=AbcD3fg7hIj65klMn9derHHb9zge5
 IBM_CLOUD_REGION=us-south
 CLUSTER_NAME=cloud-native
 REGISTRY_NAMESPACE=cloud-native
+IBM_CLOUD_CF_API=https://api.ng.bluemix.net
+IBM_CLOUD_CF_ORG=
+IBM_CLOUD_CF_SPACE=dev
+AUTHORS_DB=local
+CLOUDANT_URL=
 ```
 
 
@@ -78,16 +83,16 @@ If the cluster isn't ready, the script will tell you. Then just wait a few more 
 
 **NOTE:** You **MUST** run this command to check for completion of the cluster provisioning and it must report that the cluster is ready for Istio installation! This command also retrieves the cluster configuration which is needed in other scripts. But this configuration can only be retrieved from a cluster that is in ready state.  
 
-These are the instructions to install Istio. We use Istio 1.1.4 for this project.
+These are the instructions to install Istio. We use Istio 1.1.5 for this project.
 
-1. Download Istio 1.1.4 
+1. Download Istio 1.1.5   
    ```
-   curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.1.4 sh -
+   curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.1.5 sh -
    ```
     
-2. Follow the instructions displayed at completion of this command to add the istio-1.1.4/bin directory to your PATH environment variable
+2. Follow the instructions displayed at completion of this command to add the istio-1.1.5/bin directory to your PATH environment variable
 
-3. Change into the extracted directory: `cd istio-1.1.4`
+3. Change into the extracted directory: `cd istio-1.1.5`
 
 4. Install Istio:
 
