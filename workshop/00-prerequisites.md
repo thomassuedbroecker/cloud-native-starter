@@ -16,7 +16,7 @@ We will use following IBM Cloud Services in this hands-on workshop.
 
 Following tools have to be installed on your laptop, to perform the workshop.
 
-- [Visual Studio Code](https://code.visualstudio.com/) 
+- IDE or Editor for example: [Visual Studio Code](https://code.visualstudio.com/) 
 - [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) 
 - [curl](https://curl.haxx.se/download.html)
 - [IBM Cloud CLI](https://cloud.ibm.com/docs/home/tools) 
@@ -53,15 +53,15 @@ _Note:_ If you already have a lite cluster in Dallas, some of these scripts will
 
 ### 3.1 Register at IBM Cloud Account <a name="part-SETUP-00"></a>
 
-Open a browser window and navigate to [Registration page](https://ibm.biz/Bd2JHx).
+1. Open a browser window and navigate to [Registration page](https://ibm.biz/Bd2JHx).
 
 ![image](images/registration.png)
 
-Fill in the registration form and follow the link in the **validation email** when it arrives.
+2. Fill in the registration form and follow the link in the **validation email** when it arrives.
 
 ![Validation email](images/email.png)
 
-[Login into IBM Cloud](https://ibm.biz/Bd2JHx) using the account credentials you have registered.
+3. [Login into IBM Cloud](https://ibm.biz/Bd2JHx) using the account credentials you have registered.
 
 _NOTE:_ New IBM Cloud accounts set per default to the [lite account version](https://www.ibm.com/cloud/pricing).
 
