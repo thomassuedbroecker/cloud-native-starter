@@ -39,7 +39,7 @@ In Kubernetes we have one [service definition](web-api-java-jee/deployment/kuber
 
 ## 1.3 Istio gateway
 
-Istio works with **envoy proxies** to **control** inbound and outbound traffic and to gather [telemetry data](https://en.wikipedia.org/wiki/Telemetry#Software) of a Kubernetes pod. The envoy is **injected as additional container** into a pod. The envoy **“sidecar”** allows to add Istio’s capabilities to an application without adding code or additional libraries to your application.
+Istio works with **envoy proxies** to **control** inbound and outbound traffic and to gather [telemetry data](https://en.wikipedia.org/wiki/Telemetry#Software) of a Kubernetes Pod. The envoy is **injected as additional container** into a pod. The envoy **“sidecar”** allows to add Istio’s capabilities to an application **without adding** code or additional libraries to your application.
 
 The image below is from the [Istio documentation](https://istio.io/docs/concepts/what-is-istio/) and shows the basic Istio architecture.
 
@@ -49,15 +49,13 @@ The following image shows a simplified view on the given information for our sit
 
 ![injected as additional containe](images/traffic-routing-deployment05.png)
 
-Now we want to control the  route traffic (e.g. REST API calls). To control the traffic into a Kubernetes application a **Kubernetes Ingress** is required. 
-
-With Istio, the equivalent is a **Istio Gateway** which allows it to manage and monitor incoming traffic. This gateway in turn uses the Istio ingress gateway which is a pod running in Kubernetes. This is the definition of an Istio gateway. The [Istio ingress.ymal](web-api-java-jee/deployment/istio-ingress.yaml).
+We want to control the route traffic (e.g. REST API calls). To control the traffic into a Kubernetes application a **Kubernetes Ingress** is required. With Istio, we have the equivalent **Istio Gateway** which allows it to manage and monitor incoming traffic. This gateway in turn uses the **Istio ingress gateway** which is a Pod running in Kubernetes. In following pricture we see the definition of our Istio gateway. The [Istio ingress.ymal](web-api-java-jee/deployment/istio-ingress.yaml).
 
 This gateway listens on port **80** and answers to any request (“*”). The “hosts: *” should not be used in production, of course. 
 
 ![Istio gateway](images/traffic-routing-deployment06.png)
 
-In the gif we can see a sample istio gateway instance the in Kubernetes.
+In the gif we can see the **Istio Gateway** instance in our Kubernetes, we installed before. 
 
 ![Istio gateway gif](images/traffic-routing-deployment07.gif)
 
