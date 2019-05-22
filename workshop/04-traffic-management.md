@@ -63,10 +63,10 @@ In the gif we can see the **Istio Gateway** instance in our Kubernetes, we insta
 
 ## 1.4 Virtual Service
 
-The second required Istio configuration object is a **“Virtual Service”** which overlays the Kubernetes service definition. The **Web API** service in the example exposes 3 REST URIs. Two of them are used for API documentation (Swagger/Open API), they are **/openapi** and **/openapi/ui/** and are currently independent of the version of **Web API**. 
+A required Istio configuration object is a **“Virtual Service”** which overlays the Kubernetes service definition. The **Web API** service in the picture below exposes 3 REST URIs. Two of them pointing to a API documentation (Swagger/Open API), they are defined as **/openapi** and **/openapi/ui/** and they are currently independent of the version of **Web API**. 
 The third URI is **/web-api/v1/getmultiple** and this is version-specific. 
 
-Base on that we have following VirtualService definition:
+Base on this given information, we have following VirtualService definition:
 
 ![Virtual Service](images/traffic-routing-deployment08.png)
 
@@ -79,7 +79,7 @@ Base on that we have following VirtualService definition:
 
 To control the traffic we need to define a **kind:DestinationRule**, this is  Istio specific. 
 
-In the image below we can see, the this configuration defines a subset v1 to select Pods that belong to **Web API** and have a selector label of **“version: v1”**, which is the deployment **“web-api-v1”**.
+In the image below we can see, this configuration defines a subset of calls will select the **v1** Pod that belong to **Web API** and have a selector label of **“version: v1”**. This is our deployment for **“web-api-v1”**.
 
 ![Destination rule](images/traffic-routing-deployment09.png)
 
@@ -103,9 +103,7 @@ We can verify the traffic in Kiali:
 
 ## 1.7 Hands-on tasks - Traffic Routing
 
-In order to demonstrate **traffic routing** we run the following  commands. 
-We will configure the **Cloud Native Starter** application that
-**20 %** of the **Web API** API request will return 10 articles as defined in version 2 and **80 %** of the requests are still showing only 5 articles which is version 1. 
+In order to demonstrate **traffic routing** we run the following  commands. We will configure the **Cloud Native Starter** application that **20 %** of the **Web API** API request will return 10 articles as defined in version 2 and **80 %** of the requests are still showing only 5 articles which is version 1. 
 
 ### 1.7.1 Gain access to your cluster
 
@@ -147,6 +145,9 @@ $ iks-scripts/deploy-articles-java-jee.sh
 $ iks-scripts/deploy-authors-nodejs.sh
 $ iks-scripts/deploy-web-app-vuejs.sh
 ```
+_Optional:_ You can verify the new **Web app** version in Kubernetes.
+
+![New Web App Version](images/traffic-routing-deployment11.png)
 
 2. Install the two Versions on the **Web API**
 
@@ -162,7 +163,8 @@ $ scripts/deploy-istio-ingress-v1-v2.sh
 $ iks-scripts/show-urls.sh
 ```
 
-4. Access Kiali on you local machine:
+4.  We will use Kiali to monitor the distribution of the requests.
+    Access Kiali on you local machine:
 
     ```sh
     $ kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=kiali -o jsonpath='{.items[0].metadata.name}') 20001:20001
@@ -170,6 +172,18 @@ $ iks-scripts/show-urls.sh
 5. Then open http://localhost:20001/kiali in your browser and logon with Username: admin, Password: admin.
 
     ![Kiali installation](images/istio-installation-02.png)
+
+6. Configure your graph in **Kiali**. Select **Graph**, **Versioned app graph** and **Request percentage**.  
+
+    ![Kiali config](images/traffic-routing-deployment14.png)
+
+
+7. Open the **Web APP** in a new browser tab: http://YOUR_IP:31380/
+_Note:_ This is on of the links we get from the ```iks-scripts/show-urls.sh``` script.
+
+   ![cns-container-web-app-04](images/cns-container-web-app-05.png)
+
+8. 
 
 ---
 
