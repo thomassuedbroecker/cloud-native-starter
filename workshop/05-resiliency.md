@@ -5,7 +5,7 @@
 
 As stated in the [reactive manifesto](https://www.reactivemanifesto.org/) cloud-native reactive applications need to be **resilient**:
 
-" **The system stays responsive in the face of failure.** This applies not only to highly-available, mission-critical systems – any system that is not resilient will be unresponsive after a failure. Resilience is achieved by replication, containment, isolation … "
+> " **The system stays responsive in the face of failure.** This applies not only to highly-available, mission-critical systems – any system that is not resilient will be unresponsive after a failure. Resilience is achieved by replication, containment, isolation … "
 
 In distributed systems we need to **design for failure**. For example microservices, which invoke other microservices, must be intelligent enough to continue to work even if some of their dependencies are currently not available.
 
@@ -70,7 +70,7 @@ public List<Article> fallbackNoArticlesService() {
 }
 ```
 
-## 2. Lab - Resiliency
+## 2. Hands-on tasks -  - Resiliency
 
 Resiliency is part of the code: if an API call is not answered because of an error ar a timeout, the business logic must have a implementation of a fallback. 
 
@@ -104,7 +104,7 @@ kubectl get nodes
 
 In the following bash scripts we use **ibmcloud** and **kubectl** commands to interact with IBM Cloud, IBM Container Registry Service and the IBM Kubernetes service in IBM Cloud. With **sed** and **awk** we extract the output from the comandline.
 
-1. In order to demonstrate resiliency you can run the following commands to create a working set of services:
+1. In order to demonstrate resiliency run the following commands to create a working set of services:
 
 ```sh
 $ ./iks-scripts/check-prerequisites.sh
