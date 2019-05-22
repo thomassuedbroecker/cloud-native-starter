@@ -11,7 +11,7 @@ In distributed systems we need to **design for failure**. For example microservi
 
 There are several different ways to build resilient service meshes with Istio, for example via [circuit breakers](https://istio.io/docs/concepts/traffic-management/#circuit-breakers) and [retries](https://istio.io/docs/concepts/traffic-management/#timeouts-and-retries).
 
-The Istio functionality for resilient cloud-native applications is generic and independent from the implementation of the microservices. However in some cases the **handling of failures depends on the business logic** of the applications which is why this needs to be implemented in the microservices.
+The Istio functionality for resilient cloud-native applications is **generic** and **independent** from the implementation of the microservices. However in some cases the **handling of failures depends on the business logic** of the applications which is why this needs to be implemented in the microservices.
 
 The **Web app** frontend implemented in Vue.js displays articles. The service ‘**Web API**’ implements the **BFF** (backend for frontend) pattern. The web application accesses the ‘**Web API**’ service which invokes both the ‘articles’ and ‘authors’ services.
 
@@ -117,38 +117,30 @@ $ ./scripts/deploy-istio-ingress-v1.sh
 $ ./iks-scripts/show-urls.sh
 ```
 
-2. After the Web Application shows articles together with the author information:
+2. Open the **Web APP** in a new browser tab: http://YOUR_IP:31380/
+_Note:_ This is on of the links we get from the ```iks-scripts/show-urls.sh``` script.
 
-<kbd><img src="../images/web-app.png" /></kbd>
+ ![cns-container-web-app-04](images/cns-container-web-app-05.png)
 
-The next script disables the Authors service by using Istio Fault Injection:
+2. Delete the **authors** service
 
-```
-$ kubectl apply -f istio/fault-authors-500.yaml
-```
-
-It defines a rule in the Istio virtual service for Authors that responds with an HTTP Error 500 on every request (100 percent).
-
-The articles are still displayed, but without author information. The fallback logic is: if the authors service doesn't work, show no authors information but also don't show an error. 
-
-<kbd><img src="../images/web-app-no-authors.png" /></kbd>
-
-The following command disables the articles service, too, again using Istio Fault Injection:
-
-```
-$ kubectl apply -f istio/fault-articles-500.yaml
+```sh
+$ scripts/delete-authors-nodejs.sh
 ```
 
-Now every request to the articles services gets an HTTP error 500 as response. The same five articles are displayed, since they are cached in the **Web API** service. This is the fallback logic for the articles service.
+Refresh the browser and verify the remaining imformation. The details for the author are no longer avaiable. 
 
-<kbd><img src="../images/web-app-no-authors.png" /></kbd>
+![resliency-02](images/resliency-02.png)
 
-To remove the Istio Fault Injection rules execute these commands:
+3. Delete the **articles** service
 
+```sh
+$ scripts/delete-web-api-java-jee.sh
 ```
-$ kubectl apply -f istio/nofault-authors.yaml
-$ kubectl apply -f istio/nofault-articles.yaml
-```
+
+Refresh the browser and verify the remaining imformation. The details for the author are no longer avaiable. 
+
+![resliency-02](images/resliency-02.png)
 
 
 Now, we've finished the **Resiliency**.
