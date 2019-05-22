@@ -17,7 +17,7 @@ We configure the routing to split the usage between our two instances and versio
 
 ## 1.1 Deployment definition
 
-We need not understand that these two versions of the **Web API** do exist as **two** different Kubernetes deployments and they run **in parallel**. That is definied in the [kubernetes-deployment-v1](web-api-java-jee/deployment/kubernetes-deployment-v1.yaml) and [kubernetes-deployment-v2](web-api-java-jee/deployment/kubernetes-deployment-v2.yaml).
+We need to understand, these two versions of the **Web API** do exist as **two** different Kubernetes deployments and they run **in parallel**. That is definied in the [kubernetes-deployment-v1](web-api-java-jee/deployment/kubernetes-deployment-v1.yaml) and [kubernetes-deployment-v2](web-api-java-jee/deployment/kubernetes-deployment-v2.yaml).
 
 Commonly, in Kubernetes we would replace v1 with v2. With **Istio** we can use two or more deployments of different versions of an app to do a **green/blue**, **A/B**, or [canary deployment](https://www.ibm.com/cloud/garage/tutorials/use-canary-testing-in-kubernetes-using-istio-toolchain) to test, if v2 works as expected. We can slowly roll out our changes to a small subset of users before rolling it out to the entire infrastructure and making it available to everyone. 
 
