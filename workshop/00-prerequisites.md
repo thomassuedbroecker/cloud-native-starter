@@ -272,7 +272,7 @@ $ pwd
 $ ./iks-scripts/create-registry.sh
 ```
 
-You can find the created namespace here:
+_Optional:_ You can find the created namespace here:
 
 ![ibm-cloud-registry](images/ibm-cloud-registry.png)
 

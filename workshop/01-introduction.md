@@ -48,13 +48,7 @@ Fortunately, this is one of the main advantages of Kubernetes since you can run 
 
 ## 2. **Microservices and Web app**
 
-These are the responsibilities of the different microservices and the Web app.
-
-All mircoservices in this project built on Java are organized in following packages:
-
-* apis
-* business
-* data
+These are the responsibilities of the different microservices and the Web app. The implementation organization of these services do focus to follow the clean architecture software design **philosophy**.
 
 ---
 
