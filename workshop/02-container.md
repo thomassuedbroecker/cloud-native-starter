@@ -91,7 +91,7 @@ The **Web app** and the **authors** services are written in Node.JS.
 
 The Web app [Dockerfile](../web-app-vuejs/Dockerfile) to create the  Web app application, works in the same way as for **articles container**. Inside the Dockerfile we use the same two stages to build the container image.
 
-Here you can see the **build environment container** based on the alpine 8 image from the [dockerhub](https://hub.docker.com/_/alpine).
+Here you can see the **build environment container** based on the alpine 8 image from the [dockerhub](https://hub.docker.com/_/alpine). This container already contains [yarn](https://yarnpkg.com/en/) and [VUE](https://vuejs.org/) to build the UI application.
 
 ```Dockerfile
 FROM node:8-alpine as BUILD
