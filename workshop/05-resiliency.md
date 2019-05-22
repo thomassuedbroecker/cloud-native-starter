@@ -7,23 +7,19 @@ As stated in the [reactive manifesto](https://www.reactivemanifesto.org/) cloud-
 
 > " **The system stays responsive in the face of failure.** This applies not only to highly-available, mission-critical systems – any system that is not resilient will be unresponsive after a failure. Resilience is achieved by replication, containment, isolation … "
 
-In distributed systems we need to **design for failure**. For example microservices, which invoke other microservices, must be intelligent enough to continue to work even if some of their dependencies are currently not available.
+In distributed systems we need to **design for failure**. For example, microservices, which invoke other microservices, must be intelligent enough to continue to work even if some of their dependencies are currently not available.
 
 There are several different ways to build resilient service meshes with Istio, for example via [circuit breakers](https://istio.io/docs/concepts/traffic-management/#circuit-breakers) and [retries](https://istio.io/docs/concepts/traffic-management/#timeouts-and-retries).
 
 The Istio functionality for resilient cloud-native applications is **generic** and **independent** from the implementation of the microservices. However in some cases the **handling of failures depends on the business logic** of the applications which is why this needs to be implemented in the microservices.
 
-The **Web app** frontend implemented in Vue.js displays articles. The service ‘**Web API**’ implements the **BFF** (backend for frontend) pattern. The web application accesses the ‘**Web API**’ service which invokes both the ‘articles’ and ‘authors’ services.
-
-The initial page shows the five most recent articles including information about the authors.
-
-When we **delete** the authors service inside Kubernetes, the **Web app** will still display five articles, but this time without the information about the authors. While the web application cannot display the complete information anymore, in this simple scenario it still makes sense to display the titles and links of the articles. 
+In **Cloud Native Starter**, the **Web app** frontend, implemented in Vue.js, displays articles. The service ‘**Web API**’ implements the **BFF** (backend for frontend) pattern. The web application accesses the ‘**Web API**’ service which invokes both the ‘articles’ and ‘authors’ services. The initial page of the **Web app** shows the five most recent articles including information about the authors. When we **delete** the authors service inside Kubernetes, the **Web app** will still display five articles, but this time without the information about the authors, even when the **Web app** cannot display the complete information anymore. In this simple scenario it still makes sense to display the titles and links of the articles. 
 
 | With the author service   |  When the author service is deleted|
 | --- | --- |    
 | ![resliency-01](images/resliency-01.png) | ![resliency-02](images/resliency-02.png) |   
 
-The implementation of this behavior has been done in the class [Service.java](/web-api-java-jee/src/main/java/com/ibm/webapi/business/Service.java#L68).
+The implementation of this behavior has been done in the class [Service.java](/web-api-java-jee/src/main/java/com/ibm/webapi/business/Service.java#L68). You can see the ```catch (NoConnectivity | NonexistentAuthor e)``` does handle the situation and set a default value.
 
 ```java
 try {
@@ -59,7 +55,7 @@ public List<Article> getArticles() throws NoDataAccess {
 ...
 } 
 ```
-* The implementation of the fallback profile.
+* The implementation of the fallback profile. Here we create a list with the last shown articles ```lastReadArticles = new ArrayList<Article>();```.
 
 ```java
 ...
@@ -69,10 +65,13 @@ public List<Article> fallbackNoArticlesService() {
       return lastReadArticles;
 }
 ```
+---
 
 ## 2. Hands-on tasks -  - Resiliency
 
 Resiliency is part of the code: if an API call is not answered because of an error ar a timeout, the business logic must have a implementation of a fallback. 
+
+---
 
 ### 2.1 Gain access to your cluster
 
@@ -99,6 +98,8 @@ export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/hands
 ```sh
 kubectl get nodes
 ```
+
+---
 
 ### 2.2 Setup and test the resiliency
 

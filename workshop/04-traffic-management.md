@@ -63,7 +63,7 @@ In the gif we can see the **Istio Gateway** instance in our Kubernetes, we insta
 
 ## 1.4 Virtual Service
 
-A required Istio configuration object is a **“Virtual Service”** which overlays the Kubernetes service definition. The **Web API** service in the picture below exposes 3 REST URIs. Two of them pointing to a API documentation (Swagger/Open API), they are defined as **/openapi** and **/openapi/ui/** and they are currently independent of the version of **Web API**. 
+One of the required Istio configuration is the **“Virtual Service”** which overlays the Kubernetes service definition. The **Web API** service in the picture below exposes 3 REST URIs. Two of them pointing to a API documentation (Swagger/Open API), they are defined as **/openapi** and **/openapi/ui/** and they are currently independent of the version of **Web API**. 
 The third URI is **/web-api/v1/getmultiple** and this is version-specific. 
 
 Base on this given information, we have following VirtualService definition:
