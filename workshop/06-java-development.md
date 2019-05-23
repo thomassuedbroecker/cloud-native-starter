@@ -15,7 +15,7 @@ In that service we only need to implement a REST API which provides a get author
 
 •	Definition of a [Dockerfile](https://docs.docker.com/engine/reference/builder/) with the reuse for existing containers from the [Dockerhub](https://hub.docker.com)
 
-•	[Health check](https://openliberty.io/guides/kubernetes-microprofile-health.html#adding-a-health-check-to-the-inventory-microservice) with for an Open Liberty with MicroProfile for Kubernetes 
+•	[Health check](https://openliberty.io/guides/kubernetes-microprofile-health.html#adding-a-health-check-to-the-inventory-microservice) implementation using Open Liberty with MicroProfile for Kubernetes 
 
 •	[Kubernetes deployment configuration](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 
