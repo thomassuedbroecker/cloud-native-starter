@@ -7,7 +7,7 @@ In that optional Lab we will replace the existing Authors microservices written 
 
 ![architecture authors](images/architecture-authors.gif)
 
-In that service we only need to implement a REST API which provides a get author information. Normally we would implement to get the information from a database, but in our case, we will only return sample data information. That sounds not a lot, but with this sample we touch following topics:
+In that service we only need to implement a **REST API** which provides a get author information. Normally, we would implement also a database access, but in our case, we will only return sample data information. That sounds not a lot, but with this sample we touch following topics:
 
 •	Usage of [Maven](https://maven.apache.org/) for Java 
 
@@ -21,8 +21,6 @@ In that service we only need to implement a REST API which provides a get author
 
 •	[Kubernetes deployment configuration](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 
-
-
 ---
 
 # 1. Usage of Maven for Java
@@ -32,7 +30,7 @@ project for our Java project.
 
 > Maven Apache Maven is a software project management and comprehension tool. Based on the concept of a project object model (POM), Maven can manage a project's build, reporting and documentation from a central piece of information.
 
-In the pom file we define the configuation of our Java project, with the **dependencies**, the **build** and the **properties** including for example the complier as you can see in the [pom file](authors-java-jee/pom.xml) below.
+In the pom file we define the configuation of our Java project, with **dependencies**, **build** and **properties** including for example the complier information as you can see in the [pom file](authors-java-jee/pom.xml) below.
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -74,7 +72,7 @@ In the pom file we define the configuation of our Java project, with the **depen
 ```
 ---
 
-# 2. Configuration of an Open Liberty Server
+# 2. Configuration the Open Liberty Server
 
 Our **Authors** mircroserice runs on Open Liberty Server in a container in Kubernetes later.
 
@@ -105,9 +103,19 @@ Also the name of the executable **web application** is definied in that **server
 
 ---
 
-# 3. Implementation of a REST GET endpoint with MicroProfile
+# 3. Implementation of the REST GET endpoint with MicroProfile
 
-For the implementation we need three classes:
+In the most of the following classes we will use [MicroProfile](https://openliberty.io/docs/intro/microprofile.html).
+
+> Microservice architecture is a popular approach for building cloud-native applications in which each capability is developed as an independent service. It enables small, autonomous teams to develop, deploy, and scale their respective services independently.
+
+> **Eclipse MicroProfile** is a modular set of technologies designed so that you can write cloud-native Java™ microservices. In this introduction, learn how MicroProfile helps you develop and manage cloud-native microservices. Then, follow the Open Liberty MicroProfile guides to gain hands-on experience with MicroProfile so that you can build microservices with Open Liberty.
+
+In the following image you can see a list of MicroProfiles and the red marked we will use in minimum here.
+
+![microprofiles](images/microprofiles.png)
+
+For the implementation for the **Authors** service we need basicly three classes:
 
 * **AuthorsApplication** class repesents our web application.
 * **Author** class repesents the data structure we use for the Author.
@@ -117,7 +125,7 @@ For the implementation we need three classes:
 
 ## 3.1 **Class AuthorsApplication**
 
-Our web application does not implement any business or other logic, it simple need to on the server. The AuthorsApplication class extends the [javax.ws.rs.core.Application](https://www.ibm.com/support/knowledgecenter/en/SSEQTP_9.0.0/com.ibm.websphere.base.doc/ae/twbs_jaxrs_configjaxrs11method.html) class, which provides the classes from inside the **com.ibm.authors** package during the runtime. With **@ApplicationPath** from Microprofile the we define the base path of the application.
+Our web application does not implement any business or other logic, it simple needs to run on server with no UI. The AuthorsApplication class extends the [javax.ws.rs.core.Application](https://www.ibm.com/support/knowledgecenter/en/SSEQTP_9.0.0/com.ibm.websphere.base.doc/ae/twbs_jaxrs_configjaxrs11method.html) class to do this. With this extension **AuthorsApplication** provides the classes inside from the **com.ibm.authors** package during the runtime. With **@ApplicationPath** from Microprofile we define the base path of the application.
 
 ```java
 package com.ibm.authors;
