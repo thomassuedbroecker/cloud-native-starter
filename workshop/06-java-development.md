@@ -9,15 +9,17 @@ In that service we only need to implement a REST API which provides a get author
 
 •	Usage of [Maven](https://maven.apache.org/) for Java 
 
-•	Definition of a [Dockerfile](https://docs.docker.com/engine/reference/builder/) with the reuse for existing containers from the [Dockerhub](https://hub.docker.com)
-
 •	Configuration of an [Open Liberty Server](https://openliberty.io)
+
+•	Implementation of a [REST GET endpoint with MicroProfile](https://openliberty.io/blog/2018/01/31/mpRestClient.html)
+
+•	Definition of a [Dockerfile](https://docs.docker.com/engine/reference/builder/) with the reuse for existing containers from the [Dockerhub](https://hub.docker.com)
 
 •	[Health check](https://openliberty.io/guides/kubernetes-microprofile-health.html#adding-a-health-check-to-the-inventory-microservice) with for an Open Liberty with MicroProfile for Kubernetes 
 
 •	[Kubernetes deployment configuration](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 
-•	Implementation of a [REST GET endpoint with MicroProfile](https://openliberty.io/blog/2018/01/31/mpRestClient.html)
+
 
 ---
 
@@ -28,7 +30,7 @@ project for our Java project.
 
 > Maven Apache Maven is a software project management and comprehension tool. Based on the concept of a project object model (POM), Maven can manage a project's build, reporting and documentation from a central piece of information.
 
-In the pom file we define the configuation of our Java project, with the **dependencies**, the **build** and the complier as you can see in the [pom file](authors-java-jee/pom.xml).
+In the pom file we define the configuation of our Java project, with the **dependencies**, the **build** and the **properties** including for example the complier as you can see in the [pom file](authors-java-jee/pom.xml) below.
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -68,11 +70,15 @@ In the pom file we define the configuation of our Java project, with the **depen
 	</properties>
 </project>
 ```
+---
 
+# 2. Configuration of an Open Liberty Server
+
+Our mircroserice runs on Open Liberty Server in a container in Kubernetes later.
 
 ---
 
-## 2. Hands-on tasks - Resiliency
+## 2. Hands-on tasks - Replace the Node.JS Authors microservice with a simple Java implementation
 
 ---
 
