@@ -113,9 +113,9 @@ For the implementation we need three classes:
 * **Author** class repesents the data structure we use for the Author.
 * **GetAuthor** class repesents the REST API.
 
-![architecture](images/authors-java-classdiagram.png)
+![architecture](images/authors-java-classdiagram-01.png)
 
-## 3.1 **AuthorsApplication**
+## 3.1 **Class AuthorsApplication**
 
 Our web application does not implement any business or other logic, it simple need to on the server. The AuthorsApplication class extends the [javax.ws.rs.core.Application](https://www.ibm.com/support/knowledgecenter/en/SSEQTP_9.0.0/com.ibm.websphere.base.doc/ae/twbs_jaxrs_configjaxrs11method.html) class, which provides the classes from inside the **com.ibm.authors** package during the runtime. With **@ApplicationPath** from Microprofile the we define the base path of the application.
 
@@ -132,7 +132,7 @@ public class AuthorsApplication extends Application {
 
 ---
 
-## 3.2 **Author**
+## 3.2 **Class Author**
 
 This class simply repesents the data structure we use for the Author. No MircoProfile is used here.
 
@@ -150,7 +150,7 @@ public class Author {
 
 ---
 
-## 3.3 **GetAuthor**
+## 3.3 **Class GetAuthor**
 
 This class implements the REST response for our microservice **Authors**. Here we use microprofile for Open API to create the documentation and implementation of the REST API.
 
