@@ -85,6 +85,8 @@ The server must be reached in the network; therefore, we define the  **httpEndpo
 
 _IMPORTANT to remember_: These **ports** must be exposed later in the **Dockerfile** container definition and mapped inside the **Kubernetes** configurations.
 
+Also the name of the executable **web application** is definied in that **server.xml**.
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <server description="OpenLiberty Server">
@@ -100,6 +102,114 @@ _IMPORTANT to remember_: These **ports** must be exposed later in the **Dockerfi
 
 </server>
 ```
+
+---
+
+# 3. Implementation of a REST GET endpoint with MicroProfile
+
+For the implementation we need three classes:
+
+* **AuthorsApplication** class repesents our web application.
+* **Author** class repesents the data structure we use for the Author.
+* **GetAuthor** class repesents the REST API.
+
+![architecture](images/authors-java-classdiagram.png)
+
+## 3.1 **AuthorsApplication**
+
+Our web application does not implement any business or other logic, it simple need to on the server. The AuthorsApplication class extends the [javax.ws.rs.core.Application](https://www.ibm.com/support/knowledgecenter/en/SSEQTP_9.0.0/com.ibm.websphere.base.doc/ae/twbs_jaxrs_configjaxrs11method.html) class, which provides the classes from inside the **com.ibm.authors** package during the runtime. With **@ApplicationPath** from Microprofile the we define the base path of the application.
+
+```java
+package com.ibm.authors;
+
+import javax.ws.rs.core.Application;
+import javax.ws.rs.ApplicationPath;
+
+@ApplicationPath("v1")
+public class AuthorsApplication extends Application {
+}
+```
+
+---
+
+## 3.2 **Author**
+
+This class simply repesents the data structure we use for the Author. No MircoProfile is used here.
+
+```java
+package com.ibm.authors;
+
+public class Author {
+
+	public String name;
+	public String twitter;
+    public String blog;
+
+}
+```
+
+---
+
+## 3.3 **GetAuthor**
+
+This class implements the REST response for our microservice **Authors**. Here we use microprofile for Open API to create the documentation and implementation of the REST API.
+
+We can define the [basic rest client with microprofile](https://github.com/eclipse/microprofile-rest-client/blob/master/README.adoc) for the REST API like **@Path**, **@Get** to use [JAX-RS](https://jcp.org/en/jsr/detail?id=339) and for the [Open API](https://www.openapis.org/) documentation **@OpenAPIDefinition** using the [microprofile-open-api](https://github.com/eclipse/microprofile-open-api).
+
+```java
+@ApplicationScoped
+@Path("/getauthor")
+@OpenAPIDefinition(info = @Info(title = "Authors Service", version = "1.0", description = "Authors Service APIs", contact = @Contact(url = "https://github.com/nheidloff/cloud-native-starter", name = "Niklas Heidloff"), license = @License(name = "License", url = "https://github.com/nheidloff/cloud-native-starter/blob/master/LICENSE")))
+public class GetAuthor {
+
+	@GET
+	@APIResponses(value = {
+		@APIResponse(
+	      responseCode = "404",
+	      description = "Author Not Found"
+	    ),
+	    @APIResponse(
+	      responseCode = "200",
+	      description = "Author with requested name",
+	      content = @Content(
+	        mediaType = "application/json",
+	        schema = @Schema(implementation = Author.class)
+	      )
+	    ),
+	    @APIResponse(
+	      responseCode = "500",
+	      description = "Internal service error"  	      
+	    )
+	})
+	@Operation(
+		    summary = "Get specific author",
+		    description = "Get specific author"
+	)
+	public Response getAuthor(@Parameter(
+            description = "The unique name of the author",
+            required = true,
+            example = "Niklas Heidloff",
+            schema = @Schema(type = SchemaType.STRING))
+			@QueryParam("name") String name) {
+		
+			Author author = new Author();
+			author.name = "Niklas Heidloff";
+			author.twitter = "https://twitter.com/nheidloff";
+			author.blog = "http://heidloff.net";
+
+			return Response.ok(this.createJson(author)).build();
+	}
+
+	private JsonObject createJson(Author author) {
+		JsonObject output = Json.createObjectBuilder().add("name", author.name).add("twitter", author.twitter)
+				.add("blog", author.blog).build();
+		return output;
+	}
+}
+```
+
+
+
 
 ---
 
