@@ -139,11 +139,11 @@ In the following bash scripts we use **ibmcloud** and **kubectl** commands to in
 
 ```sh
 $ cd $PROJECT_HOME
-$ iks-scripts/check-prerequisites.sh
-$ iks-scripts/delete-all.sh
-$ iks-scripts/deploy-articles-java-jee.sh
-$ iks-scripts/deploy-authors-nodejs.sh
-$ iks-scripts/deploy-web-app-vuejs.sh
+$ ./iks-scripts/check-prerequisites.sh
+$ ./scripts/delete-all.sh
+$ ./iks-scripts/deploy-articles-java-jee.sh
+$ ./iks-scripts/deploy-authors-nodejs.sh
+$ ./iks-scripts/deploy-web-app-vuejs.sh
 ```
 _Optional:_ You can verify the new **Web app** version in Kubernetes.
 
