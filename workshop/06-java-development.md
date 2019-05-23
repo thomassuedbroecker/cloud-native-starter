@@ -5,6 +5,8 @@
 
 In that optional Lab we will replace the existing Authors microservices written in Node.JS.
 
+IMAGE ARCHITECTURE
+
 In that service we only need to implement a REST API which provides a get author information. Normally we would implement to get the information from a database, but in our case, we will only return sample data information. That sounds not a lot, but with this sample we touch following topics:
 
 •	Usage of [Maven](https://maven.apache.org/) for Java 
@@ -74,7 +76,30 @@ In the pom file we define the configuation of our Java project, with the **depen
 
 # 2. Configuration of an Open Liberty Server
 
-Our mircroserice runs on Open Liberty Server in a container in Kubernetes later.
+Our **Authors** mircroserice runs on Open Liberty Server in a container in Kubernetes later.
+
+IMAGE
+
+We need to configure the **Open Liberty** server in the [server.xml](authors-java-jee/liberty/server.xml) file. In our Java implementation will use the MicroProfile, that usage is defined with features in our case ```webProfile-8.0```and ```microProfile-2.1```.
+The server must be reached in the network, therefore we define the  **httpEndpoint** including **http ports** we use for our microservice. For configuration details we can take a look into the [openliberty documentation](https://openliberty.io/docs/ref/config/).
+
+These **ports** must be exposed later in the **Dockerfile** container definition.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="OpenLiberty Server">
+	
+    <featureManager>
+        <feature>webProfile-8.0</feature>
+        <feature>microProfile-2.1</feature>
+    </featureManager>
+
+    <httpEndpoint id="defaultHttpEndpoint" host="*" httpPort="3000" httpsPort="9443"/>
+
+    <webApplication location="authors.war" contextRoot="api"/>
+
+</server>
+```
 
 ---
 
