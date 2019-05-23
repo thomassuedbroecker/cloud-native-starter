@@ -5,7 +5,7 @@
 
 In that optional Lab we will replace the existing Authors microservices written in Node.JS, as you can see in the gif below.
 
-![architecture authors](images/architecture-authors.png)
+![architecture authors](images/architecture-authors.gif)
 
 In that service we only need to implement a REST API which provides a get author information. Normally we would implement to get the information from a database, but in our case, we will only return sample data information. That sounds not a lot, but with this sample we touch following topics:
 
