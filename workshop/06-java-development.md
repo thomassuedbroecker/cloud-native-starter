@@ -74,7 +74,7 @@ In the pom file we define the configuation of our Java project, with **dependenc
 
 # 2. Configuration the Open Liberty Server
 
-Our **Authors** mircroserice runs on Open Liberty Server in a container in Kubernetes later.
+Our **Authors** mircroserice runs later on Open Liberty Server in a container in Kubernetes.
 
 IMAGE
 

@@ -60,7 +60,7 @@ Here you can see a picture of the **Web app** UI.
 
 ### 2.2 ****Web API****
 
-The objective of this microservice is to combine the information from the **articals** and the **authors** microservice. 
+The objective of this microservice is to combine the information from the **articals** and the **Authors** microservice. 
 
 The **Web API** is business related to be consumned by the **VUE** **Web app**. So the Web app can use just **one** REST API and doesn't need more APIs. The **Web API** service implements the **BFF** (backend for frontend pattern). 
 
@@ -96,7 +96,7 @@ $ {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
 
 ### 3.1 Technologies of the microservices
 
-The **'articles'** and '**Web API**' microservices are based purly on open source components:
+The **'Articles'** and '**Web API**' microservices are based purly on open source components:
 
 * [OpenJ9 0.12.1](https://projects.eclipse.org/projects/technology.openj9/releases/0.12.1/review)
 * OpenJDK 8u202-b08 from AdoptOpenJDK
