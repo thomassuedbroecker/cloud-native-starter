@@ -3,9 +3,9 @@
 
 ****** **UNDER CONSTRUCTION** ******
 
-In that optional Lab we will replace the existing Authors microservices written in Node.JS.
+In that optional Lab we will replace the existing Authors microservices written in Node.JS, as you can see in the gif below.
 
-IMAGE ARCHITECTURE
+![architecture authors](images/architecture-authors.png)
 
 In that service we only need to implement a REST API which provides a get author information. Normally we would implement to get the information from a database, but in our case, we will only return sample data information. That sounds not a lot, but with this sample we touch following topics:
 
@@ -113,7 +113,7 @@ For the implementation we need three classes:
 * **Author** class repesents the data structure we use for the Author.
 * **GetAuthor** class repesents the REST API.
 
-![architecture](images/authors-java-classdiagram-01.png)
+![class diagramm authors](images/authors-java-classdiagram-01.png)
 
 ## 3.1 **Class AuthorsApplication**
 
