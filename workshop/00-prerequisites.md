@@ -197,12 +197,12 @@ These are the instructions to install Istio. We use **Istio 1.1.5** for this Lab
 
 1. First check if the cluster is available:
 
-```sh
-$ ./iks-scripts/cluster-add-istio.sh
-```
-If the cluster isn't ready, the script will tell you. Then just wait a few more minutes and try again.
+    ```sh
+    $ ./iks-scripts/cluster-add-istio.sh
+    ```
+    If the cluster isn't ready, the script will tell you. Then just wait a few more minutes and try again.
 
-_NOTE:_ You **must** run this command to check for completion of the cluster provisioning and it **must** report that the cluster is **ready for Istio installation**! This command also retrieves the cluster configuration which is needed in other scripts. But this configuration can only be retrieved from a cluster that is in ready state.
+    _NOTE:_ You **must** run this command to check for completion of the cluster provisioning and it **must** report that the cluster is **ready for Istio installation**! This command also retrieves the cluster configuration which is needed in other scripts. But this configuration can only be retrieved from a cluster that is in ready state.
 
 2. Download Istio 1.1.5 directly from github into the **workshop** directory:
 
@@ -211,9 +211,9 @@ _NOTE:_ You **must** run this command to check for completion of the cluster pro
     curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.1.5 sh -
     ```
 
-_Note:_ Please be aware that this does **not** work on Windows! 
-Windows users can download an istio-1.1.5-win.zip from here: https://github.com/istio/istio/releases/tag/1.1.5
-Unpack the ZIP file into the workshop directory and add the path to ```istio-1.1.5/bin``` your Windows **PATH**.
+    _Note:_ Please be aware that this does **not** work on Windows! 
+    Windows users can download an istio-1.1.5-win.zip from here: https://github.com/istio/istio/releases/tag/1.1.5
+    Unpack the ZIP file into the workshop directory and add the path to ```istio-1.1.5/bin``` your Windows **PATH**.
 
 3. Add `istioctl` to the PATH environment variable, e.g copy paste in your shell and/or `~/.profile`:
 
