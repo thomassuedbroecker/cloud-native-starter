@@ -105,6 +105,8 @@ Also the name of the executable **web application** is definied in that **server
 
 # 3. Implementation of the REST GET endpoint with MicroProfile
 
+## 3.1 MicroProfile basics
+
 In the most of the following classes we will use [MicroProfile](https://openliberty.io/docs/intro/microprofile.html).
 
 > Microservice architecture is a popular approach for building cloud-native applications in which each capability is developed as an independent service. It enables small, autonomous teams to develop, deploy, and scale their respective services independently.
@@ -115,6 +117,10 @@ In the following image you can see a list of MicroProfiles and the red marked we
 
 ![microprofiles](images/microprofiles.png)
 
+---
+
+## 3.2 Needed Java classes for the **Authors** service
+
 For the implementation for the **Authors** service we need basicly three classes:
 
 * **AuthorsApplication** class repesents our web application.
@@ -123,7 +129,9 @@ For the implementation for the **Authors** service we need basicly three classes
 
 ![class diagramm authors](images/authors-java-classdiagram-01.png)
 
-## 3.1 **Class AuthorsApplication**
+---
+
+### 3.2.1 **Class AuthorsApplication**
 
 Our web application does not implement any business or other logic, it simple needs to run on server with no UI. The AuthorsApplication class extends the [javax.ws.rs.core.Application](https://www.ibm.com/support/knowledgecenter/en/SSEQTP_9.0.0/com.ibm.websphere.base.doc/ae/twbs_jaxrs_configjaxrs11method.html) class to do this. With this extension **AuthorsApplication** provides the classes inside from the **com.ibm.authors** package during the runtime. With **@ApplicationPath** from Microprofile we define the base path of the application.
 
@@ -140,7 +148,7 @@ public class AuthorsApplication extends Application {
 
 ---
 
-## 3.2 **Class Author**
+### 3.2.2 **Class Author**
 
 This class simply repesents the data structure we use for the Author. No MircoProfile is used here.
 
@@ -158,7 +166,7 @@ public class Author {
 
 ---
 
-## 3.3 **Class GetAuthor**
+### 3.2.3 **Class GetAuthor**
 
 This class implements the REST response for our microservice **Authors**. Here we use microprofile for Open API to create the documentation and implementation of the REST API.
 
