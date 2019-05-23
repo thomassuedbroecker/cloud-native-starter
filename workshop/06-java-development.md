@@ -7,7 +7,7 @@ In that optional Lab we will replace the existing Authors microservices written 
 
 ![architecture authors](images/architecture-authors.gif)
 
-In that service we only need to implement a **REST API** which provides a get author information. Normally, we would implement also a database access, but in our case, we will only return sample data information. That sounds not a lot, but with this sample we touch following topics:
+In that service we only need to implement to provide a **REST API** for a get author request. Normally, we would implement also a database access, but in our case, we will only return sample data information. That sounds not a lot, but with this small sample we touch following topics:
 
 •	Usage of [Maven](https://maven.apache.org/) for Java 
 
@@ -28,9 +28,9 @@ In that service we only need to implement a **REST API** which provides a get au
 Let’s start with the [Maven](https://maven.apache.org/)
 project for our Java project.
 
-> Maven Apache Maven is a software project management and comprehension tool. Based on the concept of a project object model (POM), Maven can manage a project's build, reporting and documentation from a central piece of information.
+> Maven Apache Maven is a software project management and comprehension tool. Based on the concept of a **project object model** (POM), Maven can manage a project's build, reporting and documentation from a central piece of information.
 
-In the pom file we define the configuation of our Java project, with **dependencies**, **build** and **properties** including for example the complier information as you can see in the [pom file](authors-java-jee/pom.xml) below.
+In the **pom** file we define the configuation of our Java project, with **dependencies**, **build** and **properties** including for example the complier information as you can see in the [pom file](authors-java-jee/pom.xml) below.
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -170,7 +170,7 @@ public class Author {
 
 This class implements the REST response for our microservice **Authors**. Here we use microprofile for Open API to create the documentation and implementation of the REST API.
 
-We can define the [basic rest client with microprofile](https://github.com/eclipse/microprofile-rest-client/blob/master/README.adoc) for the REST API like **@Path**, **@Get** to use [JAX-RS](https://jcp.org/en/jsr/detail?id=339) and for the [Open API](https://www.openapis.org/) documentation **@OpenAPIDefinition** using the [microprofile-open-api](https://github.com/eclipse/microprofile-open-api).
+We define the [basic REST API definition with the microprofile](https://github.com/eclipse/microprofile-rest-client/blob/master/README.adoc). We using **@Path**, **@Get** from [JAX-RS](https://jcp.org/en/jsr/detail?id=339) and for the [Open API](https://www.openapis.org/) documentation **@OpenAPIDefinition** the [Microprofile OpenAPI](https://github.com/eclipse/microprofile-open-api).
 
 ```java
 @ApplicationScoped
