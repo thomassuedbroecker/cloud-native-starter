@@ -135,7 +135,7 @@ For the implementation for the **Authors** service we need basicly three classes
 
 ### 3.2.1 **Class AuthorsApplication**
 
-Our web application does not implement any business or other logic, it simple needs to run on server with no UI. The AuthorsApplication class extends the [javax.ws.rs.core.Application](https://www.ibm.com/support/knowledgecenter/en/SSEQTP_9.0.0/com.ibm.websphere.base.doc/ae/twbs_jaxrs_configjaxrs11method.html) class to do this. With this extension the **AuthorsApplication** class provides access to the classes inside from the **com.ibm.authors** package during the runtime. With **@ApplicationPath** from MicroProfile we define the base path of the application.
+Our web application does not implement any business or other logic, it simple needs to run on server with no UI. The AuthorsApplication class extends the [javax.ws.rs.core.Application](https://www.ibm.com/support/knowledgecenter/en/SSEQTP_9.0.0/com.ibm.websphere.base.doc/ae/twbs_jaxrs_configjaxrs11method.html) class to do this. With this extension the ```AuthorsApplication``` class provides access to the classes inside from the ```com.ibm.authors``` package during the runtime. With ```@ApplicationPath``` from MicroProfile we define the base path of the application.
 
 ```java
 package com.ibm.authors;
@@ -170,9 +170,9 @@ public class Author {
 
 ### 3.2.3 **Class GetAuthor**
 
-This class implements the REST response for our microservice **Authors**. Here we use MicroProfile for Open API to create the documentation and implementation of the REST API.
+This class implements the REST API response for our microservice **Authors**. Here we use MicroProfiles for OpenAPI to create the documentation and implementation of the REST API.
 
-We define the [basic REST API definition with the MicroProfile](https://github.com/eclipse/microprofile-rest-client/blob/master/README.adoc). We using **@Path**, **@Get** from [JAX-RS](https://jcp.org/en/jsr/detail?id=339) and for the [Open API](https://www.openapis.org/) documentation **@OpenAPIDefinition** the [MicroProfile OpenAPI](https://github.com/eclipse/microprofile-open-api).
+We define the [basic REST API definition with the MicroProfile](https://github.com/eclipse/microprofile-rest-client/blob/master/README.adoc). We using ```@Path```, ```@Get``` from [JAX-RS](https://jcp.org/en/jsr/detail?id=339) and for the [OpenAPI](https://www.openapis.org/) documentation ```@OpenAPIDefinition``` the [MicroProfile OpenAPI](https://github.com/eclipse/microprofile-open-api).
 
 ```java
 @ApplicationScoped
