@@ -8,14 +8,20 @@ In that optional Lab we will replace the existing Authors microservices written 
 In that service we only need to implement a REST API which provides a get author information. Normally we would implement to get the information from a database, but in our case, we will only return sample data information. That sounds not a lot, but with this sample we touch following topics:
 
 •	Usage of [Maven](https://maven.apache.org/) for Java 
-•	Definition of a [Dockerfile](https://docs.docker.com/engine/reference/builder/) 
-•	Reuse for existing containers in the Dockerhub https://hub.docker.com
+
+•	Definition of a [Dockerfile](https://docs.docker.com/engine/reference/builder/) with the reuse for existing containers from the [Dockerhub](https://hub.docker.com)
+
 •	Configuration of an [Open Liberty Server](https://openliberty.io)
+
 •	[Health check](https://openliberty.io/guides/kubernetes-microprofile-health.html#adding-a-health-check-to-the-inventory-microservice) with for an Open Liberty with MicroProfile for Kubernetes 
+
 •	[Kubernetes deployment configuration](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
+
 •	Implementation of a [REST GET endpoint with MicroProfile](https://openliberty.io/blog/2018/01/31/mpRestClient.html)
 
-1. Usage of Maven for Java
+---
+
+# 1. Usage of Maven for Java
 
 Let’s start with the [Maven](https://maven.apache.org/)
 project for our Java project.
