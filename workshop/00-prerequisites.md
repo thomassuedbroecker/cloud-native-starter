@@ -147,7 +147,7 @@ CLOUDANT_URL=
 We log into the IBM Cloud CLI tool: `ibmcloud login`.
 If you have a federated account, include the `--sso` flag: `ibmcloud login --sso`.
 
-Install the IBM Cloud Kubernetes Service plug-ins (`ks` sub command):
+Install the IBM Cloud Kubernetes Service plug-ins:
 
 ```sh
 $ ibmcloud plugin install container-service
@@ -157,7 +157,7 @@ $ ibmcloud plugin install container-registry
 To verify that the plug-in is installed properly, run `ibmcloud plugin list`.
 The Container Service plug-in is displayed in the results as `container-service/kubernetes-service`.
 
-Initialize the Container Service plug-in and point the endpoint to your region:
+Initialize the Container Service plug-in and point the endpoint to your region with the `ks` sub command:
 
 ```sh
 $ ibmcloud ks region-set us-south
@@ -193,37 +193,41 @@ You can verify the cluster in the IBM Cloud, as you can see in the image below:
 
 IBM Kubernetes Service has an option to install a managed Istio into a Kubernetes cluster. Unfortunately, the Kubernetes Lite Cluster we created in the previous step does not meet the hardware requirements for managed Istio. Hence we do a manual install of the Istio demo or evaluation version.
 
-First check if the cluster is available:
+These are the instructions to install Istio. We use **Istio 1.1.5** for this Lab.
+
+1. First check if the cluster is available:
+
 ```sh
 $ ./iks-scripts/cluster-add-istio.sh
 ```
 If the cluster isn't ready, the script will tell you. Then just wait a few more minutes and try again.
 
-These are the instructions to install Istio. 
-We use **Istio 1.1.5** for this Lab.
+_NOTE:_ You **must** run this command to check for completion of the cluster provisioning and it **must** report that the cluster is **ready for Istio installation**! This command also retrieves the cluster configuration which is needed in other scripts. But this configuration can only be retrieved from a cluster that is in ready state.
 
-1. Download Istio 1.1.5 directly from github into the **workshop** directory:
+2. Download Istio 1.1.5 directly from github into the **workshop** directory:
 
-    ```
+    ```sh
     cd workshop
     curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.1.5 sh -
     ```
 
-_Note:_ Please be aware that we do **not cover Windows** in these instructions!
+_Note:_ Please be aware that this does **not** work on Windows! 
+Windows users can download an istio-1.1.5-win.zip from here: https://github.com/istio/istio/releases/tag/1.1.5
+Unpack the ZIP file into the workshop directory and add the path to ```istio-1.1.5/bin``` your Windows **PATH**.
 
-2. Add `istioctl` to the PATH environment variable, e.g copy paste in your shell and/or `~/.profile`:
+3. Add `istioctl` to the PATH environment variable, e.g copy paste in your shell and/or `~/.profile`:
 
     ```sh
     export PATH=$PWD/istio-1.1.5/bin:$PATH
     ```
 
-3. Change into the extracted directory: 
+4. Change into the extracted directory: 
 
     ```sh
     cd istio-1.1.5
     ```
 
-4. Install Istio:
+5. Install Istio:
 
     ```sh
     $ for i in install/kubernetes/helm/istio-init/files/crd*yaml; do kubectl apply -f $i; done
