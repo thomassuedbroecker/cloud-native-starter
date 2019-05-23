@@ -81,9 +81,9 @@ Our **Authors** mircroserice runs on Open Liberty Server in a container in Kuber
 IMAGE
 
 We need to configure the **Open Liberty** server in the [server.xml](authors-java-jee/liberty/server.xml) file. In our Java implementation we will use the MicroProfile, with the feature definition in the server.xml we define ```webProfile-8.0``` and ```microProfile-2.1``` for our server.
-The server must be reached in the network, therefore we define the  **httpEndpoint** including **http ports** we use for our microservice. For configuration details we can take a look into the [openliberty documentation](https://openliberty.io/docs/ref/config/).
+The server must be reached in the network; therefore, we define the  **httpEndpoint** including **http ports** we use for our microservice. For configuration details we can take a look into the [openliberty documentation](https://openliberty.io/docs/ref/config/).
 
-These **ports** must be exposed later in the **Dockerfile** container definition.
+_IMPORTANT to remember_: These **ports** must be exposed later in the **Dockerfile** container definition and mapped inside the **Kubernetes** configurations.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
