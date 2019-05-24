@@ -294,7 +294,7 @@ livenessProbe:
 
 With the [Dockerfile](authors-java-jee/Dockerfile) we define the  how to build a container. For detailed information we use the [Dockerfile documentation](https://docs.docker.com/engine/reference/builder/)
 
-If we build a container, we usually start we an existing container image, which contains a minimum on configuration we need, for example: the OS, the Java version or even more. Therefor we examine [dockerhub](https://hub.docker.com/search?q=maven&type=image&image_filter=official) or we search in the internet, to you the the starting point which fits to our needs. We see **maven** container image on dockerhub the following picture.
+If we build a container, we usually start with an existing container image, which contains a minimum on configuration we need, for example: the OS, the Java version or even more. Therefor we examine [dockerhub](https://hub.docker.com/search?q=maven&type=image&image_filter=official) or we search in the internet, to you the the starting point which fits to our needs. We see **maven** container image on dockerhub the following picture.
 
 ![dockerhub maven container image](images/dockerhub.png)
 
@@ -335,9 +335,69 @@ COPY --from=BUILD /usr/src/app/target/authors.war /config/apps/
 
 # 5.Kubernetes deployment configuration
 
-Now we examine the deployment yamls to deploy the container to **Pods** and creating **Services** to access them in the Kubernetes Cluster. In the following image you can see the deployed **Services**:
+Now we examine the deployment yamls to deploy the container to **Pods** and creating **Services** to access them in the Kubernetes Cluster. 
 
-![ibm-cloud-services](images/ibm-cloud-services.png)
+Let's start with the deployment. For more details we use will the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
+
+It starts with the definition of the kind and metadata statement.
+
+
+
+```yml
+spec:
+  ...
+  template:
+    metadata:
+      labels:
+        app: authors
+        version: v1
+```
+
+In the spec section, we give the container a name, and the information where the container image can be found in the Container Registry.
+
+In the spec section, I give the container a name, and the information where the container image can be found in the Container Registry.
+
+spec:
+  containers:
+  - name: scores-service
+    image: "registry.eu-gb.bluemix.net/scores-services/scores-service:v1"
+My specification in the yaml of the containerPort depends on the port definition inside my Dockerfile defined with EXPOSE  before. All this is related to my last blog post.
+
+ports:
+- name: scores-http
+  containerPort: 3000
+Simplified I would say,  labels are used in Kubernetes for the identification of elements like pods, for example.
+
+This is full deployment yaml  file:
+
+```yaml
+kind: Deployment
+apiVersion: apps/v1beta1
+metadata:
+  name: authors
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: authors
+        version: v1
+    spec:
+      containers:
+      - name: authors
+        image: authors:1
+        ports:
+        - containerPort: 3000
+        livenessProbe:
+          exec:
+            command: ["sh", "-c", "curl -s http://localhost:3000/"]
+          initialDelaySeconds: 20
+        readinessProbe:
+          exec:
+            command: ["sh", "-c", "curl -s http://localhost:3000/health | grep -q authors"]
+          initialDelaySeconds: 40
+      restartPolicy: Always
+```
 
 # 5. Hands-on tasks - Replace the Node.JS Authors microservice with a simple Java implementation
 
@@ -346,3 +406,4 @@ Now we examine the deployment yamls to deploy the container to **Pods** and crea
 Resources:
 
 * ['Simplest possible Microservice in Java'](../authors-java-jee/README.md)
+* ['How to deploy a container to the IBM Cloud Kubernetes Service](https://suedbroecker.net/2019/03/05/how-to-deploy-a-container-to-the-ibm-cloud-kubernetes-service/)
