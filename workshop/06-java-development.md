@@ -241,7 +241,7 @@ public class GetAuthor {
 }
 ```
 
-## 3.3 Additional supporting live and readiness probes in Kubernetes 
+## 3.3 Supporting live and readiness probes in Kubernetes with HealthCheck
 
 We add the class **HealthEndpoint** into the **Authors** package  as you can see in the following image.
 
@@ -269,9 +269,47 @@ public class HealthEndpoint implements HealthCheck {
 
 ---
 
-4. The Dockerfile
+# 4. The Dockerfile and the usage of dockerhub
 
-With the [Dockerfile](authors-java-jee/Dockerfile) we provide the guidance how to build a container.
+With the [Dockerfile](authors-java-jee/Dockerfile) we define the  how to build a container. For detailed information we use the [Dockerfile documentation](https://docs.docker.com/engine/reference/builder/)
+
+If we build a container, we usually start we an existing container image, which contains a minimum on configuration we need, for example: the OS, the Java version or even more. Therefor we examine [dockerhub](https://hub.docker.com/search?q=maven&type=image&image_filter=official) or we search in the internet, to you the the starting point which fits to our needs. We see **maven** container image on dockerhub the following picture.
+
+![dockerhub maven container image](images/dockerhub.png)
+
+Inside the Dockerfile we use **two stages** to build the container image. The reason for the two stages is, we have the objective to be **independed** of local environment settings, when we build our production services. With this concept we don't have to ensure that **Java** and **Maven** (or wrong versions of them) is installed on the local machine of the developers.
+
+In short words one container is only responsible to build the microservice, let us call this container **build environment container** and the other container will contain the microservice, we call this the **production** container.
+
+
+* **Build environment container**
+
+In the following Dockerfile extract, we can see how we create our **build environment container** based on the maven 3.5 image from the [dockerhub](https://hub.docker.com/_/maven/).
+
+Here we use the **pom** file, we defined before, to build our **Authors service** with ```RUN mvn -f /usr/src/app/pom.xml clean package```.
+
+```dockerfile
+FROM maven:3.5-jdk-8 as BUILD
+ 
+COPY src /usr/src/app/src
+COPY pom.xml /usr/src/app
+RUN mvn -f /usr/src/app/pom.xml clean package
+```
+
+* **Production container**
+
+The starting point for the our **Production container** is the [OpenLiberty container](https://hub.docker.com/_/open-liberty).
+
+We copy the **Authors service** code with the **server.xml** to this container. 
+_REMEMBER:_ The **service.xml** contains the ports we use for our **Authors service**.
+
+```dockerfile
+FROM openliberty/open-liberty:microProfile2-java8-openj9 
+
+COPY liberty/server.xml /config/
+
+COPY --from=BUILD /usr/src/app/target/authors.war /config/apps/
+```
 
 ## 2. Hands-on tasks - Replace the Node.JS Authors microservice with a simple Java implementation
 
