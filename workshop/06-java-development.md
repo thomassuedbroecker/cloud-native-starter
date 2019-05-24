@@ -187,7 +187,7 @@ Let's remember the **server.xml** configuration. We added the **MicroProfile** t
 
 The combination with that **server.xml** with our usage of **MicroProfile** in the **GetAuthor** we will be to access a **OpenAPI exlporer** on this URL ```http://host:http_port/openapi```.
 
-This is the source code of the [GetAuthors class](authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) with the used **MicroProfile**.
+This is the source code of the [GetAuthors class](authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) with the used **MicroProfiles**.
 
 ```java
 @ApplicationScoped
@@ -241,8 +241,29 @@ public class GetAuthor {
 }
 ```
 
+## 3.3 Additional supporting live and readiness probes in Kubernetes 
 
+We add into the **Authors** package the class **HealthEndpoint** as you can see in the following image.
 
+![class diagramm HealthEndpoint](images/authors-java-classdiagram-02.png)
+
+> Kubernetes **provides liveness** and **readiness probes** that are used to check the health of your containers, you will work with readiness probes. These probes can check certain files in your containers, check a TCP socket, or make HTTP requests. **MicroProfile Health** exposes a **health endpoint** on your microservices. Kubernetes polls the endpoint as specified by the probes to react appropriately to any change in the microservice’s status. Read the Adding health reports to microservices guide to learn more about MicroProfile Health.
+
+For more information we can use the [Kubernetes Microprofile Health documentation](https://openliberty.io/guides/kubernetes-microprofile-health.html) and the documentation on [GitHub](https://github.com/eclipse/microprofile-health)
+
+This is the implementation for the Health Check for Kubernetes for the **Authors** service in the [HealthEndpoint class](authors-java-jee/src/main/java/com/ibm/authors/HealthEndpoint.java)
+
+```java
+@Health
+@ApplicationScoped
+public class HealthEndpoint implements HealthCheck {
+
+    @Override
+    public HealthCheckResponse call() {
+        return HealthCheckResponse.named("authors").withData("authors", "ok").up().build();
+    }
+}
+```
 
 ---
 
