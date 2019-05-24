@@ -337,17 +337,19 @@ COPY --from=BUILD /usr/src/app/target/authors.war /config/apps/
 
 Now we examine the **deployment** and **service** yaml. The yaml do contain the  deploy the container to a **Pod** and creating **Services** to access them in the Kubernetes Cluster. 
 
+![kubernetes deployment overview](images/authors-java-kubernetes-deployment-overview.png)
+
 ## 5.1 Deployment
 
 The deployment will deploy the container to a pod in Kubernetes.
-For more details we use will the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/) for pods.
+For more details we use the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/) for pods.
 
 > A Pod is the basic building block of Kubernetes–the smallest and simplest unit in the Kubernetes object model that you create or deploy. A Pod represents processes running on your Cluster .
 
 
 Let's start with the **deployment yaml**. For more details we use will the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) for deployments.
 
-It starts with the definition of the kind and metadata statement.
+Definition of the ```kind``` defines this is a ```Deployment``` configuration.
 
 ```yml
 kind: Deployment
@@ -356,7 +358,7 @@ metadata:
   name: authors
 ```
 
-In the **spec**  **metadata** section, we give the deployment a app name and version information.
+Inside the ```spec``` section, we give the deployment a app name and version label.
 
 ```yml
 spec:
@@ -417,8 +419,30 @@ spec:
 ```
 ## 5.2 Service
 
-https://kubernetes.io/docs/concepts/services-networking/service/
+After the definition of the Pod we need to define how to access the Pod, therefor we use a service in Kubernetes. For more details we use the [Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/service/) for service.
 
+> A Kubernetes Service is an abstraction which defines a logical set of Pods and a policy by which to access them - sometimes called a micro-service. The set of Pods targeted by a Service is (usually) determined by a Label Selector.
+
+
+
+
+
+```yaml
+kind: Service
+apiVersion: v1
+metadata:
+  name: authors
+  labels:
+    app: authors
+spec:
+  selector:
+    app: authors
+  ports:
+    - port: 3000
+      name: http
+  type: NodePort
+---
+```
 
 # 5. Hands-on tasks - Replace the Node.JS Authors microservice with a simple Java implementation
 
