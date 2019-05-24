@@ -24,7 +24,7 @@ In that service we only need to implement to provide a **REST API** for a get au
 •	[Kubernetes deployment configuration](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 
 
-That are the major steps we will follow to replace the  **Authors** service in the lab.
+That are the major steps we will follow to replace the  **Authors** service in our Lab.
 
 ![authors-java-container-overview](images/authors-java-container-overview.png)
 
@@ -32,8 +32,6 @@ That are the major steps we will follow to replace the  **Authors** service in t
 1. Uploading the container definition
 2. Building and storing of the production container image inside the IBM Cloud Registry
 3. Deploying the containers into the Kuberentes Cluster
-
-
 
 ---
 
@@ -90,12 +88,10 @@ In the **pom** file we define the configuation of our Java project, with **depen
 
 Our **Authors** mircroserice runs later on Open Liberty Server in a container in Kubernetes.
 
-IMAGE
-
 We need to configure the **OpenLiberty** server in the [server.xml](authors-java-jee/liberty/server.xml) file. In our Java implementation we will use the MicroProfile, with the feature definition in the server.xml we define ```webProfile-8.0``` and ```microProfile-2.1``` for our server.
 The server must be reached in the network; therefore, we define the  **httpEndpoint** including **http ports** we use for our microservice. For configuration details we can take a look into the [openliberty documentation](https://openliberty.io/docs/ref/config/).
 
-_IMPORTANT to remember_: These **ports** must be exposed later in the **Dockerfile** container definition and mapped inside the **Kubernetes** configurations.
+_IMPORTANT:_ We should remember these **ports** must be exposed later in the **Dockerfile** container definition and mapped inside the **Kubernetes** configurations.
 
 Also the name of the executable **web application** is definied in that **server.xml**.
 
