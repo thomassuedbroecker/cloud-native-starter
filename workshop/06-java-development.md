@@ -462,13 +462,26 @@ $ ibmcloud ks cluster-config --cluster cloud-native
 3. Set the KUBECONFIG environment variable. Copy the output from the previous command and paste it in your terminal. The command output looks similar to the following example:
 
 ```sh
-export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/hands-on-verification/kube-config-mil01-cloud-native.yml
+$ export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/hands-on-verification/kube-config-mil01-cloud-native.yml
 ```
 
 4. Verify that you can connect to your cluster by listing your worker nodes.
 
 ```sh
-kubectl get nodes
+$ kubectl get nodes
+```
+
+5. Ensure you have no remaining microservices running from other Labs in this workshop.
+
+```sh
+$ scripts/delete-all.sh
+```
+
+6. Verify the delete with following commands.
+
+```sh
+$ kubectl get pods
+$ kubectl get services  
 ```
 
 ### 2.1 Build the container and upload to the IBM Container Registry
@@ -476,48 +489,48 @@ kubectl get nodes
 1. Logon to the IBM Cloud Container Registry 
 
 ```sh
-cd authors-java-jee
-ibmcloud cr login
+$ cd authors-java-jee
+$ ibmcloud cr login
 ```
 
 2. List you namespaces inside the IBM Cloud Container Registry 
 
 ```sh
-ibmcloud cr namespaces
+$ ibmcloud cr namespaces
 ```
 
 Sample outout:
 
 ```sh
-Listing namespaces for account 'Thomas Südbröcker's Account' in registry 'de.icr.io'...
-
-Namespace   
-cloud-native
+$ Listing namespaces for account 'Thomas Südbröcker's Account' in registry 'de.icr.io'...
+$
+$ Namespace   
+$ cloud-native
 ```
 
 3. Now upload the code and build the container image inside IBM Cloud Container Registry. We use the upper information we got from listing the namespaces.
 
 ```sh
-ibmcloud cr build -f Dockerfile --tag $REGISTRY/$REGISTRY_NAMESPACE/authors:1 .
+$ ibmcloud cr build -f Dockerfile --tag $REGISTRY/$REGISTRY_NAMESPACE/authors:1 .
 ```
 
 Sample values:
 
 ```sh
-ibmcloud cr build -f Dockerfile --tag de.icr.io/cloud-native/authors:1 .
+$ ibmcloud cr build -f Dockerfile --tag de.icr.io/cloud-native/authors:1 .
 ```
 
 4. List the container images to verify the upload.
 
 ```sh
-ibmcloud cr images
+$ ibmcloud cr images
 ```
 Sample output:
 
 ```sh
-REPOSITORY                        TAG   DIGEST         NAMESPACE      CREATED          SIZE     SECURITY STATUS   
-de.icr.io/cloud-native/articles   1     b5dc1f96a69a   cloud-native   1 day ago        273 MB   7 Issues   
-de.icr.io/cloud-native/authors    1     217b7716dce1   cloud-native   30 seconds ago   259 MB   7 Issues   
+$ REPOSITORY                        TAG   DIGEST         NAMESPACE      CREATED          SIZE     SECURITY STATUS   
+$ de.icr.io/cloud-native/articles   1     b5dc1f96a69a   cloud-native   1 day ago        273 MB   7 Issues   
+$ de.icr.io/cloud-native/authors    1     217b7716dce1   cloud-native   30 seconds ago   259 MB   7 Issues   
 ```
 
 Copy the REPOSITORY path for the uploaded **Authors** container image.
@@ -525,36 +538,60 @@ In this case sample: ```de.icr.io/cloud-native/authors```
 
 ### 2.3 Deploy the container image
 
+1. Open the ```authors-java-jee/deployment/deployment.yaml```with a editor and replace the value for the image location with the path we got from the IBM Container Registry and just replace the ```authors``` text and **save** the file.
+
+Before:
+```yml
+image: authors:1
+```
+
+Sample change:
+```yml
+image: de.icr.io/cloud-native/authors:1
+```
+
+2. Now we apply the deployment we will create the new **Authors** Pod.
+
+```sh
+$ kubectl apply -f deployment/deployment.yaml
+```
+
+3. Now we apply the service we will create the new **Authors** Service.
+
+```sh
+$ kubectl apply -f deployment/service.yaml
+```
+
 1. Target the Kubernetes Service region in which you want to work.
 
 ```sh
-ibmcloud ks region-set us-south
+$ ibmcloud ks region-set us-south
 ```
 
 2. List your clusters in that region
 
 ```sh
-ibmcloud ks clusters
+$ ibmcloud ks clusters
 ```
 
 Sample output:
 
 ```sh
-Name                            ID                                 State    Created        Workers   Location    Version       Resource Group Name   
-cloud-native          677fe58d6c244e569c35e158ccc2cb21   normal   3 weeks ago    1         mil01      
+$ Name                            ID                                 State    Created        Workers   Location    Version       Resource Group Name   
+$ cloud-native          677fe58d6c244e569c35e158ccc2cb21   normal   3 weeks ago    1         mil01      
 ```
 
 3. Get the command to set the environment variable and download the Kubernetes configuration files.
 
 ```sh
-ibmcloud ks cluster-config cloud-native
+$ ibmcloud ks cluster-config cloud-native
 ```
 
 4. Set the KUBECONFIG environment variable. Copy the output from the previous command and paste it in your terminal. The command output should look similar to the following.
 
 Sample output:
 ```sh
-export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/cloud-native/kube-config-mil01-hands-on-verification.yml
+$ export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/cloud-native/kube-config-mil01-hands-on-verification.yml
 ```
 
 ---
