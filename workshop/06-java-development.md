@@ -424,8 +424,7 @@ After the definition of the Pod we need to define how to access the Pod, therefo
 > A Kubernetes Service is an abstraction which defines a logical set of Pods and a policy by which to access them - sometimes called a micro-service. The set of Pods targeted by a Service is (usually) determined by a Label Selector.
 
 
-
-
+In the [service.yaml](authors-java-jee/deployment/service.yaml) we see find our selector to the Pod **authors**. If the service is deployed, it is possible that our **Articles** service can find the **Authors** service.
 
 ```yaml
 kind: Service
@@ -445,6 +444,32 @@ spec:
 ```
 
 # 5. Hands-on tasks - Replace the Node.JS Authors microservice with a simple Java implementation
+
+### 2.1 Gain access to your cluster
+
+1. Log in to your IBM Cloud account. Include the --sso option if using a federated ID.
+
+```sh
+$ ibmcloud login -a https://cloud.ibm.com -r us-south -g default
+```
+
+2. Download the kubeconfig files for your cluster.
+
+```sh
+$ ibmcloud ks cluster-config --cluster cloud-native
+```
+
+3. Set the KUBECONFIG environment variable. Copy the output from the previous command and paste it in your terminal. The command output looks similar to the following example:
+
+```sh
+export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/hands-on-verification/kube-config-mil01-cloud-native.yml
+```
+
+4. Verify that you can connect to your cluster by listing your worker nodes.
+
+```sh
+kubectl get nodes
+```
 
 ---
 
