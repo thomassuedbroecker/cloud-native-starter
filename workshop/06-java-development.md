@@ -107,6 +107,10 @@ Also the name of the executable **web application** is definied in that **server
 
 # 3. Implementation of the REST GET endpoint with MicroProfile
 
+The sequence diagram below shows a simplified view how the **REST API** is used to get all articles. We will just replace the **Authors** microservice.
+
+![rest-api-sequencediagram](images/rest-api-sequencediagram.png)
+
 ## 3.1 MicroProfile basics
 
 In the most of the following classes we will use [MicroProfile](https://openliberty.io/docs/intro/microprofile.html).
@@ -172,7 +176,16 @@ public class Author {
 
 This class implements the REST API response for our microservice **Authors**. Here we use MicroProfiles for OpenAPI to create the documentation and implementation of the REST API.
 
-We define the [basic REST API definition with the MicroProfile](https://github.com/eclipse/microprofile-rest-client/blob/master/README.adoc). We using ```@Path```, ```@Get``` from [JAX-RS](https://jcp.org/en/jsr/detail?id=339) and for the [OpenAPI](https://www.openapis.org/) documentation ```@OpenAPIDefinition``` the [MicroProfile OpenAPI](https://github.com/eclipse/microprofile-open-api).
+We define the [basic REST API definition with the MicroProfile](https://github.com/eclipse/microprofile-rest-client/blob/master/README.adoc). We using ```@Path```, ```@Get``` from [JAX-RS](https://jcp.org/en/jsr/detail?id=339) and for the [OpenAPI](https://www.openapis.org/) documentation ```@OpenAPIDefinition``` the [MicroProfile OpenAPI](https://github.com/eclipse/microprofile-open-api), which creates automaticly a API exporer.
+
+Let's  remember server.xml configuration. We did add **MicroProfile** to the server and in combination with our usage in the **GetAuthor** we can access the **OpenAPI exlporer** later on ```http://host:http_port/openapi```.
+
+```xml
+<featureManager>
+        <feature>microProfile-2.1</feature>
+        ....
+</featureManager> 
+```
 
 ```java
 @ApplicationScoped
