@@ -23,6 +23,18 @@ In that service we only need to implement to provide a **REST API** for a get au
 
 •	[Kubernetes deployment configuration](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 
+
+That are the major steps we will follow to replace the  **Authors** service in the lab.
+
+![authors-java-container-overview](images/authors-java-container-overview.png)
+
+0. Develop the Java **Authors** service 
+1. Uploading the container definition
+2. Building and storing of the production container image inside the IBM Cloud Registry
+3. Deploying the containers into the Kuberentes Cluster
+
+
+
 ---
 
 # 1. Usage of Maven for Java
@@ -313,7 +325,7 @@ RUN mvn -f /usr/src/app/pom.xml clean package
 
 The starting point for the our **Production container** is the [OpenLiberty container](https://hub.docker.com/_/open-liberty).
 
-We copy the **Authors service** code with the **server.xml** to this container. 
+We copy the **Authors service** code with the **server.xml** for the OpenLiberty server to this container. 
 _REMEMBER:_ The **service.xml** contains the ports we use for our **Authors service**.
 
 ```dockerfile
@@ -323,8 +335,15 @@ COPY liberty/server.xml /config/
 
 COPY --from=BUILD /usr/src/app/target/authors.war /config/apps/
 ```
+---
 
-## 2. Hands-on tasks - Replace the Node.JS Authors microservice with a simple Java implementation
+# 5.Kubernetes deployment configuration
+
+Now we examine the deployment yamls to deploy the container to **Pods** and creating **Services** to access them in the Kubernetes Cluster. In the following image you can see the deployed **Services**:
+
+![ibm-cloud-services](images/ibm-cloud-services.png)
+
+# 5. Hands-on tasks - Replace the Node.JS Authors microservice with a simple Java implementation
 
 ---
 
