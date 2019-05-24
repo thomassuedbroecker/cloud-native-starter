@@ -13,13 +13,13 @@ In that service we only need to implement to provide a **REST API** for a get au
 
 •	Usage of [Maven](https://maven.apache.org/) for Java 
 
-•	Configuration of an [Open Liberty Server](https://openliberty.io)
+•	Configuration of an [OpenLiberty Server](https://openliberty.io)
 
 •	Implementation of a [REST GET endpoint with MicroProfile](https://openliberty.io/blog/2018/01/31/mpRestClient.html)
 
-•	Definition of a [Dockerfile](https://docs.docker.com/engine/reference/builder/) with the reuse for existing containers from the [Dockerhub](https://hub.docker.com)
+•	[Health check](https://openliberty.io/guides/kubernetes-microprofile-health.html#adding-a-health-check-to-the-inventory-microservice) implementation using a MicroProfile for Kubernetes 
 
-•	[Health check](https://openliberty.io/guides/kubernetes-microprofile-health.html#adding-a-health-check-to-the-inventory-microservice) implementation using Open Liberty with MicroProfile for Kubernetes 
+•	Definition of a [Dockerfile](https://docs.docker.com/engine/reference/builder/) with the reuse for existing containers from the [Dockerhub](https://hub.docker.com)
 
 •	[Kubernetes deployment configuration](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 
@@ -80,7 +80,7 @@ Our **Authors** mircroserice runs later on Open Liberty Server in a container in
 
 IMAGE
 
-We need to configure the **Open Liberty** server in the [server.xml](authors-java-jee/liberty/server.xml) file. In our Java implementation we will use the MicroProfile, with the feature definition in the server.xml we define ```webProfile-8.0``` and ```microProfile-2.1``` for our server.
+We need to configure the **OpenLiberty** server in the [server.xml](authors-java-jee/liberty/server.xml) file. In our Java implementation we will use the MicroProfile, with the feature definition in the server.xml we define ```webProfile-8.0``` and ```microProfile-2.1``` for our server.
 The server must be reached in the network; therefore, we define the  **httpEndpoint** including **http ports** we use for our microservice. For configuration details we can take a look into the [openliberty documentation](https://openliberty.io/docs/ref/config/).
 
 _IMPORTANT to remember_: These **ports** must be exposed later in the **Dockerfile** container definition and mapped inside the **Kubernetes** configurations.
@@ -185,7 +185,7 @@ Let's remember the **server.xml** configuration. We added the **MicroProfile** t
 </featureManager> 
 ```
 
-The combination with that **server.xml** with our usage of **MicroProfile** in the **GetAuthor** we will be to access a **OpenAPI exlporer** on this URL ```http://host:http_port/openapi```.
+With the combination of the **server.xml** and our usage of **MicroProfile** in the **GetAuthor** class, we can access a **OpenAPI exlporer** with this URL ```http://host:http_port/openapi``` later.
 
 This is the source code of the [GetAuthors class](authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) with the used **MicroProfiles**.
 
@@ -243,9 +243,11 @@ public class GetAuthor {
 
 ## 3.3 Additional supporting live and readiness probes in Kubernetes 
 
-We add into the **Authors** package the class **HealthEndpoint** as you can see in the following image.
+We add the class **HealthEndpoint** into the **Authors** package  as you can see in the following image.
 
 ![class diagramm HealthEndpoint](images/authors-java-classdiagram-02.png)
+
+Let's understand what we want to support:
 
 > Kubernetes **provides liveness** and **readiness probes** that are used to check the health of your containers, you will work with readiness probes. These probes can check certain files in your containers, check a TCP socket, or make HTTP requests. **MicroProfile Health** exposes a **health endpoint** on your microservices. Kubernetes polls the endpoint as specified by the probes to react appropriately to any change in the microservice’s status. Read the Adding health reports to microservices guide to learn more about MicroProfile Health.
 
@@ -266,6 +268,10 @@ public class HealthEndpoint implements HealthCheck {
 ```
 
 ---
+
+4. The Dockerfile
+
+With the [Dockerfile](authors-java-jee/Dockerfile) we provide the guidance how to build a container.
 
 ## 2. Hands-on tasks - Replace the Node.JS Authors microservice with a simple Java implementation
 
