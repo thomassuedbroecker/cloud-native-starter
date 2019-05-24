@@ -88,10 +88,11 @@ In the **pom** file we define the configuation of our Java project, with **depen
 
 Our **Authors** mircroserice runs later on Open Liberty Server in a container in Kubernetes.
 
-We need to configure the **OpenLiberty** server in the [server.xml](authors-java-jee/liberty/server.xml) file. In our Java implementation we will use the MicroProfile, with the feature definition in the server.xml we define ```webProfile-8.0``` and ```microProfile-2.1``` for our server.
+We need to configure the **OpenLiberty** server in the [server.xml](authors-java-jee/liberty/server.xml) file. For our Java implementation use the MicroProfile, with the feature definition in the **server.xml** we provide that information to our server.
+As we can see we use ```webProfile-8.0``` and ```microProfile-2.1```.
 The server must be reached in the network; therefore, we define the  **httpEndpoint** including **http ports** we use for our microservice. For configuration details we can take a look into the [openliberty documentation](https://openliberty.io/docs/ref/config/).
 
-_IMPORTANT:_ We should remember these **ports** must be exposed later in the **Dockerfile** container definition and mapped inside the **Kubernetes** configurations.
+_IMPORTANT:_ We should remember these **ports** e.g. ```httpPort="3000"``` should be exposed in the **Dockerfile** for our container and mapped inside the **Kubernetes** deployment configurations.
 
 Also the name of the executable **web application** is definied in that **server.xml**.
 
@@ -338,7 +339,13 @@ Now we examine the **deployment** and **service** yaml. The yaml do contain the 
 
 ## 5.1 Deployment
 
-Let's start with the **deployment yaml**. For more details we use will the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
+The deployment will deploy the container to a pod in Kubernetes.
+For more details we use will the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/pods/pod-overview/) for pods.
+
+> A Pod is the basic building block of Kubernetes–the smallest and simplest unit in the Kubernetes object model that you create or deploy. A Pod represents processes running on your Cluster .
+
+
+Let's start with the **deployment yaml**. For more details we use will the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) for deployments.
 
 It starts with the definition of the kind and metadata statement.
 
@@ -361,10 +368,13 @@ spec:
         version: v1
 ```
 
-Then we gibe container a **name** and we define concret **image** location, where the container can be found in the Container Registry. We will replace **authors:1** later with the IBM Container Registry information. 
-The containerPort depends on the port definition inside our **Dockerfile** or better in our **server.xml**.
+Then we define a ```name``` for the container and we do provide the concret container ```image``` location, e.g. where the container can be found in the Container Registry. 
 
-We remember the usage of **HealthEndpoint** class for our **Authors**, here we see the ```livenessProbe``` definition.
+_NOTE:_ We will replace ```authors:1``` later with the IBM Container Registry information. 
+
+The ```containerPort``` depends on the port definition inside our **Dockerfile** or better in our **server.xml**.
+
+Now we should remember the usage of **HealthEndpoint** class for our **Authors**, here we see the ```livenessProbe``` definition.
 
 ```yml
 spec:
@@ -405,6 +415,10 @@ spec:
           initialDelaySeconds: 40
       restartPolicy: Always
 ```
+## 5.2 Service
+
+https://kubernetes.io/docs/concepts/services-networking/service/
+
 
 # 5. Hands-on tasks - Replace the Node.JS Authors microservice with a simple Java implementation
 
