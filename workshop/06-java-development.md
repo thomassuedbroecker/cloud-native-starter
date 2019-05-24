@@ -174,7 +174,7 @@ public class Author {
 
 ### 3.2.3 **Class GetAuthor**
 
-This class implements the REST API response for our microservice **Authors**. Here we use MicroProfiles for OpenAPI to create the documentation and implementation of the REST API.
+This class implements the REST API response for our microservice **Authors**. Here we use MicroProfiles for **OpenAPI** to create the documentation of the REST API.
 
 We define the [basic REST API definition with the MicroProfile](https://github.com/eclipse/microprofile-rest-client/blob/master/README.adoc). We using ```@Path```, ```@Get``` from [JAX-RS](https://jcp.org/en/jsr/detail?id=339) and for the [OpenAPI](https://www.openapis.org/) documentation ```@OpenAPIDefinition``` the [MicroProfile OpenAPI](https://github.com/eclipse/microprofile-open-api), which creates automaticly a API exporer.
 
