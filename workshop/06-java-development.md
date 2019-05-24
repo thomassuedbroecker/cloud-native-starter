@@ -156,7 +156,7 @@ public class AuthorsApplication extends Application {
 
 ### 3.2.2 **Class Author**
 
-This class simply repesents the data structure we use for the Author. No MircoProfile is used here.
+This class simply repesents the data structure we use for the [Author](authors-java-jee/src/main/java/com/ibm/authors/). No MircoProfile is used here.
 
 ```java
 package com.ibm.authors;
@@ -187,7 +187,7 @@ Let's remember the **server.xml** configuration. We added the **MicroProfile** t
 
 The combination with that **server.xml** with our usage of **MicroProfile** in the **GetAuthor** we will be to access a **OpenAPI exlporer** on this URL ```http://host:http_port/openapi```.
 
-This is the source code of the **GetAuthors** class with the used **MicroProfile**.
+This is the source code of the [GetAuthors class](authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) with the used **MicroProfile**.
 
 ```java
 @ApplicationScoped
