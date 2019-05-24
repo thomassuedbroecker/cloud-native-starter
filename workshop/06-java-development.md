@@ -328,20 +328,28 @@ _REMEMBER:_ The **service.xml** contains the ports we use for our **Authors serv
 FROM openliberty/open-liberty:microProfile2-java8-openj9 
 
 COPY liberty/server.xml /config/
-
 COPY --from=BUILD /usr/src/app/target/authors.war /config/apps/
 ```
 ---
 
 # 5.Kubernetes deployment configuration
 
-Now we examine the deployment yamls to deploy the container to **Pods** and creating **Services** to access them in the Kubernetes Cluster. 
+Now we examine the **deployment** and **service** yaml. The yaml do contain the  deploy the container to a **Pod** and creating **Services** to access them in the Kubernetes Cluster. 
 
-Let's start with the deployment. For more details we use will the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
+## 5.1 Deployment
+
+Let's start with the **deployment yaml**. For more details we use will the [Kubernetes documentation](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
 
 It starts with the definition of the kind and metadata statement.
 
+```yml
+kind: Deployment
+apiVersion: apps/v1beta1
+metadata:
+  name: authors
+```
 
+In the **spec**  **metadata** section, we give the deployment a app name and version information.
 
 ```yml
 spec:
@@ -353,22 +361,21 @@ spec:
         version: v1
 ```
 
-In the spec section, we give the container a name, and the information where the container image can be found in the Container Registry.
+Then we gibe container a **name** and we define concret **image** location, where the container can be found in the Container Registry. We will replace **authors:1** later with the IBM Container Registry information. 
+The containerPort depends on the port definition inside our **Dockerfile** or better in our **server.xml**.
 
-In the spec section, I give the container a name, and the information where the container image can be found in the Container Registry.
+We remember the usage of **HealthEndpoint** class for our **Authors**, here we see the ```livenessProbe``` definition.
 
+```yml
 spec:
-  containers:
-  - name: scores-service
-    image: "registry.eu-gb.bluemix.net/scores-services/scores-service:v1"
-My specification in the yaml of the containerPort depends on the port definition inside my Dockerfile defined with EXPOSE  before. All this is related to my last blog post.
-
-ports:
-- name: scores-http
-  containerPort: 3000
-Simplified I would say,  labels are used in Kubernetes for the identification of elements like pods, for example.
-
-This is full deployment yaml  file:
+      containers:
+      - name: authors
+        image: authors:1
+        ports:
+        - containerPort: 3000
+        livenessProbe:
+```
+This is the full [deployment.yaml](authors-java-jee/deployment/deployment.yaml) file.
 
 ```yaml
 kind: Deployment
