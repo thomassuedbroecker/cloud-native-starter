@@ -174,11 +174,9 @@ public class Author {
 
 ### 3.2.3 **Class GetAuthor**
 
-This class implements the REST API response for our microservice **Authors**. Here we use MicroProfiles for **OpenAPI** to create the documentation of the REST API.
+This class implements the REST API response for our microservice **Authors**. We implement our REST client with the [MicroProfile REST Client](https://github.com/eclipse/microprofile-rest-client/blob/master/README.adoc) in the code we use profiles statements ```@Path```, ```@Get``` from [JAX-RS](https://jcp.org/en/jsr/detail?id=339) and form the [OpenAPI](https://www.openapis.org/) documentation ```@OpenAPIDefinition``` the [MicroProfile OpenAPI](https://github.com/eclipse/microprofile-open-api), which creates automaticly a API exporer.
 
-We define the [basic REST API definition with the MicroProfile](https://github.com/eclipse/microprofile-rest-client/blob/master/README.adoc). We using ```@Path```, ```@Get``` from [JAX-RS](https://jcp.org/en/jsr/detail?id=339) and for the [OpenAPI](https://www.openapis.org/) documentation ```@OpenAPIDefinition``` the [MicroProfile OpenAPI](https://github.com/eclipse/microprofile-open-api), which creates automaticly a API exporer.
-
-Let's  remember server.xml configuration. We did add **MicroProfile** to the server and in combination with our usage in the **GetAuthor** we can access the **OpenAPI exlporer** later on ```http://host:http_port/openapi```.
+Let's  remember **server.xml** configuration. We did add **MicroProfile** to the server and in combination with our usage of the in the **GetAuthor** we can access the **OpenAPI exlporer** later on ```http://host:http_port/openapi```.
 
 ```xml
 <featureManager>
