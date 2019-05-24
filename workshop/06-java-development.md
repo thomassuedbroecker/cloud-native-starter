@@ -562,37 +562,6 @@ $ kubectl apply -f deployment/deployment.yaml
 $ kubectl apply -f deployment/service.yaml
 ```
 
-1. Target the Kubernetes Service region in which you want to work.
-
-```sh
-$ ibmcloud ks region-set us-south
-```
-
-2. List your clusters in that region
-
-```sh
-$ ibmcloud ks clusters
-```
-
-Sample output:
-
-```sh
-$ Name                            ID                                 State    Created        Workers   Location    Version       Resource Group Name   
-$ cloud-native          677fe58d6c244e569c35e158ccc2cb21   normal   3 weeks ago    1         mil01      
-```
-
-3. Get the command to set the environment variable and download the Kubernetes configuration files.
-
-```sh
-$ ibmcloud ks cluster-config cloud-native
-```
-
-4. Set the KUBECONFIG environment variable. Copy the output from the previous command and paste it in your terminal. The command output should look similar to the following.
-
-Sample output:
-```sh
-$ export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/cloud-native/kube-config-mil01-hands-on-verification.yml
-```
 
 ---
 
