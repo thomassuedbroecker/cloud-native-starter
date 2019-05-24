@@ -267,6 +267,19 @@ public class HealthEndpoint implements HealthCheck {
 }
 ```
 
+The usage of **HealthEndpoint** we can find in the deployment yaml, we use for the deployment Kubernetes. IN the following yaml extract we can see the ```livenessProbe``` definition.
+
+```yaml
+livenessProbe:
+    exec:
+        command: ["sh", "-c", "curl -s http://localhost:3000/"]
+        initialDelaySeconds: 20
+    readinessProbe:
+        exec:
+            command: ["sh", "-c", "curl -s http://localhost:3000/health | grep -q authors"]
+        initialDelaySeconds: 40
+```
+
 ---
 
 # 4. The Dockerfile and the usage of dockerhub
