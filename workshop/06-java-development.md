@@ -174,9 +174,9 @@ public class Author {
 
 ### 3.2.3 **Class GetAuthor**
 
-This class implements the REST API response for our microservice **Authors**. We implement our REST client with the [MicroProfile REST Client](https://github.com/eclipse/microprofile-rest-client/blob/master/README.adoc) in the code we use profiles statements ```@Path```, ```@Get``` from [JAX-RS](https://jcp.org/en/jsr/detail?id=339) and form the [OpenAPI](https://www.openapis.org/) documentation ```@OpenAPIDefinition``` the [MicroProfile OpenAPI](https://github.com/eclipse/microprofile-open-api), which creates automaticly a API exporer.
+This class implements the REST API response for our microservice **Authors**. We implement our REST client with the [MicroProfile REST Client](https://github.com/eclipse/microprofile-rest-client/blob/master/README.adoc) in the code we use profiles statements ```@Path```, ```@Get``` from [JAX-RS](https://jcp.org/en/jsr/detail?id=339) and form the [OpenAPI](https://www.openapis.org/) documentation ```@OpenAPIDefinition``` the [MicroProfile OpenAPI](https://github.com/eclipse/microprofile-open-api), which creates automatically a API explorer.
 
-Let's  remember **server.xml** configuration. We did add **MicroProfile** to the server and in combination with our usage of the in the **GetAuthor** we can access the **OpenAPI exlporer** later on ```http://host:http_port/openapi```.
+Let's remember the **server.xml** configuration. We added the **MicroProfile** to the server, as you can see in the code below.
 
 ```xml
 <featureManager>
@@ -184,6 +184,10 @@ Let's  remember **server.xml** configuration. We did add **MicroProfile** to the
         ....
 </featureManager> 
 ```
+
+The combination with that **server.xml** with our usage of **MicroProfile** in the **GetAuthor** we will be to access a **OpenAPI exlporer** on this URL ```http://host:http_port/openapi```.
+
+This is the source code of the **GetAuthors** class with the used **MicroProfile**.
 
 ```java
 @ApplicationScoped
