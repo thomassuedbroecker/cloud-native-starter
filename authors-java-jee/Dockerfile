@@ -7,6 +7,9 @@ RUN mvn -f /usr/src/app/pom.xml clean package
 
 FROM openliberty/open-liberty:microProfile2-java8-openj9 
 
+RUN  apt-get install -y curl
+
 COPY liberty/server.xml /config/
 
 COPY --from=BUILD /usr/src/app/target/authors.war /config/apps/
+EXPOSE 3000 

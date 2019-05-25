@@ -562,6 +562,27 @@ $ kubectl apply -f deployment/deployment.yaml
 $ kubectl apply -f deployment/service.yaml
 ```
 
+4. Get nodeport 
+
+```sh
+$ clusterip=$(ibmcloud ks workers --cluster cloud-native | awk '/Ready/ {print $2;exit;}')
+$ echo $clusterip
+159.122.172.162
+```
+
+5. Get nodeport.
+
+```sh
+$ nodeport=$(kubectl get svc authors --ignore-not-found --output 'jsonpath={.spec.ports[*].nodePort}')
+$ echo $nodeport
+$ 30108
+```
+
+5. Open API explorer.
+
+```sh
+open http://${clusterip}:${nodeport}/openapi/ui/
+```
 
 ---
 
