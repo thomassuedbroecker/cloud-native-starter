@@ -594,11 +594,11 @@ curl http://${clusterip}:${nodeport}/api/v1/getauthor?name=Niklas%20Heidloff
 {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
 ```
 
-7. Execute curl to test the **HealthCheck** implementation of the service.
+7. Execute following curl command to test the **HealthCheck** implementation of the **Authors** service.
 
 ```sh
-curl http://${clusterip}:${nodeport}/api/v1/getauthor?name=Niklas%20Heidloff
-{"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
+curl http://${clusterip}:${nodeport}/healthcheck
+
 ```
 
 ---
