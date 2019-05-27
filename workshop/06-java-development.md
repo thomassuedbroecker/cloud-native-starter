@@ -335,9 +335,11 @@ COPY --from=BUILD /usr/src/app/target/authors.war /config/apps/
 
 # 5.Kubernetes deployment configuration
 
-Now we examine the **deployment** and **service** yaml. The yaml do contain the  deploy the container to a **Pod** and creating **Services** to access them in the Kubernetes Cluster. 
+Now we examine the **deployment** and **service** yaml. The yamls do contain the  deploy the container to a **Pod** and creating **Services** to access them in the Kubernetes Cluster. 
 
-![authors-java-kubernetes-deployment-overview](images/authors-java-kubernetes-deployment-overview.png)
+In the following image we see the relevant dependencies for this lab.
+
+![authors-java-service-pod-container](images/authors-java-service-pod-container.png)
 
 ## 5.1 Deployment
 
@@ -377,6 +379,7 @@ _NOTE:_ We will replace ```authors:1``` later with the IBM Container Registry in
 The ```containerPort``` depends on the port definition inside our **Dockerfile** or better in our **server.xml**.
 
 Now we should remember the usage of **HealthEndpoint** class for our **Authors**, here we see the ```livenessProbe``` definition.
+
 
 ```yml
 spec:
@@ -423,14 +426,13 @@ After the definition of the Pod we need to define how to access the Pod, therefo
 
 > A Kubernetes Service is an abstraction which defines a logical set of Pods and a policy by which to access them - sometimes called a micro-service. The set of Pods targeted by a Service is (usually) determined by a Label Selector.
 
-In the service we map the **NodePort** of the cluster to the port 3000 of the **Authors** service running in the **authors** Pod, as we can see in the following picture. Later we get the actual port for the service for the command line.
+In the service we map the **NodePort** of the cluster to the port 3000 of the **Authors** service running in the **authors** Pod, as we can see in the following picture. 
+
+_Note:_ Later we get the actual port for the service using the command line: ```nodeport=$(kubectl get svc authors --ignore-not-found --output 'jsonpath={.spec.ports[*].nodePort}')```.
 
 ![authors-java-service-pod-container](images/authors-java-service-pod-container.png)
 
 In the [service.yaml](authors-java-jee/deployment/service.yaml) we see find our selector to the Pod **authors**. If the service is deployed, it is possible that our **Articles** service can find the **Authors** service.
-
-
-
 
 ```yaml
 kind: Service
@@ -471,13 +473,13 @@ $ ibmcloud ks cluster-config --cluster cloud-native
 $ export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/cloud-native/kube-config-mil01-cloud-native.yml
 ```
 
-4. Verify that you can connect to your cluster by listing your worker nodes.
+4. Verify you can connect to your cluster by listing your worker nodes.
 
 ```sh
 $ kubectl get nodes
 ```
 
-5. Ensure you have no remaining microservices running from other Labs in this workshop.
+5. Ensure you have no remaining microservices running from the other Labs in this workshop.
 
 ```sh
 $ scripts/delete-all.sh
