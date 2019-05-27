@@ -12,7 +12,8 @@ spec:
     spec:
       containers:
       - name: authors
-        image: "de.icr.io/cloud-native/authors:1"
+        image: "de.icr.io/cloud-native/authors:2"
+        imagePullPolicy: Always
         ports:
         - containerPort: 3000
       restartPolicy: Always

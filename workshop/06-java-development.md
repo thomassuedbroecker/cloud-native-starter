@@ -520,6 +520,10 @@ Sample values:
 $ ibmcloud cr build -f Dockerfile --tag de.icr.io/cloud-native/authors:2 .
 ```
 
+_Optional:_ Verify the container upload in the IBM Cloud web UI.
+
+![authors-java-container-image](images/authors-java-container-image.png)
+
 4. List the container images to verify the upload.
 
 ```sh
@@ -530,7 +534,7 @@ Sample output:
 ```sh
 $ REPOSITORY                        TAG   DIGEST         NAMESPACE      CREATED          SIZE     SECURITY STATUS   
 $ de.icr.io/cloud-native/articles   1     b5dc1f96a69a   cloud-native   1 day ago        273 MB   7 Issues   
-$ de.icr.io/cloud-native/authors    1     217b7716dce1   cloud-native   30 seconds ago   259 MB   7 Issues   
+$ de.icr.io/cloud-native/authors    2     217b7716dce1   cloud-native   30 seconds ago   259 MB   7 Issues   
 ```
 
 Copy the REPOSITORY path for the uploaded **Authors** container image.
@@ -538,7 +542,7 @@ In this case sample: ```de.icr.io/cloud-native/authors```
 
 ### 2.3 Deploy the container image
 
-1. Open the ```authors-java-jee/deployment/deployment.yaml```with a editor and replace the value for the image location with the path we got from the IBM Container Registry and just replace the ```authors:1``` text and **save** the file.
+1. Open the ```authors-java-jee/deployment/deployment.yaml```with a editor and replace the value for the image location with the path we got from the IBM Container Registry and just replace the ```authors:1``` text, and add following statement ```imagePullPolicy: Always``` and **save** the file.
 
 Before:
 ```yml
@@ -548,6 +552,7 @@ image: authors:1
 Sample change:
 ```yml
 image: de.icr.io/cloud-native/authors:2
+imagePullPolicy: Always
 ```
 
 2. Now we apply the deployment we will create the new **Authors** Pod.
@@ -584,13 +589,19 @@ $ 30108
 open http://${clusterip}:${nodeport}/openapi/ui/
 ```
 
-curl http://${clusterip}:${nodeport}/api/v1/getauthor?name=Niklas%20Heidloff
-{"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}Thomass-MBP-3:authors-java-jee tho
+Sample result in your browser:
+
+![authors-java-openapi-explorer](images/authors-java-openapi-explorer.png)
+
 
 6. Execute curl to test the **Authors** service.
 
 ```sh
 curl http://${clusterip}:${nodeport}/api/v1/getauthor?name=Niklas%20Heidloff
+```
+
+Sample result:
+```
 {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
 ```
 
