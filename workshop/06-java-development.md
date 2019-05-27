@@ -511,13 +511,13 @@ $ cloud-native
 3. Now upload the code and build the container image inside IBM Cloud Container Registry. We use the upper information we got from listing the namespaces.
 
 ```sh
-$ ibmcloud cr build -f Dockerfile --tag $REGISTRY/$REGISTRY_NAMESPACE/authors:1 .
+$ ibmcloud cr build -f Dockerfile --tag $REGISTRY/$REGISTRY_NAMESPACE/authors:2 .
 ```
 
 Sample values:
 
 ```sh
-$ ibmcloud cr build -f Dockerfile --tag de.icr.io/cloud-native/authors:1 .
+$ ibmcloud cr build -f Dockerfile --tag de.icr.io/cloud-native/authors:2 .
 ```
 
 4. List the container images to verify the upload.
@@ -538,7 +538,7 @@ In this case sample: ```de.icr.io/cloud-native/authors```
 
 ### 2.3 Deploy the container image
 
-1. Open the ```authors-java-jee/deployment/deployment.yaml```with a editor and replace the value for the image location with the path we got from the IBM Container Registry and just replace the ```authors``` text and **save** the file.
+1. Open the ```authors-java-jee/deployment/deployment.yaml```with a editor and replace the value for the image location with the path we got from the IBM Container Registry and just replace the ```authors:1``` text and **save** the file.
 
 Before:
 ```yml
@@ -547,7 +547,7 @@ image: authors:1
 
 Sample change:
 ```yml
-image: de.icr.io/cloud-native/authors:1
+image: de.icr.io/cloud-native/authors:2
 ```
 
 2. Now we apply the deployment we will create the new **Authors** Pod.
@@ -562,7 +562,7 @@ $ kubectl apply -f deployment/deployment.yaml
 $ kubectl apply -f deployment/service.yaml
 ```
 
-4. Get nodeport 
+4. Get cluster (node) IP address
 
 ```sh
 $ clusterip=$(ibmcloud ks workers --cluster cloud-native | awk '/Ready/ {print $2;exit;}')
@@ -582,6 +582,23 @@ $ 30108
 
 ```sh
 open http://${clusterip}:${nodeport}/openapi/ui/
+```
+
+curl http://${clusterip}:${nodeport}/api/v1/getauthor?name=Niklas%20Heidloff
+{"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}Thomass-MBP-3:authors-java-jee tho
+
+6. Execute curl to test the **Authors** service.
+
+```sh
+curl http://${clusterip}:${nodeport}/api/v1/getauthor?name=Niklas%20Heidloff
+{"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
+```
+
+7. Execute curl to test the **HealthCheck** implementation of the service.
+
+```sh
+curl http://${clusterip}:${nodeport}/api/v1/getauthor?name=Niklas%20Heidloff
+{"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
 ```
 
 ---
