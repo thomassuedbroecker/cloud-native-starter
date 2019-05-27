@@ -581,7 +581,7 @@ spec:
     ```sh
     $ clusterip=$(ibmcloud ks workers --cluster cloud-native | awk '/Ready/ {print $2;exit;}')
     $ echo $clusterip
-    159.122.172.162
+    $ 159.122.172.162
     ```
 
 5. Get nodeport.
