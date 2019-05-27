@@ -337,7 +337,7 @@ COPY --from=BUILD /usr/src/app/target/authors.war /config/apps/
 
 Now we examine the **deployment** and **service** yaml. The yaml do contain the  deploy the container to a **Pod** and creating **Services** to access them in the Kubernetes Cluster. 
 
-![kubernetes deployment overview](images/authors-java-kubernetes-deployment-overview.png)
+![authors-java-kubernetes-deployment-overview](images/authors-java-kubernetes-deployment-overview.png)
 
 ## 5.1 Deployment
 
@@ -423,8 +423,14 @@ After the definition of the Pod we need to define how to access the Pod, therefo
 
 > A Kubernetes Service is an abstraction which defines a logical set of Pods and a policy by which to access them - sometimes called a micro-service. The set of Pods targeted by a Service is (usually) determined by a Label Selector.
 
+In the service we map the **NodePort** of the cluster to the port 3000 of the **Authors** service running in the **authors** Pod, as we can see in the following picture. Later we get the actual port for the service for the command line.
+
+![authors-java-service-pod-container](images/authors-java-service-pod-container.png)
 
 In the [service.yaml](authors-java-jee/deployment/service.yaml) we see find our selector to the Pod **authors**. If the service is deployed, it is possible that our **Articles** service can find the **Authors** service.
+
+
+
 
 ```yaml
 kind: Service
@@ -586,7 +592,7 @@ $ 30108
 5. Open API explorer.
 
 ```sh
-open http://${clusterip}:${nodeport}/openapi/ui/
+$ open http://${clusterip}:${nodeport}/openapi/ui/
 ```
 
 Sample result in your browser:
@@ -597,20 +603,26 @@ Sample result in your browser:
 6. Execute curl to test the **Authors** service.
 
 ```sh
-curl http://${clusterip}:${nodeport}/api/v1/getauthor?name=Niklas%20Heidloff
+$ curl http://${clusterip}:${nodeport}/api/v1/getauthor?name=Niklas%20Heidloff
 ```
 
 Sample result:
 ```
-{"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
+$ {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
 ```
 
-7. Execute following curl command to test the **HealthCheck** implementation of the **Authors** service.
+7. Execute following curl command to test the **HealthCheck** implementation for the **Authors** service.
 
 ```sh
-curl http://${clusterip}:${nodeport}/healthcheck
-
+$ curl http://${clusterip}:${nodeport}/health
+$ {"checks":[{"data":{"authors":"ok"},"name":"authors","state":"UP"}],"outcome":"UP"} 
 ```
+
+Optional: We can also verify that call in the browser.
+
+![authors-java-health](images/authors-java-health.png)
+
+
 
 ---
 
