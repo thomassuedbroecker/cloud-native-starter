@@ -111,7 +111,7 @@ $ ibmcloud iam api-key-create cloud-native-starter-key \
 $ cat cloud-native-starter-key.json
 ```
 
-_Optional:_ You can verify the key in IBM Cloud, as you can see in the image below:
+_Optional:_ We can verify the key in IBM Cloud, as you can see in the image below:
 
 ![ibm-cloud-key](images/ibm-cloud-key.png)
 
@@ -185,7 +185,7 @@ $ ./iks-scripts/create-iks-cluster.sh
 ```
 
 _Note:_ The creation of the cluster can take up to **20 minutes**.
-You can verify the cluster in the IBM Cloud, as you can see in the image below:
+You can verify the cluster in the IBM Cloud, as we see in the image below:
 
 ![ibm-cloud-cluster](images/ibm-cloud-cluster.png)
 
