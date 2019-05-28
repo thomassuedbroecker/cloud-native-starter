@@ -116,7 +116,7 @@ _Optional:_ We can verify the key in IBM Cloud, as you can see in the image belo
 ![ibm-cloud-key](images/ibm-cloud-key.png)
 
 
-3. Create a copy of the **template.local.env** and add it the new **local.env** file the key to the IBMCLOUD_API_KEY variable.
+3. Create a copy of the **template.local.env** and past the file into the same folder. Rename the new file to **local.env**. Then insert the key we created before, into the **local.env** file as value for the ```IBMCLOUD_API_KEY``` variable, we can see in step 4.
 
 ```sh
 $ cp template.local.env local.env 
