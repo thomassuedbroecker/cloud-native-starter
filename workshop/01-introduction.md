@@ -45,7 +45,7 @@ The **"Cloud Native Starter"** application follows these design principles:
 
 ## 2. **Microservices and Web app**
 
-These are the responsibilities of the different microservices and the Web app. The implementation organization of these services do focus to follow the clean architecture software design **philosophy**.
+These are the responsibilities of the different microservices and the Web app. The implementation organization of these services do  follow the [clean architecture software design philosophy](https://en.wikipedia.org/wiki/Robert_C._Martin).
 
 ---
 
