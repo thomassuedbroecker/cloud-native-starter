@@ -4,7 +4,7 @@
 
 In this hands-workshop we do address the question: 
 
-> How to start with **cloud native Java application** in Kubernetes?
+> How to start with **cloud native Java applications** in Kubernetes?
 
 We will cover the following major topics and we learn along the given **source code** and **bash scripts** inside this github project.
 
