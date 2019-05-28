@@ -150,7 +150,9 @@ Refresh the browser and verify the remaining information. Although the articles 
 
 Now, we've finished the **Resiliency**.
 
-You have finished this workshop :-).
+**Congratulations,** : You have finished this **hands-on workshop** :-).
+
+_Note:_ If you want to do more, you can move on with the [optional Lab - Replace the Node.JS Authors microservice with a simple Java implementation](06-java-development.md).
 
 ---
 
