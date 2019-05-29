@@ -290,16 +290,16 @@ _NOTE:_ When you're using the CLI or the Cloud console in a browser, always make
 
 ### 3.7 Accessing the Kubernetes cluster manually (optional) <a name="part-SETUP-05"></a>
 
-Now let's see how to set the context to work with our clusters by using the `kubectl` CLI, how access the Kubernetes dashboard, and how to gather basic information about our cluster.
+Now let's see how to set the context to work with our clusters by using the ```kubectl``` CLI, how access the Kubernetes dashboard, and how to gather basic information about our cluster.
 
 We set the context for the cluster in the CLI.
 Every time you log in to the IBM Cloud Kubernetes Service CLI to work with the cluster, you must run these commands to set the path to the cluster's configuration file as a session variable.
 The Kubernetes CLI uses this variable to find a local configuration file and certificates that are necessary to connect with the cluster in IBM Cloud.
 
-List the available clusters: `ibmcloud ks clusters`.
+List the available clusters: ```ibmcloud ks clusters```.
 This command should now show the cluster which is being created.
 
-Download the configuration file and certificates for the cluster using the `cluster-config` command:
+Download the configuration file and certificates for the cluster using the ```cluster-config``` command:
 
 ```sh
 $ ibmcloud ks cluster-config <cluster-name>

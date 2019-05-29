@@ -65,8 +65,8 @@ In the gif we can see the **Istio Gateway** instance in our Kubernetes, we insta
 
 ## 1.4 Virtual Service
 
-One of the required Istio configuration is the **“Virtual Service”** which overlays the Kubernetes service definition. The **Web API** service in the picture below exposes 3 REST URIs. Two of them pointing to a API documentation (Swagger/Open API), they are defined as **/openapi** and **/openapi/ui/** and they are currently independent of the version of **Web API**. 
-The third URI is **/web-api/v1/getmultiple** and this is version-specific. 
+One of the required Istio configuration is the **“Virtual Service”** which overlays the Kubernetes service definition. The **Web API** service in the picture below exposes 3 REST URIs. Two of them pointing to a API documentation (Swagger/Open API), they are defined as ```/openapi``` and ```/openapi/ui/``` and they are currently independent of the version of **Web API**. 
+The third URI is ```/web-api/v1/getmultiple``` and this is version-specific. 
 
 Base on this given information, we have following VirtualService definition:
 
@@ -74,14 +74,14 @@ Base on this given information, we have following VirtualService definition:
 
 1. Pointer to the Ingress Gateway
 2. URI that directly point to the Kubernetes service web-api listenting on port 9080 (without Istio)
-3. URI that uses **“subset: v1”** of the service web-api which we haven’t defined yet, this is Istio specific
-4. Root **/** is pointing to port **80** of the **Web app** service which is different from web-api! It is the service that provides the Vue app to the browser.
+3. URI that uses ```“subset: v1”``` of the service web-api which we haven’t defined yet, this is Istio specific
+4. Root ```/``` is pointing to port ```80``` of the **Web app** service which is different from web-api! It is the service that provides the Vue app to the browser.
 
 ## 1.5 Destination rule
 
 To control the traffic we need to define a **DestinationRule**, this is  Istio specific. 
 
-In the image below we can see, this configuration defines a subset of calls will select the **v1** Pod that belong to **Web API** and have a selector label of **“version: v1”**. This is our deployment for **“web-api-v1”**.
+In the image below we can see, this configuration defines a subset of calls will select the ```v1``` Pod that belong to **Web API** and have a selector label of ```“version: v1”```. This is our deployment for **“web-api-v1”**.
 
 ![Destination rule](images/traffic-routing-deployment09.png)
 
@@ -121,7 +121,7 @@ $ ibmcloud login -a https://cloud.ibm.com -r us-south -g default
 $ ibmcloud ks cluster-config --cluster cloud-native
 ```
 
-3. Set the **KUBECONFIG** environment variable. Copy the output from the previous command and paste it in your terminal. The command output looks similar to the following example:
+3. Set the ```KUBECONFIG``` environment variable. Copy the output from the previous command and paste it in your terminal. The command output looks similar to the following example:
 
 ```sh
 $ export KUBECONFIG=/Users/$USER/.bluemix/plugins/container-service/clusters/hands-on-verification/kube-config-mil01-cloud-native.yml
@@ -135,7 +135,7 @@ $ kubectl get nodes
 
 ### 1.7.2 Traffic Routing
 
-In the following bash scripts we use **ibmcloud** and **kubectl** commands to interact with IBM Cloud, IBM Container Registry Service and the IBM Kubernetes service in IBM Cloud. With **sed** and **awk** we extract the output from the comandline.
+In the following bash scripts we use **ibmcloud** and **kubectl** commands to interact with IBM Cloud, IBM Container Registry Service and the IBM Kubernetes service in IBM Cloud. With ```sed``` and ```awk``` we extract the output from the comandline.
 
 1. Execute following script to setup
 
