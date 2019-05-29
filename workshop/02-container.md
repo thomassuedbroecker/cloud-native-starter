@@ -152,7 +152,7 @@ Now we examine the deployment yamls to deploy the container to **Pods** and crea
 |----|----|
 |![ibm-cloud-pods](images/ibm-cloud-pods.png)    |![ibm-cloud-services](images/ibm-cloud-services.png)|
 
-_Note:_ In the lab Traffic Management we will take more detailed to the deployment configuration.
+_Note:_ In the lab **Using traffic management in Kubernetes with Istio** we will take more detailed to the deployment and service configurations.
 
 ---
 
