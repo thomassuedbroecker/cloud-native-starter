@@ -3,11 +3,11 @@
 
 ****** **UNDER CONSTRUCTION** ******
 
-In that optional lab we will replace the existing Authors microservices written in Node.js with a Java implementation, as you can see in the gif below.
+In that optional lab we will replace the existing Authors microservice written in Node.js with a Java implementation, as you can see in the gif below.
 
 ![architecture authors](images/architecture-authors.gif)
 
-As we can see, with a microservice architecture and REST APIs we can easily replace microservice implementation, without any impact to the remaining **Cloud Native Starter** application.
+We see, with a microservice architecture and REST APIs we can easily replace microservice implementation, without any impact to the remaining **Cloud Native Starter** application.
 
 In that service we only need to implement to provide a **REST API** for a ```getauthor`` request. Normally, we would implement also a database access, but in our case, we will only return sample data information. That sounds not a lot, but with this small sample we touch following topics:
 
