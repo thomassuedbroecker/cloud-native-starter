@@ -18,7 +18,7 @@ The following picture shows a brief preview of the result of the running contain
 
 ![ibm-cloud-pods](images/ibm-cloud-registry-container.png)
 
-Here you can see the created Pods for each container inside the IBM Kubernetes cluster.
+Here we can see the created Pods for each container inside the IBM Kubernetes cluster.
 
 ![ibm-cloud-pods](images/ibm-cloud-pods.png)
 
@@ -47,7 +47,7 @@ COPY src /usr/src/app/src
 COPY pom.xml /usr/src/app
 ```
 
-Then we build the executable **articles.war** file inside the **build container** image. Here we use the maven command **mvn -f pom.xml clean package** to build the [war](https://en.wikipedia.org/wiki/WAR_(file_format)) file.
+Then we build the executable **articles.war** file inside the **build container** image. Here we use the maven command ```mvn -f pom.xml clean package`` to build the [war](https://en.wikipedia.org/wiki/WAR_(file_format)) file.
 
 ```Dockerfile
 RUN mvn -f /usr/src/app/pom.xml clean package
@@ -56,7 +56,7 @@ RUN mvn -f /usr/src/app/pom.xml clean package
 * **Production container**
 
 In the following Dockerfile extract, we do create the **production container** based on the **openliberty** with **microProfile2**.
-Then we install the **zipkintracer** for later usage.
+Then we install the **zipkintracer** for later usage. But the **zipkintracer** is not in scope for this lab.
 
 ```Dockerfile
 FROM openliberty/open-liberty:microProfile2-java8-openj9
@@ -89,9 +89,9 @@ The **Web app** and the **Authors** services are written in Node.js.
 
 #### 1.2.1 Web app container image definition
 
-The **Web app** [Dockerfile](../web-app-vuejs/Dockerfile) to create the  **Web app** application, works in the same way as for **Articles container**. Inside the Dockerfile we use the same two stages to build the **production container** image.
+The **Web app** [Dockerfile](../web-app-vuejs/Dockerfile) to create the  **Web app** application works in the same way as for **Articles container**. Inside the Dockerfile we use the same two stages to build the **production container** image.
 
-Here you can see the **build environment container** is based on the alpine 8 image from the [dockerhub](https://hub.docker.com/_/alpine). This container already contains [yarn](https://yarnpkg.com/en/) to build the UI application.
+Here you can see the **build environment container** is based on the alpine 8 image from the [dockerhub](https://hub.docker.com/_/alpine). This container already contains the [yarn](https://yarnpkg.com/en/) package manager to build the **VUE UI** web  application.
 
 ```Dockerfile
 FROM node:8-alpine as BUILD
@@ -120,7 +120,7 @@ If last step of the **Dockerfile** is executed, the container is ready to be dep
 
 #### 1.2.2 Authors container image definition
 
-The Authors [Dockerfile](../**Authors**/Dockerfile) to create the **Web API** service, does directly create the production image and is based on the alpine 8 image from the [dockerhub](https://hub.docker.com/_/alpine).
+The Authors [Dockerfile](../**Authors**/Dockerfile) to create the **Web API** service does directly create the production image and this image is based on the alpine 8 container image from the [dockerhub](https://hub.docker.com/_/alpine).
 
 ```Dockerfile
 FROM node:8-alpine
@@ -146,9 +146,11 @@ If this last step is executed of the **Dockerfile** the container is ready to be
 
 ### 1.3 YAML Configurations for the deployment to Kubernetes
 
-Now we examine the deployment yamls to deploy the container to **Pods** and creating **Services** to access them in the Kubernetes Cluster. In the following image you can see the deployed **Services**:
+Now we examine the deployment yamls to deploy the container to **Pods** and creating **Services** to access them in the Kubernetes Cluster. In the following image you can see the deployed **Pods** and **Services**:
 
-![ibm-cloud-services](images/ibm-cloud-services.png)
+|Pods| Services|
+|----|----|
+|![ibm-cloud-pods](images/ibm-cloud-services.png)    |![ibm-cloud-services](images/ibm-cloud-services.png)|
 
 ---
 

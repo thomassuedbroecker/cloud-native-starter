@@ -5,7 +5,7 @@ COPY pom.xml /usr/src/app
 RUN mvn -f /usr/src/app/pom.xml clean package
 
 
-FROM openliberty/open-liberty:microProfile2-java8-openj9 
+FROM openliberty/open-liberty:microProfile2-java11-openj9 
 
 RUN  apt-get install -y curl
 
