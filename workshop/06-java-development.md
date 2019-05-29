@@ -136,7 +136,7 @@ In the following image we see a list of MicroProfiles and the red marked profile
 
 ## 3.2 Needed Java classes for the **Authors** service
 
-For the implementation for the **Authors** service we need basicly three classes:
+For the implementation for the **Authors** service to **expose** the REST API, we need basicly three classes:
 
 * **AuthorsApplication** class repesents our web application.
 * **Author** class repesents the data structure we use for the Author.
@@ -174,8 +174,7 @@ public class Author {
 
 	public String name;
 	public String twitter;
-    public String blog;
-
+  public String blog;
 }
 ```
 
