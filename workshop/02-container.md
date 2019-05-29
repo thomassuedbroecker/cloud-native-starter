@@ -152,7 +152,7 @@ Now we examine the deployment yamls to deploy the container to **Pods** and crea
 |----|----|
 |![ibm-cloud-pods](images/ibm-cloud-pods.png)    |![ibm-cloud-services](images/ibm-cloud-services.png)|
 
-_Note:_ In the lab **Using traffic management in Kubernetes with Istio** we will take more detailed to the deployment and service configurations.
+_Note:_ In the lab **Using traffic management in Kubernetes with Istio** we will take more detailed look into the deployment and service yaml configurations.
 
 ---
 
@@ -242,7 +242,7 @@ spec:
 
 #### 1.3.3 Articles
 
-As defined in the [Twelve-Factor-App](https://12factor.net/) it’s important for cloud-native applications to store configuration externally, rather than in the code since this makes it possible to deploy applications to different environments. An app’s config is everything that is likely to vary between deploys (staging, production, developer environments, etc). This includes: Resource handles to backing services or credentials to external services.
+As defined in the [Twelve-Factor-App](https://12factor.net/) it’s important for cloud-native applications to **store configuration externally**, rather than in the code since this makes it possible to deploy applications to different environments. An app’s config is everything that is likely to vary between deploys (staging, production, developer environments, etc). This includes: Resource handles to backing services or credentials to external services.
 
 Microservices that are implemented with Java EE can leverage MicroProfile config. The configuration can be done, for example, in **Kubernetes yaml** files and accessed from Java code via annotations and APIs. The **‘Articles’** microservice uses configuration to define whether or not to **create ten articles** the first time it is invoked. In the yaml file an environment variable pointing to a **ConfigMap** is defined.
 
