@@ -121,7 +121,7 @@ $ ./iks-scripts/show-urls.sh
 
 2. Open the **Web APP** in a new browser tab: http://YOUR_IP:31380/
 
-_Note:_ You get this link as output from that ```iks-scripts/show-urls.sh``` script.
+_Note:_ You get this link as output of the ```iks-scripts/show-urls.sh``` script.
 
  ![cns-container-web-app-04](images/cns-container-web-app-05.png)
 
