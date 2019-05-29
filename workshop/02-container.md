@@ -150,7 +150,7 @@ Now we examine the deployment yamls to deploy the container to **Pods** and crea
 
 |Pods| Services|
 |----|----|
-|![ibm-cloud-pods](images/ibm-cloud-services.png)    |![ibm-cloud-services](images/ibm-cloud-services.png)|
+|![ibm-cloud-pods](images/ibm-cloud-pods.png)    |![ibm-cloud-services](images/ibm-cloud-services.png)|
 
 ---
 
