@@ -560,7 +560,7 @@ $ {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
 Now, we've finished the **Lab - Building and deploying Containers**.
 Let's get started with the [Defining and exposing REST APIs](03-rest-api.md).
 
-_Note:_ Congratulations, you have finished the first important step of **hands-on workshop** to get the core **Cloud Native Starter** application running on Kubernetes.
+_Note:_ **Congratulations** :thumbsup:, you have finished the first important step of **hands-on workshop** to get the core **Cloud Native Starter** application running on Kubernetes.
 
 ---
 
