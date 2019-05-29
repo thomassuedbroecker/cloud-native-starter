@@ -9,7 +9,7 @@ In that optional lab we will replace the existing Authors microservices written 
 
 As we can see, with a microservice architecture and REST APIs we can easily replace microservice implementation, without any impact to the remaining **Cloud Native Starter** application.
 
-In that service we only need to implement to provide a **REST API** for a get author request. Normally, we would implement also a database access, but in our case, we will only return sample data information. That sounds not a lot, but with this small sample we touch following topics:
+In that service we only need to implement to provide a **REST API** for a ```getauthor`` request. Normally, we would implement also a database access, but in our case, we will only return sample data information. That sounds not a lot, but with this small sample we touch following topics:
 
 •	Usage of [Maven](https://maven.apache.org/) for Java 
 
@@ -86,10 +86,10 @@ In the **pom** file we define the configuation of our Java project, with **depen
 
 # 2. Configuration the Open Liberty Server
 
-Our **Authors** mircroserice runs later on Open Liberty Server in a container in Kubernetes.
+Our **Authors** mircroserice runs later on **OpenLiberty** Server in a container on Kubernetes.
 
-We need to configure the **OpenLiberty** server in the [server.xml](authors-java-jee/liberty/server.xml) file. For our Java implementation use the MicroProfile, with the feature definition in the **server.xml** we provide that information to our server.
-As we can see we use ```webProfile-8.0``` and ```microProfile-2.1```.
+We need to configure the **OpenLiberty** server a [server.xml](authors-java-jee/liberty/server.xml) file. For our Java implementation we use the MicroProfile and with the feature definition in the **server.xml** we provide that information to our server.
+In the configuration we notice the entries ```webProfile-8.0``` and ```microProfile-2.1```.
 The server must be reached in the network; therefore, we define the  **httpEndpoint** including **http ports** we use for our microservice. For configuration details we can take a look into the [openliberty documentation](https://openliberty.io/docs/ref/config/).
 
 _IMPORTANT:_ We should remember these **ports** e.g. ```httpPort="3000"``` should be exposed in the **Dockerfile** for our container and mapped inside the **Kubernetes** deployment configurations.
@@ -128,7 +128,7 @@ In the most of the following classes we will use [MicroProfile](https://openlibe
 
 > **Eclipse MicroProfile** is a modular set of technologies designed so that you can write cloud-native Java™ microservices. In this introduction, learn how MicroProfile helps you develop and manage cloud-native microservices. Then, follow the Open Liberty MicroProfile guides to gain hands-on experience with MicroProfile so that you can build microservices with Open Liberty.
 
-In the following image you can see a list of MicroProfiles and the red marked we will use in minimum here.
+In the following image we see a list of MicroProfiles and the red marked profiles we will use in minimum in our lab.
 
 ![microprofiles](images/microprofiles.png)
 
