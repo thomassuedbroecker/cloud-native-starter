@@ -1,9 +1,9 @@
 [home](README.md)
-# Optional Lab - Replace the Node.JS Authors microservice with a simple Java implementation
+# Optional - Lab - Replace the Node.JS Authors microservice with a simple Java implementation
 
 ****** **UNDER CONSTRUCTION** ******
 
-In that optional Lab we will replace the existing Authors microservices written in Node.js with a Java implementation, as you can see in the gif below.
+In that optional lab we will replace the existing Authors microservices written in Node.js with a Java implementation, as you can see in the gif below.
 
 ![architecture authors](images/architecture-authors.gif)
 
@@ -479,7 +479,7 @@ spec:
     $ kubectl get nodes
     ```
 
-5. Ensure you have no remaining microservices running from the other Labs in this workshop.
+5. Ensure you have no remaining microservices running from the other labs in this workshop.
 
     ```sh
     $ scripts/delete-all.sh
