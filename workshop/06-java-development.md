@@ -42,7 +42,7 @@ project for our Java project.
 
 > Maven Apache Maven is a software project management and comprehension tool. Based on the concept of a **project object model** (POM), Maven can manage a project's build, reporting and documentation from a central piece of information.
 
-In the **pom** file we define the configuation of our Java project, with **dependencies**, **build** and **properties** including for example the complier information as you can see in the [pom file](authors-java-jee/pom.xml) below.
+In the **pom** file we define the configuation of our Java project, with **dependencies**, **build** and **properties** including for example the complier information as you can see in the [pom file](../authors-java-jee/pom.xml) below.
 
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -88,7 +88,7 @@ In the **pom** file we define the configuation of our Java project, with **depen
 
 Our **Authors** mircroserice runs later on **OpenLiberty** Server in a container on Kubernetes.
 
-We need to configure the **OpenLiberty** server a [server.xml](authors-java-jee/liberty/server.xml) file. For our Java implementation we use the MicroProfile and with the feature definition in the **server.xml** we provide that information to our server.
+We need to configure the **OpenLiberty** server a [server.xml](../authors-java-jee/liberty/server.xml) file. For our Java implementation we use the MicroProfile and with the feature definition in the **server.xml** we provide that information to our server.
 In the configuration we notice the entries ```webProfile-8.0``` and ```microProfile-2.1```.
 The server must be reached in the network; therefore, we define the  **httpEndpoint** including **http ports** we use for our microservice. For configuration details we can take a look into the [openliberty documentation](https://openliberty.io/docs/ref/config/).
 
@@ -165,7 +165,7 @@ public class AuthorsApplication extends Application {
 
 ### 3.2.2 **Class Author**
 
-This class simply repesents the data structure we use for the [Author](authors-java-jee/src/main/java/com/ibm/authors/). No MircoProfile is used here.
+This class simply repesents the data structure we use for the [Author](../authors-java-jee/src/main/java/com/ibm/authors/). No MircoProfile is used here.
 
 ```java
 package com.ibm.authors;
@@ -196,7 +196,7 @@ Let's remember the **server.xml** configuration. We added the **MicroProfile** t
 
 With the combination of the **server.xml** and our usage of **MicroProfile** in the **GetAuthor** class, we can access a **OpenAPI exlporer** with this URL ```http://host:http_port/openapi``` later.
 
-This is the source code of the [GetAuthors class](authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) with the used **MicroProfiles**.
+This is the source code of the [GetAuthors class](../authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) with the used **MicroProfiles**.
 
 ```java
 @ApplicationScoped
@@ -262,7 +262,7 @@ Let's understand what we want to support:
 
 For more information we can use the [Kubernetes Microprofile Health documentation](https://openliberty.io/guides/kubernetes-microprofile-health.html) and the documentation on [GitHub](https://github.com/eclipse/microprofile-health)
 
-This is the implementation for the Health Check for Kubernetes for the **Authors** service in the [HealthEndpoint class](authors-java-jee/src/main/java/com/ibm/authors/HealthEndpoint.java)
+This is the implementation for the Health Check for Kubernetes for the **Authors** service in the [HealthEndpoint class](../authors-java-jee/src/main/java/com/ibm/authors/HealthEndpoint.java)
 
 ```java
 @Health
@@ -390,7 +390,7 @@ spec:
         - containerPort: 3000
         livenessProbe:
 ```
-This is the full [deployment.yaml](authors-java-jee/deployment/deployment.yaml) file.
+This is the full [deployment.yaml](../authors-java-jee/deployment/deployment.yaml) file.
 
 ```yaml
 kind: Deployment
@@ -432,7 +432,7 @@ _Note:_ Later we get the actual port for the service using the command line: ```
 
 ![authors-java-service-pod-container](images/authors-java-service-pod-container.png)
 
-In the [service.yaml](authors-java-jee/deployment/service.yaml) we see find our selector to the Pod **authors**. If the service is deployed, it is possible that our **Articles** service can find the **Authors** service.
+In the [service.yaml](../authors-java-jee/deployment/service.yaml) we see find our selector to the Pod **authors**. If the service is deployed, it is possible that our **Articles** service can find the **Authors** service.
 
 ```yaml
 kind: Service
@@ -551,7 +551,7 @@ spec:
 
 ### 2.3 Deploy the container image
 
-1. Open the ```authors-java-jee/deployment/deployment.yaml```with a editor and replace the value for the image location with the path we got from the IBM Container Registry and just replace the ```authors:1``` text, and add following statement ```imagePullPolicy: Always``` and **save** the file.
+1. Open the ```../authors-java-jee/deployment/deployment.yaml```with a editor and replace the value for the image location with the path we got from the IBM Container Registry and just replace the ```authors:1``` text, and add following statement ```imagePullPolicy: Always``` and **save** the file.
 
     Before:
     ```yml
