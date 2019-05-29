@@ -1,5 +1,5 @@
 [home](README.md)
-# Optional - Lab - Replace the Node.JS Authors microservice with a simple Java implementation
+# Optional - Lab - Replace the Node.js Authors microservice with a simple Java implementation
 
 ****** **UNDER CONSTRUCTION** ******
 
