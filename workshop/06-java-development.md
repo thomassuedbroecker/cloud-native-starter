@@ -171,10 +171,9 @@ This class simply repesents the data structure we use for the [Author](../author
 package com.ibm.authors;
 
 public class Author {
-
-	public String name;
-	public String twitter;
-  public String blog;
+public String name;
+public String twitter;
+public String blog;
 }
 ```
 
