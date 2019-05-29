@@ -11,7 +11,7 @@ MicroProfile comes with a REST Client which defines a type safe client programmi
 
 There is pretty good [documentation](https://github.com/OpenLiberty/guide-microprofile-rest-client) about the REST Client available. 
 
-In the following Lab describes how we use the MicroProfile REST client in the **Cloud Native Starter** sample application. The application has a **Web API** service which implements the **BFF** (backend for frontend pattern). The **Web API** service uses the REST Client to invoke the **'Articles'** and the **‘Authors’** services
+In the following lab describes how we use the MicroProfile REST client in the **Cloud Native Starter** sample application. The application has a **Web API** service which implements the **BFF** (backend for frontend pattern). The **Web API** service uses the REST Client to invoke the **'Articles'** and the **‘Authors’** services
 
 ![architecture](images/architecture.png)
 

@@ -152,7 +152,7 @@ Now, we've finished the **Resiliency**.
 
 **Congratulations,** : You have finished this **hands-on workshop** :-).
 
-_Note:_ If you want to do more, you can move on with the [optional Lab - Replace the Node.JS Authors microservice with a simple Java implementation](06-java-development.md).
+_Note:_ If you want to do more, you can move on with the [optional Lab - Replace the Node.js Authors microservice with a simple Java implementation](06-java-development.md).
 
 ---
 

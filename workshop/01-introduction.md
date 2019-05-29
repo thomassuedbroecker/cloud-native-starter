@@ -82,7 +82,7 @@ In the image blow you can see a sample instance of the Articles,  using the **Op
 
 ### 2.4 **Authors microservice**
 
-The objective of this microservice is to **get** author information from a database and is built on Node.JS.
+The objective of this microservice is to **get** author information from a database and is built on Node.js.
 In this workshop we will use the default implementation, which just creates sample data values.
 
 Sample curl command to get a author from the **Authors** microservice.

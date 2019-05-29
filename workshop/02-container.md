@@ -2,7 +2,7 @@
 # Building and deploying Containers
 ****** **UNDER CONSTRUCTION** ******
 
-In this Lab we build and deploy containers with microservices to Kubernetes. Along this way we inspect the **Dockerfiles** for the container images and we take a look into the configured **yaml files** to create the **deployment** for the microservices. The following diagram shows a high level overview of the steps in the lab, which are mostly automated with bash scripts.
+In this lab we build and deploy containers with microservices to Kubernetes. Along this way we inspect the **Dockerfiles** for the container images and we take a look into the configured **yaml files** to create the **deployment** for the microservices. The following diagram shows a high level overview of the steps in the lab, which are mostly automated with bash scripts.
 
 ![cns-container-deployment-01](images/cns-container-deployment-01.png)
 
@@ -81,9 +81,9 @@ The **Web API** [Dockerfile](../web-apo-java-jee/Dockerfile.nojava) to create th
 
 ---
 
-### 1.2. Node.JS container images
+### 1.2. Node.js container images
 
-The **Web app** and the **Authors** services are written in Node.JS.
+The **Web app** and the **Authors** services are written in Node.js.
 
 ---
 

@@ -3,11 +3,11 @@
 
 ****** **UNDER CONSTRUCTION** ******
 
-In that optional Lab we will replace the existing Authors microservices written in Node.JS with a Java implementation, as you can see in the gif below.
+In that optional Lab we will replace the existing Authors microservices written in Node.js with a Java implementation, as you can see in the gif below.
 
 ![architecture authors](images/architecture-authors.gif)
 
-As we can see, with a microservice architecture and REST APIs we can easily replace microservice implementation, without any impact to the rest of the **Cloud Native Starter** application.
+As we can see, with a microservice architecture and REST APIs we can easily replace microservice implementation, without any impact to the remaining **Cloud Native Starter** application.
 
 In that service we only need to implement to provide a **REST API** for a get author request. Normally, we would implement also a database access, but in our case, we will only return sample data information. That sounds not a lot, but with this small sample we touch following topics:
 
@@ -24,7 +24,7 @@ In that service we only need to implement to provide a **REST API** for a get au
 •	[Kubernetes deployment configuration](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/)
 
 
-That are the major steps we will follow to replace the  **Authors** service in our Lab.
+That are the major steps we will follow to replace the  **Authors** service in our lab.
 
 ![authors-java-container-overview](images/authors-java-container-overview.png)
 
@@ -451,7 +451,7 @@ spec:
 ---
 ```
 
-# 5. Hands-on tasks - Replace the Node.JS Authors microservice with a simple Java implementation
+# 5. Hands-on tasks - Replace the Node.js Authors microservice with a simple Java implementation
 
 ### 2.1 Gain access to your cluster
 
@@ -627,7 +627,7 @@ spec:
 
 ---
 
-Now, we've finished the **Replace the Node.JS Authors microservice with a simple Java implementation**.
+Now, we've finished the **Replace the Node.js Authors microservice with a simple Java implementation**.
 
 **Congratulations and greatest respect** : You did the **extra mile** and you have finished this **hands-on workshop + optional lab** :-).
 ---
