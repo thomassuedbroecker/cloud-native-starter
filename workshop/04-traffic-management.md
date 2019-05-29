@@ -39,7 +39,7 @@ In Kubernetes we have one [service definition](web-api-java-jee/deployment/kuber
 
 ## 1.3 Istio gateway
 
-Istio works with **envoy proxies**, , they are called Envoy, to **control** inbound and outbound traffic and to gather [telemetry data](https://en.wikipedia.org/wiki/Telemetry#Software) of a Kubernetes Pod. The envoy is **injected as additional container** into a pod. The image below is from the [Istio documentation](https://istio.io/docs/concepts/what-is-istio/) and shows the basic Istio architecture.
+Istio works with [envoy proxies](https://www.envoyproxy.io/), to **control** inbound and outbound traffic and to gather [telemetry data](https://en.wikipedia.org/wiki/Telemetry#Software) of a Kubernetes Pod. The envoy proxy is **injected as additional container** into a pod. The image below is from the [Istio documentation](https://istio.io/docs/concepts/what-is-istio/) and shows the basic Istio architecture.
 
 ![Istio architecture](images/traffic-routing-deployment04.png)
 
