@@ -17,7 +17,7 @@ We configure the routing to split the usage between our two instances and versio
 
 ## 1.1 Deployment definition
 
-We need to understand; these two versions of the **Web API** do exist as **two** different Kubernetes deployments and they run **in parallel**. That is defined in the [kubernetes-deployment-v1](web-api-java-jee/deployment/kubernetes-deployment-v1.yaml) and [kubernetes-deployment-v2](web-api-java-jee/deployment/kubernetes-deployment-v2.yaml).
+We need to understand; these two versions of the **Web API** do exist as **two** different Kubernetes deployments and they run **in parallel**. That is defined in the [kubernetes-deployment-v1](../web-api-java-jee/deployment/kubernetes-deployment-v1.yaml) and [kubernetes-deployment-v2](web-api-java-jee/deployment/kubernetes-deployment-v2.yaml).
 
 Commonly, in Kubernetes we would replace v1 with v2. With **Istio** we can use two or more deployments of different versions of an app to do a **green/blue**, **A/B**, or [canary deployment](https://www.ibm.com/cloud/garage/tutorials/use-canary-testing-in-kubernetes-using-istio-toolchain) to test, if v2 works as expected. We can slowly roll out our changes to a small subset of users before rolling it out to the entire infrastructure and making it available to everyone. 
 
@@ -31,7 +31,7 @@ The **“version”** label is important for Istio to distinguish between the tw
 
 ## 1.2 Service definition
 
-In Kubernetes we have one [service definition](web-api-java-jee/deployment/kubernetes-service.yaml). The **selector** in the configuration needs only the **“app”** label. Without Istio it will distribute traffic between the two deployments **evenly**. The port is named (“name: http”), because this is a [requirement](https://istio.io/docs/setup/kubernetes/prepare/requirements/) for Istio.
+In Kubernetes we have one [service definition](../web-api-java-jee/deployment/kubernetes-service.yaml). The **selector** in the configuration needs only the **“app”** label. Without Istio it will distribute traffic between the two deployments **evenly**. The port is named (“name: http”), because this is a [requirement](https://istio.io/docs/setup/kubernetes/prepare/requirements/) for Istio.
 
 ![service definition](images/traffic-routing-deployment03.png)
 
@@ -47,7 +47,7 @@ The following image shows a simplified view on the given information for our sit
 
 ![injected as additional containe](images/traffic-routing-deployment05.png)
 
-We want to control the route traffic (e.g. REST API calls). To control the traffic into a **Kubernetes application** a **Kubernetes Ingress** is required. With Istio, we have a similar **Istio Ingress Gateway** which is a Pod running in Kubernetes. This gateway in turn uses the **Istio ingress gateway** which is a Pod running in Kubernetes. In following pricture we see the definition of our Istio gateway. The [Istio ingress.ymal](web-api-java-jee/deployment/istio-ingress.yaml).
+We want to control the route traffic (e.g. REST API calls). To control the traffic into a **Kubernetes application** a **Kubernetes Ingress** is required. With Istio, we have a similar **Istio Ingress Gateway** which is a Pod running in Kubernetes. This gateway in turn uses the **Istio ingress gateway** which is a Pod running in Kubernetes. In following pricture we see the definition of our Istio gateway. The [Istio ingress.ymal](../web-api-java-jee/deployment/istio-ingress.yaml).
 
 In our example, this gateway listens on **port 80** and answers to any request (“*”). The “hosts: *” should not be used in production, of course. 
 
@@ -154,7 +154,7 @@ $ iks-scripts/deploy-web-api-java-jee.sh
 $ iks-scripts/deploy-web-api-java-jee-v2.sh
 ```
 
-3. This script changes **Istio Ingress Service configration** for the **Web API**. The configuration you can find [here](istio/istio-ingress-service-web-api-v1-v2-80-20.yaml). Now execute the these to scripts.
+3. This script changes **Istio Ingress Service configration** for the **Web API**. The configuration you can find [here](../istio/istio-ingress-service-web-api-v1-v2-80-20.yaml). Now execute the these to scripts.
 
 ```sh
 $ scripts/deploy-istio-ingress-v1-v2.sh

@@ -19,7 +19,7 @@ In **Cloud Native Starter**, the **Web app** frontend, implemented in Vue.js, di
 | --- | --- |    
 | ![resliency-01](images/resliency-01.png) | ![resliency-02](images/resliency-02.png) |   
 
-The implementation of this behavior has been done in the class [Service.java](/web-api-java-jee/src/main/java/com/ibm/webapi/business/Service.java#L68). You can see the ```catch (NoConnectivity | NonexistentAuthor e)``` does handle the situation and set a default value.
+The implementation of this behavior has been done in the class [Service.java](../web-api-java-jee/src/main/java/com/ibm/webapi/business/Service.java#L68). You can see the ```catch (NoConnectivity | NonexistentAuthor e)``` does handle the situation and set a default value.
 
 ```java
 try {
@@ -38,7 +38,7 @@ After the articles service is deleted we will notice that the same 5 articles ar
 | --- | --- |    
 | ![resliency-02](images/resliency-02.png) | ![resliency-02](images/resliency-02.png) | 
 
-We are using the [Eclipse MicroProfile fallback annotation](https://www.openliberty.io/guides/microprofile-fallback.html). In this case a fallback method is invoked if the original method throws an exception. Here we have the two operations inside the [service.java](classweb-api-java-jee/src/main/java/com/ibm/webapi/business/Service.java#L45).
+We are using the [Eclipse MicroProfile fallback annotation](https://www.openliberty.io/guides/microprofile-fallback.html). In this case a fallback method is invoked if the original method throws an exception. Here we have the two operations inside the [service.java](../classweb-api-java-jee/src/main/java/com/ibm/webapi/business/Service.java#L45).
 
 * The definition of the fallback profile **@Fallback**
 
