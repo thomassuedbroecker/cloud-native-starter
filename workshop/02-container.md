@@ -463,14 +463,14 @@ With [sed](https://en.wikipedia.org/wiki/Sed_(Unix)) and [awk]( https://en.wikip
 * Sample command to write registry information into a yaml file with **sed**.
 
 ```sh
-  sed "s+articles:1+$REGISTRY/$REGISTRY_NAMESPACE/articles:1+g" deployment/kubernetes.yaml
+  $ sed "s+articles:1+$REGISTRY/$REGISTRY_NAMESPACE/articles:1+g" deployment/kubernetes.yaml
 ```
 
 * Sample command extract output information for a cluster ip into a bash variable, with **awk**.
 
 ```sh
-clusterip=$(ibmcloud ks workers --cluster $CLUSTER_NAME | awk '/Ready/ {print $2;exit;}')
-  nodeport=$(kubectl get svc articles --output 'jsonpath={.spec.ports[*].nodePort}')
+  $ clusterip=$(ibmcloud ks workers --cluster $CLUSTER_NAME | awk '/Ready/ {print $2;exit;}')
+  $ nodeport=$(kubectl get svc articles --output 'jsonpath={.spec.ports[*].nodePort}')
 ```
 
 1. Invoke following bash scripts to build and deploy the microservices to Kubernetes:
