@@ -9,7 +9,7 @@ As stated in the [reactive manifesto](https://www.reactivemanifesto.org/) cloud-
 
 In distributed systems we need to **design for failure**. For example, microservices, which invoke other microservices, must be intelligent enough to continue to work even if some of their dependencies are currently not available.
 
-There are several different ways to build resilient service meshes with Istio, for example via [circuit breakers](https://istio.io/docs/concepts/traffic-management/#circuit-breakers) and [retries](https://istio.io/docs/concepts/traffic-management/#timeouts-and-retries).
+There are several different ways to build resilient service meshes with Istio, for example via **circuit breakers** ([Martin Fowler blog](https://martinfowler.com/bliki/CircuitBreaker.html)/[implementation](https://istio.io/docs/concepts/traffic-management/#circuit-breakers)) and [retries](https://istio.io/docs/concepts/traffic-management/#timeouts-and-retries).
 
 The Istio functionality for resilient cloud-native applications is **generic** and **independent** from the implementation of the microservices. However in some cases the **handling of failures depends on the business logic** of the applications which is why this needs to be implemented in the microservices.
 
