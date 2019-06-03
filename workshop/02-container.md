@@ -147,7 +147,7 @@ If this last step is executed of the **Dockerfile** the container is ready to be
 
 ### 1.3 YAML Configurations for the deployment to Kubernetes
 
-Now we examine the deployment yamls to deploy the container to **Pods** and creating **Services** to access them in the Kubernetes Cluster. In the following image you can see the deployed **Pods** and **Services**:
+Now we examine the deployment yamls to deploy the container to **Pods** and creating **Services** to access them in the Kubernetes Cluster. In the following image you can see the deployed **Pods** and **Services** in the Kuberentes cluster:
 
 |Pods| Services|
 |----|----|
@@ -207,7 +207,7 @@ spec:
 
 #### 1.3.2 Web-api-V1
 
-In deployment yaml for the Web-api-V1, you can inspect the **Service** and the **Deployment** definition for the **Web api** microservice.
+In deployment yaml for the Web-api-V1, we can inspect the **Service** and the **Deployment** definition for the **Web api** microservice.
 
 ```yaml
 kind: Deployment
