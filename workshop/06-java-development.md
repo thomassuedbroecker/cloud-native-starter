@@ -132,7 +132,7 @@ In the following image we see a list of MicroProfiles and the red marked profile
 
 ---
 
-## 3.2 Needed Java classes for the **Authors** service
+## 3.2 Needed Java classes to **expose** the **Authors** service
 
 For the implementation for the **Authors** service to **expose** the REST API, we need basicly three classes:
 
