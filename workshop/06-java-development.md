@@ -368,7 +368,7 @@ spec:
         version: v1
 ```
 
-Then we define a ```name``` for the container and we do provide the concret container ```image``` location, e.g. where the container can be found in the Container Registry. 
+Then we define a ```name``` for the container and we provide the concret container ```image``` location, e.g. where the container can be found in the **Container Registry**. 
 
 _NOTE:_ We will replace ```authors:1``` later with the IBM Container Registry information. 
 
@@ -418,7 +418,7 @@ spec:
 ```
 ## 5.2 Service
 
-After the definition of the Pod we need to define how to access the Pod, therefor we use a service in Kubernetes. For more details we use the [Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/service/) for service.
+After the definition of the **pod** we need to define how to access the Pod, therefor we use a **service** in Kubernetes. For more details we use the [Kubernetes documentation](https://kubernetes.io/docs/concepts/services-networking/service/) for service.
 
 > A Kubernetes Service is an abstraction which defines a logical set of Pods and a policy by which to access them - sometimes called a micro-service. The set of Pods targeted by a Service is (usually) determined by a Label Selector.
 
