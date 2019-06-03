@@ -19,7 +19,11 @@ The following picture shows a brief preview of the result of the running contain
 
 Here we can see the created Pods for each container inside the IBM Kubernetes cluster.
 
-![ibm-cloud-pods](images/ibm-cloud-pods.png)
+|Kubernetes Cluster| Pods|
+|----|----|
+|![ibm-cloud-cluster](images/ibm-cloud-cluster-02.png)|![ibm-cloud-pods](images/ibm-cloud-pods.png)|
+
+
 
 ---
 
