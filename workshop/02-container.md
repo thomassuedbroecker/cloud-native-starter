@@ -38,7 +38,7 @@ In short words one container is only responsible to build the microservice, let 
 
 * **Build environment container**
 
-In the following Dockerfile extract, we can see how we create our **build environment container** based on the maven 3.5 image from the [dockerhub](https://hub.docker.com/_/maven/).
+In the following Dockerfile extract, we can see how we create our **build environment container** based on the maven 3.5 image from the [dockerhub](https://hub.docker.com/_/maven/) and copy the needed pom.xml file to build the application. (more details about the **pom.xml** are in the [optional lab](06-java-development.md))
 
 ```Dockerfile
 FROM maven:3.5-jdk-8 as BUILD
@@ -56,6 +56,8 @@ RUN mvn -f /usr/src/app/pom.xml clean package
 
 In the following Dockerfile extract, we do create the **production container** based on the **openliberty** with **microProfile2**.
 Then we install the **zipkintracer** for later usage. But the **zipkintracer** is not in scope for this lab.
+The server configiration is defined in the server.xml. (more details about the **server.xml** are in the [optional lab](06-java-development.md))
+
 
 ```Dockerfile
 FROM openliberty/open-liberty:microProfile2-java8-openj9
