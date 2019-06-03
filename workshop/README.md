@@ -1,7 +1,5 @@
 # Let’s get started with cloud native Java applications on Kubernetes
 
-****** **UNDER CONSTRUCTION** ******
-
 In this hands-workshop we do address the question: 
 
 > How to start with **cloud native Java applications** in Kubernetes?
