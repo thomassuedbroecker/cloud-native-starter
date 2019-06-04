@@ -295,7 +295,6 @@ Every time you log in to the IBM Cloud Kubernetes Service CLI to work with the c
 The Kubernetes CLI uses this variable to find a local configuration file and certificates that are necessary to connect with the cluster in IBM Cloud.
 
 
-
 1. Log in to your IBM Cloud account. Include the --sso option if using a federated ID.
 
 ```sh
