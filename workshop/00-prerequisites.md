@@ -310,6 +310,15 @@ $ pwd
 $ ./iks-scripts/create-registry.sh
 ```
 
+Sample output:
+
+```sh
+2019-06-05 09:06:40 Creating a Namespace in IBM Cloud Container Registry
+2019-06-05 09:06:40 Logging into IBM Cloud
+2019-06-05 09:06:48 Creating Namespace cloud-native
+2019-06-05 09:07:03 Namespace in IBM Cloud Container Registry created
+```
+
 _Optional:_ You can find the created namespace here:
 
 ![ibm-cloud-registry](images/ibm-cloud-registry.png)
