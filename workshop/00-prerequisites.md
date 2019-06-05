@@ -319,7 +319,7 @@ Sample output:
 2019-06-05 09:07:03 Namespace in IBM Cloud Container Registry created
 ```
 
-_Optional:_ You can find the created namespace here:
+_Optional:_ You can find the created namespace here (https://cloud.ibm.com/kubernetes/registry/main/start):
 
 ![ibm-cloud-registry](images/ibm-cloud-registry.png)
 
