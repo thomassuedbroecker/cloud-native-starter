@@ -144,10 +144,11 @@ $ cat local.env
 4. Verify the entries in the local.env file.
 
 Open file **local.env** in a editor.
+
 We can see the file has preset values for regions, cluster name, and image registry namespace in local.env. You can adjust them to your needs.
 Insert the copied ```"apikey": "KMAdgh4Aw-vhWcqcCsljX26O0dyScfKBaILgxxxxx"```from the json output to ```IBMCLOUD_API_KEY=xxx``` and save the file.
 
-Example local.env:
+**Example** local.env:
 
 ```sh
 IBMCLOUD_API_KEY=xxx
@@ -158,6 +159,8 @@ IBM_CLOUD_CF_API=https://api.ng.bluemix.net
 IBM_CLOUD_CF_ORG=
 IBM_CLOUD_CF_SPACE=dev
 AUTHORS_DB=local
+CLOUDANT_URL=
+
 ```
 ---
 
