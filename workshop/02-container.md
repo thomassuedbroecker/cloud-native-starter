@@ -449,7 +449,7 @@ In the following bash scripts, we use **ibmcloud** and **kubectl** commands to i
 
 To build the containers in IBM Cloud we do **not** use Docker commands, because the container will be built inside the **IBM Container Registry** with the ```ibmcloud cr build``` command.
 
-* Sample command to upload and build the container inside the **IBM Cloud Registry**
+* **Example**: How to upload and build the container inside the **IBM Cloud Registry**
 
 ```sh
 $ ibmcloud cr build -f Dockerfile.nojava --tag $REGISTRY/$REGISTRY_NAMESPACE/articles:1 .
@@ -457,7 +457,7 @@ $ ibmcloud cr build -f Dockerfile.nojava --tag $REGISTRY/$REGISTRY_NAMESPACE/art
 
 To deploy the container images into Kubernetes, we use the **kubectl apply** command for the needed yaml configuration files. 
 
-* Sample command to deploy the container to the Kubernetes Cluster
+* **Example**: How to deploy the container to the Kubernetes Cluster
 
 ```sh
 $ kubectl apply -f deployment/IKS-kubernetes.yaml
@@ -465,18 +465,19 @@ $ kubectl apply -f deployment/IKS-kubernetes.yaml
 
 With [sed](https://en.wikipedia.org/wiki/Sed_(Unix)) and [awk]( https://en.wikipedia.org/wiki/AWK) we extract the output of the command line executions and put them into variables, or we write the information into files, to use them later as input for the next commands inside the bash script.
 
-* Sample command to write registry information into a yaml file with **sed**.
+* **Example**: How to write registry information into a yaml file with **sed**.
 
 ```sh
   $ sed "s+articles:1+$REGISTRY/$REGISTRY_NAMESPACE/articles:1+g" deployment/kubernetes.yaml
 ```
 
-* Sample command extract output information for a cluster ip into a bash variable, with **awk**.
+* **Example**: How to extract output information for a cluster ip into a bash variable, with **awk**.
 
 ```sh
   $ clusterip=$(ibmcloud ks workers --cluster $CLUSTER_NAME | awk '/Ready/ {print $2;exit;}')
   $ nodeport=$(kubectl get svc articles --output 'jsonpath={.spec.ports[*].nodePort}')
 ```
+---
 
 1. Invoke following bash scripts to build and deploy the microservices to Kubernetes:
 
@@ -487,22 +488,37 @@ With [sed](https://en.wikipedia.org/wiki/Sed_(Unix)) and [awk]( https://en.wikip
     * **Extracting** configure the yaml configuration files for container in Kubernetes
     * **Installing** the container in Kubernetes
 
+2. **Articles** service
+
     ```sh
     $ ./iks-scripts/deploy-articles-java-jee.sh
+    ```
+
+3. **Authors** service
+
+    ```sh
     $ ./iks-scripts/deploy-authors-nodejs.sh
+    ```
+
+4. **Web API** service
+    
+    ```sh
     $ ./iks-scripts/deploy-web-api-java-jee.sh
+    ```
+
+5. **Web app** service
+
+    ```sh   
     $ ./iks-scripts/deploy-web-app-vuejs.sh
     ```
 
-    **The script does automate following task:**
-
-    * Deploying Istio Ingress definitions for **web-api v1** only
+6. Deploy the Istio Ingress definitions for **web-api v1** only.
 
     ```sh
     $ ./scripts/deploy-istio-ingress-v1.sh
     ```
 
-2. Invoke the curl command to displayed the urls of services.
+7. Invoke the curl command to displayed the urls of services.
 
     ```sh
     $ ./iks-scripts/show-urls.sh
