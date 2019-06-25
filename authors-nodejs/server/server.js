@@ -24,7 +24,9 @@ app.use(log4js.connectLogger(logger, { level: logger.level }));
 //require('./services/index')(app);
 require('./routers/index')(app, server);
 
-const port = process.env.PORT || 3000;
+logger.info("process.env: ",process.env);
+const port =  process.env.VCAP_APP_PORT || process.env.PORT || 3000;
+
 server.listen(port, function(){
   logger.info(`Nodejs-Microservice listening on http://localhost:${port}/`);
   // swagger removed

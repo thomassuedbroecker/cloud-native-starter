@@ -5,10 +5,11 @@ logger.level = process.env.LOG_LEVEL || 'info';
 const localConfig = require('../config.json');
 
 
-if ( process.env.DATABASE=="local" || localConfig.DATABASE=="local" ) {
-
-    //  LOCAL DATABASE
-
+if ( 
+    process.env.DATABASE==undefined || 
+    process.env.DATABASE=="local" || 
+    localConfig.DATABASE=="local" ) 
+{   //  LOCAL DATABASE
     logger.info("Using local database");
     // authordata.json is the "database"
     const author = require('../authordata.json');
