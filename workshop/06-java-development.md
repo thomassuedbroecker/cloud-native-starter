@@ -31,7 +31,7 @@ That are the major steps we will follow to replace the  **Authors** service in o
 2. Building and storing of the production container image inside the IBM Cloud Registry
 3. Deploying the containers into the Kuberentes Cluster
 
-_Note:_ By the way, you can use the for the start a new Micro Profile with the [MicroProfile Starter(Beta)](https://start.microprofile.io/) which generates a MicroProfile maven project with examples. The gif below shows a preview:
+_Note:_ By the way, you can use for start of a new JavaEE development project with Micro Profile the [MicroProfile Starter(Beta)](https://start.microprofile.io/) that generates a MicroProfile maven project with examples for you. The gif below shows a short preview:
 
 ![authors-java-container-overview](images/microprofile-starter.gif)
 
