@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: articles
-        image: de.icr.io/cloud-native/articles:1
+        image: us.icr.io/cloud-native/articles:1
         ports:
         - containerPort: 8080
         env:
@@ -51,6 +51,7 @@ spec:
           initialDelaySeconds: 40
       restartPolicy: Always
 ---
+
 kind: ConfigMap
 apiVersion: v1
 metadata:

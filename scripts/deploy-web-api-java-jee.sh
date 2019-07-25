@@ -1,4 +1,4 @@
-#!/bin/sh 
+#!/bin/bash 
 
 root_folder=$(cd $(dirname $0); cd ..; pwd)
 readonly ENV_FILE="${root_folder}/local.env"
@@ -13,7 +13,11 @@ function setup() {
   _out Deploying web-api-java-jee v1
 
   cd ${root_folder}/istio
-  kubectl delete -f protect-web-api.yaml --ignore-not-found
+  protectyaml="${root_folder}/web-api-java-jee/istio/protect-web-api.yaml"
+  if [ -f "$protectyaml" ]
+  then
+    kubectl delete -f protect-web-api.yaml --ignore-not-found
+  fi
   
   cd ${root_folder}/web-api-java-jee
   kubectl delete -f deployment/kubernetes-service.yaml --ignore-not-found
@@ -28,6 +32,7 @@ function setup() {
   else
 	  curl -L -o $file https://github.com/WASdev/sample.opentracing.zipkintracer/releases/download/1.2/liberty-opentracing-zipkintracer-1.2-sample.zip
   fi
+  unzip -o liberty-opentracing-zipkintracer-1.2-sample.zip -d liberty-opentracing-zipkintracer/
 
   sed 's/10/5/' src/main/java/com/ibm/webapi/business/Service.java > src/main/java/com/ibm/webapi/business/Service2.java
   rm src/main/java/com/ibm/webapi/business/Service.java

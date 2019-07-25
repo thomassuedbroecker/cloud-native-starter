@@ -5,11 +5,10 @@ metadata:
   labels:
     app: authors
 spec:
-  type: NodePort
-  ports:
-    - port: 3000  
-      protocol: TCP
-      name: http
   selector:
     app: authors
+  ports:
+    - port: 3000
+      name: http
+  type: NodePort
 ---
