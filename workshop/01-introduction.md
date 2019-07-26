@@ -130,6 +130,8 @@ Resources:
 
 * ['Dockerizing Java MicroProfile Applications'](http://heidloff.net/article/dockerizing-container-java-microprofile)
 * ['Example Java App running in the Cloud via Kubernetes'](http://heidloff.net/article/example-java-app-cloud-kubernetes)
+* [Cloud Native Computing Foundation ](https://www.cncf.io/)
+* [What is cloud-native? Here a complete guide from IBM.](https://www.ibm.com/cloud/learn/cloud-native)
 
 
 
