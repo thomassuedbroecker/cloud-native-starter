@@ -413,7 +413,7 @@ spec:
 
 ---
 
-# 2 Hands-on tasks - Deploy the containers to the Kubernetes Cluster
+# 2. Hands-on tasks - Deploy the containers to the Kubernetes Cluster
 
 ## 2.1 Gain access to your cluster
 
