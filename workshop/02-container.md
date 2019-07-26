@@ -445,6 +445,8 @@ spec:
 
 ## 2.2 Build and deploy the container
 
+> Before we will execute the given bash scripts, we will get a basic understanding of the content.
+
 In the following bash scripts, we use **ibmcloud** and **kubectl** commands to interact with IBM Cloud, IBM Container Registry Service and the IBM Kubernetes service in IBM Cloud. With **sed** and **awk** we extract the output from the comandline.
 
 To build the containers in IBM Cloud we do **not** use Docker commands, because the container will be built inside the **IBM Container Registry** with the ```ibmcloud cr build``` command.
@@ -479,9 +481,11 @@ With [sed](https://en.wikipedia.org/wiki/Sed_(Unix)) and [awk]( https://en.wikip
 ```
 ---
 
+> Now we will use the bash scripts to build and deploy the container to Kubernetes on IBM Cloud.
+
 1. Invoke following bash scripts to build and deploy the microservices to Kubernetes:
 
-    **The scripts do automate following task:**
+    **The scripts do automate following tasks:**
 
     * **Deleting** the **existing** container configuration in the Kubernetes Cluster
     * **Building** and **uploading** the container to the IBM Cloud Registry Service
