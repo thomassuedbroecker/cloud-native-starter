@@ -413,9 +413,9 @@ spec:
 
 ---
 
-### 1.5 Hands-on tasks - Deploy the containers to the Kubernetes Cluster
+# 2 Hands-on tasks - Deploy the containers to the Kubernetes Cluster
 
-### 1.5.1 Gain access to your cluster
+## 2.1 Gain access to your cluster
 
 1. Log in to your IBM Cloud account. Include the --sso option if using a federated ID.
 
@@ -443,7 +443,7 @@ spec:
 
 ---
 
-### 1.5.2 Build and deploy the container
+## 2.2 Build and deploy the container
 
 In the following bash scripts, we use **ibmcloud** and **kubectl** commands to interact with IBM Cloud, IBM Container Registry Service and the IBM Kubernetes service in IBM Cloud. With **sed** and **awk** we extract the output from the comandline.
 
@@ -547,7 +547,7 @@ With [sed](https://en.wikipedia.org/wiki/Sed_(Unix)) and [awk]( https://en.wikip
 
 ---
 
-### 1.5.2 Verify the running services 
+## 2.3 Verify the running services 
 
 For the next steps use the results of the ```show-urls.sh``` script.
 
