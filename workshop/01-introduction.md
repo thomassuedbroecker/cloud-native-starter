@@ -20,7 +20,7 @@ Java developers can leverage **Eclipse MicroProfile** to implement this function
 
 ## 1. The "Cloud Native Starter (CNS)" application
 
-With the **"Cloud Native Starter"** application you can **show**, **add** and **remove** articles with authors information. The application is built on microservices with one frontend web application.
+With the **"Cloud Native Starter"** application we can **show**, **add** and **remove** articles with authors information. The application is built on microservices with one frontend web application.
 
 ![architecture](images/architecture.png)
 
@@ -33,7 +33,7 @@ The **"Cloud Native Starter"** application follows these design principles:
 
 * **Leverage platforms as much as possible – do as little as possible in language-specific frameworks**
 
-> The advantage of using Kubernetes and Istio for features like traffic management is, that these features are language agnostic. Cloud-native applications can be, and often are, polyglot. This allows developers to pick the best possible languages for the specific tasks.
+> The advantage of using Kubernetes and Istio for features like traffic management is, that these features are language agnostic. Cloud-native applications can be, and often are, polyglot. This allows developers to **pick the best possible languages** for the **specific tasks** (for exmaple for the frontend ```JavaScript``` and for the backend ```Java```).
 
 * **Use open-source components for the core services of the application only**
 
