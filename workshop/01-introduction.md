@@ -33,7 +33,7 @@ The **"Cloud Native Starter"** application follows these design principles:
 
 * **Leverage platforms as much as possible – do as little as possible in language-specific frameworks**
 
-> The advantage of using Kubernetes and Istio for features like traffic management is, that these features are language agnostic. Cloud-native applications can be, and often are, polyglot. This allows developers to **pick the best possible languages** for the **specific tasks** (for exmaple for the frontend ```JavaScript``` and for the backend ```Java```).
+> The advantage of using Kubernetes and Istio for features like traffic management is, that these features are language agnostic. Cloud-native applications can be, and often are, polyglot. This allows developers to **pick the best possible languages** for the **specific tasks** (for exmaple: for the frontend ```JavaScript``` and for the backend ```Java```).
 
 * **Use open-source components for the core services of the application only**
 
