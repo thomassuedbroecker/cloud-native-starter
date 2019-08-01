@@ -12,7 +12,7 @@ We will use the following IBM Cloud Services in this hands-on workshop:
 
 ## 2. Tools on your laptop
 
-You will need the following tools installed on your laptop, in order to complete the workshop.
+In order to complete the workshop, you will need the following tools installed on your laptop:
 
 - IDE or Editor: [Visual Studio Code](https://code.visualstudio.com/), for example 
 - [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) 
