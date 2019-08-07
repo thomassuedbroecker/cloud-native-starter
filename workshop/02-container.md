@@ -24,7 +24,7 @@ Here we can see the **Pods** created for each container inside the **IBM Kuberne
 |![ibm-cloud-cluster](images/ibm-cloud-cluster-02.png)|![ibm-cloud-pods](images/ibm-cloud-pods.png)|
 
 
-_Note:_ Here is a 3-min teaser video related topic: How to build a container
+_Note:_ Here is a 3-min teaser video to the related topic: How to build a container
 
 [![How to build a container](https://img.youtube.com/vi/ZHvASaUo3Vw/0.jpg)](https://www.youtube.com/watch?v=ZHvASaUo3Vw "Click play on youtube")
 
