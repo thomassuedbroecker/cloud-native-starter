@@ -13,10 +13,6 @@ In this lab we will build and deploy containers with microservices to Kubernetes
 
 Before we execute the bash scripts to build and upload the container images, we will take a look into the Dockerfiles to build these container images. 
 
-Here is a 3-min teaser video related to that chapter:
-
-[![How to build a container](https://img.youtube.com/vi/ZHvASaUo3Vw/0.jpg)](https://www.youtube.com/watch?v=ZHvASaUo3Vw "Click play on youtube")
-
 The following picture shows a brief preview of the end result: containers running in Kubernetes. These are the containers we will store inside the **container registry** in IBM Cloud, once we have finished the lab.
 
 ![ibm-cloud-pods](images/ibm-cloud-registry-container.png)
@@ -28,6 +24,9 @@ Here we can see the **Pods** created for each container inside the **IBM Kuberne
 |![ibm-cloud-cluster](images/ibm-cloud-cluster-02.png)|![ibm-cloud-pods](images/ibm-cloud-pods.png)|
 
 
+_Note:_ Here is a 3-min teaser video related topic: How to build a container
+
+[![How to build a container](https://img.youtube.com/vi/ZHvASaUo3Vw/0.jpg)](https://www.youtube.com/watch?v=ZHvASaUo3Vw "Click play on youtube")
 
 ---
 
