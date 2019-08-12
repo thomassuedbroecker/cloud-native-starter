@@ -3,9 +3,6 @@ package com.ibm.webapi.data;
 import com.ibm.webapi.business.CoreArticle;
 import com.ibm.webapi.business.InvalidArticle;
 
-import org.eclipse.microprofile.rest.client.RestClientBuilder;
-import org.eclipse.microprofile.rest.client.inject.RestClient;
-
 import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -18,6 +15,8 @@ import java.util.Set;
 import javax.inject.Inject;
 import javax.json.JsonObject;
 import javax.ws.rs.ProcessingException;
+import org.eclipse.microprofile.rest.client.inject.RestClient;
+import org.eclipse.microprofile.rest.client.RestClientBuilder;
 
 public class ArticlesServiceDataAccess implements ArticlesDataAccess {
 	
