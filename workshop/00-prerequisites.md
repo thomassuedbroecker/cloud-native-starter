@@ -25,32 +25,33 @@ In order to complete the workshop, you will need the following tools installed o
 
 ### 2.1 Options for Windows
 
-For Windows, you will need access to a Unix shell (Babun, [Cygwin](https://cygwin.com/install.html), etc.), because you will execute predefined bash scripts and other cli commands. 
+For Windows, you will need access to a Unix shell because you will execute predefined bash scripts and other CLI commands. 
 
 You have different options:
 
 1. [Use a custom Docker image for Window 10](00-prerequisites-windows-10.md)
     
-    This option was tested on a Windows 10 machine and documented by our site.
+    We tested this option on a Windows 10 machine and documented it.
 
 2. [Windows Subsystem for Linux Installation Guide for Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 
 3. IBM Docker image
 
-    There is a Docker image provided by IBM that contains most of the needed cli tools 
+    There is a Docker image provided by IBM that contains most of the CLI tools needed
+    
     * [Using IBM Cloud Developer Tools from a Docker Container](https://cloud.ibm.com/docs/cli?topic=cloud-cli-using-idt-from-docker). 
     
-    _Note:_ Here you need to ensure that share your filesystem with the running Docker image.
+    _Note:_ You need to share the downloaded Gitub repo on your Windows filesystem with the running Docker image.
 
 4. Virtual Box
 
-    You can also use a VirtualBox to install the tools into a [Ubuntu](https://www.osboxes.org/ubuntu/) VM, for example.
+    You can also use VirtualBox or Hyper-V to create an [Ubuntu](https://www.osboxes.org/ubuntu/) VM and install the tools into it.
 
 ## 2.1 Verfiy the major prerequisites on your machine
 
 To verfiy the major prerequisites on your machine, you can execute following bash script.
 
-_Note:_ If you use the **custom Docker image**, you don't need to follow these steps.
+_Note:_ If you use the **custom Docker image** described above you don't need to follow these steps. Everything is in place already.
 
 ```sh
 $ git clone https://github.com/IBM/cloud-native-starter.git
