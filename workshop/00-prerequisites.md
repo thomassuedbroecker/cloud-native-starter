@@ -41,11 +41,11 @@ You have different options:
     
     * [Using IBM Cloud Developer Tools from a Docker Container](https://cloud.ibm.com/docs/cli?topic=cloud-cli-using-idt-from-docker). 
     
-    _Note:_ You need to share the downloaded Gitub repo on your Windows filesystem with the running Docker image.
+    _Note:_ You need to share the downloaded GitHub repo on your Windows filesystem with the running Docker image.
 
 4. Virtual Box
 
-    You can also use VirtualBox or Hyper-V to create an [Ubuntu](https://www.osboxes.org/ubuntu/) VM and install the tools into it.
+    You can also use VirtualBox or Hyper-V to create an [Ubuntu](https://www.osboxes.org/ubuntu/) VM and run the workshop directly in the VM in a Linux environment.
 
 ## 2.1 Verfiy the major prerequisites on your machine
 
