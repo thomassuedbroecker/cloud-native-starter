@@ -11,20 +11,20 @@ We have defined a ```Dockerfile``` which contains the needed configuration to se
 
    ![image](images/windows-setup-01.png)
 
-3. Open the Windows PowerShell as Administrator
+3. Open the **Windows PowerShell** as **Administrator**
 
 4. Navigate go the folder ```[YOUR FOLDER]/cloud-native-starter/workshop```
 
 5. Execute the command ```docker build -t my-workshop-image:v1 .``` to build the Docker image. 
 
-    _Note:_ You can open [Dockerfile](./Dockerfile) in a editor to get familiar with the setup of the Docker image.
+    _Note:_ You can open [Dockerfile](./Dockerfile) in a editor, if you want to get familiar with the setup of the Docker image.
 
-6. Execute the command ```docker run -ti  my-workshop-image:v1``` to run the image and open directly the Ubuntu terminal session.
+6. Execute the command ```docker run -ti  my-workshop-image:v1``` to run the Docker image and that opens directly the Ubuntu **terminal session**.
 
-7. Navigate to cloud native starter project inside the Docker image
+7. Navigate to **cloud native starter** project inside the Docker image
     ```cd usr/cns/cloud-native-starter```
 
-8. Execute the ```iks/scripts/check-prerequisites.sh````
+8. Execute the ```iks/scripts/check-prerequisites.sh``` to verify the setup.
 
     ![image](images/windows-setup-02.png)
 
