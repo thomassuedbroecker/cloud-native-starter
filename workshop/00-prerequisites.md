@@ -29,7 +29,7 @@ For Windows, you will need access to a Unix shell (Babun, [Cygwin](https://cygwi
 
 You have different options:
 
-1. [Use a custom Docker image for Window 10](00-prerequisites-windows-10)
+1. [Use a custom Docker image for Window 10](00-prerequisites-windows-10.md)
     
     This step was tested on a Windows 10 machine and documented by our site.
 
