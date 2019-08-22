@@ -25,12 +25,13 @@ In order to complete the workshop, you will need the following tools installed o
 
 ### 2.1 Options for Windows:
 
-For Windows, you will need access to a Unix shell (Babun, [Cygwin](https://cygwin.com/install.html), etc.). You need that, because you will execute predefined bash scripts and other cli commands. 
+For Windows, you will need access to a Unix shell (Babun, [Cygwin](https://cygwin.com/install.html), etc.), because you will execute predefined bash scripts and other cli commands. 
 
-To ensure to do that you have different options.
+You have different options:
 
 1. [Use a custom Docker image for Window 10](00-prerequisites-windows-10)
-    This step was tested on our site with a Windows 10 machine.
+    
+    This step was tested on a Windows 10 machine and documented by our site.
 
 2. [Windows Subsystem for Linux Installation Guide for Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 
