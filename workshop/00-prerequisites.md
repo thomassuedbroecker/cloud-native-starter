@@ -21,16 +21,25 @@ In order to complete the workshop, you will need the following tools installed o
   [IBM Cloud CLI releases](https://github.com/IBM-Cloud/ibm-cloud-cli-release/releases)
 - [Docker](https://docs.docker.com/v17.12/install/)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-- for Windows, you will need access to a Unix shell (Babun, [Cygwin](https://cygwin.com/install.html), etc.) or just install via the [Windows Subsystem for Linux Installation Guide for Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+
+
+### 2.1 Options for Windows:
+
+For Windows, you will need access to a Unix shell (Babun, [Cygwin](https://cygwin.com/install.html), etc.). You need that, because you will execute predefined bash scripts and other cli commands. 
+
+To ensure to do that you have different options.
 
 1. [Use a custom Docker image for Window 10](00-prerequisites-windows-10)
+    This step was tested on our site with a Windows 10 machine.
 
-2. IBM Docker image
+2. [Windows Subsystem for Linux Installation Guide for Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
+
+3. IBM Docker image
 
     There is a Docker image provided by IBM that contains most of the needed cli tools 
     * [Using IBM Cloud Developer Tools from a Docker Container](https://cloud.ibm.com/docs/cli?topic=cloud-cli-using-idt-from-docker). Here you need to ensure to share your filesystem with the Docker image.
 
-3. Virtual Box
+4. Virtual Box
 
     You can also use a VirtualBox to install the tools into a [Ubuntu](https://www.osboxes.org/ubuntu/) VM, for example.
 
