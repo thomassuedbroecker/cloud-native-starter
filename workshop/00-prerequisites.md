@@ -23,7 +23,7 @@ In order to complete the workshop, you will need the following tools installed o
 - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 
 
-### 2.1 Options for Windows:
+### 2.1 Options for Windows
 
 For Windows, you will need access to a Unix shell (Babun, [Cygwin](https://cygwin.com/install.html), etc.), because you will execute predefined bash scripts and other cli commands. 
 
@@ -31,14 +31,16 @@ You have different options:
 
 1. [Use a custom Docker image for Window 10](00-prerequisites-windows-10.md)
     
-    This step was tested on a Windows 10 machine and documented by our site.
+    This option was tested on a Windows 10 machine and documented by our site.
 
 2. [Windows Subsystem for Linux Installation Guide for Windows 10](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
 
 3. IBM Docker image
 
     There is a Docker image provided by IBM that contains most of the needed cli tools 
-    * [Using IBM Cloud Developer Tools from a Docker Container](https://cloud.ibm.com/docs/cli?topic=cloud-cli-using-idt-from-docker). Here you need to ensure to share your filesystem with the Docker image.
+    * [Using IBM Cloud Developer Tools from a Docker Container](https://cloud.ibm.com/docs/cli?topic=cloud-cli-using-idt-from-docker). 
+    
+    _Note:_ Here you need to ensure that share your filesystem with the running Docker image.
 
 4. Virtual Box
 
