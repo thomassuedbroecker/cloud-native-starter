@@ -38,6 +38,8 @@ In order to complete the workshop, you will need the following tools installed o
 
 To verfiy the major prerequisites on your machine, you can execute following bash script.
 
+_Note:_ If you use the **custom Docker image**, you don't need to follow these steps.
+
 ```sh
 $ git clone https://github.com/IBM/cloud-native-starter.git
 $ cd cloud-native-starter
@@ -45,6 +47,8 @@ $ chmod u+x iks-scripts/*.sh
 $ chmod u+x scripts/*.sh
 $ ./iks-scripts/check-prerequisites.sh
 ```
+
+
 
 ## 3. Setup IBM Cloud Kubernetes cluster<a name="home"></a>
 
@@ -146,6 +150,8 @@ _Optional:_ We can verify the key in IBM Cloud, as you can see in the image belo
 
 3. Create a copy of the **template.local.env** and paste the file into the same folder. Rename the new file to **local.env**. Then insert the platform key, which we created before, into the **local.env** file as the value for the ```IBMCLOUD_API_KEY``` variable, which we can see in step 4.
 
+_Note:_ If you use the **custom Docker image**, you don't need to follow these steps.
+
 ```sh
 $ cp template.local.env local.env
 $ cat local.env
@@ -154,6 +160,8 @@ $ cat local.env
 4. Verify the entries in the local.env file.
 
 Open file **local.env** in a editor.
+
+_Note:_ If you use the **custom Docker image**, open the file with the nano editor. ```nano local.env```
 
 We can see the file has preset values for regions, cluster name, and image registry namespace in local.env. You can adjust them to your needs.
 
