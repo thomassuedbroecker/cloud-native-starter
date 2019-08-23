@@ -204,6 +204,8 @@ CLOUDANT_URL=
 ### 4.5 Setup the IBM Cloud Kubernetes CLI <a name="part-SETUP-03"></a>
 [<home>](#home)
 
+_Note:_ If you use the **workshop Docker image for Windows** described above, you don't need to follow these steps. Everything is in place already.
+
 Let's log in to the IBM Cloud CLI tool: `ibmcloud login`.
 If you are an IBMer, include the `--sso` flag: `ibmcloud login --sso`.
 
