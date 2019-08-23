@@ -112,6 +112,8 @@ _Note:_ Free clusters expire after one month.
 ### 4.3 Setup the IBM Cloud CLI <a name="part-SETUP-02"></a>
 [<home>](#home)
 
+_Note:_ If you use the **workshop Docker image for Windows** described above, you don't need to follow these steps. Everything is in place already.
+
 Follow the steps listed under the [Install from shell](https://cloud.ibm.com/docs/cli/reference/bluemix_cli?topic=cloud-cli-install-ibmcloud-cli#shell_install) section to download and install the IBM Cloud CLI.
 
 - MacOS: `curl -fsSL https://clis.ng.bluemix.net/install/osx | sh`
