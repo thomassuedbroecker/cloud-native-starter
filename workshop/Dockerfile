@@ -4,11 +4,18 @@ RUN apt-get update
 RUN apt-get --assume-yes install curl
 RUN apt-get --assume-yes install git-core
 RUN apt-get --assume-yes install wget
+# editor
 RUN apt-get --assume-yes install nano
+# setup network tools
+RUN apt-get --assume-yes install apt-utils
+RUN apt-get --assume-yes install net-tools
+# zip
+RUN apt-get --assume-yes install unzip
+RUN apt-get --assume-yes install zip
 
 RUN pwd
 
-# Cloud Native Starter
+# Cloud-Native-Starter -project
 # https://github.com/IBM/cloud-native-starter/blob/master/workshop/00-prerequisites.md
 # Install
 RUN mkdir usr/cns
@@ -28,7 +35,7 @@ RUN sh get-docker.sh
 
 RUN docker --version
 
-#Docker
+# Docker
 RUN apt-get update
 # RUN apt-get --assume-yes install docker-ce 
 RUN apt-get --assume-yes install docker-ce-cli 
@@ -48,3 +55,13 @@ RUN apt-get install -y kubectl
 RUN  curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
 RUN ibmcloud plugin install container-service
 RUN ibmcloud plugin install container-registry
+
+#kiali
+EXPOSE 20001
+#grafana 
+EXPOSE 3000
+#jaeger
+EXPOSE 16686
+#prometheus
+EXPOSE 9090
+
