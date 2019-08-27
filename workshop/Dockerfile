@@ -23,7 +23,7 @@ WORKDIR /usr/cns
 RUN git clone https://github.com/IBM/cloud-native-starter.git
 WORKDIR /usr/cns/cloud-native-starter
 RUN chmod u+x ./iks-scripts/*.sh
-# Copy .nev
+# Copy local.env
 RUN cp template.local.env local.env
 WORKDIR /usr/cns/cloud-native-starter/workshop
 RUN curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.1.5 sh -
@@ -59,9 +59,9 @@ RUN ibmcloud plugin install container-registry
 #kiali
 EXPOSE 20001
 #grafana 
-EXPOSE 3000
+# EXPOSE 3000
 #jaeger
-EXPOSE 16686
+# EXPOSE 16686
 #prometheus
-EXPOSE 9090
+# EXPOSE 9090
 
