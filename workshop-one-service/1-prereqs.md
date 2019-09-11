@@ -142,7 +142,7 @@ $ ./iks-scripts/check-prerequisites.sh
 
 5. Follow the written steps in the **Access**, by inserting the commands into your terminal session.
 
-![Follow the steps in the Access, by inserting the commands into your terminal session.](images/verify-cluster-access-4.png)
+![Follow the steps in the Access tab, by starting from "After your cluster provision" and inserting the commands into your terminal session.](images/verify-cluster-access-4.png)
 
 ---
 
