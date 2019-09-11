@@ -86,7 +86,7 @@ Also the name of the executable web application is definied in the server.xml.
 
 Later we will change the **contextRoot**.
 
-_REMEMBER:_ The `httpPort="3000"` we do expose  `EXPOSE 3000` inside our **Production container**.
+_REMEMBER:_ The `httpPort="3000"` we do expose  `EXPOSE 3000` inside our **Production container image**.
 
 ```dockerfile
 FROM openliberty/open-liberty:microProfile2-java8-openj9 
