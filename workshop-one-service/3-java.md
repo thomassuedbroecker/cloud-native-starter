@@ -84,6 +84,7 @@ Also the name of the executable web application is definied in the server.xml.
 </server>
 ```
 
+Later we will change the contextRoot.
 
 ## 3. Implementation of the REST GET endpoint with MicroProfile
 
@@ -241,6 +242,8 @@ public class HealthEndpoint implements HealthCheck {
 }
 ```
 
+Later we will change return information of the **HealthCheckResponse**.
+
 This HealthEndpoint is configured in the Kubernetes deployment yaml. In the following yaml extract we see the `livenessProbe` definition.
 
 ```yaml
@@ -275,7 +278,45 @@ Step |  |
 2 |  Open a new terminal and navigate tp your local project folder ```openshift-on-ibm-cloud-workshops/2-deploying-to-openshift```
 3 | [Move on with the lab](./3-java.md#step-1-in-getauthorjava-change-the-returned-author-name-to-something-else-like-my-name).
 
-### Step 1: In [GetAuthor.java](../src/main/java/com/ibm/authors/GetAuthor.java) change the returned author name to something else like "MY NAME".
+
+### Step 1: Change the contextRoot in [server.xml](../authors-java-jee/liberty/server.xml) change the contextRoot to something else like "myapi".
+
+Open the file ```cloud-native-starter/authors-java-jee/liberty/server.xml``` in a editor and change the value.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="OpenLiberty Server">
+	
+    <featureManager>
+        <feature>webProfile-8.0</feature>
+        <feature>microProfile-2.1</feature>
+    </featureManager>
+
+    <httpEndpoint id="defaultHttpEndpoint" host="*" httpPort="3000" httpsPort="9443"/>
+
+    <webApplication location="authors.war" contextRoot="myapi"/>
+
+</server>
+```
+
+### Step 2: Change the @ApplicationPath in the class [AuthorsApplication.java](../authors-java-jee/src/main/java/com/ibm/authors/AuthorsApplication.java) something else like "myv1".
+
+Open the file ```cloud-native-starter/authors-java-jee/src/main/java/com/ibm/authors/AuthorsApplication.java``` in a editor and change the value.
+
+```java
+package com.ibm.authors;
+
+import javax.ws.rs.core.Application;
+import javax.ws.rs.ApplicationPath;
+
+@ApplicationPath("myv1")
+public class AuthorsApplication extends Application {
+}
+```
+
+### Step 3: In the class [GetAuthor.java](../authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java) change the returned author name to something else like "MY NAME".
+
+Open the file ```cloud-native-starter/authors-java-jee/src/main/java/com/ibm/authors/GetAuthor.java``` in a editor and change the value.
 
 ``` java
 public Response getAuthor(@Parameter(
@@ -294,19 +335,39 @@ public Response getAuthor(@Parameter(
 	}
 ```
 
-### Step 2: To test and see how the code works you can run the code locally as a Docker container:
+### Step 4: In the class [HealthEndpoint.java](../authors-java-jee/src/main/java/com/ibm/authors/HealthEndpoint.java) change the returned information to something else like "ok for the workshop".
+
+```java
+@Health
+@ApplicationScoped
+public class HealthEndpoint implements HealthCheck {
+
+    @Override
+    public HealthCheckResponse call() {
+        return HealthCheckResponse.named("authors").withData("authors", "ok for the workshop").up().build();
+    }
+}
+```
+
+### Step 5: To test and see how the code works you can run the code locally as a Docker container:
 
 ```
-$ cd ${ROOT_FOLDER}/2-deploying-to-openshift
+$ cd $ROOT_FOLDER/authors-java-jee
 $ docker build -t authors .
 $ docker run -i --rm -p 3000:3000 authors
 ```
 
-### Step 3: Open the swagger UI of the mircoservice in a browser.
+### Step 6: Open the swagger UI of the mircoservice in a browser.
 
 ```http://localhost:3000/openapi/ui/```
 
 ![Swagger UI](images/authors-swagger-ui.png)
+
+### Step 7: Open the health check of the mircoservice in a browser.
+
+```http://localhost:3000/health```
+
+![health](images/authors-swagger-ui.png)
 
 ---
 
