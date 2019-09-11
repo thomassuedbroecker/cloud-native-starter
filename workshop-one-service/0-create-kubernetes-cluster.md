@@ -56,6 +56,8 @@ Ensure you set following values in the creation dialog:
 
 ## Step 5: Press "Create custer"
 
+## Step 6: Now you will be forwarded to you cluster on IBM Cloud and you can verify the status of the creation of you cluster
+
 The creation of the custer takes up to 20 min.
 
 ![create Kubernetes service](images/ibmcloud-create-kubernetes-3.png)
