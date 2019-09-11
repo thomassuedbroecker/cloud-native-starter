@@ -8,8 +8,7 @@ This lab has two parts:
 
 1. Build and save the container image
 
-  * We will define a [build config](https://docs.openshift.com/container-platform/3.9/dev_guide/builds/index.html) for OpenShift
-  * We will build with the build Pod inside OpenShift and save container image to the internal [OpenShift container registry](https://docs.openshift.com/container-platform/3.9/install_config/registry/index.html#install-config-registry-overview)
+   TBD
 
 2. Deploy the application and expose the service
 
@@ -26,19 +25,61 @@ The following image is an animation of the simplified steps above.
 ## Step 1: Build and save the container image in the IBM Cloud Container Registry
 
 Now we want to build and save a container image in the IBM Cloud Container Registry. 
-We use these commands to do that:
 
-1. Defining a new build using 'binary build' and the Docker strategy ([more details](https://docs.openshift.com/container-platform/3.5/dev_guide/builds/build_inputs.html#binary-source) and [oc new-build documentation](https://docs.openshift.com/container-platform/3.9/cli_reference/basic_cli_operations.html#new-build))
+1. Logon to the IBM Cloud Container Registry 
 
-```
-$ oc new-build --name authors --binary --strategy docker
-```
+    ```sh
+    $ cd authors-java-jee
+    $ ibmcloud cr login
+    ```
 
-2. Starting the build process on OpenShift with our defined build configuration. ([oc start-build documentation](https://docs.openshift.com/container-platform/3.9/cli_reference/basic_cli_operations.html#start-build))
+2. List you namespaces inside the IBM Cloud Container Registry 
 
-```
-$ oc start-build authors --from-dir=.
-```
+    ```sh
+    $ ibmcloud cr namespaces
+    ```
+
+    _Sample result outout:_
+
+    ```sh
+    $ Listing namespaces for account 'Thomas Südbröcker's Account' in registry 'de.icr.io'...
+    $
+    $ Namespace   
+    $ cloud-native
+    ```
+
+3. Now upload the code and build the container image inside IBM Cloud Container Registry. We use the upper information we got from listing the namespaces.
+
+    ```sh
+    $ ibmcloud cr build -f Dockerfile --tag $REGISTRY/$REGISTRY_NAMESPACE/authors:2 .
+    ```
+
+    _Sample result values:_
+
+    ```sh
+    $ ibmcloud cr build -f Dockerfile --tag de.icr.io/cloud-native/authors:2 .
+    ```
+
+    _Optional:_ Verify the container upload in the IBM Cloud web UI.
+
+    ![authors-java-container-image](images/authors-java-container-image.png)
+
+4. List the container images to verify the upload.
+
+    ```sh
+    $ ibmcloud cr images
+    ```
+
+    _Sample result output:_
+
+    ```sh
+    $ REPOSITORY                        TAG   DIGEST         NAMESPACE      CREATED          SIZE     SECURITY STATUS   
+    $ de.icr.io/cloud-native/articles   1     b5dc1f96a69a   cloud-native   1 day ago        273 MB   7 Issues   
+    $ de.icr.io/cloud-native/authors    2     217b7716dce1   cloud-native   30 seconds ago   259 MB   7 Issues   
+    ```
+
+    Copy the REPOSITORY path for the uploaded **Authors** container image.
+    In this case sample: ```de.icr.io/cloud-native/authors```
 
 ## Step 3: Verify the build in the OpenShift web console
 
