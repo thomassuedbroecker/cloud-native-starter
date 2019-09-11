@@ -1,4 +1,8 @@
 [home](README.md)
+
+_Note:_ This lab is structured in **understanding** and **hands-on tasks**. 
+The hands-on tasks starting in chapter [2. Hands-on tasks - Resiliency](#lab-hands-on).
+
 # Resiliency
 
 As stated in the [reactive manifesto](https://www.reactivemanifesto.org/) cloud-native reactive applications need to be **resilient**:
@@ -70,7 +74,7 @@ public List<Article> fallbackNoArticlesService() {
 ```
 ---
 
-## 2. Hands-on tasks - Resiliency
+## 2. Hands-on tasks - Resiliency <a name="lab-hands-on"></a>
 
 Resiliency is part of the code: if an API call is not answered because of an error ar a timeout, the business logic must have a implementation of a fallback. 
 

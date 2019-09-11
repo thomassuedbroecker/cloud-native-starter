@@ -1,4 +1,8 @@
 [home](README.md)
+
+_Note:_ This lab is structured in **understanding** and **hands-on tasks**. 
+The hands-on tasks starting in chapter [2. Hands-on tasks - Defining and exposing REST APIs](#lab-hands-on).
+
 # Defining and exposing REST APIs
 
 ## 1. Making the REST API life easier for Java developers with MicroProfile
@@ -168,7 +172,7 @@ The following image shows an automatically created **Open API explorer** for the
 
 ---
 
-## 2. Hands-on tasks - Defining and exposing REST APIs
+## 2. Hands-on tasks - Defining and exposing REST APIs <a name="lab-hands-on"></a>
 
 ### 2.1 Gain access to your cluster
 

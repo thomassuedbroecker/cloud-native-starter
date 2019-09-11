@@ -1,4 +1,9 @@
 [home](README.md)
+
+_Note:_ This lab is structured in **understanding** and **hands-on tasks**. 
+The hands-on tasks starting in chapter [2. Hands-on tasks - Deploy the containers to the Kubernetes Cluster](#lab-hands-on) in that lab.
+
+
 # Building and deploying Containers
 
 In this lab we will build and deploy containers with microservices to Kubernetes. Along this way, we will inspect the **Dockerfiles** for container images and we will take a look into the configured **yaml files** for microservice **deployment**. The following diagram shows a high-level overview of the steps in the lab, which are mostly automated with bash scripts.
@@ -420,7 +425,7 @@ spec:
 
 ---
 
-# 2. Hands-on tasks - Deploy the containers to the Kubernetes Cluster
+# 2. Hands-on tasks - Deploy the containers to the Kubernetes Cluster <a name="lab-hands-on"></a>
 
 ## 2.1 Gain access to your cluster
 
@@ -452,7 +457,9 @@ spec:
 
 ## 2.2 Build and deploy the container
 
-> Before we execute the given bash scripts, we will get a basic understanding of the content.
+### Understand the bash scripts
+
+> Before we execute the given bash scripts, we will get a basic understanding of the content of the bash scripts and what we do automated for you.
 
 In the following bash scripts, we use **ibmcloud** and **kubectl** commands to interact with IBM Cloud, IBM Container Registry Service and the IBM Kubernetes service in IBM Cloud. With **sed** and **awk** we extract the output from the comandline.
 
@@ -487,6 +494,8 @@ With [sed](https://en.wikipedia.org/wiki/Sed_(Unix)) and [awk]( https://en.wikip
   $ nodeport=$(kubectl get svc articles --output 'jsonpath={.spec.ports[*].nodePort}')
 ```
 ---
+
+### Execute following steps on your machine
 
 > Now we will use the bash scripts to build and deploy the container to Kubernetes on IBM Cloud.
 
