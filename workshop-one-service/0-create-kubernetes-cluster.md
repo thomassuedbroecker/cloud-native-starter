@@ -24,7 +24,7 @@ In order to create a free Kubernetes cluster, you need a **promo** or **feature 
 
 ---
 
-# 2 Insert promo code <a name="part-SETUP-01"></a>
+# 2 Insert promo/feature code <a name="part-SETUP-01"></a>
 
 In order to execute the workshop easily, we provide **feature codes** to create free Kubernetes clusters, so no credit card details are required.
 To apply the feature code to your [Cloud Account](https://cloud.ibm.com/account), navigate to your "`Account settings`" and then to ("`Manage`" -> "`Account`").
