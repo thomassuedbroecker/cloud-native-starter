@@ -1,18 +1,15 @@
 # Lab 1 - Install Prerequisites
 
-
-[![Install Prerequisites](https://img.youtube.com/vi/53XccO3NNn8/0.jpg)](https://www.youtube.com/watch?v=53XccO3NNn8 "Click play on youtube")
-
 ## Access to the IBM Cloud
 
 An [IBM Cloud account](https://cloud.ibm.com/registration) is needed. 
 
 Note: In order to run this workshop an IBM Cloud Lite account is not sufficient. This tutorial may incur costs. Use the [Pricing Calculator](https://cloud.ibm.com/estimator/review) to generate a cost estimate based on your projected usage.
 
-We will use the [OpenShift on IBM Cloud](https://cloud.ibm.com/kubernetes/catalog/openshiftcluster) service on IBM Cloud in this hands-on workshop.
+We will use the [Kubernetes on IBM Cloud](https://cloud.ibm.com/kubernetes/catalog/cluster) service on IBM Cloud in this hands-on workshop.
 
 
-Follow the [instructions](../../1-understanding-openshift#part-2-create-cluster-on-the-ibm-cloud) from the first workshop to set up an OpenShift cluster.
+Follow the [instructions]() to set up an free Kubernetes cluster.
 
 ## Tools
 
@@ -29,8 +26,8 @@ There is an image on DockerHub with all required tools. In order to use local ID
 #### Step 1: Run these commands in a terminal
 
 ```
-$ git clone https://github.com/nheidloff/openshift-on-ibm-cloud-workshops.git
-$ cd openshift-on-ibm-cloud-workshops
+$ git clone https://github.com/IBM/cloud-native-starter
+$ cd cloud-native-starter
 $ ROOT_FOLDER=$(pwd)
 $ docker run -v $ROOT_FOLDER/:/cloud-native-starter -it --rm nheidloff/openshift-workshop-tools:v1
 ```
@@ -45,7 +42,7 @@ root@3f46c41f7303:/cloud-native-starter# ROOT_FOLDER=$(pwd)
 
 _Note:_ With the `--rm` option in the docker run command the container is deleted once you exit. This is intended.
 
-#### Step 3: Move on with [Verify Access to OpenShift on the IBM Cloud](./1-prereqs.md#verify-access-to-openshift-on-the-ibm-cloud)
+#### Step 3: Move on with [Verify Access your free Kubernetes Cluster on the IBM Cloud](./1-prereqs.md#verify-access-to-kubernetes-on-the-ibm-cloud)
 
 
 ### Tools - Option 2: Prebuilt Image with Code in Container
@@ -62,14 +59,14 @@ $ docker run -ti nheidloff/openshift-workshop-tools:v1
 
 ```
 root@3f46c41f7303:/usr/local/bin# cd /
-root@3f46c41f7303:/usr/local/bin# git clone https://github.com/nheidloff/root@3f46c41f7303:/usr/local/bin# openshift-on-ibm-cloud-workshops.git
-root@3f46c41f7303:/usr/local/bin# cd openshift-on-ibm-cloud-workshops
+root@3f46c41f7303:/usr/local/bin# git clone https://github.com/IBM/cloud-native-starter.git
+root@3f46c41f7303:/usr/local/bin# cd cloud-native-starter
 root@3f46c41f7303:/usr/local/bin# ROOT_FOLDER=$(pwd)
 ```
 
 _Note:_ If you using Windows you also need to download or clone the project to your local workstation for the upcoming Docker and Java lab, because you can't use Docker in the 'openshift-workshop-tools' Docker image.
 
-#### Step 3: Move on with [Verify Access to OpenShift on the IBM Cloud](./1-prereqs.md#verify-access-to-openshift-on-the-ibm-cloud)
+#### Step 3: Move on with [Verify Access to OpenShift on the IBM Cloud](./1-prereqs.md#verify-access-to-kubernetes-on-the-ibm-cloud)
 
 
 ### Tools - Option 3: Install Tools on your Notebook
@@ -78,28 +75,30 @@ This approach works only for Mac and Linux (see this [article](https://suedbroec
 
 #### Step 1: Install the following tools:
 
-- [oc](https://cloud.ibm.com/docs/containers?topic=containers-cs_cli_install#cli_oc)
-- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+- IDE or Editor: [Visual Studio Code](https://code.visualstudio.com/), for example 
 - [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) 
 - [curl](https://curl.haxx.se/download.html)
-- Optional: [IBM Cloud CLI](https://cloud.ibm.com/docs/home/tools)
-- Optional: Editor, for example [Visual Studio Code](https://code.visualstudio.com/) 
+- [IBM Cloud CLI](https://cloud.ibm.com/docs/home/tools)
+  [IBM Cloud CLI releases](https://github.com/IBM-Cloud/ibm-cloud-cli-release/releases)
+- [Docker](https://docs.docker.com/v17.12/install/)
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+
 
 #### Step 2: Get the code:
 
 ```
-$ git clone https://github.com/nheidloff/openshift-on-ibm-cloud-workshops.git
-$ cd openshift-on-ibm-cloud-workshops
+$ git clone git clone https://github.com/IBM/cloud-native-starter
+$ cd cloud-native-starter
 $ ROOT_FOLDER=$(pwd)
 ```
 
-#### Step 3: Move on with [Verify Access to OpenShift on the IBM Cloud](./1-prereqs.md#verify-access-to-openshift-on-the-ibm-cloud)
+#### Step 3: Move on with [Verify Access to OpenShift on the IBM Cloud](./1-prereqs.md#verify-access-to-kubernetes-on-the-ibm-cloud)
 
 ---
 
-## Verify Access to OpenShift on the IBM Cloud
+## Verify Access to Kubernetes on the IBM Cloud
 
-### Step 1: After you've created a new cluster, open the OpenShift console. 
+### Step 1: After you've created a new free Kubernetes cluster, open the OpenShift console. 
 
 1. Logon to the IBM Cloud web console
 
