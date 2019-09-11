@@ -56,4 +56,8 @@ Ensure you set following values in the creation dialog:
 
 ## Step 5: Press "Create custer"
 
+The creation of the custer takes up to 20 min.
+
+![create Kubernetes service](images/ibmcloud-create-kubernetes-3.png)
+
 
