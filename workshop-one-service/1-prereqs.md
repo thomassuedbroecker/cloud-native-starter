@@ -4,7 +4,11 @@
 
 An [IBM Cloud account](https://cloud.ibm.com/registration) is needed. 
 
-Note: In order to run this workshop an IBM Cloud Lite account is not sufficient. This tutorial may incur costs. Use the [Pricing Calculator](https://cloud.ibm.com/estimator/review) to generate a cost estimate based on your projected usage.
+In order to run this workshop you have two options:
+
+1. You need a promo/feature code for a IBM Cloud **Trial** account. You will get such promo/feature code when you attend that hands-on workshop.
+
+2. You create a IBM Lite Account and upgrade your account to a **Pay-As-You-Go** account by using your credit card. ([Account Types](https://cloud.ibm.com/docs/account?topic=account-accounts))
 
 We will use the following IBM Cloud Services in this hands-on workshop:
 
