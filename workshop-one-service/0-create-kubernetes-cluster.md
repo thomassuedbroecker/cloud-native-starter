@@ -69,7 +69,7 @@ The creation of the custer takes up to 20 min.
 
 # 3 Configure the IBM Cloud Container Registry <a name="part-SETUP-03"></a>
 
-1. Select in **Kubernetes** the entry **Registry**
+1. Select in **Kubernetes** the entry **Registry** and ensure your are in the **Dallas location**.
 
 ![Select in Kubernetes the entry Registry](images/ibmcloud-configure-container-registry-1.png)
 
@@ -79,7 +79,12 @@ The creation of the custer takes up to 20 min.
 
 _Note:_ Namespaces are required to be **unique** across the entire **region** that the **specific registry** is located in, not just ***unique to your account**. This is mentioned in the following [public documentation](https://cloud.ibm.com/docs/services/Registry?topic=registry-getting-started#gs_registry_namespace_add).
 
+3. Verify the namespace was created
 
+![Verify the namespace was created](images/ibmcloud-configure-container-registry-3.png)
 
+---
+
+Now we have created a free IBM Kubernetes Cluster and we configured the IBM Cloud Container Registry.
 
 __Continue with [the tools prerequisites](./1-prereqs.md#tools)__ 
