@@ -2,7 +2,7 @@
 
 1. [Register for IBM Cloud](#part-SETUP-00)
 2. [Insert promo code](#part-SETUP-01)
-3. [Create free Kubernetes cluster](#part-SETUP-02)
+3. [Create a free Kubernetes cluster](#part-SETUP-02)
 4. [Configure the IBM Cloud Container Registry](#part-SETUP-03)
 
 # 1. Register for IBM Cloud <a name="part-SETUP-00"></a>
