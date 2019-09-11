@@ -4,7 +4,6 @@ This workshop demonstrates how to build a microservice with Java and how to depl
 
 The microservice is kept as simple as possible, so that it can be used as a starting point for other microservices. The microservice has been developed with Java EE and [Eclipse MicroProfile](https://microprofile.io/).
 
-There are [various ways to deploy applications to OpenShift](http://heidloff.net/article/deploying-open-liberty-microservices-openshift/). The options have different advantages and disadvantages which are explained in the following labs.
 
 ## Labs
 
