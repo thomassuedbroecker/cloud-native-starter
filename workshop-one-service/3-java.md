@@ -1,8 +1,5 @@
 # Lab 3 - Understanding the Java Implementation
 
-[![Understanding the Java Implementation](https://img.youtube.com/vi/ugpYSPV9jAs/0.jpg)](https://www.youtube.com/watch?v=ugpYSPV9jAs "Click play on youtube")
-
-
 ## 1. Usage of Maven for Java
 
 We begin with the [Maven](https://maven.apache.org/) part for our Java project.
@@ -50,6 +47,15 @@ In the pom file we define the configuration of our Java project with dependencie
 </project>
 ```
 
+_REMEMBER:_ We use this pom file build our Authors service with `RUN mvn -f /usr/src/app/pom.xml clean package` inside our **Build environment container**.
+
+```dockerfile
+FROM maven:3.5-jdk-8 as BUILD
+ 
+COPY src /usr/src/app/src
+COPY pom.xml /usr/src/app
+RUN mvn -f /usr/src/app/pom.xml clean package
+```
 
 ## 2. Configuration the Open Liberty Server
 
@@ -100,11 +106,11 @@ For the Authors service to expose the REST API we need to implement three classe
 
 ![class diagramm authors](images/authors-java-classdiagram-01.png)
 
----
+
 
 #### 3.2.1 **Class AuthorsApplication**
 
-Our web application does not implement any business or other logic, it simply needs to run on a server with no UI. The AuthorsApplication class extends the [javax.ws.rs.core.Application](https://www.ibm.com/support/knowledgecenter/en/SSEQTP_9.0.0/com.ibm.websphere.base.doc/ae/twbs_jaxrs_configjaxrs11method.html) class to do this. With this extension the `AuthorsApplication` class provides access to the classes from the `com.ibm.authors` package at runtime. With `@ApplicationPath` from MicroProfile we define the base path of the application.
+Our web application does not implement any business or other logic, it simply needs to run on a server with no UI. The AuthorsApplication class extends the [javax.ws.rs.core.Application](https://www.ibm.com/support/knowledgecenter/en/SSEQTP_9.0.0/com.ibm.websphere.base.doc/ae/twbs_jaxrs_configjaxrs11method.html) class to do this. With this extension the `AuthorsApplication` class provides access to the classes from the `com.ibm.authors` package at runtime. With `@ApplicationPath` from MicroProfile we define the base path of the application. With h
 
 ```java
 package com.ibm.authors;
@@ -116,7 +122,6 @@ import javax.ws.rs.ApplicationPath;
 public class AuthorsApplication extends Application {
 }
 ```
-
 
 #### 3.2.2 Class Author
 
@@ -136,7 +141,7 @@ public String blog;
 
 This class implements the REST API response for our Authors microservice. We implement the REST client using the [MicroProfile REST Client](https://github.com/eclipse/microprofile-rest-client/blob/master/README.adoc). We use  `@Path` and `@Get` statements from [JAX-RS](https://jcp.org/en/jsr/detail?id=339) and for the [OpenAPI](https://www.openapis.org/) documentation `@OpenAPIDefinition` statements from [MicroProfile OpenAPI](https://github.com/eclipse/microprofile-open-api) which automatically creates an OpenAPI explorer.
 
-Remember the server.xml configuration where we added MicroProfile to the server as you can see in the code below.
+_REMEMBER:_ In the server.xml configuration we added **MicroProfile** to the Open Liberty server as a feature, as you see in the code below.
 
 ```xml
 <featureManager>
@@ -200,7 +205,6 @@ public class GetAuthor {
 	}
 }
 ```
-
 
 ### 3.3 Supporting live and readiness probes in Kubernetes with HealthCheck
 
