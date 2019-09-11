@@ -35,15 +35,17 @@ _Note:_ Free clusters expire after one month.
 
 ## Step 1: Logon to IBM Cloud
 
-## Step 2: Select in the menu catalog and search for Kubernetes Cluster
+## Step 2: Select in the menu "Catalog" and search for "Kubernetes Cluster"
 
 ![Kubernetes service](images/ibmcloud-catalog.png)
 
-## Step 3: Click on the Kubernetes Services and select create
+## Step 3: Click on "Kubernetes Cluster"
+
+## Step 4: Press "Create"
 
 ![create Kubernetes service](images/ibmcloud-create-kubernetes-1.png)
 
-## Step 4: Click on the Kubernetes Services and select create Free
+## Step 5: Click on the Kubernetes Services and select "Free"
 
 Ensure you set following values in the creation dialog:
 
@@ -54,9 +56,9 @@ Ensure you set following values in the creation dialog:
 
 ![create Kubernetes service](images/ibmcloud-create-kubernetes-2.png)
 
-## Step 5: Press "Create custer"
+## Step 6: Press "Create custer"
 
-## Step 6: Now you will be forwarded to you cluster on IBM Cloud and you can verify the status of the creation of you cluster
+## Step 7: Now you will be forwarded to you cluster on IBM Cloud and you can verify the status of the creation of you cluster
 
 The creation of the custer takes up to 20 min.
 
