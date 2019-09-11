@@ -4,7 +4,7 @@
 
 An [IBM Cloud account](https://cloud.ibm.com/registration) is needed. 
 
-In order to run this workshop you have two options:
+In order to run this workshop you have two options and in both options you will **create no cost**, when you follow the written instructions and you use the free Kubernetes Cluster.
 
 1. You need a promo/feature code for a IBM Cloud **Trial** account. You will get such promo/feature code when you attend that hands-on workshop.
 
