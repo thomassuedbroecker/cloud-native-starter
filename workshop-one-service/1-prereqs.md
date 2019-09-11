@@ -120,43 +120,25 @@ $ ./iks-scripts/check-prerequisites.sh
 
 ## Verify Access to Kubernetes on the IBM Cloud
 
-### Step 1: After you've created a new free Kubernetes cluster, open the OpenShift console. 
+#### Step 1: After you've created a new free Kubernetes cluster
 
 1. Logon to the IBM Cloud web console
 
-2. Select **OpenShift** in the menu
+2. Select **Kubernetes** in the menu
 
-![Select Open Shift in the menu](images/os-registry-01.png)
+![Select Kubernetes in the menu](images/verify-cluster-access-1.png)
 
-3. Chose **Clusters** and click on your **OpenShift cluster**
+3. Chose **Clusters** and click on your **Kubernetes cluster**
 
-![Chose Clusters and click on your OpenShift cluster](images/os-registry-02.png)
+![Chose Clusters and click on your Kubernetes cluster](images/verify-cluster-access-2.png)
 
-4. Open the **OpenShift web console**
+4. Select the tab **Access**
 
-![Open the OpenShift web console](images/os-registry-03.png)
+![Select the tab Access](images/verify-cluster-access-2.png)
 
-### Step 2: Get our access token for the 'oc' CLI. 
+5. Follow the steps in the **Access**, by inserting the commands into your terminal session.
 
-
-1. From the dropdown menu in the upper right of the page, click 'Copy Login Command'. Paste the copied command into your terminal.
-
-![Key](images/os-key-01.png)
-
-2. Verify 'oc' CLI
-
-```
-$ oc login https://c1-e.us-east.containers.cloud.ibm.com:23967 --token=xxxxxx'
-$ oc get istag
-```
-
-3. Verify 'kubectl' CLI
-
-```
-$ kubectl get pods
-```
-
-_Note:_ [Back to lab 4 '1. Build and Save the container image' in 'Step 1'](./4-openshift.md#step-1-create-an-open-shift-project)
+![Follow the steps in the Access, by inserting the commands into your terminal session.](images/verify-cluster-access-3.png)
 
 ---
 

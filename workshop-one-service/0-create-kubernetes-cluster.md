@@ -1,8 +1,19 @@
+# Table of Content
+
 1. [Register for IBM Cloud](#part-SETUP-00)
 2. [Insert promo code](#part-SETUP-01)
 3. [Create free Kubernetes cluster](#part-SETUP-02)
 
-# 1 Register for IBM Cloud <a name="part-SETUP-00"></a>
+## 1. IBM Cloud Services
+
+We will use the following IBM Cloud Services in this hands-on workshop:
+
+* [IBM Cloud Kubernetes Service](https://cloud.ibm.com/docs/containers?topic=containers-getting-started#getting-started)
+* [IBM Cloud Container Registry Service](https://cloud.ibm.com/docs/services/Registry?topic=registry-getting-started#getting-started)
+
+![cns-basic-setup-01](images/cns-basic-setup-01.png)
+
+# 2. Register for IBM Cloud <a name="part-SETUP-00"></a>
 
 #### Step 1: Open a browser window and navigate to the IBM Cloud [Registration page](https://ibm.biz/Bd2JHx).
 
