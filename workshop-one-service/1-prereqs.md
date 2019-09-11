@@ -6,10 +6,14 @@ An [IBM Cloud account](https://cloud.ibm.com/registration) is needed.
 
 Note: In order to run this workshop an IBM Cloud Lite account is not sufficient. This tutorial may incur costs. Use the [Pricing Calculator](https://cloud.ibm.com/estimator/review) to generate a cost estimate based on your projected usage.
 
-We will use the [Kubernetes on IBM Cloud](https://cloud.ibm.com/kubernetes/catalog/cluster) service on IBM Cloud in this hands-on workshop.
+We will use the following IBM Cloud Services in this hands-on workshop:
 
+* [IBM Cloud Kubernetes Service](https://cloud.ibm.com/docs/containers?topic=containers-getting-started#getting-started)
+* [IBM Cloud Container Registry Service](https://cloud.ibm.com/docs/services/Registry?topic=registry-getting-started#getting-started)
 
-Follow the [instructions](0-create-kubernetes-cluster.md) to set up an free Kubernetes cluster.
+![cns-basic-setup-01](images/cns-basic-setup-01.png)
+
+Follow the [instructions](0-create-kubernetes-cluster.md) to set up an free Kubernetes cluster and configure the IBM Cloud Container Registry.
 
 ## Tools
 
