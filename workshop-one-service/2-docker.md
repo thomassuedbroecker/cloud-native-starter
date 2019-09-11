@@ -1,6 +1,5 @@
 # Lab 2 - Running the Java Microservice locally
 
-[![Running the Java Microservice locally](https://img.youtube.com/vi/4dT2jg6wGF4/0.jpg)](https://www.youtube.com/watch?v=4dT2jg6wGF4 "Click play on youtube")
 
 In this workshop we create a microservice that has been implemented with Java EE and [Eclipse MicroProfile](https://microprofile.io/).
 
