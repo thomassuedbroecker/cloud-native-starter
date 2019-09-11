@@ -97,7 +97,7 @@ Step |  |
 #### Step 1: To test and see how the code works you can run the code locally as a Docker container
 
 ```
-$ cd ${ROOT_FOLDER}/authors-java-jee
+$ cd $ROOT_FOLDER/authors-java-jee
 $ docker build -t authors .
 $ docker run -i --rm -p 3000:3000 authors
 ```
