@@ -41,10 +41,19 @@ _Note:_ Free clusters expire after one month.
 
 ## Step 3: Click on the Kubernetes Services and select create
 
-![create Kubernetes service](images/ibmcloud-create-kubernetes.png)
+![create Kubernetes service](images/ibmcloud-create-kubernetes-1.png)
 
-## Step 4: Click on the Kubernetes Services and select create
+## Step 4: Click on the Kubernetes Services and select create Free
 
-TBD
+Ensure you set following values in the creation dialog:
+
+* Cluster name:     cloud-native
+* Resource group:   Default
+* Geography:        North America
+* Metro:            Dallas
+
+![create Kubernetes service](images/ibmcloud-create-kubernetes-2.png)
+
+## Step 5: Press "Create custer"
 
 
