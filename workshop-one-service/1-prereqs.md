@@ -31,8 +31,9 @@ $ cd cloud-native-starter
 $ ROOT_FOLDER=$(pwd)
 $ docker run -v $ROOT_FOLDER/:/cloud-native-starter -it --rm nheidloff/openshift-workshop-tools:v1
 ```
+_Note:_ With the `--rm` option in the docker run command the container is deleted once you exit. This is intended.
 
-#### Step 2: Inside your running Docker image you can access your the local project 
+#### Step 2: Inside your running Docker image you can access your the local github project 
 
 ```
 root@3f46c41f7303:/usr/local/bin# cd /cloud-native-starter/
@@ -40,9 +41,15 @@ root@3f46c41f7303:/cloud-native-starter# ls
 root@3f46c41f7303:/cloud-native-starter# ROOT_FOLDER=$(pwd)
 ```
 
-_Note:_ With the `--rm` option in the docker run command the container is deleted once you exit. This is intended.
+#### Step 3: Verfiy the tool prerequisites on for the workshop
 
-#### Step 3: Move on with [Verify Access your free Kubernetes Cluster on the IBM Cloud](./1-prereqs.md#verify-access-to-kubernetes-on-the-ibm-cloud)
+```
+root@3f46c41f7303:/cloud-native-starter# chmod u+x iks-scripts/*.sh
+root@3f46c41f7303:/cloud-native-starter# chmod u+x scripts/*.sh
+root@3f46c41f7303:/cloud-native-starter# ./iks-scripts/check-prerequisites.sh
+```
+
+#### Step 4: Move on with [Verify Access your free Kubernetes Cluster on the IBM Cloud](./1-prereqs.md#verify-access-to-kubernetes-on-the-ibm-cloud)
 
 
 ### Tools - Option 2: Prebuilt Image with Code in Container
@@ -54,6 +61,7 @@ There is an image on DockerHub with all required tools. This option works for Ma
 ```
 $ docker run -ti nheidloff/openshift-workshop-tools:v1
 ```
+_Note:_ If you using Windows you also need to download or clone the project to your local workstation for the upcoming Docker and Java lab, because you can't use Docker in the 'openshift-workshop-tools' Docker image.
 
 #### Step 2: After the container has been started, run these commands inside your running Docker image to get the lastest version of the workshop:
 
@@ -64,9 +72,15 @@ root@3f46c41f7303:/usr/local/bin# cd cloud-native-starter
 root@3f46c41f7303:/usr/local/bin# ROOT_FOLDER=$(pwd)
 ```
 
-_Note:_ If you using Windows you also need to download or clone the project to your local workstation for the upcoming Docker and Java lab, because you can't use Docker in the 'openshift-workshop-tools' Docker image.
+#### Step 3: Verfiy the tool prerequisites on for the workshop
 
-#### Step 3: Move on with [Verify Access to OpenShift on the IBM Cloud](./1-prereqs.md#verify-access-to-kubernetes-on-the-ibm-cloud)
+```
+root@3f46c41f7303:/cloud-native-starter# chmod u+x iks-scripts/*.sh
+root@3f46c41f7303:/cloud-native-starter# chmod u+x scripts/*.sh
+root@3f46c41f7303:/cloud-native-starter# ./iks-scripts/check-prerequisites.sh
+```
+
+#### Step 4: Move on with [Verify Access to Kubernetes on the IBM Cloud](./1-prereqs.md#verify-access-to-kubernetes-on-the-ibm-cloud)
 
 
 ### Tools - Option 3: Install Tools on your Notebook
@@ -90,6 +104,14 @@ This approach works only for Mac and Linux (see this [article](https://suedbroec
 $ git clone git clone https://github.com/IBM/cloud-native-starter
 $ cd cloud-native-starter
 $ ROOT_FOLDER=$(pwd)
+```
+
+#### Step 3: Verify the tool prerequisites on for the workshop
+
+```
+$ chmod u+x iks-scripts/*.sh
+$ chmod u+x scripts/*.sh
+$ ./iks-scripts/check-prerequisites.sh
 ```
 
 #### Step 3: Move on with [Verify Access to OpenShift on the IBM Cloud](./1-prereqs.md#verify-access-to-kubernetes-on-the-ibm-cloud)

@@ -4,15 +4,15 @@
 
 # 1 Register for IBM Cloud <a name="part-SETUP-00"></a>
 
-## Step 1: Open a browser window and navigate to the IBM Cloud [Registration page](https://ibm.biz/Bd2JHx).
+#### Step 1: Open a browser window and navigate to the IBM Cloud [Registration page](https://ibm.biz/Bd2JHx).
 
 ![image](images/registration.png)
 
-## Step 2: Fill in the registration form and follow the link in the **confirmation email** to confirm your account once it arrives.
+#### Step 2: Fill in the registration form and follow the link in the **confirmation email** to confirm your account once it arrives.
 
 ![Validation email](images/email.png)
 
-## Step 3: [Login into IBM Cloud](https://ibm.biz/Bd2JHx) using your account credentials.
+#### Step 3: [Login into IBM Cloud](https://ibm.biz/Bd2JHx) using your account credentials.
 
 _Note:_ By default, all new IBM Cloud accounts are set to a [lite version](https://www.ibm.com/cloud/pricing).
 
@@ -33,19 +33,19 @@ _Note:_ Free clusters expire after one month.
 
 # 3 Create a free Kubernetes Cluster <a name="part-SETUP-02"></a>
 
-## Step 1: Logon to IBM Cloud
+#### Step 1: Logon to IBM Cloud
 
-## Step 2: Select in the menu "Catalog" and search for "Kubernetes Cluster"
+#### Step 2: Select in the menu "Catalog" and search for "Kubernetes Cluster"
 
 ![Kubernetes service](images/ibmcloud-catalog.png)
 
-## Step 3: Click on "Kubernetes Cluster"
+#### Step 3: Click on "Kubernetes Cluster"
 
-## Step 4: Press "Create"
+#### Step 4: Press "Create"
 
 ![create Kubernetes service](images/ibmcloud-create-kubernetes-1.png)
 
-## Step 5: Click on the Kubernetes Services and select "Free"
+#### Step 5: Click on the Kubernetes Services and select "Free"
 
 Ensure you set following values in the creation dialog:
 
@@ -56,12 +56,12 @@ Ensure you set following values in the creation dialog:
 
 ![create Kubernetes service](images/ibmcloud-create-kubernetes-2.png)
 
-## Step 6: Press "Create custer"
+#### Step 6: Press "Create custer"
 
-## Step 7: Now you will be forwarded to you cluster on IBM Cloud and you can verify the status of the creation of you cluster
+#### Step 7: Now you will be forwarded to you cluster on IBM Cloud and you can verify the status of the creation of you cluster
 
 The creation of the custer takes up to 20 min.
 
 ![create Kubernetes service](images/ibmcloud-create-kubernetes-3.png)
 
-
+__Continue with [the tools prerequisites](./1-prereqs.md#tools)__ 
