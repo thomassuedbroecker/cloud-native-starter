@@ -13,7 +13,7 @@ We will use the following IBM Cloud Services in this hands-on workshop:
 
 ![cns-basic-setup-01](images/cns-basic-setup-01.png)
 
-Follow the [instructions](0-create-kubernetes-cluster.md) to set up an free Kubernetes cluster and configure the IBM Cloud Container Registry.
+Follow the [instructions](0-create-kubernetes-cluster.md) to set up a free Kubernetes cluster and configure the IBM Cloud Container Registry.
 
 ## Tools
 
