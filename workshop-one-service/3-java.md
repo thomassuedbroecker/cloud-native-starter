@@ -371,4 +371,4 @@ $ docker run -i --rm -p 3000:3000 authors
 
 ---
 
-__Continue with [Lab 4 - Deploying to OpenShift](./4-openshift.md#lab-4---deploying-to-openshift)__
+__Continue with [Lab 4 - Deploying to Kubernetes](./4-kubernetes.md)__
