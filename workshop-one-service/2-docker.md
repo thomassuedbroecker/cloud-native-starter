@@ -67,6 +67,8 @@ FROM openliberty/open-liberty:microProfile2-java8-openj9
 
 COPY liberty/server.xml /config/
 COPY --from=BUILD /usr/src/app/target/authors.war /config/apps/
+
+EXPOSE 3000
 ```
 
 ## Run the Container locally

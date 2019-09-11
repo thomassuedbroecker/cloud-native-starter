@@ -47,7 +47,7 @@ In the pom file we define the configuration of our Java project with dependencie
 </project>
 ```
 
-_REMEMBER:_ We use this pom file build our Authors service with `RUN mvn -f /usr/src/app/pom.xml clean package` inside our **Build environment container**.
+_REMEMBER:_ We use this pom file to build our Authors service with `RUN mvn -f /usr/src/app/pom.xml clean package` inside our **Build environment container**.
 
 ```dockerfile
 FROM maven:3.5-jdk-8 as BUILD
@@ -84,7 +84,18 @@ Also the name of the executable web application is definied in the server.xml.
 </server>
 ```
 
-Later we will change the contextRoot.
+Later we will change the **contextRoot**.
+
+_REMEMBER:_ The `httpPort="3000"` we do expose  `EXPOSE 3000` inside our **Production container**.
+
+```dockerfile
+FROM openliberty/open-liberty:microProfile2-java8-openj9 
+
+COPY liberty/server.xml /config/
+COPY --from=BUILD /usr/src/app/target/authors.war /config/apps/
+
+EXPOSE 3000
+```
 
 ## 3. Implementation of the REST GET endpoint with MicroProfile
 
