@@ -9,7 +9,7 @@ Note: In order to run this workshop an IBM Cloud Lite account is not sufficient.
 We will use the [Kubernetes on IBM Cloud](https://cloud.ibm.com/kubernetes/catalog/cluster) service on IBM Cloud in this hands-on workshop.
 
 
-Follow the [instructions]() to set up an free Kubernetes cluster.
+Follow the [instructions](0-create-kubernetes-cluster.md) to set up an free Kubernetes cluster.
 
 ## Tools
 
