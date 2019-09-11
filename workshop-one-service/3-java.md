@@ -84,18 +84,7 @@ Also the name of the executable web application is definied in the server.xml.
 </server>
 ```
 
-Later we will change the **contextRoot**.
-
-_REMEMBER:_ The `httpPort="3000"` we do expose  `EXPOSE 3000` inside our **Production container image**.
-
-```dockerfile
-FROM openliberty/open-liberty:microProfile2-java8-openj9 
-
-COPY liberty/server.xml /config/
-COPY --from=BUILD /usr/src/app/target/authors.war /config/apps/
-
-EXPOSE 3000
-```
+_Note:_ Later we will change the **contextRoot**.
 
 ## 3. Implementation of the REST GET endpoint with MicroProfile
 
@@ -140,7 +129,7 @@ public class AuthorsApplication extends Application {
 }
 ```
 
-Later we will change the ApplicationPath in this class.
+_Note:_ Later we will change the ApplicationPath in this class.
 
 #### 3.2.2 Class Author
 
@@ -225,7 +214,7 @@ public class GetAuthor {
 }
 ```
 
-Later we will change the return values for the response in the local source code.
+_Note:_ Later we will change the return values for the response in the local source code.
 
 ### 3.3 Supporting live and readiness probes in Kubernetes with HealthCheck
 
@@ -253,7 +242,7 @@ public class HealthEndpoint implements HealthCheck {
 }
 ```
 
-Later we will change return information of the **HealthCheckResponse**.
+_Note:_ Later we will change return information of the **HealthCheckResponse**.
 
 This HealthEndpoint is configured in the Kubernetes deployment yaml. In the following yaml extract we see the `livenessProbe` definition.
 
