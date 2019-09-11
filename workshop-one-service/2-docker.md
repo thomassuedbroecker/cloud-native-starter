@@ -31,7 +31,7 @@ For the image we use a stack of open source components to run the Java microserv
 
 Read the article [How to build and run a Hello World Java Microservice](http://heidloff.net/article/how-to-build-and-run-a-hello-world-java-microservice/) to learn more.
 
-In the [Dockerfile](authors-java-jee/Dockerfile) we define how to build the container image. For detailed information check the [Dockerfile documentation](https://docs.docker.com/engine/reference/builder/)
+In the [Dockerfile](../authors-java-jee/Dockerfile) we define how to build the container image. For detailed information check the [Dockerfile documentation](https://docs.docker.com/engine/reference/builder/)
 
 When we build a new container image we usually start with an existing container image that already contains a minimum of the configuration we need, for example the OS, the Java version or even more. For this we search [DockerHub](https://hub.docker.com/search?q=maven&type=image&image_filter=official) or on the internet to find a starting point which fits to our needs. 
 
@@ -78,7 +78,7 @@ _Note_: Here are some additional instructions based on your choosen setup.
 Step |  |
 --- | --- 
 1 | You need to open a new local terminal |
-2 |  Navigate to your local project folder ```openshift-on-ibm-cloud-workshops/2-deploying-to-openshift```
+2 |  Navigate to your local project folder ```cloud-native-starter/authors-java-jee```
 3 | [Move on with the lab](./2-docker.md#step-1-to-test-and-see-how-the-code-works-you-can-run-the-code-locally-as-a-docker-container).
 
 
@@ -86,8 +86,8 @@ Step |  |
 
 Step |  |
 --- | --- 
-1 | You need to download or clone the project onto your local PC, first. ```$ git clone https://github.com/nheidloff/openshift-on-ibm-cloud-workshops.git ``` 
-2 |  Open a new terminal and navigate tp your local project folder ```openshift-on-ibm-cloud-workshops/2-deploying-to-openshift```
+1 | You need to download or clone the project onto your local PC, first. ```$ git clone https://github.com/IBM/cloud-native-starter ``` 
+2 |  Open a new terminal and navigate tp your local project folder ```cloud-native-starter/authors-java-jee```
 3 | [Move on with the lab](./2-docker.md#step-1-to-test-and-see-how-the-code-works-you-can-run-the-code-locally-as-a-docker-container).
 
 ---
@@ -97,7 +97,7 @@ Step |  |
 #### Step 1: To test and see how the code works you can run the code locally as a Docker container
 
 ```
-$ cd ${ROOT_FOLDER}/2-deploying-to-openshift
+$ cd ${ROOT_FOLDER}/authors-java-jee
 $ docker build -t authors .
 $ docker run -i --rm -p 3000:3000 authors
 ```
