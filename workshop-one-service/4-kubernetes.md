@@ -36,7 +36,7 @@ Step |  |
 Step |  |
 --- | --- 
 1 | Ensure you have downloaded the git first into the running Docker image. `$ git clone https://github.com/IBM/cloud-native-starter.git` 
-2 |  Ensure you have open Docker image in a interactive terminal session and navigate to the folder `cloud-native-starter/authors-java-jee` _REMINDER:_ The code changes you made on you local computer don't exist inside the your running Docker image.
+2 |  Ensure you have open Docker image in a interactive terminal session and navigate to the folder `cloud-native-starter/authors-java-jee` **REMINDER:** The code changes from lab 3 you on you local computer, don't exist inside the your running Docker image.
 3 | [Move on with the lab](4-kubernetes.md#1-build-and-save-the-container-image).
 
 ---
@@ -104,42 +104,7 @@ Now we want to build and save a container image in the IBM Cloud Container Regis
     $ OK
     ```
 
-5. Copy the REPOSITORY path for the uploaded **Authors** container image. In this case sample: ```us.icr.io/cloud-native-suedbro/authors``` and save it somewhere, we need this later in the deployment.yaml configuration.
-
-## Step 3: Verify the build in the OpenShift web console
-
-
-1. Select the 'cloud-native-starter' project in 'My Projects'
-
-  ![Select in My Projects the default project](images/os-registry-04.png)
-
-2. Open 'Builds' in the menu and then click 'Builds'
-
-  ![Open Build in the menu and click Build](images/os-build-01.png)
-
-3. Select 'Last Build' (#1) 
-
-  ![Select Last Build ](images/os-build-02.png)
-
-4. Open 'Logs' 
-
-  ![Open Logs ](images/os-build-03.png)
-
-5. Inspect the logs 
-
-  ![Inspect the **Logs**  ](images/os-build-04.png)
-
-## Step 4: Verify the container image in the Open Shift Container Registry UI
-
-1. Select the 'default' project
-
-2. Expand DEPLOYMENT 'registry-console' in 'Overview' and click on the URL in 'Routes - External Traffic'
-
-  ![Expand in Overview the DEPLOYMENT registry-console and click Routes - External Traffic](images/os-registry-05.png)
-
-3. In the container registry you will find the 'authors' image and you can click on the latest label.
-
-  ![In the container registry you will find later the authors image](images/os-registry-06.png)
+5. Copy the REPOSITORY path for the uploaded **Authors** container image. In this sample case it would be: ```us.icr.io/cloud-native-suedbro/authors``` and save it somewhere, we need this later in the deployment.yaml configuration.
 
 # 2. Apply the deployment.yaml
 
