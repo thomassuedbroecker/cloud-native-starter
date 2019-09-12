@@ -9,9 +9,8 @@ This lab has two parts:
 1. Start build and save the container image
 
 2. Deploy the application and expose the service
-
-  * We will define and apply a deployment configuration (yaml) to create a Pod with our microservice
-  * We will define a service which routes requests to the Pod with our microservice
+    * We will define and apply a deployment configuration (yaml) to create a Pod with our microservice
+    * We will define a service which routes requests to the Pod with our microservice
 
 The following gif is an animation of the simplified steps above in a sequence.
 
@@ -104,6 +103,8 @@ Now we want to build and save a container image in the IBM Cloud Container Regis
 
 5. Copy the REPOSITORY path for the uploaded **Authors** container image. In this sample case it would be: ```us.icr.io/cloud-native-suedbro/authors``` and save it somewhere, we need this later in the deployment.yaml configuration.
 
+---
+
 # 2. Apply the deployment.yaml
 
 This deployment will deploy a container to a Pod in Kubernetes.
@@ -186,9 +187,28 @@ spec:
       restartPolicy: Always
 ```
 
-## Step 1: Apply the deployment
+### [Tools - Option 1](./1-prereqs.md#tools---option-1-prebuilt-image-with-local-code)
 
-1. Ensure you are in the ```{ROOT_FOLDER}/2-deploying-to-openshift/deployment```
+Step |  |
+--- | --- 
+1 | Ensure you have downloaded the git first into the running Docker image. `$ git clone https://github.com/IBM/cloud-native-starter.git`
+2 |  Ensure you have open Docker image in a interactive terminal session and navigate to the folder `cloud-native-starter/authors-java-jee`
+3 | [Move on with the lab](./4-kubernetes.md#1-build-and-save-the-container-image).
+
+
+### [Tools - Option 2](./1-prereqs.md#tools---option-2-prebuilt-image-with-code-in-container)
+
+Step |  |
+--- | --- 
+1 | Ensure you have downloaded the git first into the running Docker image. `$ git clone https://github.com/IBM/cloud-native-starter.git` 
+2 |  Ensure you have open Docker image in a interactive terminal session and navigate to the folder `cloud-native-starter/authors-java-jee` **REMINDER:** The code changes from lab 3 you on you local computer, don't exist inside the your running Docker image.
+3 | [Move on with the lab](4-kubernetes.md#1-build-and-save-the-container-image).
+
+---
+
+#### Step 1: Apply the deployment
+
+1. Ensure you are in the ```$ROOT_FOLDER/authors-java-jee/deployment```
 
   ```
   $ cd ${ROOT_FOLDER}/2-deploying-to-openshift/deployment
