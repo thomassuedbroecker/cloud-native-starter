@@ -315,13 +315,20 @@ Step |  |
 
 ---
 
-## Step 1: Apply the service specification
+#### Step 1: Ensure you are in the ```$ROOT_FOLDER/authors-java-jee/deployment```
+
+  ```
+  $ cd $ROOT_FOLDER/authors-java-jee/deployment
+  ```
+
+#### Step 2: Apply the service specification
 
     ```sh
+    $ cd 
     $ kubectl apply -f deployment/service.yaml
     ```
 
-## Step 2: Verify the service in Kubernetes with kubectl
+#### Step 3: Verify the service in Kubernetes with kubectl
 
     ```sh
     $ kubectl get services
