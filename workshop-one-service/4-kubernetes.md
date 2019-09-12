@@ -256,13 +256,13 @@ _REMEMBER:_ You should have saved the IBM Container Registry information somewhe
 
 ## Step 3: Verify the deployment with the **Kubernetes dashboard** 
 
-1. Open you Kubernetes Cluster in the IBM Cloud web console
+1. Open your Kubernetes Cluster in the IBM Cloud web console
 
 2. Open the Kubernetes dashbord
    
    ![Open the Kubernetes dashbord](images/lab-4-deployment.png)
 
-2. In the overview you see the created deployment and the pod
+3. In the overview you see the created deployment and the pod
 
   ![Select the Cloud-Native-Starter project and examine the deployment](images/lab-4-deployment.png)
 
