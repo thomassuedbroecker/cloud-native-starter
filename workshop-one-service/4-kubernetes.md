@@ -349,39 +349,43 @@ Step |  |
    
    ![Open the Kubernetes dashbord](images/lab-4-deployment-1.png)
 
-3. In the overview you see the created deployment and the pod
+3. In the overview scroll down until you see the created service
 
   ![In the overview you see the created deployment and the pod](images/lab-4-service-1.png)
 
 
-## Step 3: 
+#### Step 4: Verify the running microservice on Kubernetes 
 
-
-4. Get cluster (node) IP address
+1. Get cluster (node) IP address
 
     ```sh
     $ clusterip=$(ibmcloud ks workers --cluster cloud-native | awk '/Ready/ {print $2;exit;}')
     $ echo $clusterip
-    $ 159.122.172.162
+    $ 184.172.247.228
     ```
 
-5. Get nodeport.
+5. Get nodeport to access the service (do you remember the mapping?)
 
     ```sh
     $ nodeport=$(kubectl get svc authors --ignore-not-found --output 'jsonpath={.spec.ports[*].nodePort}')
     $ echo $nodeport
-    $ 30108
+    $ 31347
     ```
 
 5. Open API explorer.
 
     ```sh
-    $ open http://${clusterip}:${nodeport}/openapi/ui/
+    $ echo http://${clusterip}:${nodeport}/openapi/ui/
     ```
 
-    Sample result in your browser:
+    Sample output:
+    ```sh
+    $ http://184.172.247.228:31347/openapi/ui/
+    ```
 
-    ![authors-java-openapi-explorer](images/authors-java-openapi-explorer.png)
+    Copy and past the URL in a local browser on your PC:
+
+    ![authors-java-openapi-explorer](images/authors-java-openapi-explorer-kubernetes.png)
 
 
 6. Execute curl to test the **Authors** service.
@@ -407,65 +411,7 @@ Step |  |
     ![authors-java-health](images/authors-java-health.png)
 
 ---
-## Step 1: Apply the service deployment
 
-1. Apply the service to OpenShift
-
-  ```
-  $ oc apply -f service.yaml
-  ```
-
-2. Using oc [expose](https://docs.openshift.com/container-platform/3.6/dev_guide/routes.html) we create a Route to our service in the OpenShift cluster. ([oc expose documentation](https://docs.openshift.com/container-platform/3.9/cli_reference/basic_cli_operations.html#expose))
-
-  ```
-  $ oc expose svc/authors
-  ```
-
-## Step 2: Test the microservice
-
-1. Execute this command, copy the URL to open the Swagger UI in browser
-
-  ```
-  $ echo http://$(oc get route authors -o jsonpath={.spec.host})/openapi/ui/
-  $ http://authors-cloud-native-starter.openshift-devadv-eu-wor-160678-0001.us-south.containers.appdomain.cloud/openapi/ui/
-  ```
-
-This is the Swagger UI in your browser:
-
-  ![Swagger UI](images/authors-swagger-ui.png)
-
-1. Execute this command to verify the output:
-
-  ```
-  $ curl -X GET "http://$(oc get route authors -o jsonpath={.spec.host})/api/v1/getauthor?name=Niklas%20Heidloff" -H "accept: application/json"
-  ```
-
-2. Output
-
-  ```
-  $ {"name":"Niklas Heidloff","twitter":"https://twitter.com/nheidloff","blog":"http://heidloff.net"}
-  ```
-
-## Step 3: Inspect the service in OpenShift
-
-1. Open your OpenShift Web Console
-
-2. Select the Cloud-Native-Starter project
-
-  ![Service](images/os-service-01.png)
-
-3. Chose 'Applications' and then 'Services' 
-
-  ![Service](images/os-service-02.png)
-
-4. Click on 'authors'
-
-5. Examine the traffic and remember the simplified overview picture.
-
-  ![Service](images/os-service-03.png)
-
----
-
-__Continue with [Lab 5 - Deploying existing Images from Docker Hub](./5-existing-image.md)__
+**Congratulations** :thumbsup: you have finished this **hands-on workshop :checkered_flag:.
 
 
