@@ -12,7 +12,7 @@ This workshop has four labs. It should take between 60 and 90 minutues to comple
 1. Installing prerequisites: [lab](1-prereqs.md)
 2. Running the Java microservice locally: [lab](2-docker.md) 
 3. Understanding the Java implementation: [lab](3-java.md)
-4. Deploying to Kubernetes: [lab](documentation/4-kubernetes.md)
+4. Deploying to Kubernetes: [lab](4-kubernetes.md)
 
 The first lab describes how to install all required prerequisites. In the easiest case this is only Docker Desktop and an image with all other tools.
 
