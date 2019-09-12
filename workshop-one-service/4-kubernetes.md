@@ -65,22 +65,22 @@ Now we want to build and save a container image in the IBM Cloud Container Regis
     _Sample result outout:_
 
     ```sh
-    $ Listing namespaces for account 'Thomas Südbröcker's Account' in registry 'de.icr.io'...
+    $ Listing namespaces for account 'Thomas Suedbroecker's Account' in registry 'us.icr.io'...
     $
-    $ Namespace   
-    $ cloud-native-suedbro
+    $Namespace   
+    $ cloud-native-suedbro   
     ```
 
 3. Now upload the code and build the container image inside IBM Cloud Container Registry. We use the upper information we got from listing the namespaces.
 
     ```sh
-    $ ibmcloud cr build -f Dockerfile --tag $REGISTRY/$REGISTRY_NAMESPACE/authors:2 .
+    $ ibmcloud cr build -f Dockerfile --tag $REGISTRY/$REGISTRY_NAMESPACE/authors:1 .
     ```
 
     _Sample result values:_
 
     ```sh
-    $ ibmcloud cr build -f Dockerfile --tag de.icr.io/cloud-native/authors:2 .
+    $ ibmcloud cr build -f Dockerfile --tag us.icr.io/cloud-native-suedbro/authors:1 .
     ```
 
     _Optional:_ Verify the container upload in the IBM Cloud web UI.
