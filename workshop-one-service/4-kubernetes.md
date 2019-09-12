@@ -6,16 +6,14 @@ In this lab we will work in the Kubernetes Web Console and with the Kubernetes C
 
 This lab has two parts: 
 
-1. Build and save the container image
-
-   TBD
+1. Start build and save the container image
 
 2. Deploy the application and expose the service
 
   * We will define and apply a deployment configuration (yaml) to create a Pod with our microservice
-  * We will define a service which routes requests to the Pod with our microservic
+  * We will define a service which routes requests to the Pod with our microservice
 
-The following image is an animation of the simplified steps above.
+The following gif is an animation of the simplified steps above in a sequence.
 
 ![overview gif](images/lab-4-overview.gif)
 
