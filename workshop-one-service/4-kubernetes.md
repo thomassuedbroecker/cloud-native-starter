@@ -260,11 +260,11 @@ _REMEMBER:_ You should have saved the IBM Container Registry information somewhe
 
 2. Open the Kubernetes dashbord
    
-   ![Open the Kubernetes dashbord](images/lab-4-deployment.png)
+   ![Open the Kubernetes dashbord](images/lab-4-deployment-1.png)
 
 3. In the overview you see the created deployment and the pod
 
-  ![Select the Cloud-Native-Starter project and examine the deployment](images/lab-4-deployment.png)
+  ![In the overview you see the created deployment and the pod](images/lab-4-deployment-2.png)
 
 
 # 3. Apply the service.yaml
