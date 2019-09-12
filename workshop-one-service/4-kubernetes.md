@@ -214,7 +214,7 @@ Step |  |
   $ cd $ROOT_FOLDER/authors-java-jee/deployment
   ```
 
-1. Open the ```../authors-java-jee/deployment/deployment.yaml``` file with a editor and replace the value for the container image location with the path we got from the IBM Container Registry and just replace the ```authors:1``` text, and add following statement ```imagePullPolicy: Always``` and **save** the file.
+2. Open the ```../authors-java-jee/deployment/deployment.yaml``` file with a editor and replace the value for the container image location with the path we got from the IBM Container Registry and just replace the ```authors:1``` text, and add following statement ```imagePullPolicy: Always``` and **save** the file.
 
 _REMEMBER:_ You should have saved the IBM Container Registry information somewhere.
 
@@ -233,7 +233,7 @@ _REMEMBER:_ You should have saved the IBM Container Registry information somewhe
     ...
     ```
 
-2. Now we apply the deployment we will create the new **Authors** Pod.
+3. Now we apply the deployment we will create the new **Authors** Pod.
 
     ```sh
     $ kubectl apply -f deployment.yaml
@@ -341,7 +341,7 @@ Step |  |
     $ kubernetes   ClusterIP   172.21.0.1       <none>        443/TCP          28h
     ``` 
 
-#### Step 3: Verify the service in the **Kubernetes dashboard** 
+#### Step 4: Verify the service in the **Kubernetes dashboard** 
 
 1. Open your Kubernetes Cluster in the IBM Cloud web console
 
@@ -352,7 +352,7 @@ Step |  |
    ![In the overview you see the created deployment and the pod](images/lab-4-service-1.png)
 
 
-#### Step 4: Verify the running microservice on Kubernetes 
+#### Step 5: Verify the running microservice on Kubernetes 
 
 1. Get cluster (node) IP address
 
