@@ -173,7 +173,7 @@ spec:
     spec:
       containers:
       - name: authors
-        image: docker-registry.default.svc:5000/cloud-native-starter/authors:latest
+        image: us.icr.io/cloud-native-suedbro/authors:1
         ports:
         - containerPort: 3000
         livenessProbe:
@@ -211,30 +211,61 @@ Step |  |
 1. Ensure you are in the ```$ROOT_FOLDER/authors-java-jee/deployment```
 
   ```
-  $ cd ${ROOT_FOLDER}/2-deploying-to-openshift/deployment
+  $ cd $ROOT_FOLDER/authors-java-jee/deployment
   ```
 
-2. Apply the deployment to **OpenShift**
+1. Open the ```../authors-java-jee/deployment/deployment.yaml``` file with a editor and replace the value for the container image location with the path we got from the IBM Container Registry and just replace the ```authors:1``` text, and add following statement ```imagePullPolicy: Always``` and **save** the file.
 
-  ```
-  $ oc apply -f deployment.yaml
-  ```
+_REMEMBER:_ You should have saved the IBM Container Registry information somewhere.
 
-## Step 2: Verify the deployment in **OpenShift**
+    Before:
+    ```yml
+    image: authors:1
+    ```
 
-1. Open your OpenShift Web Console
+    Sample change:
+    ```yml
+    ...
+    image: us.icr.io/cloud-native-suedbro/authors:1
+    imagePullPolicy: Always
+    ports:
+        - containerPort: 3000
+    ...
+    ```
 
-2. Select the Cloud-Native-Starter project and examine the deployment
+2. Now we apply the deployment we will create the new **Authors** Pod.
 
-  ![Select the Cloud-Native-Starter project and examine the deployment](images/os-deployment-01.png)
+    ```sh
+    $ kubectl apply -f deployment.yaml
+    ```
 
-3. Click on **#1** to open the details of the deployment
+## Step 2: Verify the deployment with kubectl
 
-  ![Click on #1 to open the details of the deployment](images/os-deployment-02.png)
+1. Insert this command and verify the output.
 
-4. In the details you find the 'health check' we defined before
+    ```sh
+    $ kubectl get pods
+    ```
 
-  ![In the details you find the health check we defined before](images/os-deployment-03.png)
+    Sample output:
+
+    ```sh
+    $ NAME                      READY   STATUS    RESTARTS   AGE
+    $ authors-7b6dd98db-wl9wc   1/1     Running   0          6m9s
+    ```
+
+## Step 3: Verify the deployment with the **Kubernetes dashboard** 
+
+1. Open you Kubernetes Cluster in the IBM Cloud web console
+
+2. Open the Kubernetes dashbord
+   
+   ![Open the Kubernetes dashbord](images/lab-4-deployment.png)
+
+2. In the overview you see the created deployment and the pod
+
+  ![Select the Cloud-Native-Starter project and examine the deployment](images/lab-4-deployment.png)
+
 
 # 3. Apply the service.yaml
 
