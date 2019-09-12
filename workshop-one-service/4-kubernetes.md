@@ -85,7 +85,7 @@ Now we want to build and save a container image in the IBM Cloud Container Regis
 
     _Optional:_ Verify the container upload in the IBM Cloud web UI.
 
-    ![authors-java-container-image](images/authors-java-container-image.png)
+    ![authors-java-container-image](images/ibmcloud-container-registry-upload-1.png)
 
 4. List the container images to verify the upload.
 
@@ -96,9 +96,12 @@ Now we want to build and save a container image in the IBM Cloud Container Regis
     _Sample result output:_
 
     ```sh
-    $ REPOSITORY                        TAG   DIGEST         NAMESPACE      CREATED          SIZE     SECURITY STATUS   
-    $ de.icr.io/cloud-native/articles   1     b5dc1f96a69a   cloud-native   1 day ago        273 MB   7 Issues   
-    $ de.icr.io/cloud-native/authors    2     217b7716dce1   cloud-native   30 seconds ago   259 MB   7 Issues   
+    $ Listing images...
+    $
+    $ Repository                               Tag   Digest         Namespace              Created         Size     Security status   
+    $ us.icr.io/cloud-native-suedbro/authors   1     5a86758f1056   cloud-native-suedbro   2 minutes ago   226 MB   3 Issues   
+    $
+    $ OK
     ```
 
     Copy the REPOSITORY path for the uploaded **Authors** container image.

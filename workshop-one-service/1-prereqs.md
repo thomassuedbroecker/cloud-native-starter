@@ -37,7 +37,7 @@ There is an image on DockerHub with all required tools. In order to use local ID
 $ git clone https://github.com/IBM/cloud-native-starter
 $ cd cloud-native-starter
 $ ROOT_FOLDER=$(pwd)
-$ docker run -v $ROOT_FOLDER/:/cloud-native-starter -it --rm nheidloff/openshift-workshop-tools:v1
+$ docker run -v $ROOT_FOLDER/:/cloud-native-starter -it --rm tsuedbroecker/cns-workshop-tools:v1
 ```
 _Note:_ With the `--rm` option in the docker run command the container is deleted once you exit. This is intended.
 
@@ -69,7 +69,7 @@ There is an image on DockerHub with all required tools. This option works for Ma
 ```
 $ docker run -ti tsuedbroecker/cns-workshop-tools:v1
 ```
-_Note:_ If you using Windows you also need to download or clone the project to your local workstation for the upcoming Docker and Java lab, because you can't use Docker in the 'openshift-workshop-tools' Docker image.
+_Note:_ If you using Windows you also need to download or clone the project to your local workstation for the upcoming Docker and Java lab, because you can't use Docker in the 'cns-workshop-tools' Docker image.
 
 #### Step 2: After the container has been started, run these commands inside your running Docker image to get the lastest version of the workshop:
 
