@@ -317,9 +317,9 @@ Step |  |
 
 #### Step 1: Ensure you are in the ```$ROOT_FOLDER/authors-java-jee/deployment```
 
-  ```
-  $ cd $ROOT_FOLDER/authors-java-jee/deployment
-  ```
+    ```
+    $ cd $ROOT_FOLDER/authors-java-jee/deployment
+    ```
 
 #### Step 2: Apply the service specification
 
@@ -346,12 +346,10 @@ Step |  |
 1. Open your Kubernetes Cluster in the IBM Cloud web console
 
 2. Open the Kubernetes dashbord
-   
    ![Open the Kubernetes dashbord](images/lab-4-deployment-1.png)
 
 3. In the overview scroll down until you see the created service
-
-  ![In the overview you see the created deployment and the pod](images/lab-4-service-1.png)
+   ![In the overview you see the created deployment and the pod](images/lab-4-service-1.png)
 
 
 #### Step 4: Verify the running microservice on Kubernetes 
@@ -364,7 +362,7 @@ Step |  |
     $ 184.172.247.228
     ```
 
-5. Get nodeport to access the service (do you remember the mapping?)
+2. Get nodeport to access the service (do you remember the mapping?)
 
     ```sh
     $ nodeport=$(kubectl get svc authors --ignore-not-found --output 'jsonpath={.spec.ports[*].nodePort}')
@@ -372,7 +370,7 @@ Step |  |
     $ 31347
     ```
 
-5. Open API explorer.
+3. Open API explorer.
 
     ```sh
     $ echo http://${clusterip}:${nodeport}/openapi/ui/
@@ -388,7 +386,7 @@ Step |  |
     ![authors-java-openapi-explorer](images/authors-java-openapi-explorer-kubernetes.png)
 
 
-6. Execute curl to test the **Authors** service.
+4. Execute curl to test the **Authors** service.
 
     ```sh
     $ curl http://${clusterip}:${nodeport}/api/v1/getauthor?name=Niklas%20Heidloff
@@ -399,7 +397,7 @@ Step |  |
     $ {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
     ```
 
-7. Execute following curl command to test the **HealthCheck** implementation for the **Authors** service.
+5. Execute following curl command to test the **HealthCheck** implementation for the **Authors** service.
 
     ```sh
     $ curl http://${clusterip}:${nodeport}/health
