@@ -239,7 +239,7 @@ _REMEMBER:_ You should have saved the IBM Container Registry information somewhe
     $ kubectl apply -f deployment.yaml
     ```
 
-## Step 2: Verify the deployment with kubectl
+#### Step 2: Verify the deployment with kubectl
 
 1. Insert this command and verify the output.
 
@@ -254,7 +254,7 @@ _REMEMBER:_ You should have saved the IBM Container Registry information somewhe
     $ authors-7b6dd98db-wl9wc   1/1     Running   0          6m9s
     ```
 
-## Step 3: Verify the deployment with the **Kubernetes dashboard** 
+#### Step 3: Verify the deployment with the **Kubernetes dashboard** 
 
 1. Open your Kubernetes Cluster in the IBM Cloud web console
 
@@ -302,7 +302,7 @@ Step |  |
 --- | --- 
 1 | Ensure you have downloaded the git first into the running Docker image. `$ git clone https://github.com/IBM/cloud-native-starter.git`
 2 |  Ensure you have open Docker image in a interactive terminal session and navigate to the folder `cloud-native-starter/authors-java-jee`
-3 | [Move on with the lab](./4-kubernetes.md#1-build-and-save-the-container-image).
+3 | [Move on with the lab](./4-kubernetes.md#step-1-ensure-you-are-in-the-root_folderauthors-java-jeedeployment).
 
 
 ### [Tools - Option 2](./1-prereqs.md#tools---option-2-prebuilt-image-with-code-in-container)
@@ -311,7 +311,7 @@ Step |  |
 --- | --- 
 1 | Ensure you have downloaded the git first into the running Docker image. `$ git clone https://github.com/IBM/cloud-native-starter.git` 
 2 |  Ensure you have open Docker image in a interactive terminal session and navigate to the folder `cloud-native-starter/authors-java-jee` **REMINDER:** The code changes from lab 3 you on you local computer, don't exist inside the your running Docker image.
-3 | [Move on with the lab](4-kubernetes.md#1-build-and-save-the-container-image).
+3 | [Move on with the lab](4-kubernetes.md#step-1-ensure-you-are-in-the-root_folderauthors-java-jeedeployment).
 
 ---
 
@@ -339,7 +339,20 @@ Step |  |
     $ NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
     $ authors      NodePort    172.21.107.135   <none>        3000:31347/TCP   22s
     $ kubernetes   ClusterIP   172.21.0.1       <none>        443/TCP          28h
-    ```   
+    ``` 
+
+#### Step 3: Verify the service in the **Kubernetes dashboard** 
+
+1. Open your Kubernetes Cluster in the IBM Cloud web console
+
+2. Open the Kubernetes dashbord
+   
+   ![Open the Kubernetes dashbord](images/lab-4-deployment-1.png)
+
+3. In the overview you see the created deployment and the pod
+
+  ![In the overview you see the created deployment and the pod](images/lab-4-service-1.png)
+
 
 ## Step 3: 
 
