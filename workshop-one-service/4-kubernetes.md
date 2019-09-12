@@ -26,8 +26,8 @@ The following image is an animation of the simplified steps above.
 
 Step |  |
 --- | --- 
-1 | You need to open a new local terminal |
-2 |  Navigate to your local project folder ```cloud-native-starter/deployment```
+1 | Ensure you have downloaded the git first into the running Docker image. ```$ git clone https://github.com/IBM/cloud-native-starter.git ```
+2 |  Ensure you have open Docker image in a interactive terminal session and navigate to the folder ```cloud-native-starter/deployment```
 3 | [Move on with the lab](./4-kubernetes.md#1-build-and-save-the-container-image).
 
 
@@ -35,8 +35,8 @@ Step |  |
 
 Step |  |
 --- | --- 
-1 | Ensure you have downloaded the git, first into the Docker image. ```$ git clone https://github.com/IBM/cloud-native-starter.git ``` 
-2 |  Ensure you have open Docker image in a interactive terminal session and navigate to the folder ```cloud-native-starter/deployment```
+1 | Ensure you have downloaded the git first into the running Docker image. ```$ git clone https://github.com/IBM/cloud-native-starter.git ``` 
+2 |  Ensure you have open Docker image in a interactive terminal session and navigate to the folder ```cloud-native-starter/deployment``` _REMINDER:_ The code changes you made on you local computer don't exist inside the your running Docker image.
 3 | [Move on with the lab](4-kubernetes.md#1-build-and-save-the-container-image).
 
 ---
