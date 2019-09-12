@@ -67,7 +67,7 @@ Now we want to build and save a container image in the IBM Cloud Container Regis
     ```sh
     $ Listing namespaces for account 'Thomas Suedbroecker's Account' in registry 'us.icr.io'...
     $
-    $Namespace   
+    $ Namespace   
     $ cloud-native-suedbro   
     ```
 
@@ -104,8 +104,7 @@ Now we want to build and save a container image in the IBM Cloud Container Regis
     $ OK
     ```
 
-    Copy the REPOSITORY path for the uploaded **Authors** container image.
-    In this case sample: ```de.icr.io/cloud-native/authors```
+5. Copy the REPOSITORY path for the uploaded **Authors** container image. In this case sample: ```us.icr.io/cloud-native-suedbro/authors``` and save it somewhere, we need this later in the deployment.yaml configuration.
 
 ## Step 3: Verify the build in the OpenShift web console
 
