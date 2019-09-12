@@ -296,6 +296,97 @@ spec:
 ---
 ```
 
+### [Tools - Option 1](./1-prereqs.md#tools---option-1-prebuilt-image-with-local-code)
+
+Step |  |
+--- | --- 
+1 | Ensure you have downloaded the git first into the running Docker image. `$ git clone https://github.com/IBM/cloud-native-starter.git`
+2 |  Ensure you have open Docker image in a interactive terminal session and navigate to the folder `cloud-native-starter/authors-java-jee`
+3 | [Move on with the lab](./4-kubernetes.md#1-build-and-save-the-container-image).
+
+
+### [Tools - Option 2](./1-prereqs.md#tools---option-2-prebuilt-image-with-code-in-container)
+
+Step |  |
+--- | --- 
+1 | Ensure you have downloaded the git first into the running Docker image. `$ git clone https://github.com/IBM/cloud-native-starter.git` 
+2 |  Ensure you have open Docker image in a interactive terminal session and navigate to the folder `cloud-native-starter/authors-java-jee` **REMINDER:** The code changes from lab 3 you on you local computer, don't exist inside the your running Docker image.
+3 | [Move on with the lab](4-kubernetes.md#1-build-and-save-the-container-image).
+
+---
+
+## Step 1: Apply the service specification
+
+    ```sh
+    $ kubectl apply -f deployment/service.yaml
+    ```
+
+## Step 2: Verify the service in Kubernetes with kubectl
+
+    ```sh
+    $ kubectl get services
+    ```
+
+    Sample output:
+    ```sh
+    $ NAME         TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+    $ authors      NodePort    172.21.107.135   <none>        3000:31347/TCP   22s
+    $ kubernetes   ClusterIP   172.21.0.1       <none>        443/TCP          28h
+    ```   
+
+## Step 3: 
+
+
+4. Get cluster (node) IP address
+
+    ```sh
+    $ clusterip=$(ibmcloud ks workers --cluster cloud-native | awk '/Ready/ {print $2;exit;}')
+    $ echo $clusterip
+    $ 159.122.172.162
+    ```
+
+5. Get nodeport.
+
+    ```sh
+    $ nodeport=$(kubectl get svc authors --ignore-not-found --output 'jsonpath={.spec.ports[*].nodePort}')
+    $ echo $nodeport
+    $ 30108
+    ```
+
+5. Open API explorer.
+
+    ```sh
+    $ open http://${clusterip}:${nodeport}/openapi/ui/
+    ```
+
+    Sample result in your browser:
+
+    ![authors-java-openapi-explorer](images/authors-java-openapi-explorer.png)
+
+
+6. Execute curl to test the **Authors** service.
+
+    ```sh
+    $ curl http://${clusterip}:${nodeport}/api/v1/getauthor?name=Niklas%20Heidloff
+    ```
+
+    Sample result:
+    ```
+    $ {"name":"Niklas Heidloff","twitter":"@nheidloff","blog":"http://heidloff.net"}
+    ```
+
+7. Execute following curl command to test the **HealthCheck** implementation for the **Authors** service.
+
+    ```sh
+    $ curl http://${clusterip}:${nodeport}/health
+    $ {"checks":[{"data":{"authors":"ok"},"name":"authors","state":"UP"}],"outcome":"UP"} 
+    ```
+
+    Optional: We can also verify that call in the browser.
+
+    ![authors-java-health](images/authors-java-health.png)
+
+---
 ## Step 1: Apply the service deployment
 
 1. Apply the service to OpenShift
