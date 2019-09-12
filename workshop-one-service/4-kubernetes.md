@@ -22,6 +22,25 @@ The following image is an animation of the simplified steps above.
 
 # 1. Build and save the container image
 
+### [Tools - Option 1](./1-prereqs.md#tools---option-1-prebuilt-image-with-local-code)
+
+Step |  |
+--- | --- 
+1 | You need to open a new local terminal |
+2 |  Navigate to your local project folder ```cloud-native-starter/deployment```
+3 | [Move on with the lab](./4-kubernetes.md#1-build-and-save-the-container-image).
+
+
+### [Tools - Option 2](./1-prereqs.md#tools---option-2-prebuilt-image-with-code-in-container)
+
+Step |  |
+--- | --- 
+1 | Ensure you have downloaded the git, first into the Docker image. ```$ git clone https://github.com/IBM/cloud-native-starter.git ``` 
+2 |  Ensure you have open Docker image in a interactive terminal session and navigate to the folder ```cloud-native-starter/deployment```
+3 | [Move on with the lab](4-kubernetes.md#1-build-and-save-the-container-image).
+
+---
+
 ## Step 1: Build and save the container image in the IBM Cloud Container Registry
 
 Now we want to build and save a container image in the IBM Cloud Container Registry. 

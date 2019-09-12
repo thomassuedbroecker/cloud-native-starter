@@ -266,7 +266,7 @@ _Note_: Here are some additional instructions based on your choosen setup.
 Step |  |
 --- | --- 
 1 | You need to open a new local terminal |
-2 |  Navigate to your local project folder ```openshift-on-ibm-cloud-workshops/2-deploying-to-openshift```
+2 |  Navigate to your local project folder ```cloud-native-starter/authors-java-jee```
 3 | [Move on with the lab](./3-java.md#step-1-in-getauthorjava-change-the-returned-author-name-to-something-else-like-my-name).
 
 
@@ -274,8 +274,8 @@ Step |  |
 
 Step |  |
 --- | --- 
-1 | You need to download or clone the project onto your local PC, first. ```$ git clone https://github.com/nheidloff/openshift-on-ibm-cloud-workshops.git ``` 
-2 |  Open a new terminal and navigate tp your local project folder ```openshift-on-ibm-cloud-workshops/2-deploying-to-openshift```
+1 | You need to download or clone the project onto your local PC, first. ```$ git clone https://github.com/IBM/cloud-native-starter.git ``` 
+2 |  Open a new terminal and navigate tp your local project folder ```cloud-native-starter/authors-java-jee```
 3 | [Move on with the lab](./3-java.md#step-1-in-getauthorjava-change-the-returned-author-name-to-something-else-like-my-name).
 
 
