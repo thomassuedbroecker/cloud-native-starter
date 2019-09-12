@@ -257,7 +257,7 @@ This HealthEndpoint is configured in the Kubernetes deployment yaml. In the foll
       initialDelaySeconds: 40
 ```
 
-## Change the REST API Data and run the Container locally
+## Change the code of the authors microservice and run the service in a container locally
 
 _Note_: Here are some additional instructions based on your choosen setup.
 
