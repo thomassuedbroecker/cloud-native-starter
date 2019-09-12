@@ -27,7 +27,7 @@ The following image is an animation of the simplified steps above.
 Step |  |
 --- | --- 
 1 | Ensure you have downloaded the git first into the running Docker image. `$ git clone https://github.com/IBM/cloud-native-starter.git`
-2 |  Ensure you have open Docker image in a interactive terminal session and navigate to the folder `cloud-native-starter/deployment`
+2 |  Ensure you have open Docker image in a interactive terminal session and navigate to the folder `cloud-native-starter/authors-java-jee`
 3 | [Move on with the lab](./4-kubernetes.md#1-build-and-save-the-container-image).
 
 
@@ -36,7 +36,7 @@ Step |  |
 Step |  |
 --- | --- 
 1 | Ensure you have downloaded the git first into the running Docker image. `$ git clone https://github.com/IBM/cloud-native-starter.git` 
-2 |  Ensure you have open Docker image in a interactive terminal session and navigate to the folder `cloud-native-starter/deployment` _REMINDER:_ The code changes you made on you local computer don't exist inside the your running Docker image.
+2 |  Ensure you have open Docker image in a interactive terminal session and navigate to the folder `cloud-native-starter/authors-java-jee` _REMINDER:_ The code changes you made on you local computer don't exist inside the your running Docker image.
 3 | [Move on with the lab](4-kubernetes.md#1-build-and-save-the-container-image).
 
 ---
@@ -45,10 +45,14 @@ Step |  |
 
 Now we want to build and save a container image in the IBM Cloud Container Registry. 
 
-1. Logon to the IBM Cloud Container Registry 
+1. Ensure you logon on to IBM Cloud.
+   REMEMBER: I now from the prerequisites, you can follow the steps in the **Access** tab, by starting from **After your cluster provision ..** and inserting the commands into your terminal session.
+
+  ![Follow the steps in the Access tab, by starting from "After your cluster provision" and inserting the commands into your terminal session.](images/verify-cluster-access-4.png)
+
+2. Logon to the IBM Cloud Container Registry 
 
     ```sh
-    $ cd authors-java-jee
     $ ibmcloud cr login
     ```
 
@@ -64,7 +68,7 @@ Now we want to build and save a container image in the IBM Cloud Container Regis
     $ Listing namespaces for account 'Thomas Südbröcker's Account' in registry 'de.icr.io'...
     $
     $ Namespace   
-    $ cloud-native
+    $ cloud-native-suedbro
     ```
 
 3. Now upload the code and build the container image inside IBM Cloud Container Registry. We use the upper information we got from listing the namespaces.
