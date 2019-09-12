@@ -67,7 +67,7 @@ There is an image on DockerHub with all required tools. This option works for Ma
 #### Step 1: Run this command in a terminal
 
 ```
-$ docker run -ti nheidloff/openshift-workshop-tools:v1
+$ docker run -ti tsuedbroecker/cns-workshop-tools:v1
 ```
 _Note:_ If you using Windows you also need to download or clone the project to your local workstation for the upcoming Docker and Java lab, because you can't use Docker in the 'openshift-workshop-tools' Docker image.
 
