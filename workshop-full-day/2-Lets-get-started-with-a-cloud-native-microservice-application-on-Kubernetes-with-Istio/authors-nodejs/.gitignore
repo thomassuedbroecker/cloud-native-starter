@@ -1,0 +1,6 @@
+node_modules
+node_modules_linux
+yarn*.log
+yarn.lock
+package.1.json
+public/authors.js.CLOUDANT

@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  annotations:
+    webapi: "true"
+  name: web-api
+  labels:
+    app: web-api
+spec:
+  selector:
+    app: web-api
+  ports:
+    - port: 9080
+      name: http
+  type: NodePort
+---

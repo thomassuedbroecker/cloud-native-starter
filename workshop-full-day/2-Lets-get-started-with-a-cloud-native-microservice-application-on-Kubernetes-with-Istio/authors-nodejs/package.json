@@ -1,0 +1,27 @@
+{
+  "name": "authors_service",
+  "version": "1.0.0",
+  "description": "Authors API for Cloud Native Starter pattern",
+  "private": true,
+  "engines": {
+    "node": "^8.9.1"
+  },
+  "config": {
+    "entrypoint": "server/server.js"
+  },
+  "scripts": {
+    "start": "node $npm_package_config_entrypoint"
+  },
+  "nodemonConfig": {
+    "env": {
+      "NODE_HEAPDUMP_OPTIONS": "nosignal"
+    }
+  },
+  "dependencies": {
+    "@cloudant/cloudant": "^1.10.0",
+    "appmetrics-zipkin": "^1.1.1",
+    "express": "^4.16.4",
+    "json-query": "^2.2.2",
+    "log4js": "^4.0.2"
+  }
+}
