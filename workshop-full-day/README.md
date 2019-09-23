@@ -7,9 +7,11 @@ In this hands-on workshop we will build a cloud native application that is a sim
 There are 3 parts:
 
 **Part 1: Build and deploy your first Java microservice to Kubernetes on IBM Cloud**
+
 We will build a single microservice based on Java EE and Eclipse MicroProfile and deploy it to Kubernetes on the IBM Cloud. Eclipse MicroProfile has features and modules that help develop Java based microservices and we will cover exposing and documenting REST APIs and health checks.
 
 **Part 2: Build a cloud native microservices application on Kubernetes and Istio**
+
 We will deploy two more microservices to create a microservice architecture and also deploy a browser based frontend.
 We will look into:
 * Consuming REST APIs with Java
@@ -17,7 +19,8 @@ We will look into:
 * Resiliency functions of MicroProfile to help our application stay responsive in case of an error
 
 **Part 3: Deploy Applications on Red Hat OpenShift**
-Red OpenShift offers several options to deploy an application.
+
+Red Hat OpenShift offers several options to deploy an application.
 We will use one of our Microservices as an example to look into some of these options.
 
 ---
