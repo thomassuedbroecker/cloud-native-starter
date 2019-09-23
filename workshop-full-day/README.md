@@ -31,7 +31,7 @@ Lab 2 and 3 describe how to develop a microservice with Java EE and Eclipse Micr
 
 The last labs ways to deploy applications to Kubernetes on IBM Cloud.
 
-## 2. Let’s get started with a cloud native microservice application on Kubernetes (90 min)
+## 2. Let’s get started with a cloud native microservice application on Kubernetes and Istio (90 min)
 
 [![Let's get started with cloud native Java applications on Kubernetes](https://img.youtube.com/vi/DQFeqFKQ3dE/0.jpg)](https://www.youtube.com/watch?v=DQFeqFKQ3dE "Click play on youtube")
 
