@@ -7,7 +7,7 @@ This one day workshop has three major sections.
 * Build and deploy a Java microservices to OpenShift
 
 
-## 1. [Build and deploy your first Java microservice to Kubernetes on IBM Cloud](./workshop-full-day/1-Build-and-deploy-your-first-Java-microservice-to-Kubernetes) (60 - 90 min)
+## 1. Build and deploy your first Java microservice to Kubernetes on IBM Cloud [(60 - 90 min)](./workshop-full-day/1-Build-and-deploy-your-first-Java-microservice-to-Kubernetes)
 
 This workshop demonstrates how to build a microservice with Java and how to deploy it to Kubernetes on the IBM Cloud.
 
@@ -15,7 +15,7 @@ The microservice is kept as simple as possible, so that it can be used as a star
 
 _Note:_ Useful YouTube playlist [Build and deploy a microservice to Kubernetes](https://ibm.biz/BdzVRY)
 
-## 2. Let’s get started with a cloud native microservice application on Kubernetes and Istio (90 min)
+## 2. Let’s get started with a cloud native microservice application on Kubernetes and Istio [(90 - 120 min)](workshop-full-day/2-Lets-get-started-with-a-cloud-native-microservice-application-on-Kubernetes-with-Istio)
 
 In this hands-workshop we do address the question: 
 
@@ -30,7 +30,7 @@ We will cover the following major topics and we learn along the given **source c
 * [Traffic management](https://istio.io/docs/concepts/traffic-management/) 
 * [Resiliency](https://www.ibm.com/it-infrastructure/z/capabilities/resiliency)
  
-## 3. Deploy a Java Microservices to OpenShift on IBM Cloud (60 - 90 min)
+## 3. Deploy a Java Microservices to OpenShift on IBM Cloud [(60 - 90 min)](./workshop-full-day/3-deploy-microservice-to-openshift)
 
 This workshop demonstrates how to build a microservice with Java and how to deploy it to OpenShift.
 
