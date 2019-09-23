@@ -20,7 +20,7 @@ _Note:_ Useful YouTube playlist [Build and deploy a microservice to Kubernetes](
 
 This workshop has four labs. It should take between 60 and 90 minutues to complete the workshop.
 
-1. Installing prerequisites: [lab](./workshop-full-day/1-Build-and-deploy-your-first-Java-microservice-to-Kubernetes/1-prereqs.md)
+1. Installing prerequisites: [lab](workshop-full-day/1-Build-and-deploy-your-first-Java-microservice-to-Kubernetes/1-prereqs.md)
 2. Running the Java microservice locally: [lab](./workshop-full-day/1-Build-and-deploy-your-first-Java-microservice-to-Kubernetes/2-docker.md) 
 3. Understanding the Java implementation: [lab](./workshop-full-day/1-Build-and-deploy-your-first-Java-microservice-to-Kubernetes/3-java.md)
 4. Deploying to Kubernetes: [lab](./workshop-full-day/1-Build-and-deploy-your-first-Java-microservice-to-Kubernetes/4-kubernetes.md)
