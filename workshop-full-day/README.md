@@ -1,10 +1,10 @@
-# How to develop and run microservice on IBM Cloud?
+# How to develop and run microservices on IBM Cloud?
 
 This one day workshop has three major sections.
 
 * Build and deploy your first Java microservice to Kubernetes on IBM Cloud
-* Let’s get started with a cloud native microservice application on Kubernetes
-* Deploy a Java Microservices to OpenShift on IBM Cloud
+* Let’s get started with a cloud native microservice application on Kubernetes with Istio
+* Build and deploy a Java microservices to OpenShift
 
 
 ## 1. Build and deploy your first Java microservice to Kubernetes on IBM Cloud (60 - 90 min)
