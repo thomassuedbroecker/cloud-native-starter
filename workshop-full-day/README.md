@@ -7,7 +7,7 @@ This one day workshop has three major sections.
 * Build and deploy a Java microservices to OpenShift
 
 
-## 1. Build and deploy your first Java microservice to Kubernetes on IBM Cloud (60 - 90 min)
+## 1. [Build and deploy your first Java microservice to Kubernetes on IBM Cloud](./workshop-full-day/1-Build-and-deploy-your-first-Java-microservice-to-Kubernetes) (60 - 90 min)
 
 This workshop demonstrates how to build a microservice with Java and how to deploy it to Kubernetes on the IBM Cloud.
 
@@ -20,10 +20,10 @@ _Note:_ Useful YouTube playlist [Build and deploy a microservice to Kubernetes](
 
 This workshop has four labs. It should take between 60 and 90 minutues to complete the workshop.
 
-1. Installing prerequisites: [lab](1-prereqs.md)
-2. Running the Java microservice locally: [lab](2-docker.md) 
-3. Understanding the Java implementation: [lab](3-java.md)
-4. Deploying to Kubernetes: [lab](4-kubernetes.md)
+1. Installing prerequisites: [lab](./workshop-full-day/1-Build-and-deploy-your-first-Java-microservice-to-Kubernetes/1-prereqs.md)
+2. Running the Java microservice locally: [lab](./workshop-full-day/1-Build-and-deploy-your-first-Java-microservice-to-Kubernetes/2-docker.md) 
+3. Understanding the Java implementation: [lab](./workshop-full-day/1-Build-and-deploy-your-first-Java-microservice-to-Kubernetes/3-java.md)
+4. Deploying to Kubernetes: [lab](./workshop-full-day/1-Build-and-deploy-your-first-Java-microservice-to-Kubernetes/4-kubernetes.md)
 
 The first lab describes how to install all required prerequisites. In the easiest case this is only Docker Desktop and an image with all other tools.
 
@@ -32,8 +32,6 @@ Lab 2 and 3 describe how to develop a microservice with Java EE and Eclipse Micr
 The last labs ways to deploy applications to Kubernetes on IBM Cloud.
 
 ## 2. Let’s get started with a cloud native microservice application on Kubernetes and Istio (90 min)
-
-[![Let's get started with cloud native Java applications on Kubernetes](https://img.youtube.com/vi/DQFeqFKQ3dE/0.jpg)](https://www.youtube.com/watch?v=DQFeqFKQ3dE "Click play on youtube")
 
 In this hands-workshop we do address the question: 
 
