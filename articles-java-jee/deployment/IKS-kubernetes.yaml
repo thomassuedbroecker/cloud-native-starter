@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
       - name: articles
-        image: us.icr.io/cloud-native-tsuedbro/articles:1
+        image: us.icr.io/cloud-native-suedbro/articles:1
         ports:
         - containerPort: 8080
         env:
