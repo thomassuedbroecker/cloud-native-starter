@@ -4,10 +4,18 @@
     <featureManager>
         <feature>webProfile-8.0</feature>
         <feature>microProfile-2.1</feature>
+        <!-- tag::zipkinUsr[] -->
+        <feature>usr:opentracingZipkin-0.31</feature>
+        <!-- end::zipkinUsr[] -->
     </featureManager>
+     
+    <opentracingZipkin host="0.0.0.0" port="9411"/>
 
-    <httpEndpoint id="defaultHttpEndpoint" host="*" httpPort="3000" httpsPort="9443"/>
+    <httpEndpoint id="defaultHttpEndpoint" host="0.0.0.0" httpPort="3000" httpsPort="9443"/>
 
-    <webApplication location="authors.war" contextRoot="api"/>
+    <webApplication location="authors.war" contextRoot="api">
+        <!-- enable visibility to third party apis -->
+        <classloader apiTypeVisibility="api,ibm-api,spec,stable,third-party"/>
+    </webApplication>
 
 </server>

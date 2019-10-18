@@ -43,6 +43,10 @@ In the pom file we define the configuration of our Java project with dependencie
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<failOnMissingWebXml>false</failOnMissingWebXml>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- Zipkin user feature download link -->
+        <zipkin.usr.feature>https://github.com/WASdev/sample.opentracing.zipkintracer/releases/download/1.3/liberty-opentracing-zipkintracer-1.3-sample.zip</zipkin.usr.feature>
+		
 	</properties>
 </project>
 ```
@@ -79,7 +83,14 @@ Also the name of the executable web application is definied in the server.xml.
 
     <httpEndpoint id="defaultHttpEndpoint" host="*" httpPort="3000" httpsPort="9443"/>
 
-    <webApplication location="authors.war" contextRoot="api"/>
+    <opentracingZipkin host="*" port="9411"/>
+
+    <httpEndpoint id="defaultHttpEndpoint" host="*" httpPort="3000" httpsPort="9443"/>
+
+    <webApplication location="authors.war" contextRoot="api">
+        <!-- enable visibility to third party apis -->
+        <classloader apiTypeVisibility="api,ibm-api,spec,stable,third-party"/>
+    </webApplication>
 
 </server>
 ```
@@ -351,10 +362,16 @@ public class HealthEndpoint implements HealthCheck {
 
 #### Step 5: To test and see how the code works you can run the code locally as a Docker container:
 
-```
+```sh
 $ cd $ROOT_FOLDER/authors-java-jee
 $ docker build -t authors .
 $ docker run -i --rm -p 3000:3000 authors
+```
+
+With open tracing:
+
+```sh
+$ docker run -i --rm -p 3000:3000 -p 9411:9411 authors
 ```
 
 #### Step 6: Open the swagger UI of the mircoservice in a browser and verfiy the changes
