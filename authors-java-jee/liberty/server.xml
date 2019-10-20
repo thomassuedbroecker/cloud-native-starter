@@ -9,7 +9,7 @@
         <!-- end::zipkinUsr[] -->
     </featureManager>
      
-    <opentracingZipkin host="0.0.0.0" port="9411"/>
+    <opentracingZipkin host="localhost" port="9411"/>
 
     <httpEndpoint id="defaultHttpEndpoint" host="0.0.0.0" httpPort="3000" httpsPort="9443"/>
 
@@ -18,4 +18,5 @@
         <classloader apiTypeVisibility="api,ibm-api,spec,stable,third-party"/>
     </webApplication>
 
+    <logging traceSpecification="com.ibm.ws.opentracing.*=all:com.ibm.ws.microprofile.opentracing.*=all"/>
 </server>
