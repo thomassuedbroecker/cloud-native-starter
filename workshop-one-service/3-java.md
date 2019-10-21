@@ -390,6 +390,24 @@ $ docker run -i --rm -p 3000:3000 -p 9411:9411 authors
 
 #### Optional: Enable the logging inside the liberty server and access the running Docker container with your running microservice
 
+Working with zipkin and docker locally:
+
+[Understand the Docker network](https://docs.docker.com/engine/reference/commandline/network_connect/)
+
+* Start the zipkin server:
+```sh
+$ docker run --name zipkin -it -p 9411:9411 openzipkin/zipkin
+```
+
+* Start the mircoservice and link the container to the zipkin container.
+
+```sh
+$ docker run -i --rm --link zipkin:zipkinhost -p 3000:3000 authors
+```
+* Now invoce the authors api and inspect the call in zipkin
+
+![zipkin](images/zipkin-01-authors.png)
+
 * Enable logging to your server.xml:
 
 ```xml
@@ -397,7 +415,6 @@ $ docker run -i --rm -p 3000:3000 -p 9411:9411 authors
 ```
 
 * Full server.xml
-
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -411,7 +428,7 @@ $ docker run -i --rm -p 3000:3000 -p 9411:9411 authors
         <!-- end::zipkinUsr[] -->
     </featureManager>
      
-    <opentracingZipkin host="localhost" port="9411"/>
+    <opentracingZipkin host="zipkinhost" port="9411"/>
 
     <httpEndpoint id="defaultHttpEndpoint" host="0.0.0.0" httpPort="3000" httpsPort="9443"/>
 

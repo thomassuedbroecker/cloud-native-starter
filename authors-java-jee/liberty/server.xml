@@ -9,7 +9,7 @@
         <!-- end::zipkinUsr[] -->
     </featureManager>
      
-    <opentracingZipkin host="localhost" port="9411"/>
+    <opentracingZipkin host="zipkinhost" port="9411"/>
 
     <httpEndpoint id="defaultHttpEndpoint" host="*" httpPort="3000" httpsPort="9443"/>
 
