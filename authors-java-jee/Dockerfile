@@ -9,7 +9,7 @@ RUN mvn -f /usr/src/app/pom.xml clean package
 FROM open-liberty:microProfile2-java11
 
 COPY liberty/server.xml /config/
-# for debugging
+# using open tracing
 COPY liberty-opentracing-zipkintracer /opt/ol/wlp/usr/
 
 COPY --from=BUILD /usr/src/app/target/authors.war /config/apps/

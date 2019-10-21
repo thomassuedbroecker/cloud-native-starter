@@ -45,7 +45,7 @@ In the pom file we define the configuration of our Java project with dependencie
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<!-- Zipkin user feature download link -->
-        <zipkin.usr.feature>https://github.com/WASdev/sample.opentracing.zipkintracer/releases/download/1.3/liberty-opentracing-zipkintracer-1.3-sample.zip</zipkin.usr.feature>
+        <zipkin.usr.feature>https://github.com/WASdev/sample.opentracing.zipkintracer/releases/download/1.2/liberty-opentracing-zipkintracer-1.2-sample.zip</zipkin.usr.feature>
 		
 	</properties>
 </project>
@@ -388,13 +388,16 @@ $ docker run -i --rm -p 3000:3000 -p 9411:9411 authors
 
 ---
 
-#### Optional: Access the running Docker container with your running microservice
+#### Optional: Enable the logging inside the liberty server and access the running Docker container with your running microservice
 
-Add logging to your server.xml:
+* Enable logging to your server.xml:
 
 ```xml
     <logging traceSpecification="com.ibm.ws.opentracing.*=all:com.ibm.ws.microprofile.opentracing.*=all"/>
 ```
+
+* Full server.xml
+
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -419,6 +422,12 @@ Add logging to your server.xml:
 
     <logging traceSpecification="com.ibm.ws.opentracing.*=all:com.ibm.ws.microprofile.opentracing.*=all"/>
 </server>
+```
+
+* Start zipkin server in Docker:
+
+```sh
+$ docker run -it -p 9411:9411 openzipkin/zipkin
 ```
 
 * Get get running container on your local machine
