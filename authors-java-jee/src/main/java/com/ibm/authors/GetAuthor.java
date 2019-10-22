@@ -97,7 +97,7 @@ public class GetAuthor {
 		// tag::custom-tracer[]
         Scope activeScope = tracer.scopeManager().active();
 		if (activeScope != null) {
-    		activeScope.span().log("... active scope found");
+    		activeScope.span().log("... logHeaders active scope found");
 		}
 
 		Span activeSpan = tracer.activeSpan();
@@ -108,8 +108,8 @@ public class GetAuthor {
 		}
 
 		Span childSpan = spanBuilder.startManual();
-		childSpan.setTag("JsonCreated",true);
-		childSpan.log("Just created childSpam");
+		childSpan.setTag("logHeaders",true);
+		childSpan.log("Just created childSpam logHeaders");
 		if( activeSpan == null){
 			//activeSpan = tracer.activateSpan(childSpan);
 			tracer.scopeManager().activate(childSpan,true);
@@ -133,7 +133,7 @@ public class GetAuthor {
 		// tag::custom-tracer[]
         Scope activeScope = tracer.scopeManager().active();
 		if (activeScope != null) {
-    		activeScope.span().log("... active scope found");
+    		activeScope.span().log("... createJson active scope found");
 		}
 
 		Span activeSpan = tracer.activeSpan();
@@ -145,7 +145,7 @@ public class GetAuthor {
 
 		Span childSpan = spanBuilder.startManual();
 		childSpan.setTag("JsonCreated",true);
-		childSpan.log("Just created childSpam");
+		childSpan.log("Just created childSpam createJson");
 		if( activeSpan == null){
 			//activeSpan = tracer.activateSpan(childSpan);
 			tracer.scopeManager().activate(childSpan,true);
