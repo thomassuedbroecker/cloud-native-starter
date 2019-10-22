@@ -26,11 +26,6 @@ import java.util.logging.Logger;
 import javax.inject.Inject;
 // import org.eclipse.microprofile.opentracing.Traced;
 import org.eclipse.microprofile.opentracing.*;
-
-//import io.opentracing.Scope;
-//import io.opentracing.Tracer;
-//import io.opentracing.ActiveSpan; // Problem
-//import io.opentracing.Span;
 import io.opentracing.*;
 // Tracing 
 

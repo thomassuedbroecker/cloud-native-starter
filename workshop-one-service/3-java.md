@@ -465,11 +465,14 @@ With mircoprofile you don't have to define traces for the rest calls the will be
 
 ##### Custom tracing with open tracing:
 
-Here you can define own traces.
+Here you can define own traces using opentracing.
+You need to import the `io.opentracing.*`.
 
 ```java
 	import io.opentracing.*;
 ```
+
+Here you can see we use **Scope**, **Tracer.SpanBuilder** and **Tracer** to do that.
 
 ```java
 	// tag::custom-tracer[]
