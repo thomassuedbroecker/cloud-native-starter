@@ -19,7 +19,7 @@ public class AuthorsApplication extends Application {
     Logger l = Logger.getLogger(AuthorsApplication.class.getName());
     
     public AuthorsApplication(){
-        l.info("... start AuthorsApplication");
+        l.info("... logger start AuthorsApplication");
         System.out.println("... start AuthorsApplication");
 	}
 }

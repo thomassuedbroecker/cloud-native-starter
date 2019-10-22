@@ -99,7 +99,7 @@ public class GetAuthor {
 		}
 
 		Span activeSpan = tracer.activeSpan();
-		Tracer.SpanBuilder spanBuilder = tracer.buildSpan("Create JsonObject");
+		Tracer.SpanBuilder spanBuilder = tracer.buildSpan("Custom create a JsonObject");
 
 		if (activeSpan != null){
 			spanBuilder.asChildOf(activeSpan.context());

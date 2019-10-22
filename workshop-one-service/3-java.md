@@ -390,6 +390,121 @@ $ docker run -i --rm -p 3000:3000 -p 9411:9411 authors
 
 #### Optional: Enable the logging inside the liberty server and access the running Docker container with your running microservice
 
+Later we will copy the needed "zipkintracer" Framework into our production server.
+
+```sh
+$ cd $ROOT_FOLDER/authors-java-jee
+$ curl -L -o $file https://github.com/WASdev/sample.opentracing.zipkintracer/releases/download/1.2/liberty-opentracing-zipkintracer-1.2-sample.zip
+$ unzip -o liberty-opentracing-zipkintracer-1.2-sample.zip -d liberty-opentracing-zipkintracer/
+```
+
+
+### Changes in the pom file
+
+We insert following changes into our pom.xml file.
+We do that, because we need when we use custom opentracing. 
+
+```xml
+    <!-- https://mvnrepository.com/artifact/io.opentracing/opentracing-api -->
+	<dependency>
+		<groupId>io.opentracing</groupId>
+		<artifactId>opentracing-api</artifactId>
+		<version>0.31.0</version>
+	</dependency>
+```
+
+Add the zipkin feature as a download to our project.
+_Note:_ We will do a additional download later.
+
+```xml
+    <!-- Zipkin user feature download link -->
+    <zipkin.usr.feature>https://github.com/WASdev/sample.opentracing.zipkintracer/releases/download/1.2/liberty-opentracing-zipkintracer-1.2-sample.zip</zipkin.usr.feature>
+```
+
+### Changes in the server file
+
+We insert following change to connect later locally to our zipkin server on running on docker in our local machine.
+
+```xml
+    <opentracingZipkin host="zipkinhost" port="9411"/>
+```
+
+We add the logging to our server to inspect later the logs on our Docker container.
+
+```xml
+    <logging traceSpecification="com.ibm.ws.opentracing.*=all:com.ibm.ws.microprofile.opentracing.*=all"/>
+```
+
+### Changes in the source code
+
+#### Common logging
+
+* We add following imports to the classes:
+
+```java
+import java.util.logging.Logger;
+import org.eclipse.microprofile.opentracing.*;
+```
+
+* We add a logger to the classes:
+
+```java
+    Logger l = Logger.getLogger([CLASSNAME].class.getName());
+```
+
+* We do some logging:
+
+```java
+    l.info("... logger start [CLASSNAME]");
+    System.out.println("... start [CLASSNAME]");
+```
+
+#### Tracing
+
+With mircoprofile you don't have to define traces for the rest calls the will be created automatically.
+
+##### Custom tracing with open tracing:
+
+Here you can define own traces.
+
+```java
+	import io.opentracing.*;
+```
+
+```java
+	// tag::custom-tracer[]
+    Scope activeScope = tracer.scopeManager().active();
+	if (activeScope != null) {
+    		activeScope.span().log("... active scope found");
+	}
+
+	Span activeSpan = tracer.activeSpan();
+	Tracer.SpanBuilder spanBuilder = tracer.buildSpan("Custom create a JsonObject");
+
+	if (activeSpan != null){
+			spanBuilder.asChildOf(activeSpan.context());
+	}
+
+	Span childSpan = spanBuilder.startManual();
+	childSpan.setTag("JsonCreated",true);
+	childSpan.log("Just created childSpam");
+	if( activeSpan == null){
+			//activeSpan = tracer.activateSpan(childSpan);
+			tracer.scopeManager().activate(childSpan,true);
+	}
+	// end::custom-tracer[]
+		
+	JsonObject output = Json.createObjectBuilder().add("name", author.name).add("twitter", author.twitter)
+				.add("blog", author.blog).build();
+		
+	// tag::custom-tracer[]
+    childSpan.finish();
+	// end::custom-tracer[]
+
+	l.info("... create json object for Author");
+	System.out.println("... create json object for Author");
+```
+
 Working with zipkin and docker locally:
 
 [Understand the Docker network](https://docs.docker.com/engine/reference/commandline/network_connect/)
