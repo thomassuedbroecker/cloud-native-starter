@@ -18,9 +18,16 @@ import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.parameters.Parameter;
 import javax.json.Json;
 
+import java.util.Enumeration;
+
 // Java logger
 import java.util.logging.Logger;
 // Java logger
+
+// Export information of requests
+import javax.servlet.http.*;
+import javax.ws.rs.core.Context;
+// Export information of requests
 
 // Tracing 
 import javax.inject.Inject;
@@ -70,8 +77,10 @@ public class GetAuthor {
             required = true,
             example = "Niklas Heidloff",
             schema = @Schema(type = SchemaType.STRING))
-			@QueryParam("name") String name) {
-		
+			@QueryParam("name") String name, @Context HttpServletRequest request) {
+			
+			logHeaders(request);
+			
 			Author author = new Author();
 			author.name = "Niklas Heidloff";
 			author.twitter = "https://twitter.com/nheidloff";
@@ -84,6 +93,40 @@ public class GetAuthor {
 			return Response.ok(this.createJson(author)).build();
 	}
 
+	private void logHeaders (HttpServletRequest request){
+		// tag::custom-tracer[]
+        Scope activeScope = tracer.scopeManager().active();
+		if (activeScope != null) {
+    		activeScope.span().log("... active scope found");
+		}
+
+		Span activeSpan = tracer.activeSpan();
+		Tracer.SpanBuilder spanBuilder = tracer.buildSpan("Custom logHeaders");
+
+		if (activeSpan != null){
+			spanBuilder.asChildOf(activeSpan.context());
+		}
+
+		Span childSpan = spanBuilder.startManual();
+		childSpan.setTag("JsonCreated",true);
+		childSpan.log("Just created childSpam");
+		if( activeSpan == null){
+			//activeSpan = tracer.activateSpan(childSpan);
+			tracer.scopeManager().activate(childSpan,true);
+		}
+		// end::custom-tracer[]
+		
+		Enumeration<String> headerNames = request.getHeaderNames();
+		while (headerNames.hasMoreElements()) {
+			String header = headerNames.nextElement();
+			System.out.println(header+": "+request.getHeader(header));
+		}
+
+	    // tag::custom-tracer[]
+        childSpan.finish();
+		// end::custom-tracer[]
+
+	}
 
 	private JsonObject createJson(Author author) {
 

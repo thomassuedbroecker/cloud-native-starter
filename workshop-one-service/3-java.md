@@ -393,6 +393,7 @@ $ docker run -i --rm -p 3000:3000 -p 9411:9411 authors
 Now we will take a closer look to tracing and logging.
 
 We will use [Zipkin](https://zipkin.io/), which is a distributed tracing system. It helps gather timing data needed to troubleshoot latency problems in service architectures. Features include both the collection and lookup of this data.
+You can find more detailed imformation in that blog post[monitoring Java microservices with Microprofile opentracing](https://www.ibm.com/cloud/blog/monitoring-java-microservices-with-microprofile-opentracing)
 
 Later we will copy the needed "zipkintracer" Framework into our production server.
 
@@ -468,6 +469,14 @@ import org.eclipse.microprofile.opentracing.*;
 With mircoprofile you don't have to define traces for the rest calls the will be created automatically.
 
 ##### Custom tracing with open tracing:
+
+
+```java
+// Export information of requests
+import javax.servlet.http.*;
+import javax.ws.rs.core.Context;
+// Export information of requests
+```
 
 We using [Inject](https://javaee.github.io/javaee-spec/javadocs/javax/inject/package-summary.html)
 
@@ -616,7 +625,6 @@ $ messages.log trace.log
 ```
 
 * Copy trace logs, from your running Docker container to your local machine:
-
 
 ```sh
 $ docker cp d69a8da6dd55:/logs/trace.log /Users/thoma
