@@ -390,6 +390,10 @@ $ docker run -i --rm -p 3000:3000 -p 9411:9411 authors
 
 #### Optional: Enable the logging inside the liberty server and access the running Docker container with your running microservice
 
+Now we will take a closer look to tracing and logging.
+
+We will use [Zipkin](https://zipkin.io/), which is a distributed tracing system. It helps gather timing data needed to troubleshoot latency problems in service architectures. Features include both the collection and lookup of this data.
+
 Later we will copy the needed "zipkintracer" Framework into our production server.
 
 ```sh
@@ -464,6 +468,20 @@ import org.eclipse.microprofile.opentracing.*;
 With mircoprofile you don't have to define traces for the rest calls the will be created automatically.
 
 ##### Custom tracing with open tracing:
+
+We using [Inject](https://javaee.github.io/javaee-spec/javadocs/javax/inject/package-summary.html)
+
+```java
+	import javax.inject.Inject;
+```
+
+Here we inject the opentracing `class Tracer`.
+
+```java
+	// tag::custom-tracer[]
+    @Inject Tracer tracer;
+	// end::custom-tracer[]
+```
 
 Here you can define own traces using opentracing.
 You need to import the `io.opentracing.*`.

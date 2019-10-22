@@ -63,7 +63,7 @@ public class GetAuthor {
 		    description = "Get specific author"
 	)
 
-	// Automated enabled for open tracing
+	// Automated enabled for microprofile, but here we you the Codewind 
 	@Traced
 	public Response getAuthor(@Parameter(
             description = "The unique name of the author",
