@@ -426,6 +426,18 @@ _Note:_ We will do a additional download later.
     <zipkin.usr.feature>https://github.com/WASdev/sample.opentracing.zipkintracer/releases/download/1.2/liberty-opentracing-zipkintracer-1.2-sample.zip</zipkin.usr.feature>
 ```
 
+Add servlet information to extract Request.
+
+```xml
+		<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+```
+
 ### Changes in the server file
 
 We insert following change to connect later locally to our zipkin server on running on docker in our local machine.
@@ -471,11 +483,64 @@ With mircoprofile you don't have to define traces for the rest calls the will be
 ##### Custom tracing with open tracing:
 
 
+Extract imformation to log the request:
+
 ```java
 // Export information of requests
 import javax.servlet.http.*;
 import javax.ws.rs.core.Context;
 // Export information of requests
+```
+
+The relevant part is `@Context HttpServletRequest request
+
+```java
+public Response getAuthor(@Parameter(
+            description = "The unique name of the author",
+            required = true,
+            example = "Niklas Heidloff",
+            schema = @Schema(type = SchemaType.STRING))
+			@QueryParam("name") String name, @Context HttpServletRequest request){
+				logHeaders(request);
+				....
+```
+
+
+```java
+private void logHeaders (HttpServletRequest request){
+		// tag::custom-tracer[]
+        Scope activeScope = tracer.scopeManager().active();
+		if (activeScope != null) {
+    		activeScope.span().log("... active scope found");
+		}
+
+		Span activeSpan = tracer.activeSpan();
+		Tracer.SpanBuilder spanBuilder = tracer.buildSpan("Custom logHeaders");
+
+		if (activeSpan != null){
+			spanBuilder.asChildOf(activeSpan.context());
+		}
+
+		Span childSpan = spanBuilder.startManual();
+		childSpan.setTag("JsonCreated",true);
+		childSpan.log("Just created childSpam");
+		if( activeSpan == null){
+			//activeSpan = tracer.activateSpan(childSpan);
+			tracer.scopeManager().activate(childSpan,true);
+		}
+		// end::custom-tracer[]
+		
+		Enumeration<String> headerNames = request.getHeaderNames();
+		while (headerNames.hasMoreElements()) {
+			String header = headerNames.nextElement();
+			System.out.println(header+": "+request.getHeader(header));
+		}
+
+	    // tag::custom-tracer[]
+        childSpan.finish();
+		// end::custom-tracer[]
+
+	}
 ```
 
 We using [Inject](https://javaee.github.io/javaee-spec/javadocs/javax/inject/package-summary.html)
