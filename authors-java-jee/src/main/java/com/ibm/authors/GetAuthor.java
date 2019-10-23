@@ -79,6 +79,7 @@ public class GetAuthor {
             schema = @Schema(type = SchemaType.STRING))
 			@QueryParam("name") String name, @Context HttpServletRequest request) {
 			
+			// Custom log
 			logHeaders(request);
 			
 			Author author = new Author();
@@ -92,7 +93,7 @@ public class GetAuthor {
 
 			return Response.ok(this.createJson(author)).build();
 	}
-
+ 
 	private void logHeaders (HttpServletRequest request){
 		// tag::custom-tracer[]
         Scope activeScope = tracer.scopeManager().active();
@@ -108,8 +109,8 @@ public class GetAuthor {
 		}
 
 		Span childSpan = spanBuilder.startManual();
-		childSpan.setTag("logHeaders",true);
-		childSpan.log("Just created childSpam logHeaders");
+		childSpan.setTag("logHeaders", true);
+		childSpan.log("logHeaders - Just created childSpam");
 		if( activeSpan == null){
 			//activeSpan = tracer.activateSpan(childSpan);
 			tracer.scopeManager().activate(childSpan,true);

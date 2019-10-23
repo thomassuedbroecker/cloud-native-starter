@@ -476,6 +476,16 @@ import org.eclipse.microprofile.opentracing.*;
     System.out.println("... start [CLASSNAME]");
 ```
 
+#### Debugging
+
+[Debugger for VS Code](https://marketplace.visualstudio.com/items?itemName=Open-Liberty.liberty-dev-vscode-ext)
+[Need to enable OpenLiberty in pom filehttps://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker maven](https://github.com/OpenLiberty/ci.maven)
+[Docker for visual studio code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker)
+
+```sh
+$ docker run -i --rm --link zipkin:zipkinhost -p 3000:3000 -p 7777:7777 authors server debug
+```
+
 #### Tracing
 
 With mircoprofile you don't have to define traces for the rest calls the will be created automatically.
