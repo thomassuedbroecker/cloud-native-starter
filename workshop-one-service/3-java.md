@@ -395,6 +395,15 @@ Now we will take a closer look to tracing and logging.
 We will use [Zipkin](https://zipkin.io/), which is a distributed tracing system. It helps gather timing data needed to troubleshoot latency problems in service architectures. Features include both the collection and lookup of this data.
 You can find more detailed imformation in that blog post[monitoring Java microservices with Microprofile opentracing](https://www.ibm.com/cloud/blog/monitoring-java-microservices-with-microprofile-opentracing)
 
+[Youtube](https://www.youtube.com/watch?v=eFXCMQGEpXU&t=359s)
+
+
+Sample to delete images:
+
+```sh
+IMAGE_TO_DELETE=$(docker image ls | awk '/<none>/ {print $3;exit;}'); echo "Image to delete $IMAGE_TO_DELETE"; while [ "$IMAGE_TO_DELETE" != "" ]; do  IMAGE_TO_DELETE=$(docker image ls | awk '/<none>/ {print $3;exit;}'); echo "Image to delete $IMAGE_TO_DELETE"; docker rmi -f dangling=true image $IMAGE_TO_DELETE; echo "$IMAGE_TO_DELETE deleted"; done;
+```
+
 Later we will copy the needed "zipkintracer" Framework into our production server.
 
 ```sh
